@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native';
+import Header from "../components/Header";
+import { ScrollView } from "react-native";
 
 export default function MiComponente() {
   return (
-    <View className="bg-white p-4">
-      <Text className="text-yellow-500 text-lg">Hola Mundo</Text>
-    </View>
+    <ScrollView className="bg-background-app">
+      <Header/>
+    </ScrollView>
   );
 }
