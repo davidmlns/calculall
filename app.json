@@ -8,6 +8,11 @@
     "scheme": "calculall",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon-without-bg.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A1A1A"
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -28,7 +33,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/icon-without-bg.png",
-          "imageWidth": 200,
+          "imageWidth": 50,
           "resizeMode": "contain",
           "backgroundColor": "#1A1A1A"
         }

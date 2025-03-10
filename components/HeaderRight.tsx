@@ -1,11 +1,11 @@
-import { Animated, Pressable, StyleSheet, TextInput, View } from "react-native";
-import { useState, useRef, useEffect } from "react";
-import { CloseIcon, SearchIcon, SettingIcon } from "./Icons";
-import { Link } from "expo-router";
+import { Animated, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { useState, useRef, useEffect } from 'react';
+import { CloseIcon, SearchIcon, SettingIcon } from './Icons';
+import { Link } from 'expo-router';
 
 export default function HeaderRight() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const animation = useRef(new Animated.Value(0)).current;
   const inputRef = useRef(null);
 
@@ -39,30 +39,29 @@ export default function HeaderRight() {
   };
 
   return (
-    <View className="flex-row items-center">
+    <View className='flex-row items-center'>
       {isSearchVisible && (
         <Animated.View style={animatedStyle}>
           <TextInput
             ref={inputRef}
-            placeholder="Search..."
-            placeholderTextColor="#E0E0E0"
+            placeholder='Search...'
+            placeholderTextColor='#E0E0E0'
             style={styles.searchInput}
             value={searchText}
             onChangeText={setSearchText}
-            className="z-5"
+            className='z-5'
           />
         </Animated.View>
       )}
 
       <Pressable
-        className="mr-5 bg-background-app z-10"
+        className='mr-5 bg-background-app z-10'
         style={[styles.searchIcon, isSearchVisible && styles.searchIconActive]}
-        onPress={toggleSearch}
-      >
+        onPress={toggleSearch}>
         {isSearchVisible ? <CloseIcon /> : <SearchIcon />}
       </Pressable>
 
-      <Link asChild href="">
+      <Link asChild href=''>
         <Pressable>
           <SettingIcon />
         </Pressable>
@@ -77,12 +76,12 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
     fontSize: 18,
-    color: "#E0E0E0",
+    color: '#E0E0E0',
     padding: 2,
     paddingLeft: 10,
-    textAlignVertical: "center",
-    borderStyle: "solid",
-    borderColor: "#E0E0E0",
+    textAlignVertical: 'center',
+    borderStyle: 'solid',
+    borderColor: '#E0E0E0',
     borderRadius: 5,
     borderWidth: 1,
   },
@@ -90,6 +89,6 @@ const styles = StyleSheet.create({
     borderWidth: 0,
   },
   searchIconActive: {
-    color: "#F86868",
+    color: '#F86868',
   },
 });
