@@ -189,8 +189,8 @@ export const AutonomyIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='electric-car' size={size} color={color} />
 );
 
-export const TirePressureIcon = ({ size, color }: IconProps) => (
-  <MaterialCommunityIcons name='tire' size={size} color={color} />
+export const CO2Icon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='molecule-co2' size={size} color={color} />
 );
 
 export const BatteryIcon = ({ size, color }: IconProps) => (
@@ -371,4 +371,24 @@ export const CyclingIcon = ({ size, color }: IconProps) => (
 
 export const SwimmingIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='swim' size={size} color={color} />
+);
+
+export const PlayIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='play' size={size} color={color} />
+);
+
+export const PauseIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='pause' size={size} color={color} />
+);
+
+export const RestartIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='replay' size={size} color={color} />
+);
+
+export const CopyIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='content-copy' size={size} color={color} />
+);
+
+export const CurrencyIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='attach-money' size={size} color={color} />
 );

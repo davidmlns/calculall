@@ -9,14 +9,14 @@ export default function Geography() {
         title='Lat. & coor. '
         category='Geography'
         icon={<LatitudeIcon size={44} color='#D35400' />}
-        route='/'
+        route='/(pages)/(geo)/Latitude'
       />
 
       <Card
         title='Demographic'
         category='Geography'
         icon={<PopulationDensityIcon size={44} color='#D35400' />}
-        route='/'
+        route='/(pages)/(geo)/Demographic'
       />
     </View>
   );

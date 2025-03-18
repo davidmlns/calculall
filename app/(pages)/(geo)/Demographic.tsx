@@ -1,43 +1,47 @@
 import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { TaxesIcon } from '../../../components/Icons';
+import { PopulationDensityIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 
-export default function Taxes() {
+export default function Demographic() {
   const [result, setResult] = useState('The result will appear here');
-  const [income, setIncome] = useState('');
-  const [taxRate, setTaxRate] = useState('');
+  const [population, setPopulation] = useState('');
+  const [area, setArea] = useState('');
 
-  const calculateTax = (income: number, taxRate: number): string => {
-    if (income <= 0 || taxRate <= 0) return 'Values must be positive';
+  const calculateDensity = (population: number, area: number): string => {
+    if (population <= 0 || area <= 0) return 'Values must be positive';
+    if (area === 0) return 'Area cannot be zero';
 
-    const taxAmount = income * (taxRate / 100);
-    return `Tax Amount: $${Number(taxAmount.toFixed(2))}`;
+    const density = population / area;
+    return `Density: ${Number(density.toFixed(2))} people/km²`;
   };
 
-  const handleCalculateTax = () => {
-    const i = parseFloat(income);
-    const t = parseFloat(taxRate);
+  const handleCalculateDensity = () => {
+    const pop = parseFloat(population);
+    const a = parseFloat(area);
 
-    if (!income || !taxRate) {
+    if (!population || !area) {
       setResult('Please enter required values');
       return;
     }
 
-    if (isNaN(i) || isNaN(t)) {
+    if (isNaN(pop) || isNaN(a)) {
       setResult('Invalid input values');
       return;
     }
 
-    setResult(calculateTax(i, t));
+    setResult(calculateDensity(pop, a));
   };
 
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Taxes' icon={<TaxesIcon size={52} color='#27AE60' />} />
+      <HeaderDescriptionPage
+        title='Demographic'
+        icon={<PopulationDensityIcon size={52} color='#D35400' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
@@ -46,31 +50,31 @@ export default function Taxes() {
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
-            placeholder='Enter income ($)'
+            placeholder='Population'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
-            value={income}
-            onChangeText={setIncome}
+            value={population}
+            onChangeText={setPopulation}
             maxLength={9}
           />
         </View>
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
-            placeholder='Enter tax rate (%)'
+            placeholder='Area (km²)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
-            value={taxRate}
-            onChangeText={setTaxRate}
-            maxLength={5}
+            value={area}
+            onChangeText={setArea}
+            maxLength={7}
           />
         </View>
       </View>
 
-      {income && taxRate && (
+      {population && area && (
         <View>
           <Pressable
-            onPress={handleCalculateTax}
+            onPress={handleCalculateDensity}
             className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
             <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
           </Pressable>

@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import Card from './Card';
-import { AutonomyIcon, FuelIcon, MileageIcon, TirePressureIcon } from './Icons';
+import { AutonomyIcon, CO2Icon, FuelIcon, MileageIcon, TirePressureIcon } from './Icons';
 
 export default function Transport() {
   return (
@@ -9,28 +9,27 @@ export default function Transport() {
         title='Autonomy '
         category='Transport'
         icon={<AutonomyIcon size={44} color='#7F8C8D' />}
-        route='/'
+        route='/(pages)/(transport)/Autonomy'
       />
 
+      <Card
+        title='CO₂ Emissions'
+        category='Transport'
+        icon={<CO2Icon size={44} color='#7F8C8D' />}
+        route='/(pages)/(transport)/CO2'
+      />
       <Card
         title='Fuel '
         category='Transport'
         icon={<FuelIcon size={44} color='#7F8C8D' />}
-        route='/'
+        route='/(pages)/(transport)/Fuel'
       />
 
       <Card
         title='Mileage '
         category='Transport'
         icon={<MileageIcon size={44} color='#7F8C8D' />}
-        route='/'
-      />
-
-      <Card
-        title='Tire pressure'
-        category='Transport'
-        icon={<TirePressureIcon size={44} color='#7F8C8D' />}
-        route='/'
+        route='/(pages)/(transport)/Mileage'
       />
     </View>
   );

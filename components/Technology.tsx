@@ -16,42 +16,42 @@ export default function Technology() {
         title='Battery'
         category='Electronics'
         icon={<BatteryIcon size={44} color='#3498DB' />}
-        route='/'
+        route='/(pages)/(tech)/Battery'
       />
 
       <Card
         title='Data transfer '
         category='Technology'
         icon={<DataTransferIcon size={44} color='#3498DB' />}
-        route='/'
+        route='/(pages)/(tech)/DataTransfer'
       />
 
       <Card
         title='Digital data '
         category='Technology'
         icon={<DigitalDataIcon size={44} color='#3498DB' />}
-        route='/'
+        route='/(pages)/(tech)/DigitalData'
       />
 
       <Card
         title='Elec. current '
         category='Electronics'
         icon={<ElectricCurrentIcon size={44} color='#3498DB' />}
-        route='/'
+        route='/(pages)/(tech)/ElectricCurrent'
       />
 
       <Card
         title='Elec. usage '
         category='Electronics'
         icon={<ElectricConsumptionIcon size={44} color='#3498DB' />}
-        route='/'
+        route='/(pages)/(tech)/ElectricConsumption'
       />
 
       <Card
         title='Electric Res. '
         category='Electronics'
         icon={<ElectricalResistanceIcon size={44} color='#3498DB' />}
-        route='/'
+        route='/(pages)/(tech)/ElectricalResistance'
       />
     </View>
   );

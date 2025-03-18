@@ -1,43 +1,43 @@
 import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { TaxesIcon } from '../../../components/Icons';
+import { BatteryIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 
-export default function Taxes() {
+export default function Battery() {
   const [result, setResult] = useState('The result will appear here');
-  const [income, setIncome] = useState('');
-  const [taxRate, setTaxRate] = useState('');
+  const [batteryCapacity, setBatteryCapacity] = useState('');
+  const [currentDraw, setCurrentDraw] = useState('');
 
-  const calculateTax = (income: number, taxRate: number): string => {
-    if (income <= 0 || taxRate <= 0) return 'Values must be positive';
+  const calculateBatteryLife = (capacity: number, current: number): string => {
+    if (capacity <= 0 || current <= 0) return 'Values must be positive';
 
-    const taxAmount = income * (taxRate / 100);
-    return `Tax Amount: $${Number(taxAmount.toFixed(2))}`;
+    const batteryLife = capacity / current;
+    return `Battery Life: ${Number(batteryLife.toFixed(2))} hours`;
   };
 
-  const handleCalculateTax = () => {
-    const i = parseFloat(income);
-    const t = parseFloat(taxRate);
+  const handleCalculateBatteryLife = () => {
+    const capacity = parseFloat(batteryCapacity);
+    const current = parseFloat(currentDraw);
 
-    if (!income || !taxRate) {
+    if (!batteryCapacity || !currentDraw) {
       setResult('Please enter required values');
       return;
     }
 
-    if (isNaN(i) || isNaN(t)) {
+    if (isNaN(capacity) || isNaN(current)) {
       setResult('Invalid input values');
       return;
     }
 
-    setResult(calculateTax(i, t));
+    setResult(calculateBatteryLife(capacity, current));
   };
 
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Taxes' icon={<TaxesIcon size={52} color='#27AE60' />} />
+      <HeaderDescriptionPage title='Battery' icon={<BatteryIcon size={52} color='#3498DB' />} />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
@@ -46,31 +46,31 @@ export default function Taxes() {
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
-            placeholder='Enter income ($)'
+            placeholder='Battery Capacity (mAh)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
-            value={income}
-            onChangeText={setIncome}
-            maxLength={9}
+            value={batteryCapacity}
+            onChangeText={setBatteryCapacity}
+            maxLength={7}
           />
         </View>
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
-            placeholder='Enter tax rate (%)'
+            placeholder='Current Draw (mA)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
-            value={taxRate}
-            onChangeText={setTaxRate}
+            value={currentDraw}
+            onChangeText={setCurrentDraw}
             maxLength={5}
           />
         </View>
       </View>
 
-      {income && taxRate && (
+      {batteryCapacity && currentDraw && (
         <View>
           <Pressable
-            onPress={handleCalculateTax}
+            onPress={handleCalculateBatteryLife}
             className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
             <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
           </Pressable>

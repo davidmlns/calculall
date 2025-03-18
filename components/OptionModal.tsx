@@ -2,38 +2,40 @@ import { Modal, Pressable, Text, View } from 'react-native';
 import { ArrowDownIcon, CloseIcon } from './Icons';
 
 interface OptionModalProps {
-  title: string;
-  description?: string;
-  icon?: React.ReactNode;
-  children: React.ReactNode;
+  options: {
+    title: string;
+    description?: string;
+    icon: string;
+    route: string;
+  }[];
   isVisible: boolean;
   onClose: () => void;
   onOpen: () => void;
 }
 
 export default function OptionModal({
-  title,
-  description,
-  icon,
-  children,
+  options,
   isVisible,
   onClose,
   onOpen,
 }: OptionModalProps) {
   return (
     <>
-      <Pressable
-        onPress={onOpen} // Usar prop onOpen en lugar de estado interno
-        className='bg-background-secondary rounded-xl p-6 flex-row justify-between'>
-        <View className='flex-row items-center'>
-          <Text className='mr-3 bg-icon-background w-10 h-10 rounded-lg'>{icon}</Text>
-          <View>
-            <Text className='text-white text-base'>{title}</Text>
-            <Text className='text-slate-400 text-sm'>{description}</Text>
+      {options.map((option, index) => (
+        <Pressable
+          key={index}
+          onPress={onOpen} // Usar prop onOpen en lugar de estado interno
+          className='bg-background-secondary rounded-xl p-6 flex-row justify-between'>
+          <View className='flex-row items-center'>
+            <Text className='mr-3 bg-icon-background w-10 h-10 rounded-lg'>{option.icon}</Text>
+            <View>
+              <Text className='text-white text-base'>{option.title}</Text>
+              <Text className='text-slate-400 text-sm'>{option.description}</Text>
+            </View>
           </View>
-        </View>
-        <ArrowDownIcon size={34} color='#E0E0E0' />
-      </Pressable>
+          <ArrowDownIcon size={34} color='#E0E0E0' />
+        </Pressable>
+      ))}
 
       <Modal
         animationType='slide'
@@ -48,7 +50,12 @@ export default function OptionModal({
                 <CloseIcon size={34} color='#E0E0E0' />
               </Pressable>
             </View>
-            {children}
+            {options.map((option, index) => (
+              <View key={index}>
+                <Text className='text-white text-base'>{option.title}</Text>
+                <Text className='text-slate-400 text-sm'>{option.description}</Text>
+              </View>
+            ))}
           </View>
         </Pressable>
       </Modal>

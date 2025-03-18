@@ -3,15 +3,11 @@ import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { EnergyIcon } from '../../../components/Icons';
 import { useState } from 'react';
-import ConvertComponent from '@/components/ConvertComponent';
+import ConvertComponent from '../../../components/ConvertComponent';
 
 type EnergyUnit = 'J' | 'KJ' | 'Cal' | 'kWh' | 'BTU';
 
-type ConversionFactors = {
-  [key in EnergyUnit]: number;
-};
-
-const conversionFactors: ConversionFactors = {
+const conversionFactors = {
   J: 1,
   KJ: 1000,
   Cal: 4.184,
@@ -20,110 +16,108 @@ const conversionFactors: ConversionFactors = {
 };
 
 export default function Energy() {
-  const [result, setResult] = useState('');
-  const [jouleValue, setJouleValue] = useState('');
-  const [kiloJouleValue, setKiloJouleValue] = useState('');
-  const [caloriesValue, setCaloriesValue] = useState('');
-  const [kilowattHourValue, setKilowattHourValue] = useState('');
-  const [britishThermalUnitValue, setBritishThermalUnitValue] = useState('');
+  const [joule, setJoule] = useState('');
+  const [kilojoule, setKilojoule] = useState('');
+  const [calorie, setCalorie] = useState('');
+  const [kilowattHour, setKilowattHour] = useState('');
+  const [britishThermalUnit, setBritishThermalUnit] = useState('');
   const [activeUnit, setActiveUnit] = useState<EnergyUnit>('J');
 
   const clearInputs = () => {
-    setJouleValue('');
-    setKiloJouleValue('');
-    setCaloriesValue('');
-    setKilowattHourValue('');
-    setBritishThermalUnitValue('');
+    setJoule('');
+    setKilojoule('');
+    setCalorie('');
+    setKilowattHour('');
+    setBritishThermalUnit('');
   };
 
   const convertEnergy = (value: string, unit: EnergyUnit) => {
     setActiveUnit(unit);
-
     const cleanedValue = value.replace(/[^0-9.]/g, '');
-    const numericValue = parseFloat(cleanedValue);
-
-    if (isNaN(numericValue)) {
-      clearInputs();
-      return;
-    }
+    const numericValue = parseFloat(cleanedValue) || 0;
+    if (isNaN(numericValue)) return;
 
     const joules = numericValue * conversionFactors[unit];
 
-    setJouleValue((joules / conversionFactors.J).toFixed(2));
-    setKiloJouleValue((joules / conversionFactors.KJ).toFixed(2));
-    setCaloriesValue((joules / conversionFactors.Cal).toFixed(2));
-    setKilowattHourValue((joules / conversionFactors.kWh).toFixed(2));
-    setBritishThermalUnitValue((joules / conversionFactors.BTU).toFixed(2));
+    setJoule(unit === 'J' ? cleanedValue : (joules / conversionFactors.J).toFixed(2));
+    setKilojoule(unit === 'KJ' ? cleanedValue : (joules / conversionFactors.KJ).toFixed(2));
+    setCalorie(unit === 'Cal' ? cleanedValue : (joules / conversionFactors.Cal).toFixed(2));
+    setKilowattHour(unit === 'kWh' ? cleanedValue : (joules / conversionFactors.kWh).toFixed(2));
+    setBritishThermalUnit(
+      unit === 'BTU' ? cleanedValue : (joules / conversionFactors.BTU).toFixed(2)
+    );
   };
 
   return (
-    <ScrollView className='bg-background-app w-full h-full'>
+    <ScrollView className="bg-background-app w-full h-full">
       <HeaderPages />
-      <HeaderDescriptionPage title='Energy' icon={<EnergyIcon size={58} color='#2E86C1' />} />
+      <HeaderDescriptionPage title="Energy" icon={<EnergyIcon size={58} color="#2E86C1" />} />
 
-      <View className='flex-col items-center'>
+      <View className="flex-col items-center">
         <ConvertComponent
-          abb='J'
-          title='Joule'
-          description='1 J'
-          onChangeText={value => convertEnergy(value, 'J')}
-          value={jouleValue}
+          abb="J"
+          title="Joule"
+          description="1 J"
+          onChangeText={(value) => convertEnergy(value, 'J')}
+          value={joule}
           isActive={activeUnit === 'J'}
           onPress={clearInputs}
+          keyboardType="decimal-pad"
           maxLength={9}
         />
         <ConvertComponent
-          abb='KJ'
-          title='Kilojulio'
-          description='1 J = 1000 J'
-          onChangeText={value => convertEnergy(value, 'KJ')}
-          value={kiloJouleValue}
+          abb="KJ"
+          title="Kilojoule"
+          description="1 KJ = 1000 J"
+          onChangeText={(value) => convertEnergy(value, 'KJ')}
+          value={kilojoule}
           isActive={activeUnit === 'KJ'}
           onPress={clearInputs}
+          keyboardType="decimal-pad"
           maxLength={9}
         />
         <ConvertComponent
-          abb='Cal'
-          title='Calories'
-          description='1 Cal = 4.184 J'
-          onChangeText={value => convertEnergy(value, 'Cal')}
-          value={caloriesValue}
+          abb="Cal"
+          title="Calorie"
+          description="1 Cal = 4.184 J"
+          onChangeText={(value) => convertEnergy(value, 'Cal')}
+          value={calorie}
           isActive={activeUnit === 'Cal'}
           onPress={clearInputs}
+          keyboardType="decimal-pad"
           maxLength={9}
         />
         <ConvertComponent
-          abb='kWh'
-          title='Kilowatt-hour'
-          description='1 kWh = 3.6 × 10 J'
-          onChangeText={value => convertEnergy(value, 'kWh')}
-          value={kilowattHourValue}
+          abb="kWh"
+          title="Kilowatt-hour"
+          description="1 kWh = 3.6 × 10 J"
+          onChangeText={(value) => convertEnergy(value, 'kWh')}
+          value={kilowattHour}
           isActive={activeUnit === 'kWh'}
           onPress={clearInputs}
+          keyboardType="decimal-pad"
           maxLength={9}
         />
         <ConvertComponent
-          abb='BTU'
-          title='British Thermal Unit'
-          description='1 BTU = 1055 J'
-          onChangeText={value => convertEnergy(value, 'BTU')}
-          value={britishThermalUnitValue}
+          abb="BTU"
+          title="British Thermal Unit"
+          description="1 BTU = 1055 J"
+          onChangeText={(value) => convertEnergy(value, 'BTU')}
+          value={britishThermalUnit}
           isActive={activeUnit === 'BTU'}
           onPress={clearInputs}
+          keyboardType="decimal-pad"
           maxLength={9}
         />
       </View>
 
-      {(jouleValue ||
-        kiloJouleValue ||
-        caloriesValue ||
-        kilowattHourValue ||
-        britishThermalUnitValue) && (
+      {(!!joule || !!kilojoule || !!calorie || !!kilowattHour || !!britishThermalUnit) && (
         <View>
           <Pressable
             onPress={clearInputs}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Clear</Text>
+            className="bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10"
+          >
+            <Text className="text-slate-800 text-3xl font-semibold">Clear</Text>
           </Pressable>
         </View>
       )}

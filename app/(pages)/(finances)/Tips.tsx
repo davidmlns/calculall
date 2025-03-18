@@ -41,7 +41,7 @@ export default function Tips() {
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Tip Calculator</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
 
         <View className='mt-2'>
           <TextInput

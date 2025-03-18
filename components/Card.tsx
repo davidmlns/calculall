@@ -6,9 +6,10 @@ interface CardProps {
   category: string;
   icon: React.ReactNode;
   route: string;
+  modalContent?: React.ReactNode;
 }
 
-export default function Card({ title, category, icon, route }: CardProps) {
+export default function Card({ title, category, icon, route, modalContent }: CardProps) {
   return (
     <View className='w-45 rounded-3xl h-36 bg-slate-300 overflow-hidden relative'>
       <Link asChild href={route}>
