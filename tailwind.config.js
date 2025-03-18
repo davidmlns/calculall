@@ -18,7 +18,11 @@ module.exports = {
         'category-kitchen': '#F39C12 ',
         'category-others': '#F0E68C ',
         'category-tech': '#3498DB ',
+        'icon-background': '#F1948A   ',
         //"accent-app": "#FF6B6B",
+      },
+      width: {
+        45: '45%',
       },
     },
   },

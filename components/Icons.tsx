@@ -9,7 +9,21 @@ interface IconProps {
 export const SettingIcon = () => <MaterialIcons name='settings' size={32} color='#E0E0E0' />;
 
 export const SearchIcon = () => <MaterialIcons name='search' size={32} color='#E0E0E0' />;
-export const CloseIcon = () => <MaterialIcons name='close' size={32} color='#E0E0E0' />;
+export const CloseIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='close' size={size} color={color} />
+);
+
+export const BackSpaceIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='backspace' size={size} color={color} />
+);
+
+export const ArrowDownIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='chevron-down' size={size} color={color} />
+);
+
+export const BackIcon = () => <MaterialIcons name='arrow-back' size={32} color='#E0E0E0' />;
+export const StarIcon = () => <MaterialIcons name='star-border' size={32} color='#E0E0E0' />;
+
 export const AngleIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='angle-acute' size={size} color={color} />
 );
@@ -30,7 +44,7 @@ export const FractionIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='fraction-one-half' size={size} color={color} />
 );
 
-export const GCMLCMIcon = ({ size, color }: IconProps) => (
+export const MCMMCDIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='window-minimize' size={size} color={color} />
 );
 
@@ -253,4 +267,92 @@ export const UUIDIcon = ({ size, color }: IconProps) => (
 
 export const WeightIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='weight-gram' size={size} color={color} />
+);
+
+export const RadianIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='circle-slice-2' size={size} color={color} />
+);
+
+export const ComplementaryIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='angle-right' size={size} color={color} />
+);
+
+export const SupplementaryIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='horizontal-rule' size={size} color={color} />
+);
+
+export const Base2Icon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='numeric-2' size={size} color={color} />
+);
+
+export const Base8Icon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='numeric-8' size={size} color={color} />
+);
+
+export const Base16Icon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='hexadecimal' size={size} color={color} />
+);
+
+export const LinearEquationIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='alpha-x' size={size} color={color} />
+);
+
+export const SumIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='plus-box-outline' size={size} color={color} />
+);
+
+export const MinusIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='minus-box-outline' size={size} color={color} />
+);
+
+export const MulIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='multiplication' size={size} color={color} />
+);
+
+export const SimplificationIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='close-fullscreen' size={size} color={color} />
+);
+
+export const DecimalIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='decimal' size={size} color={color} />
+);
+
+export const MinimumCommonMultipleIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='arrow-downward' size={size} color={color} />
+);
+
+export const MaximumCommonDivisorIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='arrow-upward' size={size} color={color} />
+);
+
+export const CorrectIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='verified' size={size} color={color} />
+);
+
+export const IncorrectIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='close-circle' size={size} color={color} />
+);
+
+export const NextIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='next-plan' size={size} color={color} />
+);
+
+export const MedianIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='format-horizontal-align-center' size={size} color={color} />
+);
+
+export const ModeIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='repeat' size={size} color={color} />
+);
+
+export const SenIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='math-sin' size={size} color={color} />
+);
+
+export const CosIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='math-cos' size={size} color={color} />
+);
+
+export const TanIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='math-tan' size={size} color={color} />
 );

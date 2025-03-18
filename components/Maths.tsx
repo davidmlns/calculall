@@ -1,11 +1,11 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import {
   AngleIcon,
   AverageIcon,
   BaseNumericIcon,
   EquationIcon,
   FractionIcon,
-  GCMLCMIcon,
+  MCMMCDIcon,
   LengthIcon,
   NumberGeneratorIcon,
   PrimeNumberIcon,
@@ -19,81 +19,81 @@ import Card from './Card';
 
 export default function Maths() {
   return (
-    <View className='mt-6 flex-row flex-wrap justify-around'>
+    <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <Card
         title='Angles'
         category='Maths'
         icon={<AngleIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Angles'
       />
 
       <Card
         title='Average'
         category='Maths'
         icon={<AverageIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Average'
       />
       <Card
         title='Base numeric'
         category='Maths'
         icon={<BaseNumericIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/BaseNumeric'
       />
 
       <Card
         title='Equations'
         category='Maths'
         icon={<EquationIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Equations'
       />
 
       <Card
         title='Fractions'
         category='Maths'
         icon={<FractionIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Fractions'
       />
 
       <Card
-        title='GCM/LCM'
+        title='MCM/MCD'
         category='Maths'
-        icon={<GCMLCMIcon size={44} color='#6C3483' />}
-        route='/'
+        icon={<MCMMCDIcon size={44} color='#6C3483' />}
+        route='/(pages)/(maths)/MCMMCD'
       />
 
       <Card
         title='Length'
         category='Maths'
         icon={<LengthIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Length'
       />
 
       <Card
-        title='Nro generator'
+        title='Num Gen'
         category='Maths'
         icon={<NumberGeneratorIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/NumberGenerator'
       />
 
       <Card
         title='Prime Nro'
         category='Maths'
         icon={<PrimeNumberIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/PrimeNumber'
       />
 
       <Card
         title='Probability'
         category='Maths'
         icon={<ProbabilityIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Probability'
       />
 
       <Card
         title='Roman Nro'
         category='Maths'
         icon={<RomanNumberIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/RomanNumber'
       />
 
       <Card
@@ -107,14 +107,14 @@ export default function Maths() {
         title='Statistics'
         category='Maths'
         icon={<StatisticsIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Statistics'
       />
 
       <Card
         title='Trigonometry'
         category='Maths'
         icon={<TrigonometryIcon size={44} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Trigonometry'
       />
     </View>
   );

@@ -4,7 +4,7 @@ import { CookingIcon, CookingTimeIcon, TimerSettingsIcon, VolumeIcon } from './I
 
 export default function Kitchen() {
   return (
-    <View className='mt-6 flex-row flex-wrap justify-around'>
+    <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <Card
         title='Cooking'
         category='Kitchen'

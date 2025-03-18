@@ -1,0 +1,86 @@
+import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import HeaderPages from '../../../components/HeaderPages';
+import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
+import { RomanNumberIcon } from '../../../components/Icons';
+import ResultComponent from '../../../components/ResultComponent';
+import { useState } from 'react';
+
+export default function RomanNumber() {
+  const [result, setResult] = useState('The result will appear here');
+  const [valueTextInputValues, setValueTextInputValues] = useState('');
+
+  const handleRomanNumber = (num: number): string => {
+    if (num <= 0 || num > 999999) return 'Number must be between 1 and 999999';
+    const romanNumerals = [
+      { value: 1000, symbol: 'M' },
+      { value: 900, symbol: 'CM' },
+      { value: 500, symbol: 'D' },
+      { value: 400, symbol: 'CD' },
+      { value: 100, symbol: 'C' },
+      { value: 90, symbol: 'XC' },
+      { value: 50, symbol: 'L' },
+      { value: 40, symbol: 'XL' },
+      { value: 10, symbol: 'X' },
+      { value: 9, symbol: 'IX' },
+      { value: 5, symbol: 'V' },
+      { value: 4, symbol: 'IV' },
+      { value: 1, symbol: 'I' },
+    ];
+
+    let roman = '';
+    for (const { value, symbol } of romanNumerals) {
+      while (num >= value) {
+        roman += symbol;
+        num -= value;
+      }
+    }
+    return roman;
+  };
+
+  const handleConvert = () => {
+    const num = parseFloat(valueTextInputValues);
+    if (!valueTextInputValues) {
+      setResult('Please enter a number');
+      return;
+    }
+    if (isNaN(num)) {
+      setResult('Invalid input');
+      return;
+    }
+    setResult(handleRomanNumber(num));
+  };
+
+  return (
+    <ScrollView className='bg-background-app w-full h-full'>
+      <HeaderPages />
+      <HeaderDescriptionPage
+        title='Roman numbers'
+        icon={<RomanNumberIcon size={58} color='#6C3483' />}
+      />
+
+      <ResultComponent result={result} />
+
+      <View className='mt-2 mx-auto'>
+        <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-80 h-16'>
+          <TextInput
+            className='text-center flex-1 text-2xl text-slate-300'
+            placeholder='Enter a number'
+            placeholderTextColor='#cbd5e1'
+            keyboardType='number-pad'
+            value={valueTextInputValues}
+            onChangeText={setValueTextInputValues}
+            maxLength={4}
+          />
+        </View>
+      </View>
+
+      <View>
+        <Pressable
+          onPress={handleConvert}
+          className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
+          <Text className='text-slate-800 text-3xl font-semibold'>Convert</Text>
+        </Pressable>
+      </View>
+    </ScrollView>
+  );
+}
