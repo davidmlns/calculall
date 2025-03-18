@@ -356,3 +356,19 @@ export const CosIcon = ({ size, color }: IconProps) => (
 export const TanIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='math-tan' size={size} color={color} />
 );
+
+export const WalkingIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='walk' size={size} color={color} />
+);
+
+export const RunningIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='run' size={size} color={color} />
+);
+
+export const CyclingIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='bike' size={size} color={color} />
+);
+
+export const SwimmingIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='swim' size={size} color={color} />
+);
