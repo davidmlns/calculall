@@ -11,7 +11,7 @@ export default function Latitude() {
   const [longitude, setLongitude] = useState('');
 
   const convertToDMS = (degrees: number, isLatitude: boolean): string => {
-    if (degrees < -180 || degrees > 180) return 'Invalid coordinate value';
+    if (degrees < -180 || degrees > 180) return 'Invalid value';
 
     const absolute = Math.abs(degrees);
     const degreesOut = Math.floor(absolute);

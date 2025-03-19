@@ -122,7 +122,7 @@ export default function Humidity() {
               keyboardType='number-pad'
               value={valueRHTextInputValues}
               onChangeText={setValueRHTextInputValues}
-              maxLength={9}
+              maxLength={6}
             />
           </View>
         )}

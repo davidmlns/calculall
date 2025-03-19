@@ -143,7 +143,7 @@ export default function Fractions() {
                 keyboardType='number-pad'
                 value={valueATextInputValues}
                 onChangeText={setValueATextInputValues}
-                maxLength={7}
+                maxLength={4}
               />
             </View>
           </View>
@@ -161,7 +161,7 @@ export default function Fractions() {
                   keyboardType='number-pad'
                   value={valueBTextInputValues}
                   onChangeText={setValueBTextInputValues}
-                  maxLength={7}
+                  maxLength={4}
                 />
               </View>
             </View>
@@ -182,7 +182,7 @@ export default function Fractions() {
                   keyboardType='number-pad'
                   value={valueCTextInputValues}
                   onChangeText={setValueCTextInputValues}
-                  maxLength={7}
+                  maxLength={4}
                 />
               </View>
             </View>
@@ -201,7 +201,7 @@ export default function Fractions() {
                   keyboardType='number-pad'
                   value={valueDTextInputValues}
                   onChangeText={setValueDTextInputValues}
-                  maxLength={7}
+                  maxLength={4}
                 />
               </View>
             </View>

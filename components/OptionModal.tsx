@@ -26,10 +26,14 @@ export default function OptionModal({
         onPress={onOpen}
         className='bg-background-secondary rounded-xl p-6 flex-row justify-between'>
         <View className='flex-row items-center'>
-          <Text className='mr-3 bg-icon-background w-10 h-10 rounded-lg'>{icon}</Text>
+          <Text className='mr-3 bg-icon-background w-10 h-10 rounded-lg text-center'>
+            {icon || 'Icon'}
+          </Text>
           <View>
-            <Text className='text-white text-base'>{title}</Text>
-            <Text className='text-slate-400 text-sm'>{description}</Text>
+            <Text className='text-white text-base'>{title || 'Select an option'}</Text>
+            <Text className='text-slate-400 text-sm'>
+              {description || 'Tap to choose an operation'}
+            </Text>
           </View>
         </View>
         <ArrowDownIcon size={34} color='#E0E0E0' />

@@ -9,20 +9,20 @@ export default function ElectricConsumption() {
   const [result, setResult] = useState('The result will appear here');
   const [voltage, setVoltage] = useState('');
   const [current, setCurrent] = useState('');
-  const [time, setTime] = useState(''); // Novo estado para o tempo de uso
+  const [time, setTime] = useState('');
 
   const calculateConsumption = (voltage: number, current: number, time: number): string => {
     if (voltage <= 0 || current <= 0 || time <= 0) return 'Values must be positive';
 
-    const power = voltage * current; // Potência em watts
-    const consumption = power * time; // Consumo em watt-horas (Wh)
+    const power = voltage * current;
+    const consumption = power * time;
     return `Consumption: ${Number(consumption.toFixed(4))} Wh`;
   };
 
   const handleCalculateConsumption = () => {
     const v = parseFloat(voltage);
     const i = parseFloat(current);
-    const t = parseFloat(time); // Converte o tempo para número
+    const t = parseFloat(time);
 
     if (!voltage || !current || !time) {
       setResult('Please enter required values');
@@ -41,7 +41,7 @@ export default function ElectricConsumption() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Electric Consumption'
+        title='Electric Usage'
         icon={<ElectricConsumptionIcon size={52} color='#3498DB' />}
       />
       <ResultComponent result={result} />

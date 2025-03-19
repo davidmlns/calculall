@@ -99,7 +99,7 @@ export default function Average() {
         {valuesVisibles && (
           <View className='flex mt-6 flex-row flex-wrap justify-around'>
             {Array.from({ length: parseInt(valueTextInputValues, 10) }, (_, index) => (
-              <View key={index} className='flex-row items-center mb-2'>
+              <View key={index} className='flex-row items-center mb-4'>
                 <Text className='text-slate-300 mr-2 text-xl font-semibold'>Nro {index + 1}:</Text>
                 <TextInput
                   className='bg-gray-800 rounded-lg p-2 text-center text-xl w-32 text-slate-300'
@@ -121,7 +121,7 @@ export default function Average() {
         <View>
           <Pressable
             onPress={handleCalculate}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'
+            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mb-10 mx-auto mt-10'
             accessibilityLabel='Calculate button'>
             <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
           </Pressable>

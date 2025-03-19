@@ -54,7 +54,7 @@ export default function Percentage() {
             keyboardType='number-pad'
             value={baseValue}
             onChangeText={setBaseValue}
-            maxLength={9}
+            maxLength={7}
           />
         </View>
         <View className='mt-4'>
@@ -65,7 +65,7 @@ export default function Percentage() {
             keyboardType='number-pad'
             value={percentage}
             onChangeText={setPercentage}
-            maxLength={5}
+            maxLength={3}
           />
         </View>
       </View>

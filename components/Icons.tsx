@@ -392,3 +392,35 @@ export const CopyIcon = ({ size, color }: IconProps) => (
 export const CurrencyIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='attach-money' size={size} color={color} />
 );
+
+export const TriangleIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='triangle-outline' size={size} color={color} />
+);
+
+export const SquareIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='square-outline' size={size} color={color} />
+);
+
+export const RectangleIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='rectangle-outline' size={size} color={color} />
+);
+
+export const RhombusIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='cards-diamond-outline' size={size} color={color} />
+);
+
+export const PentagonIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='pentagon-outline' size={size} color={color} />
+);
+
+export const HexagonIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='hexagon-outline' size={size} color={color} />
+);
+
+export const CircleIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='circle-outline' size={size} color={color} />
+);
+
+export const ArcIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='circle-slice-1' size={size} color={color} />
+);

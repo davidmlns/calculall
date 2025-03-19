@@ -29,7 +29,7 @@ const operations: Operation[] = [
 
 export default function Trigonometry() {
   const [result, setResult] = useState('The result will appear here');
-  const [selectedOperation, setSelectedOperation] = useState('');
+  const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
   const [valueTextInputValues, setValueTextInputValues] = useState('');
 
   const handleOperationFromChild = (text: string) => {

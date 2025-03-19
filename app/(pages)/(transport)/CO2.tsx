@@ -53,7 +53,7 @@ export default function CO2() {
             keyboardType='number-pad'
             value={fuelConsumed}
             onChangeText={setFuelConsumed}
-            maxLength={9}
+            maxLength={7}
           />
         </View>
         <View className='mt-4'>

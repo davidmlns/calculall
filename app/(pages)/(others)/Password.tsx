@@ -51,8 +51,8 @@ export default function Password() {
         icon={<PasswordIcon size={52} color='#1ABC9C' />}
       />
 
-      <View className='flex mt-6 mx-auto px-4 w-95'>
-        <View className='bg-gray-800 rounded-lg p-4'>
+      <View className='flex mt-6 mx-auto px-4 w-98'>
+        <View className='bg-gray-800 rounded-lg p-4 w-98'>
           <Text selectable className='text-slate-300 text-2xl text-center mb-4'>
             {password}
           </Text>

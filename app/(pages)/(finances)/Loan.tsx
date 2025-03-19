@@ -57,7 +57,7 @@ export default function Loan() {
             keyboardType='number-pad'
             value={loanAmount}
             onChangeText={setLoanAmount}
-            maxLength={9}
+            maxLength={7}
           />
         </View>
         <View className='mt-4'>
@@ -68,7 +68,7 @@ export default function Loan() {
             keyboardType='number-pad'
             value={interestRate}
             onChangeText={setInterestRate}
-            maxLength={5}
+            maxLength={3}
           />
         </View>
         <View className='mt-4'>
@@ -79,7 +79,7 @@ export default function Loan() {
             keyboardType='number-pad'
             value={loanTerm}
             onChangeText={setLoanTerm}
-            maxLength={3}
+            maxLength={2}
           />
         </View>
       </View>

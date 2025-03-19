@@ -151,7 +151,7 @@ export default function Statistics() {
           <View>
             <Pressable
               onPress={() => handleCalculate(selectedOperation)}
-              className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
+              className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mb-10 mx-auto mt-10'>
               <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
             </Pressable>
           </View>

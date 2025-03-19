@@ -12,7 +12,7 @@ export default function Discounts() {
 
   const calculateDiscount = (originalPrice: number, discountPercentage: number): string => {
     if (originalPrice <= 0 || discountPercentage <= 0) return 'Values must be positive';
-    if (discountPercentage >= 100) return 'Discount must be less than 100%';
+    if (discountPercentage >= 100) return 'Discount < 100%';
 
     const discountAmount = originalPrice * (discountPercentage / 100);
     const finalPrice = originalPrice - discountAmount;
@@ -35,6 +35,16 @@ export default function Discounts() {
     }
 
     setResult(calculateDiscount(p, d));
+  };
+
+  const handleDiscountChange = (text: string) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+    if (numericValue === '') {
+      setDiscountPercentage('');
+    } else {
+      const value = Math.min(100, Math.max(0, parseInt(numericValue, 10)));
+      setDiscountPercentage(value.toString());
+    }
   };
 
   return (
@@ -64,8 +74,8 @@ export default function Discounts() {
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={discountPercentage}
-            onChangeText={setDiscountPercentage}
-            maxLength={5}
+            onChangeText={handleDiscountChange}
+            maxLength={3}
           />
         </View>
       </View>

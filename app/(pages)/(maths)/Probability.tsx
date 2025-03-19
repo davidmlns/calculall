@@ -53,7 +53,7 @@ export default function Probability() {
           <View className='mt-2'>
             <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-96 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>Casos favorables</Text>
+                <Text className='text-black font-semibold text-xl'>Favorable cases</Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300 flex-1'
@@ -70,7 +70,7 @@ export default function Probability() {
           <View className='mt-2'>
             <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-96 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>Casos totales</Text>
+                <Text className='text-black font-semibold text-xl'>Total cases</Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300'

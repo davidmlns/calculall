@@ -100,7 +100,7 @@ export default function Maths() {
         title='Shapes'
         category='Maths'
         icon={<ShapeIcon size={52} color='#6C3483' />}
-        route='/'
+        route='/(pages)/(maths)/Shapes'
       />
 
       <Card
