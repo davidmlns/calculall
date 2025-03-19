@@ -8,28 +8,28 @@ export default function Health() {
       <Card
         title='BMI'
         category='Health'
-        icon={<BMIIcon size={44} color='#E74C3C' />}
+        icon={<BMIIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/BMI'
       />
 
       <Card
         title='Calories'
         category='Health'
-        icon={<CaloriesIcon size={44} color='#E74C3C' />}
+        icon={<CaloriesIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/Calories'
       />
 
       <Card
         title='Hydration'
         category='Health'
-        icon={<HydrationIcon size={44} color='#E74C3C' />}
+        icon={<HydrationIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/Hydration'
       />
 
       <Card
         title='Medication'
         category='Health'
-        icon={<MedicationIcon size={44} color='#E74C3C' />}
+        icon={<MedicationIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/Medication'
       />
     </View>

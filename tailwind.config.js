@@ -25,6 +25,10 @@ module.exports = {
         45: '45%',
         98: '98%',
       },
+      fontSize: {
+        22: '22px',
+        20: '20px',
+      },
     },
   },
   variants: {},

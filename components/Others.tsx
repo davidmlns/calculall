@@ -18,56 +18,56 @@ export default function Others() {
       <Card
         title='Age  '
         category='Others'
-        icon={<AgeIcon size={44} color='#1ABC9C' />}
+        icon={<AgeIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Age'
       />
 
       <Card
         title='Currency'
         category='Others'
-        icon={<CurrencyIcon size={44} color='#1ABC9C' />}
+        icon={<CurrencyIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Currency'
       />
 
       <Card
         title='Dates '
         category='Others'
-        icon={<DateIcon size={44} color='#1ABC9C' />}
+        icon={<DateIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Date'
       />
 
       <Card
         title='Density '
         category='Others'
-        icon={<DensityIcon size={44} color='#1ABC9C' />}
+        icon={<DensityIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Density'
       />
 
       <Card
         title='Password'
         category='Others'
-        icon={<PasswordIcon size={44} color='#1ABC9C' />}
+        icon={<PasswordIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Password'
       />
 
       <Card
         title='QR generator'
         category='Others'
-        icon={<QrCodeIcon size={44} color='#1ABC9C' />}
+        icon={<QrCodeIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/QrCode'
       />
 
       <Card
         title='UUID'
         category='Others'
-        icon={<UUIDIcon size={44} color='#1ABC9C' />}
+        icon={<UUIDIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/UUID'
       />
 
       <Card
         title='Weight '
         category='Others'
-        icon={<WeightIcon size={44} color='#1ABC9C' />}
+        icon={<WeightIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Weight'
       />
     </View>

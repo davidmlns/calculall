@@ -18,6 +18,7 @@ export default function CalculateComponent({
   operations,
   onCalculate,
   onSendOperation,
+  options,
 }: CalculateComponentProps) {
   const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
   const [modalVisible, setModalVisible] = useState(false);

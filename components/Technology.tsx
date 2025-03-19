@@ -15,42 +15,42 @@ export default function Technology() {
       <Card
         title='Battery'
         category='Electronics'
-        icon={<BatteryIcon size={44} color='#3498DB' />}
+        icon={<BatteryIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/Battery'
       />
 
       <Card
         title='Data transfer '
         category='Technology'
-        icon={<DataTransferIcon size={44} color='#3498DB' />}
+        icon={<DataTransferIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/DataTransfer'
       />
 
       <Card
         title='Digital data '
         category='Technology'
-        icon={<DigitalDataIcon size={44} color='#3498DB' />}
+        icon={<DigitalDataIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/DigitalData'
       />
 
       <Card
         title='Elec. current '
         category='Electronics'
-        icon={<ElectricCurrentIcon size={44} color='#3498DB' />}
+        icon={<ElectricCurrentIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricCurrent'
       />
 
       <Card
         title='Elec. usage '
         category='Electronics'
-        icon={<ElectricConsumptionIcon size={44} color='#3498DB' />}
+        icon={<ElectricConsumptionIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricConsumption'
       />
 
       <Card
         title='Electric Res. '
         category='Electronics'
-        icon={<ElectricalResistanceIcon size={44} color='#3498DB' />}
+        icon={<ElectricalResistanceIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricalResistance'
       />
     </View>

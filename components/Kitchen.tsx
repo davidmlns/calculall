@@ -8,28 +8,28 @@ export default function Kitchen() {
       <Card
         title='Cooking'
         category='Kitchen'
-        icon={<CookingIcon size={44} color='#F39C12' />}
+        icon={<CookingIcon size={52} color='#F39C12' />}
         route='/(pages)/(kitchen)/Cooking'
       />
 
       <Card
         title='Cooking time'
         category='Kitchen'
-        icon={<CookingTimeIcon size={44} color='#F39C12' />}
+        icon={<CookingTimeIcon size={52} color='#F39C12' />}
         route='/(pages)/(kitchen)/CookingTime'
       />
 
       <Card
         title='Timer setting '
         category='Kitchen'
-        icon={<TimerSettingsIcon size={44} color='#F39C12' />}
+        icon={<TimerSettingsIcon size={52} color='#F39C12' />}
         route='/(pages)/(kitchen)/TimerSettings'
       />
 
       <Card
         title='Volume '
         category='Kitchen'
-        icon={<VolumeIcon size={44} color='#F39C12' />}
+        icon={<VolumeIcon size={52} color='#F39C12' />}
         route='/(pages)/(kitchen)/Volume'
       />
     </View>

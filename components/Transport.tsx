@@ -8,27 +8,27 @@ export default function Transport() {
       <Card
         title='Autonomy '
         category='Transport'
-        icon={<AutonomyIcon size={44} color='#7F8C8D' />}
+        icon={<AutonomyIcon size={52} color='#7F8C8D' />}
         route='/(pages)/(transport)/Autonomy'
       />
 
       <Card
         title='CO₂ Emissions'
         category='Transport'
-        icon={<CO2Icon size={44} color='#7F8C8D' />}
+        icon={<CO2Icon size={52} color='#7F8C8D' />}
         route='/(pages)/(transport)/CO2'
       />
       <Card
         title='Fuel '
         category='Transport'
-        icon={<FuelIcon size={44} color='#7F8C8D' />}
+        icon={<FuelIcon size={52} color='#7F8C8D' />}
         route='/(pages)/(transport)/Fuel'
       />
 
       <Card
         title='Mileage '
         category='Transport'
-        icon={<MileageIcon size={44} color='#7F8C8D' />}
+        icon={<MileageIcon size={52} color='#7F8C8D' />}
         route='/(pages)/(transport)/Mileage'
       />
     </View>

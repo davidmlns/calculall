@@ -17,56 +17,56 @@ export default function FinanceEconomy() {
       <Card
         title='Budgeting'
         category='Finances'
-        icon={<BudgetingIcon size={44} color='#27AE60' />}
+        icon={<BudgetingIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Budgeting'
       />
 
       <Card
         title='Discounts'
         category='Finances'
-        icon={<DiscountsIcon size={44} color='#27AE60' />}
+        icon={<DiscountsIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Discounts'
       />
 
       <Card
         title='Inflation'
         category='Finances'
-        icon={<InflationIcon size={44} color='#27AE60' />}
+        icon={<InflationIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Inflation'
       />
 
       <Card
         title='Interests'
         category='Finances'
-        icon={<InterestIcon size={44} color='#27AE60' />}
+        icon={<InterestIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Interests'
       />
 
       <Card
         title='Loan'
         category='Finances'
-        icon={<LoanIcon size={44} color='#27AE60' />}
+        icon={<LoanIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Loan'
       />
 
       <Card
         title='Percentage'
         category='Finances'
-        icon={<PercentageIcon size={44} color='#27AE60' />}
+        icon={<PercentageIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Percentage'
       />
 
       <Card
         title='Taxes'
         category='Finances'
-        icon={<TaxesIcon size={44} color='#27AE60' />}
+        icon={<TaxesIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Taxes'
       />
 
       <Card
         title='Tips'
         category='Finances'
-        icon={<TipIcon size={44} color='#27AE60' />}
+        icon={<TipIcon size={52} color='#27AE60' />}
         route='/(pages)/(finances)/Tips'
       />
     </View>
