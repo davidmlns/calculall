@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { NumberGeneratorIcon } from '../../../components/Icons';
+import { NumberGeneratorIcon, CalculateIcon, FromIcon, UptoIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 
@@ -11,6 +11,8 @@ export default function NumberGenerator() {
   const [result, setResult] = useState('The result will appear here');
   const [valueATextInputValues, setValueATextInputValues] = useState('');
   const [valueBTextInputValues, setValueBTextInputValues] = useState('');
+
+  const scaleValue = new Animated.Value(1);
 
   const handleNumberGenerator = (valueA: string, valueB: string) => {
     const min = valueA === '' ? 0 : parseInt(valueA, 10);
@@ -36,6 +38,20 @@ export default function NumberGenerator() {
     setValue(isNaN(numericValue) ? '' : numericValue.toString());
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
@@ -47,10 +63,10 @@ export default function NumberGenerator() {
       <ResultComponent result={result} />
 
       <View className='flex-col w-full'>
-        <View className='mt-2 mx-auto'>
+        <View className='mt-2 mx-auto mb-2'>
           <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-80 h-16'>
             <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-              <Text className='text-black font-semibold text-xl'>From</Text>
+              <FromIcon size={22} color='#6C3483' />
             </View>
             <TextInput
               className='text-right text-2xl text-slate-300 flex-1'
@@ -67,7 +83,7 @@ export default function NumberGenerator() {
         <View className='mt-2 mx-auto'>
           <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-80 h-16'>
             <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-              <Text className='text-black font-semibold text-xl'>Up to</Text>
+              <UptoIcon size={22} color='#6C3483' />
             </View>
             <TextInput
               className='text-right text-2xl text-slate-300'
@@ -82,12 +98,17 @@ export default function NumberGenerator() {
         </View>
       </View>
 
-      <View>
-        <Pressable
-          onPress={() => handleNumberGenerator(valueATextInputValues, valueBTextInputValues)}
-          className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-          <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-        </Pressable>
+      <View className='mt-5'>
+        <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+          <Pressable
+            onPressIn={handlePressIn}
+            onPressOut={handlePressOut}
+            onPress={() => handleNumberGenerator(valueATextInputValues, valueBTextInputValues)}
+            className='rounded-2xl mx-auto mb-10'
+            accessibilityLabel='Calculate Button'>
+            <CalculateIcon size={58} color='white' />
+          </Pressable>
+        </Animated.View>
       </View>
     </ScrollView>
   );

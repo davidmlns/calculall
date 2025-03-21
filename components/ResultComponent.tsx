@@ -11,7 +11,7 @@ export default function ResultComponent({ result, error }: ResultComponentProps)
       <TextInput
         placeholderTextColor='#c7c7c7'
         placeholder='The result will appear here'
-        className='bg-gray-800 rounded-lg p-4 text-2xl flex-wrap  w-96 h-32 mx-auto text-center text-slate-300'
+        className='bg-gray-800 rounded-3xl p-4 text-2xl flex-wrap  w-96 h-24 mx-auto text-center text-slate-300'
         editable={false}
         selectTextOnFocus={false}
         value={result}

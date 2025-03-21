@@ -1,8 +1,8 @@
-import { ScrollView, Text, View, Pressable, Switch } from 'react-native';
+import { ScrollView, Text, View, Pressable, Switch, Animated } from 'react-native';
 import Slider from '@react-native-community/slider';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { CopyIcon, PasswordIcon } from '../../../components/Icons';
+import { CopyIcon, PasswordIcon, GenerateIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import * as Clipboard from 'expo-clipboard';
 
@@ -13,6 +13,22 @@ export default function Password() {
   const [includeLowercase, setIncludeLowercase] = useState(true);
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(true);
+
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const generatePassword = () => {
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -48,11 +64,11 @@ export default function Password() {
       <HeaderPages />
       <HeaderDescriptionPage
         title='Password Generator'
-        icon={<PasswordIcon size={52} color='#1ABC9C' />}
+        icon={<PasswordIcon size={51} color='#1ABC9C' />}
       />
 
       <View className='flex mt-6 mx-auto px-4 w-98'>
-        <View className='bg-gray-800 rounded-lg p-4 w-98'>
+        <View className='bg-gray-800 rounded-2xl p-6 w-98'>
           <Text selectable className='text-slate-300 text-2xl text-center mb-4'>
             {password}
           </Text>
@@ -62,8 +78,8 @@ export default function Password() {
         </View>
 
         <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-2'>Password Length: {length}</Text>
-          <View className='flex-row items-center'>
+          <Text className='text-gray-300 text-xl mb-4 text-center'>Password Length: {length}</Text>
+          <View className='flex-row items-center px-4'>
             <Text className='text-gray-300 text-lg mr-2'>8</Text>
             <View className='flex-1'>
               <Slider
@@ -81,7 +97,7 @@ export default function Password() {
           </View>
         </View>
 
-        <View className='mt-6'>
+        <View className='mt-6 bg-gray-800 rounded-2xl p-4'>
           <View className='flex-row justify-between items-center py-2'>
             <Text className='text-gray-300 text-xl'>Uppercase Letters</Text>
             <Switch
@@ -120,11 +136,18 @@ export default function Password() {
           </View>
         </View>
 
-        <Pressable onPress={generatePassword} className='bg-icon-background rounded-xl py-3 mt-6'>
-          <Text className='text-slate-800 text-2xl font-semibold text-center'>
-            Generate Password
-          </Text>
-        </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={generatePassword}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Generate Button'>
+              <GenerateIcon size={54} color='white' />
+            </Pressable>
+          </Animated.View>
+        </View>
       </View>
     </ScrollView>
   );

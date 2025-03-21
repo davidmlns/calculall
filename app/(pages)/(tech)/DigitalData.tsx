@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { DigitalDataIcon } from '../../../components/Icons';
+import { DigitalDataIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
 
@@ -22,6 +22,22 @@ export default function DigitalData() {
   const [gigabytes, setGigabytes] = useState('');
   const [terabytes, setTerabytes] = useState('');
   const [activeUnit, setActiveUnit] = useState<DigitalDataUnit>('B');
+
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const clearInputs = () => {
     setBytes('');
@@ -51,7 +67,7 @@ export default function DigitalData() {
       <HeaderPages />
       <HeaderDescriptionPage
         title='Digital Data'
-        icon={<DigitalDataIcon size={58} color='#3498DB' />}
+        icon={<DigitalDataIcon size={54} color='#3498DB' />}
       />
 
       <View className='flex-col items-center'>
@@ -63,7 +79,6 @@ export default function DigitalData() {
           value={bytes}
           isActive={activeUnit === 'B'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={9}
         />
         <ConvertComponent
@@ -74,7 +89,6 @@ export default function DigitalData() {
           value={kilobytes}
           isActive={activeUnit === 'KB'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={9}
         />
         <ConvertComponent
@@ -85,7 +99,6 @@ export default function DigitalData() {
           value={megabytes}
           isActive={activeUnit === 'MB'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={9}
         />
         <ConvertComponent
@@ -96,8 +109,7 @@ export default function DigitalData() {
           value={gigabytes}
           isActive={activeUnit === 'GB'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
-          maxLength={9}
+          maxLength={8}
         />
         <ConvertComponent
           abb='TB'
@@ -107,18 +119,22 @@ export default function DigitalData() {
           value={terabytes}
           isActive={activeUnit === 'TB'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={2}
         />
       </View>
 
       {(bytes || kilobytes || megabytes || gigabytes || terabytes) && (
-        <View>
-          <Pressable
-            onPress={clearInputs}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Clear</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={clearInputs}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Clear Button'>
+              <DeleteIcon size={48} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

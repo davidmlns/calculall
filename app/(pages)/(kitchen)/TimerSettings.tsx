@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ScrollView, Text, View, Pressable, Alert } from 'react-native';
+import { ScrollView, Text, View, Pressable, Alert, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import {
@@ -12,22 +12,24 @@ import {
 } from '../../../components/Icons';
 import * as Notifications from 'expo-notifications';
 
+const scaleValue = new Animated.Value(1);
+
 const TimeControl = ({ label, value, onIncrement, onDecrement }) => (
-  <View className='flex items-center mx-2'>
-    <Text className='text-gray-300 text-lg mb-2'>{label}</Text>
+  <View className='flex items-center mx-2 mb-4'>
+    <Text className='text-gray-300 text-xl mb-2'>{label}</Text>
     <View className='flex-row items-center'>
       <Pressable
         onPress={onDecrement}
-        className='bg-icon-background rounded-full w-10 h-10 justify-center items-center'>
-        <MinusIcon size={24} color='#000000' />
+        className='bg-gray-900 border border-gray-700 rounded-full w-10 h-10 flex justify-center items-center shadow-lg mr-3'>
+        <MinusIcon size={20} color='#ffffff' />
       </Pressable>
-      <Text className='text-gray-300 text-3xl mx-4 w-12 text-center'>
+      <Text className='text-gray-300 text-3xl w-16 text-center'>
         {String(value).padStart(2, '0')}
       </Text>
       <Pressable
         onPress={onIncrement}
-        className='bg-icon-background rounded-full w-10 h-10 justify-center items-center'>
-        <SumIcon size={24} color='#000000' />
+        className='bg-gray-900 border border-gray-700 rounded-full w-10 h-10 flex justify-center items-center shadow-lg ml-3'>
+        <SumIcon size={20} color='#ffffff' />
       </Pressable>
     </View>
   </View>
@@ -106,70 +108,92 @@ export default function TimerSettings() {
     setSeconds(s);
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
         title='Timer Settings'
-        icon={<TimerSettingsIcon size={52} color='#F39C12' />}
+        icon={<TimerSettingsIcon size={51} color='#F39C12' />}
       />
 
-      <View className='flex items-center mt-10'>
-        <Text className='text-gray-300 text-6xl font-bold'>{formatTime(time)}</Text>
+      <View className='flex items-center mt-6'>
+        <Text className='text-gray-300 text-6xl font-bold mb-6'>{formatTime(time)}</Text>
 
-        <View className='flex-row mt-8 space-x-4'>
-          <Pressable
-            onPress={handleStartStop}
-            className='bg-icon-background rounded-full px-6 py-3 justify-center items-center mr-5'
-            disabled={time === 0}>
-            {isActive ? (
-              <PauseIcon size={36} color='#000000' />
-            ) : (
-              <PlayIcon size={36} color='#000000' />
-            )}
-          </Pressable>
-          <Pressable onPress={handleReset} className='bg-icon-background rounded-full px-6 py-3'>
-            <RestartIcon size={36} color='#000000' />
-          </Pressable>
+        <View className='flex-row mb-6'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={handleStartStop}
+              className='bg-gray-800 rounded-2xl px-8 py-4 mr-4'
+              disabled={time === 0}>
+              {isActive ? (
+                <PauseIcon size={36} color='#ffffff' />
+              ) : (
+                <PlayIcon size={36} color='#ffffff' />
+              )}
+            </Pressable>
+          </Animated.View>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={handleReset}
+              className='bg-gray-800 rounded-2xl px-8 py-4'>
+              <RestartIcon size={36} color='#ffffff' />
+            </Pressable>
+          </Animated.View>
         </View>
 
-        <View className='mt-8'>
-          <View className='flex-col justify-center'>
-            <TimeControl
-              label='Hours'
-              value={hours}
-              onIncrement={() => setHours(h => Math.min(99, h + 1))}
-              onDecrement={() => setHours(h => Math.max(0, h - 1))}
-            />
-            <TimeControl
-              label='Minutes'
-              value={minutes}
-              onIncrement={() => setMinutes(m => (m < 59 ? m + 1 : 0))}
-              onDecrement={() => setMinutes(m => (m > 0 ? m - 1 : 59))}
-            />
-            <TimeControl
-              label='Seconds'
-              value={seconds}
-              onIncrement={() => setSeconds(s => (s < 59 ? s + 1 : 0))}
-              onDecrement={() => setSeconds(s => (s > 0 ? s - 1 : 59))}
-            />
-          </View>
+        <View className='w-full px-8'>
+          <TimeControl
+            label='Hours'
+            value={hours}
+            onIncrement={() => setHours(h => Math.min(99, h + 1))}
+            onDecrement={() => setHours(h => Math.max(0, h - 1))}
+          />
+          <TimeControl
+            label='Minutes'
+            value={minutes}
+            onIncrement={() => setMinutes(m => (m < 59 ? m + 1 : 0))}
+            onDecrement={() => setMinutes(m => (m > 0 ? m - 1 : 59))}
+          />
+          <TimeControl
+            label='Seconds'
+            value={seconds}
+            onIncrement={() => setSeconds(s => (s < 59 ? s + 1 : 0))}
+            onDecrement={() => setSeconds(s => (s > 0 ? s - 1 : 59))}
+          />
 
-          <View className='flex-row justify-center mt-6 space-x-4'>
+          <View className='flex-row justify-center mt-6'>
             <Pressable
               onPress={() => handlePreset(300)}
-              className='bg-icon-background rounded-xl px-4 py-2 mr-4 ml-4'>
-              <Text className='text-slate-800 text-lg'>5 Min</Text>
+              className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
+              <Text className='text-slate-300 text-lg font-semibold'>5 Min</Text>
             </Pressable>
             <Pressable
               onPress={() => handlePreset(600)}
-              className='bg-icon-background rounded-xl px-4 py-2 mr-4 ml-4'>
-              <Text className='text-slate-800 text-lg'>10 Min</Text>
+              className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
+              <Text className='text-slate-300 text-lg font-semibold'>10 Min</Text>
             </Pressable>
             <Pressable
               onPress={() => handlePreset(900)}
-              className='bg-icon-background rounded-xl px-4 py-2 mr-4 ml-4'>
-              <Text className='text-slate-800 text-lg'>15 Min</Text>
+              className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
+              <Text className='text-slate-300 text-lg font-semibold'>15 Min</Text>
             </Pressable>
           </View>
         </View>

@@ -13,12 +13,40 @@ export const CloseIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='close' size={size} color={color} />
 );
 
+export const CalculateIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='calculate' size={size} color={color} />
+);
+
+export const DeleteIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='delete-empty' size={size} color={color} />
+);
+
+export const FromIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='ray-start-arrow' size={size} color={color} />
+);
+
+export const UptoIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='ray-start-end' size={size} color={color} />
+);
+
+export const VerifyIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='check-outline' size={size} color={color} />
+);
+
+export const ConvertIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='change-circle' size={size} color={color} />
+);
+
 export const BackSpaceIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='backspace' size={size} color={color} />
 );
 
 export const ArrowDownIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='chevron-down' size={size} color={color} />
+);
+
+export const GenerateIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='autorenew' size={size} color={color} />
 );
 
 export const BackIcon = () => <MaterialIcons name='arrow-back' size={32} color='#E0E0E0' />;
@@ -298,11 +326,11 @@ export const LinearEquationIcon = ({ size, color }: IconProps) => (
 );
 
 export const SumIcon = ({ size, color }: IconProps) => (
-  <MaterialCommunityIcons name='plus-box-outline' size={size} color={color} />
+  <MaterialCommunityIcons name='plus' size={size} color={color} />
 );
 
 export const MinusIcon = ({ size, color }: IconProps) => (
-  <MaterialCommunityIcons name='minus-box-outline' size={size} color={color} />
+  <MaterialCommunityIcons name='minus' size={size} color={color} />
 );
 
 export const MulIcon = ({ size, color }: IconProps) => (

@@ -8,6 +8,7 @@ interface ConvertComponentProps {
   isActive: boolean;
   onChangeText: (value: string) => void;
   onPress?: () => void;
+  maxLength?: number;
 }
 
 export default function ConvertComponent({
@@ -18,15 +19,17 @@ export default function ConvertComponent({
   isActive,
   onChangeText,
   onPress,
+  maxLength,
 }: ConvertComponentProps) {
   return (
     <View className='flex-row mx-auto mt-4 justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-10/12 h-20'>
       <View className='flex-row items-center'>
         <View
-          className={`rounded-lg p-1.5 px-3 ml-2 mr-4 ${
+          className={`rounded-lg p-1.5 px-3 ml-2 mr-4 w-24 ${
             isActive ? 'bg-blue-500' : 'bg-icon-background'
           }`}>
-          <Text className={`font-semibold text-2xl ${isActive ? 'text-white' : 'text-black'}`}>
+          <Text
+            className={`font-semibold text-2xl text-center ${isActive ? 'text-white' : 'text-black'}`}>
             {abb}
           </Text>
         </View>
@@ -43,11 +46,11 @@ export default function ConvertComponent({
         value={value}
         onChangeText={text => onChangeText(text)}
         onPress={onPress}
+        maxLength={maxLength || 9}
         style={{
           alignSelf: 'flex-end',
           textAlign: 'right',
         }}
-        maxLength={10}
       />
     </View>
   );

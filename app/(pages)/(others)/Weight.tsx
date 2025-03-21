@@ -1,11 +1,11 @@
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { WeightIcon } from '../../../components/Icons';
+import { WeightIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
 
-type WeightUnit = 'kg' | 'g' | 'mg' | 'lb' | 'oz' | 'ton';
+type WeightUnit = 'kg' | 'g' | 'mg' | 'lb' | 'oz';
 
 const CONVERSION_FACTORS: Record<WeightUnit, number> = {
   kg: 1,
@@ -13,7 +13,6 @@ const CONVERSION_FACTORS: Record<WeightUnit, number> = {
   mg: 0.000001,
   lb: 0.453592,
   oz: 0.0283495,
-  ton: 1000,
 };
 
 export default function Weight() {
@@ -22,8 +21,9 @@ export default function Weight() {
   const [milligramValue, setMilligramValue] = useState('');
   const [poundValue, setPoundValue] = useState('');
   const [ounceValue, setOunceValue] = useState('');
-  const [tonValue, setTonValue] = useState('');
   const [activeUnit, setActiveUnit] = useState<WeightUnit>('kg');
+
+  const scaleValue = new Animated.Value(1);
 
   const clearInputs = () => {
     setKilogramValue('');
@@ -31,7 +31,6 @@ export default function Weight() {
     setMilligramValue('');
     setPoundValue('');
     setOunceValue('');
-    setTonValue('');
   };
 
   const convertWeight = (value: string, unit: WeightUnit) => {
@@ -53,7 +52,6 @@ export default function Weight() {
       mg: unit === 'mg' ? cleanedValue : (kilograms / CONVERSION_FACTORS.mg).toFixed(2),
       lb: unit === 'lb' ? cleanedValue : (kilograms / CONVERSION_FACTORS.lb).toFixed(2),
       oz: unit === 'oz' ? cleanedValue : (kilograms / CONVERSION_FACTORS.oz).toFixed(2),
-      ton: unit === 'ton' ? cleanedValue : (kilograms / CONVERSION_FACTORS.ton).toFixed(2),
     };
 
     setKilogramValue(updatedValues.kg);
@@ -61,7 +59,20 @@ export default function Weight() {
     setMilligramValue(updatedValues.mg);
     setPoundValue(updatedValues.lb);
     setOunceValue(updatedValues.oz);
-    setTonValue(updatedValues.ton);
+  };
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
   };
 
   return (
@@ -69,7 +80,7 @@ export default function Weight() {
       <HeaderPages />
       <HeaderDescriptionPage
         title='Weight Converter'
-        icon={<WeightIcon size={58} color='#1ABC9C' />}
+        icon={<WeightIcon size={54} color='#1ABC9C' />}
       />
 
       <View className='flex-col items-center'>
@@ -90,6 +101,7 @@ export default function Weight() {
           value={gramValue}
           isActive={activeUnit === 'g'}
           onPress={clearInputs}
+          maxLength={6}
         />
         <ConvertComponent
           abb='mg'
@@ -108,6 +120,7 @@ export default function Weight() {
           value={poundValue}
           isActive={activeUnit === 'lb'}
           onPress={clearInputs}
+          maxLength={3}
         />
         <ConvertComponent
           abb='oz'
@@ -117,26 +130,22 @@ export default function Weight() {
           value={ounceValue}
           isActive={activeUnit === 'oz'}
           onPress={clearInputs}
-        />
-        <ConvertComponent
-          abb='ton'
-          title='Ton'
-          description='1 ton = 1000 kg'
-          onChangeText={value => convertWeight(value, 'ton')}
-          value={tonValue}
-          isActive={activeUnit === 'ton'}
-          onPress={clearInputs}
           maxLength={4}
         />
       </View>
 
-      {kilogramValue && (
-        <View>
-          <Pressable
-            onPress={clearInputs}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Clear</Text>
-          </Pressable>
+      {!!(kilogramValue || gramValue || milligramValue || poundValue || ounceValue) && (
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={clearInputs}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Clear Button'>
+              <DeleteIcon size={48} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

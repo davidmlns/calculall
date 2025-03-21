@@ -53,19 +53,18 @@ export default function Maths() {
         icon={<FractionIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Fractions'
       />
+      <Card
+        title='Length'
+        category='Maths'
+        icon={<LengthIcon size={52} color='#6C3483' />}
+        route='/(pages)/(maths)/Length'
+      />
 
       <Card
         title='MCM/MCD'
         category='Maths'
         icon={<MCMMCDIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/MCMMCD'
-      />
-
-      <Card
-        title='Length'
-        category='Maths'
-        icon={<LengthIcon size={52} color='#6C3483' />}
-        route='/(pages)/(maths)/Length'
       />
 
       <Card

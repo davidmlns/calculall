@@ -1,8 +1,8 @@
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { EquationIcon, LinearEquationIcon } from '../../../components/Icons';
+import { EquationIcon, LinearEquationIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View, Animated } from 'react-native';
 import { useState } from 'react';
 import CalculateComponent, { Operation } from '../../../components/CalculateComponent';
 import {
@@ -53,6 +53,22 @@ export default function Equations() {
   const [valueCTextInputValues, setValueCTextInputValues] = useState('');
   const [valueDTextInputValues, setValueDTextInputValues] = useState('');
 
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   const handleCalculate = (selectedOperation: EquationType) => {
     if (!valueATextInputValues) {
       setResult('Please enter value A');
@@ -93,6 +109,20 @@ export default function Equations() {
     setResult(resultText);
   };
 
+  const clearInputValues = () => {
+    setValueATextInputValues('');
+    setValueBTextInputValues('');
+    setValueCTextInputValues('');
+    setValueDTextInputValues('');
+  };
+
+  const handleOperationChange = (operation: EquationType) => {
+    if (operation === 'quadratic-eq-plus-minus' || operation === 'quadratic-eq-minus-plus') {
+      clearInputValues();
+    }
+    setSelectedOperation(operation);
+  };
+
   const formatQuadraticResult = (result: number[] | string): string => {
     if (result === 'No real solutions') return result;
     if (result.length === 1) return `x = ${result[0].toFixed(2)}`;
@@ -107,7 +137,7 @@ export default function Equations() {
       <CalculateComponent
         operations={operations}
         onCalculate={handleCalculate}
-        onSendOperation={setSelectedOperation}
+        onSendOperation={handleOperationChange}
       />
 
       <Text className='text-gray-300 text-2xl font-semibold text-center mt-4'>Values</Text>
@@ -188,12 +218,17 @@ export default function Equations() {
         </View>
 
         {valueATextInputValues && (
-          <View>
-            <Pressable
-              onPress={() => handleCalculate(selectedOperation)}
-              className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-              <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-            </Pressable>
+          <View className='mt-5'>
+            <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+              <Pressable
+                onPressIn={handlePressIn}
+                onPressOut={handlePressOut}
+                onPress={() => handleCalculate(selectedOperation)}
+                className='rounded-2xl mx-auto mb-10'
+                accessibilityLabel='Calculate Button'>
+                <CalculateIcon size={58} color='white' />
+              </Pressable>
+            </Animated.View>
           </View>
         )}
       </View>

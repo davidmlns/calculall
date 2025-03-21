@@ -1,8 +1,14 @@
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import { useState } from 'react';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { Base2Icon, Base8Icon, Base16Icon, BaseNumericIcon } from '../../../components/Icons';
+import {
+  Base2Icon,
+  Base8Icon,
+  Base16Icon,
+  BaseNumericIcon,
+  CalculateIcon,
+} from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import CalculateComponent from '../../../components/CalculateComponent';
 
@@ -45,6 +51,7 @@ export default function BaseNumeric() {
   const [valueTextInputValues, setValueTextInputValues] = useState('');
   const [result, setResult] = useState('The result will appear here');
   const [selectedOperation, setSelectedOperation] = useState(operations[0].id);
+  const scaleValue = new Animated.Value(1);
 
   const handleCalculate = (operationId: string) => {
     if (!valueTextInputValues) {
@@ -67,6 +74,20 @@ export default function BaseNumeric() {
     }
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
@@ -86,7 +107,7 @@ export default function BaseNumeric() {
         <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 mx-auto rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
             placeholder='Enter value (#)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -98,12 +119,17 @@ export default function BaseNumeric() {
       </View>
 
       {valueTextInputValues && (
-        <View>
-          <Pressable
-            onPress={() => handleCalculate(selectedOperation)}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={() => handleCalculate(selectedOperation)}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

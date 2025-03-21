@@ -24,7 +24,7 @@ export default function OptionModal({
     <>
       <Pressable
         onPress={onOpen}
-        className='bg-background-secondary rounded-xl p-6 flex-row justify-between'>
+        className='bg-background-secondary w-90 mx-auto rounded-xl p-6 flex-row justify-between'>
         <View className='flex-row items-center'>
           <Text className='mr-3 bg-icon-background w-10 h-10 rounded-lg text-center'>
             {icon || 'Icon'}

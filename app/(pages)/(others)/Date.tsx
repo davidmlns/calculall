@@ -1,4 +1,4 @@
-import { ScrollView, Text, View, Pressable } from 'react-native';
+import { ScrollView, Text, View, Pressable, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { DateIcon } from '../../../components/Icons';
@@ -7,8 +7,8 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 const DatePickerButton = ({ date, onPress, label }) => (
   <View className='mt-4'>
-    <Text className='text-gray-300 text-xl mb-2'>{label}</Text>
-    <Pressable onPress={onPress} className='bg-gray-800 rounded-lg p-4'>
+    <Text className='text-gray-300 text-2xl mb-2 text-center'>{label}</Text>
+    <Pressable onPress={onPress} className='bg-gray-800 rounded-2xl p-4 w-72 mx-auto'>
       <Text className='text-slate-300 text-xl text-center'>{formatDate(date)}</Text>
     </Pressable>
   </View>
@@ -70,7 +70,7 @@ export default function DateCalculator() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Date' icon={<DateIcon size={52} color='#1ABC9C' />} />
+      <HeaderDescriptionPage title='Date' icon={<DateIcon size={50} color='#1ABC9C' />} />
 
       <View className='flex mt-6 mx-auto px-4'>
         <Text className='text-gray-300 text-2xl font-semibold text-center'>Date Calculator</Text>
@@ -112,32 +112,32 @@ export default function DateCalculator() {
         )}
 
         <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-2'>Calculate in:</Text>
-          <View className='flex-row flex-wrap justify-center gap-4'>
+          <Text className='text-gray-300 text-2xl mb-4 text-center'>Calculate in:</Text>
+          <View className='flex-row flex-wrap justify-center gap-2'>
             <Pressable
               onPress={() => setUnit('age')}
-              className={`px-4 py-2 mr-4 ml-4 rounded-lg ${unit === 'age' ? 'bg-green-600' : 'bg-gray-700'}`}>
-              <Text className='text-white text-xl font-bold'>Age</Text>
+              className={`px-6 py-3 rounded-2xl ${unit === 'age' ? 'bg-gray-500' : 'bg-gray-700'}`}>
+              <Text className='text-slate-300 text-xl font-semibold'>Age</Text>
             </Pressable>
             <Pressable
               onPress={() => setUnit('days')}
-              className={`px-4 py-2 mr-4 ml-4 rounded-lg ${unit === 'days' ? 'bg-green-600' : 'bg-gray-700'}`}>
-              <Text className='text-white text-xl font-bold'>Days</Text>
+              className={`px-6 py-3 rounded-2xl ${unit === 'days' ? 'bg-gray-500' : 'bg-gray-700'}`}>
+              <Text className='text-slate-300 text-xl font-semibold'>Days</Text>
             </Pressable>
             <Pressable
               onPress={() => setUnit('weeks')}
-              className={`px-4 py-2 mr-4 ml-4 rounded-lg ${unit === 'weeks' ? 'bg-green-600' : 'bg-gray-700'}`}>
-              <Text className='text-white text-xl font-bold'>Weeks</Text>
+              className={`px-6 py-3 rounded-2xl ${unit === 'weeks' ? 'bg-gray-500' : 'bg-gray-700'}`}>
+              <Text className='text-slate-300 text-xl font-semibold'>Weeks</Text>
             </Pressable>
             <Pressable
               onPress={() => setUnit('months')}
-              className={`px-4 py-2 mr-4 ml-4 rounded-lg ${unit === 'months' ? 'bg-green-600' : 'bg-gray-700'}`}>
-              <Text className='text-white text-xl font-bold'>Months</Text>
+              className={`px-6 py-3 rounded-2xl ${unit === 'months' ? 'bg-gray-500' : 'bg-gray-700'}`}>
+              <Text className='text-slate-300 text-xl font-semibold'>Months</Text>
             </Pressable>
             <Pressable
               onPress={() => setUnit('years')}
-              className={`px-4 py-2 mr-4 ml-4 rounded-lg ${unit === 'years' ? 'bg-green-600' : 'bg-gray-700'}`}>
-              <Text className='text-white text-xl font-bold'>Years</Text>
+              className={`px-6 py-3 rounded-2xl ${unit === 'years' ? 'bg-gray-500' : 'bg-gray-700'}`}>
+              <Text className='text-slate-300 text-xl font-semibold'>Years</Text>
             </Pressable>
           </View>
         </View>

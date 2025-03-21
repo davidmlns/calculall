@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { CookingIcon } from '../../../components/Icons';
+import { CookingIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '@/components/ConvertComponent';
 
@@ -11,6 +11,8 @@ export default function Cooking() {
   const [tablespoons, setTablespoons] = useState('');
   const [cups, setCups] = useState('');
   const [activeUnit, setActiveUnit] = useState('ml');
+
+  const scaleValue = new Animated.Value(1);
 
   const clearInputs = () => {
     setMilliliters('');
@@ -58,10 +60,24 @@ export default function Cooking() {
     setCups(unit === 'cup' ? cleanedValue : cup.toFixed(2));
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Cooking' icon={<CookingIcon size={58} color='#F39C12' />} />
+      <HeaderDescriptionPage title='Cooking' icon={<CookingIcon size={52} color='#F39C12' />} />
 
       <View className='flex-col items-center'>
         <ConvertComponent
@@ -107,12 +123,17 @@ export default function Cooking() {
       </View>
 
       {milliliters && teaspoons && tablespoons && cups && (
-        <View>
-          <Pressable
-            onPress={clearInputs}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Clear</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={clearInputs}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Clear Button'>
+              <DeleteIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

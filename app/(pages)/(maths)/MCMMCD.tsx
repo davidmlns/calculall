@@ -3,8 +3,9 @@ import {
   MaximumCommonDivisorIcon,
   MCMMCDIcon,
   MinimumCommonMultipleIcon,
+  CalculateIcon,
 } from '../../../components/Icons';
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View, Animated } from 'react-native';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { useState } from 'react';
 import ResultComponent from '../../../components/ResultComponent';
@@ -34,6 +35,22 @@ export default function MCMMCD() {
   const [selectedOperation, setSelectedOperation] = useState<OperationType>('mcm');
   const [valueATextInputValues, setValueATextInputValues] = useState('');
   const [valueBTextInputValues, setValueBTextInputValues] = useState('');
+
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const handleCalculate = (selectedOperation: OperationType) => {
     const a = parseFloat(valueATextInputValues);
@@ -66,7 +83,7 @@ export default function MCMMCD() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='MCM/MCD' icon={<MCMMCDIcon size={58} color='#6C3483' />} />
+      <HeaderDescriptionPage title='MCM/MCD' icon={<MCMMCDIcon size={54} color='#6C3483' />} />
 
       <ResultComponent result={result} />
 
@@ -115,12 +132,17 @@ export default function MCMMCD() {
       </View>
 
       {valueATextInputValues && valueBTextInputValues && (
-        <View>
-          <Pressable
-            onPress={() => handleCalculate(selectedOperation)}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={() => handleCalculate(selectedOperation)}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

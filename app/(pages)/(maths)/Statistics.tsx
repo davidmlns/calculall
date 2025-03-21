@@ -1,7 +1,13 @@
-import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
+import { Animated, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { AverageIcon, MedianIcon, ModeIcon, StatisticsIcon } from '../../../components/Icons';
+import {
+  AverageIcon,
+  MedianIcon,
+  ModeIcon,
+  StatisticsIcon,
+  CalculateIcon,
+} from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import React, { useEffect, useState } from 'react';
 import CalculateComponent, { Operation } from '../../../components/CalculateComponent';
@@ -27,10 +33,12 @@ const operations: Operation[] = [
   },
 ];
 
+const scaleValue = new Animated.Value(1);
+
 export default function Statistics() {
   useEffect(() => {
-    if (arr.length !== valueTextInputValues) {
-      setArr(new Array(valueTextInputValues).fill(''));
+    if (arr.length !== Number(valueTextInputValues)) {
+      setArr(new Array(Number(valueTextInputValues)).fill(''));
     }
   }, [valueTextInputValues]);
 
@@ -102,12 +110,26 @@ export default function Statistics() {
     }
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app'>
       <HeaderPages />
       <HeaderDescriptionPage
         title='Statistics'
-        icon={<StatisticsIcon size={52} color='#6C3483' />}
+        icon={<StatisticsIcon size={48} color='#6C3483' />}
       />
 
       <ResultComponent result={result} />
@@ -123,7 +145,7 @@ export default function Statistics() {
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-96 text-slate-300'
             placeholder='How many numbers? Limit(50)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -141,7 +163,7 @@ export default function Statistics() {
         </View>
       </View>
 
-      <View className='mt-6 mx-auto flex flex-row gap-4 flex-wrap justify-center'>
+      <View className='mt-6 mx-auto mb-5 flex flex-row gap-4 flex-wrap justify-center'>
         {generateInputs(valueTextInputValues)}
       </View>
 
@@ -149,11 +171,16 @@ export default function Statistics() {
         arr.length === Number(valueTextInputValues) &&
         arr.every(value => value.trim() !== '') && (
           <View>
-            <Pressable
-              onPress={() => handleCalculate(selectedOperation)}
-              className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mb-10 mx-auto mt-10'>
-              <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-            </Pressable>
+            <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+              <Pressable
+                onPressIn={handlePressIn}
+                onPressOut={handlePressOut}
+                onPress={() => handleCalculate(selectedOperation)}
+                className='rounded-2xl mx-auto mb-10'
+                accessibilityLabel='Calculate Button'>
+                <CalculateIcon size={58} color='white' />
+              </Pressable>
+            </Animated.View>
           </View>
         )}
     </ScrollView>

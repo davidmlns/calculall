@@ -1,7 +1,13 @@
-import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { CosIcon, SenIcon, TanIcon, TrigonometryIcon } from '../../../components/Icons';
+import {
+  CosIcon,
+  SenIcon,
+  TanIcon,
+  TrigonometryIcon,
+  CalculateIcon,
+} from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 import CalculateComponent, { Operation } from '../../../components/CalculateComponent';
@@ -27,6 +33,8 @@ const operations: Operation[] = [
   },
 ];
 
+const scaleValue = new Animated.Value(1);
+
 export default function Trigonometry() {
   const [result, setResult] = useState('The result will appear here');
   const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
@@ -34,6 +42,20 @@ export default function Trigonometry() {
 
   const handleOperationFromChild = (text: string) => {
     setSelectedOperation(text);
+  };
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
   };
 
   const handleCalculate = (selectedOperation: string) => {
@@ -69,7 +91,7 @@ export default function Trigonometry() {
       <HeaderPages />
       <HeaderDescriptionPage
         title='Trigonometry'
-        icon={<TrigonometryIcon size={58} color='#6C3483' />}
+        icon={<TrigonometryIcon size={54} color='#6C3483' />}
       />
 
       <ResultComponent result={result} />
@@ -80,19 +102,18 @@ export default function Trigonometry() {
         onSendOperation={handleOperationFromChild}
       />
 
-      <View className='flex mt-6 mx-auto'>
+      <View className='flex mt-6 mx-auto mb-5'>
         <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
             placeholder='Enter value (°)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTextInputValues}
             onChangeText={text => {
               const numericText = text.replace(/[^0-9]/g, '');
-              const numericValue = Math.min(parseFloat(numericText), 360);
               setValueTextInputValues(numericText.slice(0, 3));
             }}
             maxLength={3}
@@ -102,11 +123,16 @@ export default function Trigonometry() {
 
       {valueTextInputValues && (
         <View>
-          <Pressable
-            onPress={() => handleCalculate(selectedOperation)}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={() => handleCalculate(selectedOperation)}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

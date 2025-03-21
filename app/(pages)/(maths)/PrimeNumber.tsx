@@ -1,7 +1,13 @@
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { CorrectIcon, IncorrectIcon, NextIcon, PrimeNumberIcon } from '../../../components/Icons';
+import {
+  CorrectIcon,
+  IncorrectIcon,
+  NextIcon,
+  PrimeNumberIcon,
+  VerifyIcon,
+} from '../../../components/Icons';
 import { useState } from 'react';
 
 const isPrime = (n: number): boolean => {
@@ -25,6 +31,8 @@ export default function PrimeNumber() {
   const [nextPrime, setNextPrime] = useState('');
   const [valueTextInputValues, setValueTextInputValues] = useState('');
   const [resultIcon, setResultIcon] = useState<JSX.Element | null>(null);
+
+  const scaleValue = new Animated.Value(1);
 
   const handleTextInputChange = (text: string) => {
     const number = parseFloat(text);
@@ -52,16 +60,30 @@ export default function PrimeNumber() {
     setValue(isNaN(numericValue) ? '' : numericValue.toString());
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
         title='Prime numbers'
-        icon={<PrimeNumberIcon size={58} color='#6C3483' />}
+        icon={<PrimeNumberIcon size={54} color='#6C3483' />}
       />
 
       <View className='flex-row justify-around'>
-        <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-48 h-14'>
+        <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-52 h-14'>
           <View className='rounded-lg p-1 px-2'>{resultIcon}</View>
           <TextInput
             className='text-right text-xl text-slate-300'
@@ -73,7 +95,7 @@ export default function PrimeNumber() {
           />
         </View>
 
-        <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-48 h-14'>
+        <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-52 h-14'>
           <View className='rounded-lg p-1 px-2'>
             <NextIcon size={32} color='#6C3483' />
           </View>
@@ -93,7 +115,7 @@ export default function PrimeNumber() {
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
             placeholder='Enter value'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -105,12 +127,17 @@ export default function PrimeNumber() {
       </View>
 
       {valueTextInputValues && (
-        <View>
-          <Pressable
-            onPress={() => handleTextInputChange(valueTextInputValues)}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Verify</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={() => handleTextInputChange(valueTextInputValues)}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Verify Button'>
+              <VerifyIcon size={44} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

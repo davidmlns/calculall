@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { DataTransferIcon } from '../../../components/Icons';
+import { DataTransferIcon, CalculateIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
 
@@ -22,6 +22,22 @@ export default function DataTransfer() {
   const [gigabitPerSecond, setGigabitPerSecond] = useState('');
   const [terabitPerSecond, setTerabitPerSecond] = useState('');
   const [activeUnit, setActiveUnit] = useState<DataTransferUnit>('b/s');
+
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const clearInputs = () => {
     setBitPerSecond('');
@@ -61,7 +77,7 @@ export default function DataTransfer() {
       <HeaderPages />
       <HeaderDescriptionPage
         title='Data Transfer'
-        icon={<DataTransferIcon size={58} color='#3498DB' />}
+        icon={<DataTransferIcon size={56} color='#3498DB' />}
       />
 
       <View className='flex-col items-center'>
@@ -73,7 +89,6 @@ export default function DataTransfer() {
           value={bitPerSecond}
           isActive={activeUnit === 'b/s'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={9}
         />
         <ConvertComponent
@@ -84,7 +99,6 @@ export default function DataTransfer() {
           value={kilobitPerSecond}
           isActive={activeUnit === 'kb/s'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={9}
         />
         <ConvertComponent
@@ -95,8 +109,7 @@ export default function DataTransfer() {
           value={megabitPerSecond}
           isActive={activeUnit === 'mb/s'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
-          maxLength={9}
+          maxLength={7}
         />
         <ConvertComponent
           abb='gb/s'
@@ -106,8 +119,7 @@ export default function DataTransfer() {
           value={gigabitPerSecond}
           isActive={activeUnit === 'gb/s'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
-          maxLength={9}
+          maxLength={4}
         />
         <ConvertComponent
           abb='tb/s'
@@ -117,8 +129,7 @@ export default function DataTransfer() {
           value={terabitPerSecond}
           isActive={activeUnit === 'tb/s'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
-          maxLength={2}
+          maxLength={1}
         />
       </View>
 
@@ -127,12 +138,17 @@ export default function DataTransfer() {
         megabitPerSecond ||
         gigabitPerSecond ||
         terabitPerSecond) && (
-        <View>
-          <Pressable
-            onPress={clearInputs}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Clear</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={clearInputs}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Clear Button'>
+              <DeleteIcon size={48} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

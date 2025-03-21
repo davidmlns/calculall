@@ -1,10 +1,18 @@
-import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { HydrationIcon, WalkingIcon, RunningIcon, CyclingIcon } from '../../../components/Icons';
+import {
+  HydrationIcon,
+  WalkingIcon,
+  RunningIcon,
+  CyclingIcon,
+  CalculateIcon,
+} from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import React, { useState } from 'react';
 import OptionModalActivities from '../../../components/OptionModalActivities';
+
+const scaleValue = new Animated.Value(1);
 
 type Activity = {
   id: string;
@@ -79,10 +87,24 @@ export default function Hydration() {
     setResult(calculateWaterIntake(w, selectedActivity.id));
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Hydration' icon={<HydrationIcon size={58} color='#E74C3C' />} />
+      <HeaderDescriptionPage title='Hydration' icon={<HydrationIcon size={52} color='#E74C3C' />} />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
@@ -90,7 +112,7 @@ export default function Hydration() {
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300 mx-auto'
             placeholder='Enter weight (kg)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -126,12 +148,17 @@ export default function Hydration() {
       </View>
 
       {weight && (
-        <View>
-          <Pressable
-            onPress={handleCalculateHydration}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={handleCalculateHydration}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

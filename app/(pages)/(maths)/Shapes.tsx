@@ -8,9 +8,10 @@ import {
   CircleIcon,
   ArcIcon,
   ShapeIcon,
+  CalculateIcon,
 } from '../../../components/Icons';
 import HeaderPages from '../../../components/HeaderPages';
-import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderDescriptionPage from '@/components/HeaderDescriptionPage';
 import CalculateComponent, { Operation } from '@/components/CalculateComponent';
 import ResultComponent from '@/components/ResultComponent';
@@ -146,6 +147,8 @@ export default function Shapes(): JSX.Element {
   const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
   const [error, setError] = useState<string | null>(null);
 
+  const scaleValue = new Animated.Value(1);
+
   const handleOperationFromChild = (text: string): void => {
     setSelectedOperation(text);
     // Reset values when operation changes
@@ -167,6 +170,20 @@ export default function Shapes(): JSX.Element {
       setAreaResult('');
       setPerimeterResult('');
     }
+  };
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
   };
 
   const getInputFields = () => {
@@ -195,7 +212,7 @@ export default function Shapes(): JSX.Element {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Shapes' icon={<TriangleIcon size={58} color='#6C3483' />} />
+      <HeaderDescriptionPage title='Shapes' icon={<TriangleIcon size={52} color='#6C3483' />} />
 
       <View className='flex mb-4'>
         <TextInput
@@ -225,7 +242,7 @@ export default function Shapes(): JSX.Element {
           <View key={index} className='mt-2'>
             <Text className='text-gray-300 text-xl font-semibold mb-1'>{label}</Text>
             <TextInput
-              className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+              className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
               placeholder={`Enter ${label}`}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'
@@ -242,12 +259,17 @@ export default function Shapes(): JSX.Element {
       </View>
 
       {values.some(v => v) && (
-        <View>
-          <Pressable
-            onPress={handleCalculate}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={handleCalculate}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

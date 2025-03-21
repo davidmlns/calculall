@@ -1,7 +1,7 @@
-import { ScrollView, Text, View, Pressable, TextInput } from 'react-native';
+import { ScrollView, Text, View, Pressable, TextInput, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { CopyIcon, QrCodeIcon } from '../../../components/Icons';
+import { CopyIcon, QrCodeIcon, GenerateIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import * as Clipboard from 'expo-clipboard';
 import QRCode from 'react-native-qrcode-svg';
@@ -22,6 +22,22 @@ export default function QrCode() {
     await Clipboard.setStringAsync(qrValue);
   };
 
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
@@ -33,7 +49,7 @@ export default function QrCode() {
       <View className='flex mt-6 mx-auto px-4 w-95'>
         <View className='bg-gray-800 rounded-lg p-4'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder='Enter text or URL'
             placeholderTextColor='#cbd5e1'
             value={text}
@@ -51,11 +67,18 @@ export default function QrCode() {
           )}
         </View>
 
-        <Pressable onPress={generateQrCode} className='bg-icon-background rounded-xl py-3 mt-6'>
-          <Text className='text-slate-800 text-2xl font-semibold text-center'>
-            Generate QR Code
-          </Text>
-        </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={generateQrCode}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Generate Button'>
+              <GenerateIcon size={54} color='white' />
+            </Pressable>
+          </Animated.View>
+        </View>
       </View>
     </ScrollView>
   );

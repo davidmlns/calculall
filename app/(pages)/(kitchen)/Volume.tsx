@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { VolumeIcon } from '../../../components/Icons';
+import { VolumeIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
 
@@ -22,6 +22,8 @@ export default function Volume() {
   const [tablespoon, setTablespoon] = useState('');
   const [cup, setCup] = useState('');
   const [activeUnit, setActiveUnit] = useState<VolumeUnit>('ml');
+
+  const scaleValue = new Animated.Value(1);
 
   const clearInputs = () => {
     setMilliliter('');
@@ -48,10 +50,24 @@ export default function Volume() {
     setCup(unit === 'cup' ? cleanedValue : (milliliters / conversionFactors.cup).toFixed(2));
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Volume' icon={<VolumeIcon size={58} color='#F39C12' />} />
+      <HeaderDescriptionPage title='Volume' icon={<VolumeIcon size={54} color='#F39C12' />} />
 
       <View className='flex-col items-center'>
         <ConvertComponent
@@ -62,19 +78,17 @@ export default function Volume() {
           value={milliliter}
           isActive={activeUnit === 'ml'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={9}
         />
         <ConvertComponent
-          abb='l'
+          abb='L'
           title='Liter'
           description='1 l = 1000 ml'
           onChangeText={value => convertVolume(value, 'l')}
           value={liter}
           isActive={activeUnit === 'l'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
-          maxLength={9}
+          maxLength={7}
         />
         <ConvertComponent
           abb='tsp'
@@ -84,7 +98,6 @@ export default function Volume() {
           value={teaspoon}
           isActive={activeUnit === 'tsp'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
           maxLength={9}
         />
         <ConvertComponent
@@ -95,8 +108,7 @@ export default function Volume() {
           value={tablespoon}
           isActive={activeUnit === 'tbsp'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
-          maxLength={9}
+          maxLength={8}
         />
         <ConvertComponent
           abb='cup'
@@ -106,18 +118,22 @@ export default function Volume() {
           value={cup}
           isActive={activeUnit === 'cup'}
           onPress={clearInputs}
-          keyboardType='decimal-pad'
-          maxLength={9}
+          maxLength={7}
         />
       </View>
 
       {(!!milliliter || !!liter || !!teaspoon || !!tablespoon || !!cup) && (
-        <View>
-          <Pressable
-            onPress={clearInputs}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Clear</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={clearInputs}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Clear Button'>
+              <DeleteIcon size={48} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

@@ -1,7 +1,7 @@
-import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { LatitudeIcon } from '../../../components/Icons';
+import { LatitudeIcon, CalculateIcon } from '../../../components/Icons';
 import { useState } from 'react';
 
 export default function Latitude() {
@@ -24,17 +24,19 @@ export default function Latitude() {
     return `${degreesOut}°${minutes}'${seconds}" ${direction}`;
   };
 
+  const scaleValue = new Animated.Value(1);
+
   const handleCalculateCoordinates = () => {
     const lat = parseFloat(latitude);
     const lon = parseFloat(longitude);
 
     if (!latitude || !longitude) {
-      setResult('Please enter required values');
+      setResult1('Please enter required values');
       return;
     }
 
     if (isNaN(lat) || isNaN(lon)) {
-      setResult('Invalid input values');
+      setResult1('Invalid input values');
       return;
     }
 
@@ -42,6 +44,20 @@ export default function Latitude() {
     const lonDMS = convertToDMS(lon, false);
     setResult1(`Latitude: ${latDMS}`);
     setResult2(`Longitude: ${lonDMS}`);
+  };
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
   };
 
   return (
@@ -73,7 +89,7 @@ export default function Latitude() {
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder='Latitude (decimal)'
             placeholderTextColor='#cbd5e1'
             keyboardType='numbers-and-punctuation'
@@ -84,7 +100,7 @@ export default function Latitude() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder='Longitude (decimal)'
             placeholderTextColor='#cbd5e1'
             keyboardType='numbers-and-punctuation'
@@ -97,11 +113,18 @@ export default function Latitude() {
 
       {latitude && longitude && (
         <View>
-          <Pressable
-            onPress={handleCalculateCoordinates}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+          <View className='mt-5'>
+            <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+              <Pressable
+                onPressIn={handlePressIn}
+                onPressOut={handlePressOut}
+                onPress={handleCalculateCoordinates}
+                className='rounded-2xl mx-auto mb-10'
+                accessibilityLabel='Calculate Button'>
+                <CalculateIcon size={58} color='white' />
+              </Pressable>
+            </Animated.View>
+          </View>
         </View>
       )}
     </ScrollView>

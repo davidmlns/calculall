@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import HeaderPages from '../../../components/HeaderPages';
-import { AverageIcon } from '../../../components/Icons';
+import { AverageIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '@/components/ResultComponent';
 import { useState } from 'react';
 
@@ -11,6 +11,7 @@ export default function Average() {
   const [valueTextInputValues, setValueTextInputValues] = useState('');
   const [values, setValues] = useState<string[]>([]);
   const [error, setError] = useState('');
+  const scaleValue = new Animated.Value(1);
 
   const handleCalculate = () => {
     if (!valueTextInputValues) {
@@ -53,9 +54,23 @@ export default function Average() {
       setValuesVisibles(false);
       setValues([]);
     }
-    if (!isNaN(numericValue) && numericValue <= 20) {
+    if (!isNaN(numericValue) && numericValue <= 30) {
       setValueTextInputValues(text);
     }
+  };
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
   };
 
   const handleSubmitEditing = () => {
@@ -84,8 +99,8 @@ export default function Average() {
 
         <View className='mt-2 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
-            placeholder='How many values? Limit(20)'
+            className='bg-gray-800 mx-auto rounded-2xl p-4 text-center text-2xl w-96 text-slate-300'
+            placeholder='How many values? Limit(30)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTextInputValues.toString()}
@@ -118,13 +133,17 @@ export default function Average() {
       </View>
 
       {valuesVisibles && (
-        <View>
-          <Pressable
-            onPress={handleCalculate}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mb-10 mx-auto mt-10'
-            accessibilityLabel='Calculate button'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+        <View className=''>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={handleCalculate}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

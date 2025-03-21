@@ -1,7 +1,7 @@
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { LengthIcon } from '../../../components/Icons';
+import { LengthIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '@/components/ConvertComponent';
 
@@ -32,6 +32,22 @@ export default function Length() {
   const [yardValue, setYardValue] = useState('');
   const [mileValue, setMileValue] = useState('');
   const [activeUnit, setActiveUnit] = useState<LengthUnit>('m');
+
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const clearInputs = () => {
     setMeterValue('');
@@ -87,9 +103,9 @@ export default function Length() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Length' icon={<LengthIcon size={58} color='#6C3483' />} />
+      <HeaderDescriptionPage title='Length' icon={<LengthIcon size={52} color='#6C3483' />} />
 
-      <View className='flex-col items-center'>
+      <View className='flex-col items-center mb-10'>
         <ConvertComponent
           abb='m'
           title='Meter'
@@ -107,6 +123,7 @@ export default function Length() {
           value={kilometerValue}
           isActive={activeUnit === 'km'}
           onPress={clearInputs}
+          maxLength={7}
         />
         <ConvertComponent
           abb='cm'
@@ -143,6 +160,7 @@ export default function Length() {
           value={hectometerValue}
           isActive={activeUnit === 'hm'}
           onPress={clearInputs}
+          maxLength={8}
         />
         <ConvertComponent
           abb='in'
@@ -179,16 +197,22 @@ export default function Length() {
           value={mileValue}
           isActive={activeUnit === 'mi'}
           onPress={clearInputs}
+          maxLength={6}
         />
       </View>
 
       {meterValue && (
-        <View>
-          <Pressable
-            onPress={clearInputs}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Clear</Text>
-          </Pressable>
+        <View className=''>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={clearInputs}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Clear Button'>
+              <DeleteIcon size={48} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

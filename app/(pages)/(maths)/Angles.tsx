@@ -1,11 +1,12 @@
 import {
   AngleIcon,
+  CalculateIcon,
   ComplementaryIcon,
   RadianIcon,
   SupplementaryIcon,
 } from '../../../components/Icons';
 import HeaderPages from '../../../components/HeaderPages';
-import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderDescriptionPage from '@/components/HeaderDescriptionPage';
 import CalculateComponent, { Operation } from '@/components/CalculateComponent';
 import ResultComponent from '@/components/ResultComponent';
@@ -73,14 +74,64 @@ const getResultText = (value: string, operation: string, result: number): string
   }
 };
 
+const getMaxLength = (operation: string): number => {
+  switch (operation) {
+    case 'deg-to-rad':
+    case 'rad-to-deg':
+      return 3; // Max 360
+    case 'compl-deg':
+      return 2; // Max 89
+    case 'suppl-deg':
+      return 3; // Max 179
+    default:
+      return 3;
+  }
+};
+
 export default function Angles(): JSX.Element {
   const [valueTextInputValues, setValueTextInputValues] = useState('');
   const [result, setResult] = useState('');
   const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
   const [error, setError] = useState<string | null>(null);
+  const scaleValue = new Animated.Value(1);
 
   const handleOperationFromChild = (text: string): void => {
     setSelectedOperation(text);
+  };
+
+  const handleValueChange = (text: string) => {
+    if (text === '') {
+      setValueTextInputValues('');
+      return;
+    }
+
+    const maxValue =
+      {
+        'deg-to-rad': 360,
+        'rad-to-deg': 360,
+        'compl-deg': 89,
+        'suppl-deg': 179,
+      }[selectedOperation] || 360;
+
+    const numericValue = parseInt(text);
+    if (!isNaN(numericValue)) {
+      const clampedValue = Math.min(numericValue, maxValue);
+      setValueTextInputValues(clampedValue.toString());
+    }
+  };
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
   };
 
   const handleCalculate = (): void => {
@@ -88,8 +139,12 @@ export default function Angles(): JSX.Element {
       if (!valueTextInputValues) {
         throw new Error('Please enter a value');
       }
-      const resultValue = calculateResult(valueTextInputValues, selectedOperation);
-      const resultText = getResultText(valueTextInputValues, selectedOperation, resultValue);
+      const resultValue = calculateResult(valueTextInputValues.toString(), selectedOperation);
+      const resultText = getResultText(
+        valueTextInputValues.toString(),
+        selectedOperation,
+        resultValue,
+      );
       setResult(resultText);
       setError(null);
     } catch (error) {
@@ -106,8 +161,8 @@ export default function Angles(): JSX.Element {
 
       <CalculateComponent
         operations={operations}
-        onCalculate={handleCalculate}
         onSendOperation={handleOperationFromChild}
+        onCalculate={handleCalculate}
       />
 
       <View className='flex mt-6 mx-auto' accessibilityLabel='Values Input'>
@@ -115,26 +170,30 @@ export default function Angles(): JSX.Element {
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
             placeholder='Enter value (°)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
-            value={valueTextInputValues.toString()}
-            onChangeText={setValueTextInputValues}
+            value={valueTextInputValues === '' ? undefined : valueTextInputValues.toString()}
+            onChangeText={handleValueChange}
             accessibilityLabel='Value Input'
-            maxLength={3}
+            maxLength={getMaxLength(selectedOperation)}
           />
         </View>
       </View>
 
       {valueTextInputValues && (
-        <View>
-          <Pressable
-            onPress={handleCalculate}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'
-            accessibilityLabel='Calculate Button'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={handleCalculate}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

@@ -1,7 +1,7 @@
-import { ScrollView, Text, TextInput, View, Pressable } from 'react-native';
+import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { FuelIcon } from '../../../components/Icons';
+import { FuelIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 
@@ -9,6 +9,22 @@ export default function Fuel() {
   const [result, setResult] = useState('The result will appear here');
   const [distance, setDistance] = useState('');
   const [fuelEfficiency, setFuelEfficiency] = useState('');
+
+  const scaleValue = new Animated.Value(1);
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const calculateFuel = (distance: number, efficiency: number): string => {
     if (distance <= 0 || efficiency <= 0) return 'Values must be positive';
@@ -45,7 +61,7 @@ export default function Fuel() {
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder='Distance (km)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -56,7 +72,7 @@ export default function Fuel() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder='Fuel Efficiency (km/L)'
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -68,12 +84,17 @@ export default function Fuel() {
       </View>
 
       {distance && fuelEfficiency && (
-        <View>
-          <Pressable
-            onPress={handleCalculateFuel}
-            className='bg-icon-background rounded-xl pr-4 pl-4 pt-3 pb-3 mx-auto mt-10'>
-            <Text className='text-slate-800 text-3xl font-semibold'>Calculate</Text>
-          </Pressable>
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={handleCalculateFuel}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       )}
     </ScrollView>

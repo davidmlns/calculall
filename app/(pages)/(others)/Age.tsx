@@ -1,7 +1,7 @@
-import { ScrollView, Text, View, Pressable } from 'react-native';
+import { ScrollView, Text, View, Pressable, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { AgeIcon } from '../../../components/Icons';
+import { AgeIcon, CalculateIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
@@ -10,6 +10,8 @@ export default function Age() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [showBirthPicker, setShowBirthPicker] = useState(false);
   const [showCurrentPicker, setShowCurrentPicker] = useState(false);
+
+  const scaleValue = new Animated.Value(1);
 
   const calculateAge = () => {
     let years = currentDate.getFullYear() - birthDate.getFullYear();
@@ -36,10 +38,24 @@ export default function Age() {
     });
   };
 
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.5,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Age Calculator' icon={<AgeIcon size={52} color='#1ABC9C' />} />
+      <HeaderDescriptionPage title='Age Calculator' icon={<AgeIcon size={50} color='#1ABC9C' />} />
 
       <View className='flex mt-6 mx-auto'>
         <Text className='text-gray-300 text-2xl font-semibold text-center'>Your Age</Text>
@@ -48,11 +64,11 @@ export default function Age() {
           <Text className='text-gray-300 text-3xl text-center'>{calculateAge()}</Text>
         </View>
 
-        <View className='mt-8'>
-          <Text className='text-gray-300 text-xl mb-2'>Birth Date</Text>
+        <View className='mt-6'>
+          <Text className='text-gray-300 text-xl mb-2 ml-8'>Birth Date</Text>
           <Pressable
             onPress={() => setShowBirthPicker(true)}
-            className='bg-gray-800 rounded-lg p-4'>
+            className='bg-gray-800 rounded-2xl p-4 w-72 mx-auto'>
             <Text className='text-slate-300 text-xl text-center'>{formatDate(birthDate)}</Text>
           </Pressable>
           {showBirthPicker && (
@@ -69,10 +85,10 @@ export default function Age() {
         </View>
 
         <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-2'>Current Date</Text>
+          <Text className='text-gray-300 text-xl mb-2 ml-8'>Current Date</Text>
           <Pressable
             onPress={() => setShowCurrentPicker(true)}
-            className='bg-gray-800 rounded-lg p-4'>
+            className='bg-gray-800 rounded-2xl p-4 w-72 mx-auto'>
             <Text className='text-slate-300 text-xl text-center'>{formatDate(currentDate)}</Text>
           </Pressable>
           {showCurrentPicker && (
@@ -86,6 +102,19 @@ export default function Age() {
               }}
             />
           )}
+        </View>
+
+        <View className='mt-5'>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <Pressable
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              onPress={() => {}}
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel='Calculate Button'>
+              <CalculateIcon size={58} color='white' />
+            </Pressable>
+          </Animated.View>
         </View>
       </View>
     </ScrollView>
