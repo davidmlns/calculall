@@ -15,101 +15,101 @@ import {
   StatisticsIcon,
   TrigonometryIcon,
 } from './Icons';
-import Card from './Card';
+import FilterableCard from './FilterableCard';
 
 export default function Maths() {
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
-      <Card
+      <FilterableCard
         title='Angles'
         category='Maths'
         icon={<AngleIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Angles'
       />
 
-      <Card
+      <FilterableCard
         title='Average'
         category='Maths'
         icon={<AverageIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Average'
       />
-      <Card
+      <FilterableCard
         title='Base numeric'
         category='Maths'
         icon={<BaseNumericIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/BaseNumeric'
       />
 
-      <Card
+      <FilterableCard
         title='Equations'
         category='Maths'
         icon={<EquationIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Equations'
       />
 
-      <Card
+      <FilterableCard
         title='Fractions'
         category='Maths'
         icon={<FractionIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Fractions'
       />
-      <Card
+      <FilterableCard
         title='Length'
         category='Maths'
         icon={<LengthIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Length'
       />
 
-      <Card
+      <FilterableCard
         title='MCM/MCD'
         category='Maths'
         icon={<MCMMCDIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/MCMMCD'
       />
 
-      <Card
+      <FilterableCard
         title='Num Gen'
         category='Maths'
         icon={<NumberGeneratorIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/NumberGenerator'
       />
 
-      <Card
+      <FilterableCard
         title='Prime Nro'
         category='Maths'
         icon={<PrimeNumberIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/PrimeNumber'
       />
 
-      <Card
+      <FilterableCard
         title='Probability'
         category='Maths'
         icon={<ProbabilityIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Probability'
       />
 
-      <Card
+      <FilterableCard
         title='Roman Nro'
         category='Maths'
         icon={<RomanNumberIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/RomanNumber'
       />
 
-      <Card
+      <FilterableCard
         title='Shapes'
         category='Maths'
         icon={<ShapeIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Shapes'
       />
 
-      <Card
+      <FilterableCard
         title='Statistics'
         category='Maths'
         icon={<StatisticsIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Statistics'
       />
 
-      <Card
+      <FilterableCard
         title='Trigonometry'
         category='Maths'
         icon={<TrigonometryIcon size={52} color='#6C3483' />}

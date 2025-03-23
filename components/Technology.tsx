@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import Card from './Card';
+import FilterableCard from './FilterableCard';
 import {
   BatteryIcon,
   DataTransferIcon,
@@ -12,42 +12,42 @@ import {
 export default function Technology() {
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
-      <Card
+      <FilterableCard
         title='Battery'
         category='Electronics'
         icon={<BatteryIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/Battery'
       />
 
-      <Card
+      <FilterableCard
         title='Data transfer '
         category='Technology'
         icon={<DataTransferIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/DataTransfer'
       />
 
-      <Card
+      <FilterableCard
         title='Digital data '
         category='Technology'
         icon={<DigitalDataIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/DigitalData'
       />
 
-      <Card
+      <FilterableCard
         title='Elec. current '
         category='Electronics'
         icon={<ElectricCurrentIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricCurrent'
       />
 
-      <Card
+      <FilterableCard
         title='Elec. usage '
         category='Electronics'
         icon={<ElectricConsumptionIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricConsumption'
       />
 
-      <Card
+      <FilterableCard
         title='Electric Res. '
         category='Electronics'
         icon={<ElectricalResistanceIcon size={52} color='#3498DB' />}

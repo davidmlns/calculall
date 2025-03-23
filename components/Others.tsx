@@ -1,5 +1,6 @@
 import { View } from 'react-native';
-import Card from './Card';
+import FilterableCard from './FilterableCard';
+
 import {
   AgeIcon,
   CurrencyIcon,
@@ -7,7 +8,6 @@ import {
   DensityIcon,
   PasswordIcon,
   QrCodeIcon,
-  TimeIcon,
   UUIDIcon,
   WeightIcon,
 } from './Icons';
@@ -15,56 +15,56 @@ import {
 export default function Others() {
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
-      <Card
+      <FilterableCard
         title='Age  '
         category='Others'
         icon={<AgeIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Age'
       />
 
-      <Card
+      <FilterableCard
         title='Currency'
         category='Others'
         icon={<CurrencyIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Currency'
       />
 
-      <Card
+      <FilterableCard
         title='Dates '
         category='Others'
         icon={<DateIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Date'
       />
 
-      <Card
+      <FilterableCard
         title='Density '
         category='Others'
         icon={<DensityIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Density'
       />
 
-      <Card
+      <FilterableCard
         title='Password'
         category='Others'
         icon={<PasswordIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Password'
       />
 
-      <Card
+      <FilterableCard
         title='QR generator'
         category='Others'
         icon={<QrCodeIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/QrCode'
       />
 
-      <Card
+      <FilterableCard
         title='UUID'
         category='Others'
         icon={<UUIDIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/UUID'
       />
 
-      <Card
+      <FilterableCard
         title='Weight '
         category='Others'
         icon={<WeightIcon size={52} color='#1ABC9C' />}

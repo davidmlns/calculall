@@ -2,15 +2,20 @@ import { Animated, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import { CloseIcon, SearchIcon, SettingIcon } from './Icons';
 import { Link } from 'expo-router';
+import { useSearch } from '../context/SearchContext';
+import SettingsModal from './SettingsModal';
 
 export default function HeaderRight() {
-  const [isSearchVisible, setIsSearchVisible] = useState(false);
-  const [searchText, setSearchText] = useState('');
+  const { searchText, setSearchText, isSearchVisible, setIsSearchVisible } = useSearch();
   const animation = useRef(new Animated.Value(0)).current;
   const inputRef = useRef(null);
+  const [isSettingsVisible, setIsSettingsVisible] = useState(false);
 
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
+    if (!isSearchVisible) {
+      setSearchText('');
+    }
   };
 
   useEffect(() => {
@@ -56,39 +61,54 @@ export default function HeaderRight() {
 
       <Pressable
         className='mr-5 bg-background-app z-10'
-        style={[styles.searchIcon, isSearchVisible && styles.searchIconActive]}
+        style={[styles.searchIcon, isSearchVisible ? styles.searchIconActive : undefined]}
         onPress={toggleSearch}>
-        {isSearchVisible ? <CloseIcon /> : <SearchIcon />}
+        {isSearchVisible ? (
+          <CloseIcon size={36} color='#fff' />
+        ) : (
+          <SearchIcon size={24} color='#fff' />
+        )}
       </Pressable>
 
-      <Link asChild href=''>
-        <Pressable>
-          <SettingIcon />
-        </Pressable>
-      </Link>
+      {isSearchVisible ? (
+        <Link asChild href='/'>
+          <Pressable className='hidden' onPress={() => setIsSettingsVisible(true)}>
+            <SettingIcon />
+          </Pressable>
+        </Link>
+      ) : (
+        <Link asChild href='/'>
+          <Pressable onPress={() => setIsSettingsVisible(true)}>
+            <SettingIcon />
+          </Pressable>
+        </Link>
+      )}
+      <SettingsModal isVisible={isSettingsVisible} onClose={() => setIsSettingsVisible(false)} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   searchInput: {
-    marginRight: 5,
+    marginRight: 6,
+    marginLeft: 10,
     height: 40,
-    width: 300,
-    fontSize: 18,
+    width: 265,
+    fontSize: 20,
     color: '#E0E0E0',
     padding: 2,
     paddingLeft: 10,
     textAlignVertical: 'center',
     borderStyle: 'solid',
     borderColor: '#E0E0E0',
-    borderRadius: 5,
-    borderWidth: 1,
+    borderRadius: 8,
+    borderWidth: 2,
   },
   searchIcon: {
     borderWidth: 0,
   },
   searchIconActive: {
+    backgroundColor: 'transparent',
     color: '#F86868',
   },
 });

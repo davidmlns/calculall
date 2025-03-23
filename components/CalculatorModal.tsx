@@ -1,55 +1,49 @@
-import { Pressable, Text, TextInput, View } from 'react-native';
-import { BackSpaceIcon, CloseIcon } from './Icons';
+import React from 'react';
+import { Modal, Pressable, View, StyleSheet } from 'react-native';
+import Calculator from './Calculator';
 
-export default function CalculatorModal() {
+interface CalculatorModalProps {
+  isVisible: boolean;
+  onClose: () => void;
+}
+
+export default function CalculatorModal({ isVisible, onClose }: CalculatorModalProps) {
   return (
-    <View className='w-96 h-96 bg-slate-700 mx-auto relative rounded-3xl'>
-      <View className='relative p-2 border-b-2 border-slate-500 h-2/5'>
-        <CloseIcon size={32} color='#c7c7c7' />
-        <TextInput />
-      </View>
-
-      <View className='grid grid-cols-4 grid-rows-4 gap-4 p-2'>
-        <Pressable className='col-start-1 row-start-1'>
-          <Text>1</Text>
-        </Pressable>
-        <Pressable className='col-start-2 row-start-1'>
-          <Text>2</Text>
-        </Pressable>
-        <Pressable className='col-start-3 row-start-1'>
-          <Text>3</Text>
-        </Pressable>
-        <Pressable className='col-start-4 row-start-1'>
-          <BackSpaceIcon size={32} color='#ffffff' />
-        </Pressable>
-        <Pressable className='col-start-1 row-start-2'>
-          <Text>5</Text>
-        </Pressable>
-        <Pressable className='col-start-2 row-start-2'>
-          <Text>6</Text>
-        </Pressable>
-        <Pressable className='col-start-3 row-start-2'>
-          <Text>7</Text>
-        </Pressable>
-        <Pressable className='col-start-1 row-start-3'>
-          <Text>8</Text>
-        </Pressable>
-        <Pressable className='col-start-2 row-start-3'>
-          <Text>9</Text>
-        </Pressable>
-        <Pressable className='col-start-3 row-start-3'>
-          <Text>10</Text>
-        </Pressable>
-        <Pressable className='col-start-1 row-start-4'>
-          <Text>11</Text>
-        </Pressable>
-        <Pressable className='col-start-2 row-start-4'>
-          <Text>12</Text>
-        </Pressable>
-        <Pressable className='col-start-3 row-start-4'>
-          <Text>13</Text>
-        </Pressable>
-      </View>
-    </View>
+    <Modal animationType='fade' transparent={true} visible={isVisible} onRequestClose={onClose}>
+      <Pressable style={styles.modalOverlay} onPress={onClose}>
+        <View style={styles.centeredView}>
+          <Pressable style={styles.modalView} onPress={e => e.stopPropagation()}>
+            <Calculator />
+          </Pressable>
+        </View>
+      </Pressable>
+    </Modal>
   );
 }
+
+const styles = StyleSheet.create({
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalView: {
+    backgroundColor: 'transparent',
+    borderRadius: 20,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+});

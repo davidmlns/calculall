@@ -37,6 +37,10 @@ export const ConvertIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='change-circle' size={size} color={color} />
 );
 
+export const HomeIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='home' size={size} color={color} />
+);
+
 export const BackSpaceIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='backspace' size={size} color={color} />
 );
@@ -50,7 +54,9 @@ export const GenerateIcon = ({ size, color }: IconProps) => (
 );
 
 export const BackIcon = () => <MaterialIcons name='arrow-back' size={32} color='#E0E0E0' />;
-export const StarIcon = () => <MaterialIcons name='star-border' size={32} color='#E0E0E0' />;
+export const StarIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='star-border' size={size} color={color} />
+);
 
 export const AngleIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='angle-acute' size={size} color={color} />
@@ -451,4 +457,20 @@ export const CircleIcon = ({ size, color }: IconProps) => (
 
 export const ArcIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='circle-slice-1' size={size} color={color} />
+);
+
+export const ThemeIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='brush-variant' size={size} color={color} />
+);
+
+export const LanguageIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='language' size={size} color={color} />
+);
+
+export const InfoIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='info-outline' size={size} color={color} />
+);
+
+export const BugIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='bug-report' size={size} color={color} />
 );

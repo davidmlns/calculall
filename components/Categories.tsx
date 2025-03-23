@@ -8,35 +8,74 @@ import Technology from './Technology';
 import Geography from './Geography';
 import Kitchen from './Kitchen';
 import Others from './Others';
+import { useSearch } from '../context/SearchContext';
 
 export default function Categories() {
+  const { isSearchVisible, setIsSearchVisible } = useSearch();
+  console.log(isSearchVisible);
   return (
     <View className='mt-4 p-6'>
-      <Text className='text-3xl color-slate-300'>Maths</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Maths</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300'>Maths</Text>
+      )}
       <Maths />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Physical</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Physical</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Physical</Text>
+      )}
       <Physical />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Health</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Health</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Health</Text>
+      )}
       <Health />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Finance & Economy</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Finance & Economy</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Finance & Economy</Text>
+      )}
       <FinanceEconomy />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Transport</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Transport</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Transport</Text>
+      )}
       <Transport />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Technology & Electronics</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Technology & Electronics</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Technology & Electronics</Text>
+      )}
       <Technology />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Geography</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Geography</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Geography</Text>
+      )}
       <Geography />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Kitchen</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Kitchen</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Kitchen</Text>
+      )}
       <Kitchen />
 
-      <Text className='text-3xl color-slate-300 mt-5'>Others</Text>
+      {isSearchVisible ? (
+        <Text className='text-3xl color-slate-300 hidden'>Others</Text>
+      ) : (
+        <Text className='text-3xl color-slate-300 mt-5'>Others</Text>
+      )}
       <Others />
     </View>
   );
