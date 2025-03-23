@@ -58,6 +58,10 @@ export const StarIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='star-border' size={size} color={color} />
 );
 
+export const StarFilledIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='star' size={size} color={color} />
+);
+
 export const AngleIcon = ({ size, color }: IconProps) => (
   <MaterialCommunityIcons name='angle-acute' size={size} color={color} />
 );

@@ -28,6 +28,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Gravity'
         title='Gravity'
         category='Physical'
         icon={<ForceGravityIcon size={52} color='#2E86C1' />}
@@ -35,6 +36,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Humidity'
         title='Humidity'
         category='Physical'
         icon={<HumidityIcon size={52} color='#2E86C1' />}
@@ -42,6 +44,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Illuminance'
         title='Illuminance'
         category='Physical'
         icon={<IlluminanceIcon size={52} color='#2E86C1' />}
@@ -49,6 +52,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Magnetism'
         title='Magnetism'
         category='Physical'
         icon={<MagnetismIcon size={52} color='#2E86C1' />}
@@ -56,6 +60,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Ohm'
         title="Ohm's Law"
         category='Physical'
         icon={<OhmIcon size={52} color='#2E86C1' />}
@@ -63,6 +68,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Pressure'
         title='Pressure'
         category='Physical'
         icon={<PressureIcon size={52} color='#2E86C1' />}
@@ -70,6 +76,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Radiation'
         title='Radiation'
         category='Physical'
         icon={<RadiationIcon size={52} color='#2E86C1' />}
@@ -77,6 +84,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='SolarEnergy'
         title='Solar energy'
         category='Physical'
         icon={<SunIcon size={52} color='#2E86C1' />}
@@ -84,6 +92,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Sound'
         title='Sound'
         category='Physical'
         icon={<SoundIcon size={52} color='#2E86C1' />}
@@ -91,6 +100,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Temperature'
         title='Temperature'
         category='Physical'
         icon={<TemperatureIcon size={52} color='#2E86C1' />}
@@ -98,6 +108,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Velocity'
         title='Velocity'
         category='Physical'
         icon={<VelocityIcon size={52} color='#2E86C1' />}
@@ -105,6 +116,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='Wavelength'
         title='Wavelength'
         category='Physical'
         icon={<WavelengthIcon size={52} color='#2E86C1' />}
@@ -112,6 +124,7 @@ export default function Physical() {
       />
 
       <FilterableCard
+        id='WindSpeed'
         title='Wind speed'
         category='Physical'
         icon={<WindSpeedIcon size={52} color='#2E86C1' />}

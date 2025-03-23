@@ -6,6 +6,7 @@ export default function Kitchen() {
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
+        id='Cooking'
         title='Cooking'
         category='Kitchen'
         icon={<CookingIcon size={52} color='#F39C12' />}
@@ -13,6 +14,7 @@ export default function Kitchen() {
       />
 
       <FilterableCard
+        id='Cooking time'
         title='Cooking time'
         category='Kitchen'
         icon={<CookingTimeIcon size={52} color='#F39C12' />}
@@ -20,6 +22,7 @@ export default function Kitchen() {
       />
 
       <FilterableCard
+        id='Timer setting'
         title='Timer setting '
         category='Kitchen'
         icon={<TimerSettingsIcon size={52} color='#F39C12' />}
@@ -27,6 +30,7 @@ export default function Kitchen() {
       />
 
       <FilterableCard
+        id='Volume'
         title='Volume '
         category='Kitchen'
         icon={<VolumeIcon size={52} color='#F39C12' />}

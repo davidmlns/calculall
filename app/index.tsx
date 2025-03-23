@@ -7,6 +7,7 @@ import CalculatorModal from '../components/CalculatorModal';
 import Header from '../components/Header';
 import Categories from '../components/Categories';
 import Favorites from './favorites';
+import { FavoritesProvider } from '@/context/FavoritesContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,36 +38,39 @@ export default function MiComponente() {
 
   return (
     <SearchProvider>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarStyle: {
-            backgroundColor: '#1A1A1A',
-            borderTopColor: '#333333',
-            height: 60,
-          },
-          tabBarLabelStyle: {
-            fontSize: 16.5,
-            fontWeight: 'bold',
-          },
-          tabBarActiveTintColor: '#FF9427',
-          tabBarInactiveTintColor: '#999999',
-        }}>
-        <Tab.Screen
-          name='Home'
-          component={HomeScreen}
-          options={{
-            tabBarIcon: ({ color }) => <HomeIcon size={32} color={color} />,
-          }}
-        />
-        <Tab.Screen
-          name='Favorites'
-          component={Favorites}
-          options={{
-            tabBarIcon: ({ color }) => <StarIcon size={32} color={color} />,
-          }}
-        />
-      </Tab.Navigator>
+      <FavoritesProvider>
+        <Tab.Navigator
+          screenOptions={{
+            headerShown: false,
+            tabBarStyle: {
+              backgroundColor: '#1A1A1A',
+              borderTopColor: '#333333',
+              borderTopWidth: 2,
+              height: 60,
+            },
+            tabBarLabelStyle: {
+              fontSize: 16.5,
+              fontWeight: 'bold',
+            },
+            tabBarActiveTintColor: '#FF9427',
+            tabBarInactiveTintColor: '#999999',
+          }}>
+          <Tab.Screen
+            name='Home'
+            component={HomeScreen}
+            options={{
+              tabBarIcon: ({ color }) => <HomeIcon size={32} color={color} />,
+            }}
+          />
+          <Tab.Screen
+            name='Favorites'
+            component={Favorites}
+            options={{
+              tabBarIcon: ({ color }) => <StarIcon size={32} color={color} />,
+            }}
+          />
+        </Tab.Navigator>
+      </FavoritesProvider>
     </SearchProvider>
   );
 }
