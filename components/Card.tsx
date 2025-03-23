@@ -12,8 +12,8 @@ export default function Card({ title, category, icon, route, modalContent }: Car
     <View className='w-45 rounded-3xl h-36 bg-slate-300 overflow-hidden relative'>
       <Pressable
         onPress={() => toggleFavorite(favoriteItem)}
-        className='absolute top-2 right-2 p-1 z-10'>
-        <StarFilledIcon size={24} color={isFavorite(favoriteItem) ? '#FF9427' : '#505050'} />
+        className='absolute bottom-2 right-2 p-1 z-10'>
+        <StarFilledIcon size={28} color={isFavorite(favoriteItem) ? '#FF9427' : '#505050'} />
       </Pressable>
 
       <Link asChild href={route}>

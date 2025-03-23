@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import Categories from '../components/Categories';
 import Favorites from './favorites';
 import { FavoritesProvider } from '@/context/FavoritesContext';
+import Toast from 'react-native-toast-message';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +33,7 @@ export default function MiComponente() {
           isVisible={isCalcModalVisible}
           onClose={() => setIsCalcModalVisible(false)}
         />
+        <Toast />
       </View>
     );
   };

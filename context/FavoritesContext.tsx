@@ -1,7 +1,9 @@
 // contexts/FavoritesContext.tsx
 import React, { createContext, useContext, useState } from 'react';
+import Toast from 'react-native-toast-message';
 
 interface FavoriteItem {
+  id: string;
   title: string;
   category: string;
   icon: React.ReactNode;
@@ -29,6 +31,22 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
   };
 
   const toggleFavorite = (item: FavoriteItem) => {
+    if (favorites.length >= 6 && !isFavorite(item)) {
+      Toast.show({
+        type: 'error',
+        text1: 'Limit reached',
+        text2: 'You cannot add more than 6 favorites',
+        position: 'bottom',
+        text1Style: {
+          fontSize: 17,
+          fontWeight: 'bold',
+        },
+        text2Style: {
+          fontSize: 15,
+        },
+      });
+      return;
+    }
     setFavorites(prev =>
       isFavorite(item)
         ? prev.filter(fav => fav.title !== item.title || fav.category !== item.category)
