@@ -15,16 +15,23 @@ interface FavoritesContextType {
   favorites: FavoriteItem[];
   toggleFavorite: (item: FavoriteItem) => void;
   isFavorite: (item: FavoriteItem) => boolean;
+  clearFavorites: () => void;
 }
 
 const FavoritesContext = createContext<FavoritesContextType>({
   favorites: [],
   toggleFavorite: () => {},
   isFavorite: () => false,
+  clearFavorites: () => {},
+  isFavorite: () => false,
 });
 
 export const FavoritesProvider = ({ children }: { children: React.ReactNode }) => {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
+
+  const clearFavorites = () => {
+    setFavorites([]);
+  };
 
   const isFavorite = (item: FavoriteItem) => {
     return favorites.some(fav => fav.title === item.title && fav.category === item.category);
@@ -55,7 +62,7 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
   };
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
+    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite, clearFavorites }}>
       {children}
     </FavoritesContext.Provider>
   );
