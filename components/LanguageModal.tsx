@@ -14,7 +14,7 @@ export default function LanguageModal({ isVisible, onClose, onDismiss }: Languag
     if (!isVisible) {
       onDismiss();
     }
-  }, [isVisible]);
+  }, [isVisible, onDismiss]);
 
   const languages = [
     { code: 'ES', name: 'Español' },
@@ -22,7 +22,7 @@ export default function LanguageModal({ isVisible, onClose, onDismiss }: Languag
     { code: 'PT', name: 'Português' },
     { code: 'IT', name: 'Italiano' },
     { code: 'FR', name: 'Français' },
-    { code: 'DE', name: 'Deutsch' },
+    { code: 'CN', name: '中文' },
   ];
 
   return (
@@ -40,8 +40,9 @@ export default function LanguageModal({ isVisible, onClose, onDismiss }: Languag
               <Pressable
                 key={lang.code}
                 onPress={onClose}
-                className='flex-row items-center rounded-lg'>
+                className='flex-col items-center rounded-lg'>
                 <CountryFlag isoCode={lang.code} size={62} />
+                <Text className='text-white text-2xl font-bold ml-2'>{lang.name}</Text>
               </Pressable>
             ))}
           </View>

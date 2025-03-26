@@ -16,11 +16,13 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
 
   const handleLanguageSelect = () => {
     setShowSettings(false);
+    setIsThemeModalVisible(false);
     setIsLanguageModalVisible(true);
   };
 
   const handleThemeSelect = () => {
     setShowSettings(false);
+    setIsLanguageModalVisible(false);
     setIsThemeModalVisible(true);
   };
 
@@ -46,31 +48,32 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
 
   return (
     <>
-      {showSettings && (
-        <Modal animationType='slide' transparent={true} visible={isVisible}>
-          <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
-            <View className='bg-background-secondary rounded-t-3xl p-4 h-1/2'>
-              <View className='flex-row justify-between items-center mb-2'>
-                <Text className='text-white text-2xl font-bold'>Configuración</Text>
-                <Pressable onPress={onClose}>
-                  <CloseIcon size={34} color='#E0E0E0' />
-                </Pressable>
-              </View>
-              {settingsOptions.map((option, index) => (
-                <Pressable
-                  key={index}
-                  onPress={option.onPress}
-                  className='flex-row items-center py-3 border-b border-slate-600'>
-                  <View className='mr-3 bg-icon-background w-10 h-10 rounded-lg justify-center items-center'>
-                    {option.icon}
-                  </View>
-                  <Text className='text-white text-lg'>{option.title}</Text>
-                </Pressable>
-              ))}
+      <Modal
+        animationType='slide'
+        transparent={true}
+        visible={isVisible && !isLanguageModalVisible && !isThemeModalVisible}>
+        <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
+          <View className='bg-background-secondary rounded-t-3xl p-4 h-1/2'>
+            <View className='flex-row justify-between items-center mb-2'>
+              <Text className='text-white text-2xl font-bold'>Configuración</Text>
+              <Pressable onPress={onClose}>
+                <CloseIcon size={34} color='#E0E0E0' />
+              </Pressable>
             </View>
-          </Pressable>
-        </Modal>
-      )}
+            {settingsOptions.map((option, index) => (
+              <Pressable
+                key={index}
+                onPress={option.onPress}
+                className='flex-row items-center py-3 border-b border-slate-600'>
+                <View className='mr-3 bg-icon-background w-10 h-10 rounded-lg justify-center items-center'>
+                  {option.icon}
+                </View>
+                <Text className='text-white text-lg'>{option.title}</Text>
+              </Pressable>
+            ))}
+          </View>
+        </Pressable>
+      </Modal>
       <LanguageModal
         isVisible={isLanguageModalVisible}
         onClose={() => setIsLanguageModalVisible(false)}

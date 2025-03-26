@@ -1,15 +1,35 @@
 import { Animated, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { useState, useRef, useEffect } from 'react';
 import { CloseIcon, SearchIcon, SettingIcon } from './Icons';
-import { Link } from 'expo-router';
 import { useSearch } from '../context/SearchContext';
 import SettingsModal from './SettingsModal';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function HeaderRight() {
   const { searchText, setSearchText, isSearchVisible, setIsSearchVisible } = useSearch();
   const animation = useRef(new Animated.Value(0)).current;
   const inputRef = useRef(null);
   const [isSettingsVisible, setIsSettingsVisible] = useState(false);
+  const [borderColor, setBorderColor] = useState('#000000');
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (theme.name === 'Light Mode') {
+      setBorderColor('#000000');
+    } else if (theme.name === 'Modern Minimal') {
+      setBorderColor('#FFFFFF');
+    } else if (theme.name === 'Vibrant Coral') {
+      setBorderColor('#FFFFFF');
+    } else if (theme.name === 'Electric Blue') {
+      setBorderColor('#000000');
+    } else if (theme.name === 'Urban Chic') {
+      setBorderColor('#FFFFFF');
+    } else if (theme.name === 'Muted Earth') {
+      setBorderColor('#000000');
+    } else if (theme.name === 'Minty Fresh') {
+      setBorderColor('#212529');
+    }
+  }, [theme]);
 
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
@@ -44,14 +64,27 @@ export default function HeaderRight() {
   };
 
   return (
-    <View className='flex-row items-center'>
+    <View className='flex-row items-center' style={{ backgroundColor: theme.background }}>
       {isSearchVisible && (
         <Animated.View style={animatedStyle}>
           <TextInput
             ref={inputRef}
             placeholder='Search...'
-            placeholderTextColor='#E0E0E0'
-            style={styles.searchInput}
+            placeholderTextColor={theme.text}
+            style={{
+              marginRight: 6,
+              marginLeft: 10,
+              height: 40,
+              width: 265,
+              fontSize: 20,
+              padding: 2,
+              paddingLeft: 10,
+              borderColor: borderColor,
+              textAlignVertical: 'center',
+              borderStyle: 'solid',
+              borderRadius: 8,
+              borderWidth: 2,
+            }}
             value={searchText}
             onChangeText={setSearchText}
             className='z-5'
@@ -60,28 +93,24 @@ export default function HeaderRight() {
       )}
 
       <Pressable
-        className='mr-5 bg-background-app z-10'
+        className='mr-5 z-10'
         style={[styles.searchIcon, isSearchVisible ? styles.searchIconActive : undefined]}
         onPress={toggleSearch}>
         {isSearchVisible ? (
-          <CloseIcon size={36} color='#fff' />
+          <CloseIcon size={36} color={theme.icon} />
         ) : (
-          <SearchIcon size={24} color='#fff' />
+          <SearchIcon size={36} color={theme.icon} />
         )}
       </Pressable>
 
       {isSearchVisible ? (
-        <Link asChild href='/'>
-          <Pressable className='hidden' onPress={() => setIsSettingsVisible(true)}>
-            <SettingIcon />
-          </Pressable>
-        </Link>
+        <Pressable className='hidden' onPress={() => setIsSettingsVisible(true)}>
+          <SettingIcon size={34} color={theme.icon} />
+        </Pressable>
       ) : (
-        <Link asChild href='/'>
-          <Pressable onPress={() => setIsSettingsVisible(true)}>
-            <SettingIcon />
-          </Pressable>
-        </Link>
+        <Pressable onPress={() => setIsSettingsVisible(true)}>
+          <SettingIcon size={34} color={theme.icon} />
+        </Pressable>
       )}
       <SettingsModal isVisible={isSettingsVisible} onClose={() => setIsSettingsVisible(false)} />
     </View>
@@ -89,23 +118,10 @@ export default function HeaderRight() {
 }
 
 const styles = StyleSheet.create({
-  searchInput: {
-    marginRight: 6,
-    marginLeft: 10,
-    height: 40,
-    width: 265,
-    fontSize: 20,
-    color: '#E0E0E0',
-    padding: 2,
-    paddingLeft: 10,
-    textAlignVertical: 'center',
-    borderStyle: 'solid',
-    borderColor: '#E0E0E0',
-    borderRadius: 8,
-    borderWidth: 2,
-  },
+  searchInput: {},
   searchIcon: {
     borderWidth: 0,
+    backgroundColor: 'transparent',
   },
   searchIconActive: {
     backgroundColor: 'transparent',

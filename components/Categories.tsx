@@ -8,73 +8,223 @@ import Technology from './Technology';
 import Geography from './Geography';
 import Kitchen from './Kitchen';
 import Others from './Others';
+import { useTheme } from '@/context/ThemeContext';
 import { useSearch } from '../context/SearchContext';
 
 export default function Categories() {
   const { isSearchVisible, setIsSearchVisible } = useSearch();
-  console.log(isSearchVisible);
+  const { theme } = useTheme();
+
   return (
-    <View className='mt-4 p-6'>
+    <View className='p-6' style={{ backgroundColor: theme.background }}>
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Maths</Text>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Maths
+        </Text>
       ) : (
-        <Text className='text-3xl color-slate-300'>Maths</Text>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center'>
+          Maths
+        </Text>
       )}
       <Maths />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Physical</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Physical</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Physical
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Physical
+        </Text>
       )}
       <Physical />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Health</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Health</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Health
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Health
+        </Text>
       )}
       <Health />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Finance & Economy</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Finance & Economy</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Finance & Economy
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Finance & Economy
+        </Text>
       )}
       <FinanceEconomy />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Transport</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Transport</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Transport
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Transport
+        </Text>
       )}
       <Transport />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Technology & Electronics</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Technology & Electronics</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Technology & Electronics
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Technology & Electronics
+        </Text>
       )}
       <Technology />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Geography</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Geography</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Geography
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Geography
+        </Text>
       )}
       <Geography />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Kitchen</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Kitchen</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Kitchen
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Kitchen
+        </Text>
       )}
       <Kitchen />
 
       {isSearchVisible ? (
-        <Text className='text-3xl color-slate-300 hidden'>Others</Text>
+        <View
+          style={{
+            borderBottomWidth: 0,
+            borderBottomColor: theme.lineColor,
+            marginVertical: 8,
+          }}
+        />
       ) : (
-        <Text className='text-3xl color-slate-300 mt-5'>Others</Text>
+        <View
+          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
+        />
+      )}
+
+      {isSearchVisible ? (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+          Others
+        </Text>
+      ) : (
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+          Others
+        </Text>
       )}
       <Others />
     </View>

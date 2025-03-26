@@ -6,9 +6,13 @@ interface IconProps {
   color: string;
 }
 
-export const SettingIcon = () => <MaterialIcons name='settings' size={32} color='#E0E0E0' />;
+export const SettingIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='settings' size={size} color={color} />
+);
 
-export const SearchIcon = () => <MaterialIcons name='search' size={32} color='#E0E0E0' />;
+export const SearchIcon = ({ size, color }: IconProps) => (
+  <MaterialIcons name='search' size={size} color={color} />
+);
 export const CloseIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='close' size={size} color={color} />
 );

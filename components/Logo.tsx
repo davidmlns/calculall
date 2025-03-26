@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import { Image, StyleSheet, Pressable } from 'react-native';
-const IconImage = require('../assets/images/icon-without-bg.png');
+const IconImage = require('../assets/images/Logo.png');
 
 export default function Logo() {
   return (
@@ -14,8 +14,7 @@ export default function Logo() {
 
 const styles = StyleSheet.create({
   image: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
+    width: 50,
+    height: 50,
   },
 });

@@ -3,13 +3,19 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useFavorites } from '@/context/FavoritesContext';
 import Card from '@/components/Card';
 import { DeleteIcon } from '@/components/Icons';
+import { useTheme } from '@/context/ThemeContext';
 
 const Favorites = () => {
   const { favorites, clearFavorites } = useFavorites();
+  const { theme } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Favorites</Text>
+    <View style={{ ...styles.container, backgroundColor: theme.background }}>
+      {favorites.length > 0 ? (
+        <Text style={{ ...styles.title, color: theme.text }}>Favorites</Text>
+      ) : (
+        <Text style={{ ...styles.title, color: theme.text }}>No Favorites</Text>
+      )}
       <View className='flex-row flex-wrap items-center justify-center gap-6 mx-auto'>
         {favorites.map((fav, index) => (
           <Card
@@ -26,7 +32,7 @@ const Favorites = () => {
 
       {favorites.length > 0 && (
         <TouchableOpacity style={styles.clearButton} onPress={clearFavorites}>
-          <DeleteIcon size={42} color='#FFFFFF' />
+          <DeleteIcon size={42} color={theme.icon} />
         </TouchableOpacity>
       )}
     </View>
@@ -38,11 +44,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1A1A1A',
   },
   title: {
     fontSize: 48,
-    color: '#FFFFFF',
     fontWeight: 'bold',
     marginBottom: 16,
   },

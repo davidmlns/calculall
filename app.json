@@ -4,12 +4,12 @@
     "slug": "Calculall",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon-without-bg.png",
+    "icon": "./assets/images/Logo.png",
     "scheme": "calculall",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/icon-without-bg.png",
+      "image": "./assets/images/Logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#1A1A1A"
     },
@@ -18,21 +18,21 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/Logo.png",
         "backgroundColor": "#1A1A1A"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/Logo.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/icon-without-bg.png",
+          "image": "./assets/images/Logo.png",
           "imageWidth": 50,
           "resizeMode": "contain",
           "backgroundColor": "#1A1A1A"
