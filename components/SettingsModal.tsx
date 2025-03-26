@@ -26,6 +26,13 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
     setIsThemeModalVisible(true);
   };
 
+  const handleLanguageChange = (languageCode: string) => {
+    // Aquí tu lógica de cambio de idioma
+    console.log('Cambiar a idioma:', languageCode);
+    // Ejemplo con i18n-js:
+    // i18n.locale = languageCode;
+  };
+
   const handleModalClose = () => {
     setShowSettings(true);
   };
@@ -78,6 +85,7 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
         isVisible={isLanguageModalVisible}
         onClose={() => setIsLanguageModalVisible(false)}
         onDismiss={handleModalClose}
+        onLanguageSelected={handleLanguageChange}
       />
       <ThemeModal
         isVisible={isThemeModalVisible}

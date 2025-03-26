@@ -2,19 +2,28 @@ import { Modal, Pressable, Text, View } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
 import { CloseIcon } from './Icons';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface LanguageModalProps {
   isVisible: boolean;
   onClose: () => void;
   onDismiss: () => void;
+  onLanguageSelected: (code: string) => void;
 }
 
-export default function LanguageModal({ isVisible, onClose, onDismiss }: LanguageModalProps) {
+export default function LanguageModal({
+  isVisible,
+  onClose,
+  onDismiss,
+  onLanguageSelected,
+}: LanguageModalProps) {
   useEffect(() => {
     if (!isVisible) {
       onDismiss();
     }
   }, [isVisible, onDismiss]);
+
+  const { t, i18n } = useTranslation();
 
   const languages = [
     { code: 'ES', name: 'Español' },
@@ -24,6 +33,12 @@ export default function LanguageModal({ isVisible, onClose, onDismiss }: Languag
     { code: 'FR', name: 'Français' },
     { code: 'CN', name: '中文' },
   ];
+
+  const handleLanguageSelect = (code: string) => {
+    onLanguageSelected(code);
+    i18n.changeLanguage(code.toLowerCase());
+    onClose();
+  };
 
   return (
     <Modal animationType='slide' transparent={true} visible={isVisible}>
@@ -39,9 +54,9 @@ export default function LanguageModal({ isVisible, onClose, onDismiss }: Languag
             {languages.map(lang => (
               <Pressable
                 key={lang.code}
-                onPress={onClose}
+                onPress={() => handleLanguageSelect(lang.code)} // Modificado
                 className='flex-col items-center rounded-lg'>
-                <CountryFlag isoCode={lang.code} size={62} />
+                <CountryFlag isoCode={lang.code.toLowerCase()} size={62} />
                 <Text className='text-white text-2xl font-bold ml-2'>{lang.name}</Text>
               </Pressable>
             ))}

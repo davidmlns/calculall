@@ -10,8 +10,10 @@ import Kitchen from './Kitchen';
 import Others from './Others';
 import { useTheme } from '@/context/ThemeContext';
 import { useSearch } from '../context/SearchContext';
+import { useTranslation } from 'react-i18next';
 
 export default function Categories() {
+  const { t } = useTranslation();
   const { isSearchVisible, setIsSearchVisible } = useSearch();
   const { theme } = useTheme();
 
@@ -19,11 +21,11 @@ export default function Categories() {
     <View className='p-6' style={{ backgroundColor: theme.background }}>
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Maths
+          {t('maths')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center'>
-          Maths
+          {t('maths')}
         </Text>
       )}
       <Maths />
