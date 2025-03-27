@@ -8,54 +8,56 @@ import {
   ElectricConsumptionIcon,
   ElectricCurrentIcon,
 } from './Icons';
+import { useTranslation } from 'react-i18next';
 
 export default function Technology() {
+  const { t } = useTranslation();
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='Battery'
-        title='Battery'
-        category='Electronics'
+        title={t('technologyCardTitle.Battery')}
+        category={t('categoryName.Technology')}
         icon={<BatteryIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/Battery'
       />
 
       <FilterableCard
         id='Data transfer'
-        title='Data transfer '
-        category='Technology'
+        title={t('technologyCardTitle.DataTransfer')}
+        category={t('categoryName.Technology')}
         icon={<DataTransferIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/DataTransfer'
       />
 
       <FilterableCard
         id='Digital data'
-        title='Digital data '
-        category='Technology'
+        title={t('technologyCardTitle.DigitalData')}
+        category={t('categoryName.Technology')}
         icon={<DigitalDataIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/DigitalData'
       />
 
       <FilterableCard
         id='Electric current'
-        title='Elec. current '
-        category='Electronics'
+        title={t('technologyCardTitle.ElectricCurrent')}
+        category={t('categoryName.Technology')}
         icon={<ElectricCurrentIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricCurrent'
       />
 
       <FilterableCard
         id='Electric usage'
-        title='Elec. usage '
-        category='Electronics'
+        title={t('technologyCardTitle.ElectricConsumption')}
+        category={t('categoryName.Technology')}
         icon={<ElectricConsumptionIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricConsumption'
       />
 
       <FilterableCard
         id='Electric resistance'
-        title='Electric Res. '
-        category='Electronics'
+        title={t('technologyCardTitle.ElectricResistance')}
+        category={t('categoryName.Technology')}
         icon={<ElectricalResistanceIcon size={52} color='#3498DB' />}
         route='/(pages)/(tech)/ElectricalResistance'
       />

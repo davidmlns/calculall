@@ -4,14 +4,15 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { NumberGeneratorIcon, CalculateIcon, FromIcon, UptoIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const MAX_NUMBER = 999999;
 
 export default function NumberGenerator() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('numberGeneratorCard.defaultResult'));
   const [valueATextInputValues, setValueATextInputValues] = useState('');
   const [valueBTextInputValues, setValueBTextInputValues] = useState('');
-
   const scaleValue = new Animated.Value(1);
 
   const handleNumberGenerator = (valueA: string, valueB: string) => {
@@ -19,17 +20,17 @@ export default function NumberGenerator() {
     const max = valueB === '' ? MAX_NUMBER : parseInt(valueB, 10);
 
     if (isNaN(min) || isNaN(max)) {
-      setResult('Invalid input values');
+      setResult(t('numberGeneratorCard.invalidInput'));
       return;
     }
 
     if (min > max) {
-      setResult('Min must be ≤ max');
+      setResult(t('numberGeneratorCard.minMaxError'));
       return;
     }
 
     const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
-    setResult(randomInt.toString());
+    setResult(t('numberGeneratorCard.result', { randomInt }));
   };
 
   const handleInputChange = (text: string, setValue: (value: string) => void) => {
@@ -56,7 +57,7 @@ export default function NumberGenerator() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Number generator'
+        title={t('numberGeneratorCard.title')}
         icon={<NumberGeneratorIcon size={58} color='#6C3483' />}
       />
 
@@ -105,7 +106,7 @@ export default function NumberGenerator() {
             onPressOut={handlePressOut}
             onPress={() => handleNumberGenerator(valueATextInputValues, valueBTextInputValues)}
             className='rounded-2xl mx-auto mb-10'
-            accessibilityLabel='Calculate Button'>
+            accessibilityLabel={t('numberGeneratorCard.generateButton')}>
             <CalculateIcon size={58} color='white' />
           </Pressable>
         </Animated.View>

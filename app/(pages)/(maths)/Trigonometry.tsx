@@ -11,32 +11,35 @@ import {
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 import CalculateComponent, { Operation } from '../../../components/CalculateComponent';
-
-const operations: Operation[] = [
-  {
-    id: 'sen',
-    title: 'Sine',
-    icon: <SenIcon size={32} color='#6C3483' />,
-    description: '10° ➙ 0.17',
-  },
-  {
-    id: 'cos',
-    title: 'Cosine',
-    icon: <CosIcon size={32} color='#6C3483' />,
-    description: '20° ➙ 0.94',
-  },
-  {
-    id: 'tan',
-    title: 'Tangent',
-    icon: <TanIcon size={32} color='#6C3483' />,
-    description: '180° ➙ 0',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Trigonometry() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const operations: Operation[] = [
+    {
+      id: 'sen',
+      title: t('trigonometryCard.operations.sine.title'),
+      icon: <SenIcon size={32} color='#6C3483' />,
+      description: t('trigonometryCard.operations.sine.description'),
+    },
+    {
+      id: 'cos',
+      title: t('trigonometryCard.operations.cosine.title'),
+      icon: <CosIcon size={32} color='#6C3483' />,
+      description: t('trigonometryCard.operations.cosine.description'),
+    },
+    {
+      id: 'tan',
+      title: t('trigonometryCard.operations.tangent.title'),
+      icon: <TanIcon size={32} color='#6C3483' />,
+      description: t('trigonometryCard.operations.tangent.description'),
+    },
+  ];
+
+  const [result, setResult] = useState(t('trigonometryCard.defaultResult'));
   const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
   const [valueTextInputValues, setValueTextInputValues] = useState('');
 
@@ -60,29 +63,49 @@ export default function Trigonometry() {
 
   const handleCalculate = (selectedOperation: string) => {
     if (!valueTextInputValues) {
-      setResult('Please enter an angle');
+      setResult(t('trigonometryCard.errors.enterAngle'));
       return;
     }
     const angle = parseFloat(valueTextInputValues);
     if (isNaN(angle)) {
-      setResult('Invalid input value');
+      setResult(t('trigonometryCard.errors.invalidInput'));
       return;
     }
-    if (selectedOperation === 'sen') {
-      const radians = (angle * Math.PI) / 180;
-      setResult(`sin(${angle}°) = ${Math.sin(radians).toFixed(2)}`);
-    }
-    if (selectedOperation === 'cos') {
-      const radians = (angle * Math.PI) / 180;
-      setResult(`cos(${angle}°) = ${Math.cos(radians).toFixed(2)}`);
-    }
-    if (selectedOperation === 'tan') {
-      if (angle % 90 === 0 && angle % 180 !== 0) {
-        setResult('Indefinite tangent for this angle');
-        return;
-      }
-      const radians = (angle * Math.PI) / 180;
-      setResult(`tan(${angle}°) = ${Math.tan(radians).toFixed(2)}`);
+
+    switch (selectedOperation) {
+      case 'sen':
+        const sinRadians = (angle * Math.PI) / 180;
+        setResult(
+          t('trigonometryCard.result.sine', {
+            angle: angle,
+            value: Math.sin(sinRadians).toFixed(2),
+          }),
+        );
+        break;
+      case 'cos':
+        const cosRadians = (angle * Math.PI) / 180;
+        setResult(
+          t('trigonometryCard.result.cosine', {
+            angle: angle,
+            value: Math.cos(cosRadians).toFixed(2),
+          }),
+        );
+        break;
+      case 'tan':
+        if (angle % 90 === 0 && angle % 180 !== 0) {
+          setResult(t('trigonometryCard.errors.indefiniteTangent'));
+          return;
+        }
+        const tanRadians = (angle * Math.PI) / 180;
+        setResult(
+          t('trigonometryCard.result.tangent', {
+            angle: angle,
+            value: Math.tan(tanRadians).toFixed(2),
+          }),
+        );
+        break;
+      default:
+        setResult(t('trigonometryCard.errors.invalidOperation'));
     }
   };
 
@@ -90,7 +113,7 @@ export default function Trigonometry() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Trigonometry'
+        title={t('trigonometryCard.title')}
         icon={<TrigonometryIcon size={54} color='#6C3483' />}
       />
 
@@ -103,12 +126,14 @@ export default function Trigonometry() {
       />
 
       <View className='flex mt-6 mx-auto mb-5'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('trigonometryCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter value (°)'
+            placeholder={t('trigonometryCard.enterAngle')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTextInputValues}
@@ -129,7 +154,7 @@ export default function Trigonometry() {
               onPressOut={handlePressOut}
               onPress={() => handleCalculate(selectedOperation)}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('trigonometryCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

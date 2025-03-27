@@ -4,6 +4,7 @@ import HeaderPages from '../../../components/HeaderPages';
 import { AverageIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '@/components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Average() {
   const [result, setResult] = useState('');
@@ -12,6 +13,7 @@ export default function Average() {
   const [values, setValues] = useState<string[]>([]);
   const [error, setError] = useState('');
   const scaleValue = new Animated.Value(1);
+  const { t } = useTranslation();
 
   const handleCalculate = () => {
     if (!valueTextInputValues) {
@@ -25,7 +27,7 @@ export default function Average() {
     const valuesArray = values.map(value => parseFloat(value.trim()));
     const sum = valuesArray.reduce((acc, value) => acc + value, 0);
     const average = sum / valuesArray.length;
-    setResult(`Average: ${average}`);
+    setResult(`${t('averageCard.title')}: ${average}`);
     setError('');
   };
 
@@ -90,7 +92,10 @@ export default function Average() {
   return (
     <ScrollView className='bg-background-app w-full h-full' accessibilityLabel='Average Calculator'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Average' icon={<AverageIcon size={58} color='#6C3483' />} />
+      <HeaderDescriptionPage
+        title={t('averageCard.title')}
+        icon={<AverageIcon size={58} color='#6C3483' />}
+      />
 
       <ResultComponent result={result} error={error} />
 
@@ -100,7 +105,7 @@ export default function Average() {
         <View className='mt-2 mx-auto'>
           <TextInput
             className='bg-gray-800 mx-auto rounded-2xl p-4 text-center text-2xl w-96 text-slate-300'
-            placeholder='How many values? Limit(30)'
+            placeholder={t('averageCard.placeholderValue')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTextInputValues.toString()}
@@ -115,10 +120,12 @@ export default function Average() {
           <View className='flex mt-6 flex-row flex-wrap justify-around'>
             {Array.from({ length: parseInt(valueTextInputValues, 10) }, (_, index) => (
               <View key={index} className='flex-row items-center mb-4'>
-                <Text className='text-slate-300 mr-2 text-xl font-semibold'>Nro {index + 1}:</Text>
+                <Text className='text-slate-300 mr-2 text-xl font-semibold'>
+                  {t('averageCard.number')} {index + 1}:
+                </Text>
                 <TextInput
                   className='bg-gray-800 rounded-lg p-2 text-center text-xl w-32 text-slate-300'
-                  placeholder='Enter Nro'
+                  placeholder={t('averageCard.placeholderValueNumber')}
                   placeholderTextColor='#cbd5e1'
                   keyboardType='numeric'
                   value={values[index] || ''}

@@ -4,6 +4,7 @@ import { CloseIcon, SearchIcon, SettingIcon } from './Icons';
 import { useSearch } from '../context/SearchContext';
 import SettingsModal from './SettingsModal';
 import { useTheme } from '@/context/ThemeContext';
+import { t } from 'i18next';
 
 export default function HeaderRight() {
   const { searchText, setSearchText, isSearchVisible, setIsSearchVisible } = useSearch();
@@ -69,7 +70,7 @@ export default function HeaderRight() {
         <Animated.View style={animatedStyle}>
           <TextInput
             ref={inputRef}
-            placeholder='Search...'
+            placeholder={t('searchInput.placeholder')}
             placeholderTextColor={theme.text}
             style={{
               marginRight: 6,

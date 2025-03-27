@@ -4,14 +4,16 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { RomanNumberIcon, ConvertIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function RomanNumber() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('romanNumberCard.defaultResult'));
   const [valueTextInputValues, setValueTextInputValues] = useState('');
   const scaleValue = new Animated.Value(1);
 
   const handleRomanNumber = (num: number): string => {
-    if (num <= 0 || num > 999999) return 'Number must be between 1 and 999999';
+    if (num <= 0 || num > 999999) return;
     const romanNumerals = [
       { value: 1000, symbol: 'M' },
       { value: 900, symbol: 'CM' },
@@ -35,17 +37,17 @@ export default function RomanNumber() {
         num -= value;
       }
     }
-    return roman;
+    return t('romanNumberCard.result', { roman });
   };
 
   const handleConvert = () => {
     const num = parseFloat(valueTextInputValues);
     if (!valueTextInputValues) {
-      setResult('Please enter a number');
+      setResult(t('romanNumberCard.enterNumber'));
       return;
     }
     if (isNaN(num)) {
-      setResult('Invalid input');
+      setResult(t('romanNumberCard.invalidInput'));
       return;
     }
     setResult(handleRomanNumber(num));
@@ -69,7 +71,7 @@ export default function RomanNumber() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Roman numbers'
+        title={t('romanNumberCard.title')}
         icon={<RomanNumberIcon size={62} color='#6C3483' />}
       />
 
@@ -79,7 +81,7 @@ export default function RomanNumber() {
         <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-80 h-16'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter a number'
+            placeholder={t('romanNumberCard.enterNumberPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTextInputValues}
@@ -96,7 +98,7 @@ export default function RomanNumber() {
             onPressOut={handlePressOut}
             onPress={handleConvert}
             className='rounded-2xl mx-auto mb-10'
-            accessibilityLabel='Convert Button'>
+            accessibilityLabel={t('romanNumberCard.convertButton')}>
             <ConvertIcon size={58} color='white' />
           </Pressable>
         </Animated.View>

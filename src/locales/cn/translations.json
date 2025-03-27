@@ -1,3 +1,337 @@
 {
-  "maths": "数学"
+  "categoryName": {
+    "maths": "数学",
+    "physical": "物理",
+    "Health": "健康",
+    "Finances": "财务",
+    "Transport": "交通",
+    "Technology": "技术",
+    "Geography": "地理",
+    "Kitchen": "厨房",
+    "Others": "其他"
+  },
+  "searchInput": {
+    "placeholder": "搜索..."
+  },
+  "optionModal": {
+    "selectOperation": "选择一个操作"
+  },
+  "resultComponent": {
+    "placeholder": "结果将出现在这里"
+  },
+  "mathematicalCardTitle": {
+    "Angles": "角度",
+    "Average": "平均值",
+    "BaseNumeric": "数字基数",
+    "Equations": "方程",
+    "Fractions": "分数",
+    "Length": "长度",
+    "MCM/MCD": "最小/最大公约数",
+    "Num Gen": "数字生成",
+    "Prime Nro": "质数",
+    "Probability": "概率",
+    "Roman Nro": "罗马数字",
+    "Shapes": "形状",
+    "Statistics": "统计",
+    "Trigonometry": "三角学"
+  },
+  "physicalCardTitle": {
+    "Energy": "能量",
+    "Gravity": "重力",
+    "Humidity": "湿度",
+    "Illuminance": "照度",
+    "Magnetism": "磁性",
+    "Ohm": "欧姆定律",
+    "Pressure": "压力",
+    "Radiation": "辐射",
+    "Solar Energy": "太阳能",
+    "Sound": "声音",
+    "Temperature": "温度",
+    "Velocity": "速度",
+    "Wavelength": "波长",
+    "WindSpeed": "风速"
+  },
+  "healthCardTitle": {
+    "BMI": "身体质量指数",
+    "Calories": "卡路里",
+    "Hydration": "补水",
+    "Medication": "药物"
+  },
+  "financesCardTitle": {
+    "Budgeting": "预算",
+    "Discounts": "折扣",
+    "Inflation": "通货膨胀",
+    "Interests": "利息",
+    "Loan": "贷款",
+    "Percentage": "百分比",
+    "Taxes": "税收",
+    "Tips": "小费"
+  },
+  "transportCardTitle": {
+    "Autonomy": "续航里程",
+    "CO2": "二氧化碳排放",
+    "Fuel": "燃料",
+    "Mileage": "里程"
+  },
+  "technologyCardTitle": {
+    "Battery": "电池",
+    "DataTransfer": "数据传输",
+    "DigitalData": "数字数据",
+    "ElectricCurrent": "电流",
+    "ElectricConsumption": "电力消耗",
+    "ElectricResistance": "电阻"
+  },
+  "geographyCardTitle": {
+    "LatitudeLongitude": "经纬度",
+    "Demography": "人口统计"
+  },
+  "kitchenCardTitle": {
+    "Cooking": "烹饪",
+    "CookingTime": "烹饪时间",
+    "TimerSettings": "计时器",
+    "Volume": "体积"
+  },
+  "othersCardTitle": {
+    "Age": "年龄",
+    "Currency": "货币",
+    "Dates": "日期",
+    "Density": "密度",
+    "Password": "密码",
+    "QRGenerator": "二维码生成器",
+    "UUID": "UUID",
+    "Weight": "重量"
+  },
+  "angleCard": {
+    "title": "角度",
+    "values": "值",
+    "placeholder": "结果将显示在此处",
+    "titleOp1": "角度转弧度",
+    "titleOp2": "弧度转角度",
+    "titleOp3": "余角",
+    "titleOp4": "补角",
+    "placeholderValue": "输入角度（°）",
+    "placeholderValueRad": "输入弧度（rad）",
+    "error": "输入有效号码"
+  },
+  "averageCard": {
+    "title": "平均值",
+    "values": "值",
+    "placeholderValue": "多少值？限制(30)",
+    "placeholderValueNumber": "#",
+    "number": "编号"
+  },
+  "baseNumeric": {
+    "title": "数字进制",
+    "values": "数值",
+    "titleOp1": "二进制",
+    "titleOp2": "八进制",
+    "titleOp3": "十六进制",
+    "placeholderValue": "输入数字"
+  },
+  "equationsCard": {
+    "title": "方程",
+    "titleOp1": "线性方程 (+)",
+    "titleOp2": "线性方程 (-)",
+    "titleOp3": "二次方程 (+) (-)",
+    "titleOp4": "二次方程 (-) (+)",
+    "values": "数值",
+    "valueA": "A",
+    "valueB": "B",
+    "valueC": "C",
+    "valueD": "D",
+    "placeholderValue": "输入值",
+    "errorA": "请输入数值 A",
+    "invalidA": "A 值无效",
+    "invalidOperation": "无效操作"
+  },
+  "fractionsCard": {
+    "title": "分数",
+    "titleOp1": "分数加法",
+    "titleOp2": "分数减法",
+    "titleOp3": "分数乘法",
+    "titleOp4": "分数简化",
+    "titleOp5": "小数转分数",
+    "values": "数值",
+    "valueA": "A",
+    "valueB": "B",
+    "valueC": "C",
+    "valueD": "D",
+    "defaultResult": "结果将显示在此处",
+    "errorA": "请输入数值 A",
+    "invalidA": "A 值无效",
+    "invalidOperation": "无效操作",
+    "calculationError": "计算错误",
+    "calculateButton": "计算",
+    "resultFormat": "结果: {{numerator}}/{{denominator}}"
+  },
+  "lengthCard": {
+    "title": "长度",
+    "meter": "米",
+    "kilometer": "公里",
+    "centimeter": "厘米",
+    "millimeter": "毫米",
+    "decimeter": "分米",
+    "hectometer": "公顷",
+    "inch": "英寸",
+    "foot": "英尺",
+    "yard": "码",
+    "mile": "英里"
+  },
+  "mcmmcdCard": {
+    "title": "最小公倍数/最大公约数",
+    "mcm": "最小公倍数",
+    "mcd": "最大公约数",
+    "mcmExample": "10 x 15 ➙ 30",
+    "mcdExample": "10 x 15 ➙ 5",
+    "defaultResult": "结果将显示在这里",
+    "enterBothValues": "请输入两个值",
+    "invalidInput": "输入值无效",
+    "positiveValues": "值必须为正数",
+    "mcmResult": "最小公倍数: {{result}}",
+    "mcdResult": "最大公约数: {{result}}",
+    "valueA": "A",
+    "valueB": "B",
+    "calculateButton": "计算"
+  },
+  "numberGeneratorCard": {
+    "title": "数字生成器",
+    "defaultResult": "结果将显示在这里",
+    "invalidInput": "输入值无效",
+    "minMaxError": "最小值必须 ≤ 最大值",
+    "result": "生成的数字: {{randomInt}}",
+    "generateButton": "生成数字"
+  },
+  "primeNumberCard": {
+    "title": "质数",
+    "isPrime": "是质数",
+    "notPrime": "不是质数",
+    "invalidInput": "无效输入",
+    "isPrimePlaceholder": "是质数吗？",
+    "nextPlaceholder": "下一个",
+    "value": "值",
+    "enterValue": "输入值",
+    "verifyButton": "验证"
+  },
+  "probabilityCard": {
+    "title": "概率",
+    "defaultResult": "结果将显示在这里",
+    "enterBothValues": "请输入两个值",
+    "invalidInput": "输入值无效",
+    "positiveValues": "值必须为正数",
+    "favorableError": "有利情况必须 ≤ 总数",
+    "result": "概率为 {{probability}}%",
+    "favorableCases": "有利情况",
+    "totalCases": "总情况",
+    "calculateButton": "计算"
+  },
+  "romanNumberCard": {
+    "title": "罗马数字",
+    "defaultResult": "结果将显示在这里",
+    "result": "{{roman}}",
+    "enterNumber": "请输入一个数字",
+    "invalidInput": "输入无效",
+    "enterNumberPlaceholder": "输入数字",
+    "convertButton": "转换"
+  },
+  "shapesCard": {
+    "title": "形状",
+    "defaultResult": "结果将在此显示",
+    "result": {
+      "area": "面积：{{value}}",
+      "perimeter": "周长：{{value}}",
+      "circumference": "圆周长：{{value}}",
+      "length": "长度：{{value}}"
+    },
+    "error": {
+      "invalidInput": "请输入有效值",
+      "invalidOperation": "无效操作"
+    },
+    "operations": {
+      "triangle": { "title": "三角形", "description": "面积和周长" },
+      "square": { "title": "正方形", "description": "面积和周长" },
+      "rectangle": { "title": "长方形", "description": "面积和周长" },
+      "trapezoid": { "title": "梯形", "description": "面积和周长" },
+      "rhombus": { "title": "菱形", "description": "面积和周长" },
+      "pentagon": { "title": "五边形", "description": "面积和周长" },
+      "hexagon": { "title": "六边形", "description": "面积和周长" },
+      "circle": { "title": "圆形", "description": "面积、直径和圆周长" },
+      "arc": { "title": "圆弧", "description": "长度和面积" }
+    },
+    "inputs": {
+      "triangle": ["边 A (厘米)", "边 B (厘米)", "边 C (厘米)"],
+      "square": ["边长 (厘米)"],
+      "rectangle": ["长度 (厘米)", "宽度 (厘米)"],
+      "trapezoid": ["底边 A (厘米)", "底边 B (厘米)", "高度 (厘米)"],
+      "rhombus": ["边长 (厘米)", "高度 (厘米)"],
+      "pentagon": ["边长 (厘米)"],
+      "hexagon": ["边长 (厘米)"],
+      "circle": ["半径 (厘米)"],
+      "arc": ["半径 (厘米)", "角度 (°)"]
+    },
+    "enter": "介绍"
+  },
+  "statisticsCard": {
+    "title": "统计",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "howManyNumbers": "多少个数字? 限制(50)",
+    "numberPlaceholder": "数字 {{number}}",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterNumberOfValues": "请输入数值数量",
+      "invalidInput": "无效的输入值",
+      "invalidOperation": "无效操作"
+    },
+    "result": {
+      "mean": "平均值: {{value}}",
+      "median": "中位数: {{value}}",
+      "mode": "众数: {{value}}"
+    },
+    "operations": {
+      "mean": {
+        "title": "平均值",
+        "description": "[10, 20, 30, 40, 50] ➙ 30"
+      },
+      "median": {
+        "title": "中位数",
+        "description": "[5, 3, 1, 4, 2] ➙ 第3位"
+      },
+      "mode": {
+        "title": "众数",
+        "description": "[2, 4, 4, 6, 8] ➙ 4"
+      }
+    }
+  },
+  "trigonometryCard": {
+    "title": "三角学",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "enterAngle": "输入角度 (°)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterAngle": "请输入角度",
+      "invalidInput": "输入值无效",
+      "indefiniteTangent": "此角度的正切值未定义",
+      "invalidOperation": "无效操作"
+    },
+    "result": {
+      "sine": "正弦({{angle}}°) = {{value}}",
+      "cosine": "余弦({{angle}}°) = {{value}}",
+      "tangent": "正切({{angle}}°) = {{value}}"
+    },
+    "operations": {
+      "sine": {
+        "title": "正弦",
+        "description": "10° ➙ 0.17"
+      },
+      "cosine": {
+        "title": "余弦",
+        "description": "20° ➙ 0.94"
+      },
+      "tangent": {
+        "title": "正切",
+        "description": "180° ➙ 0"
+      }
+    }
+  }
 }

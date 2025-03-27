@@ -1,38 +1,40 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
 import { BMIIcon, CaloriesIcon, HydrationIcon, MedicationIcon } from './Icons';
+import { useTranslation } from 'react-i18next';
 
 export default function Health() {
+  const { t } = useTranslation();
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='BMI'
-        title='BMI'
-        category='Health'
+        title={t('healthCardTitle.BMI')}
+        category={t('categoryName.Health')}
         icon={<BMIIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/BMI'
       />
 
       <FilterableCard
         id='Calories'
-        title='Calories'
-        category='Health'
+        title={t('healthCardTitle.Calories')}
+        category={t('categoryName.Health')}
         icon={<CaloriesIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/Calories'
       />
 
       <FilterableCard
         id='Hydration'
-        title='Hydration'
-        category='Health'
+        title={t('healthCardTitle.Hydration')}
+        category={t('categoryName.Health')}
         icon={<HydrationIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/Hydration'
       />
 
       <FilterableCard
         id='Medication'
-        title='Medication'
-        category='Health'
+        title={t('healthCardTitle.Medication')}
+        category={t('categoryName.Health')}
         icon={<MedicationIcon size={52} color='#E74C3C' />}
         route='/(pages)/(health)/Medication'
       />

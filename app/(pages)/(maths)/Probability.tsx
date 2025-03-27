@@ -4,41 +4,42 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { ProbabilityIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Probability() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('probabilityCard.defaultResult'));
   const [valueATextInputValues, setValueATextInputValues] = useState('');
   const [valueBTextInputValues, setValueBTextInputValues] = useState('');
+  const scaleValue = new Animated.Value(1);
 
   const calculateProbability = () => {
     const favorable = parseFloat(valueATextInputValues);
     const total = parseFloat(valueBTextInputValues);
 
     if (!valueATextInputValues || !valueBTextInputValues) {
-      setResult('Please enter both values');
+      setResult(t('probabilityCard.enterBothValues'));
       return;
     }
 
     if (isNaN(favorable) || isNaN(total)) {
-      setResult('Invalid input values');
+      setResult(t('probabilityCard.invalidInput'));
       return;
     }
 
     if (total <= 0 || favorable < 0) {
-      setResult('Values must be positive');
+      setResult(t('probabilityCard.positiveValues'));
       return;
     }
 
     if (favorable > total) {
-      setResult('Favorable cases must be ≤ total');
+      setResult(t('probabilityCard.favorableError'));
       return;
     }
 
     const probability = ((favorable / total) * 100).toFixed(2);
-    setResult(`The probability is ${probability}%`);
+    setResult(t('probabilityCard.result', { probability }));
   };
-
-  const scaleValue = new Animated.Value(1);
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -58,7 +59,7 @@ export default function Probability() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Probability'
+        title={t('probabilityCard.title')}
         icon={<ProbabilityIcon size={54} color='#6C3483' />}
       />
 
@@ -70,7 +71,7 @@ export default function Probability() {
             <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-96 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2 w-44'>
                 <Text className='text-black font-semibold text-xl text-center'>
-                  Favorable cases
+                  {t('probabilityCard.favorableCases')}
                 </Text>
               </View>
               <TextInput
@@ -88,7 +89,9 @@ export default function Probability() {
           <View className='mt-2'>
             <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-96 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2 w-44 '>
-                <Text className='text-black font-semibold text-xl text-center'>Total cases</Text>
+                <Text className='text-black font-semibold text-xl text-center'>
+                  {t('probabilityCard.totalCases')}
+                </Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300'
@@ -111,7 +114,7 @@ export default function Probability() {
             onPressOut={handlePressOut}
             onPress={calculateProbability}
             className='rounded-2xl mx-auto mb-10'
-            accessibilityLabel='Calculate Button'>
+            accessibilityLabel={t('probabilityCard.calculateButton')}>
             <CalculateIcon size={58} color='white' />
           </Pressable>
         </Animated.View>

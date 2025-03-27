@@ -1,5 +1,6 @@
 import { Modal, Pressable, Text, View } from 'react-native';
 import { ArrowDownIcon, CloseIcon } from './Icons';
+import { useTranslation } from 'react-i18next';
 
 interface OptionModalProps {
   title: string;
@@ -20,6 +21,7 @@ export default function OptionModal({
   onOpen,
   children,
 }: OptionModalProps) {
+  const { t } = useTranslation();
   return (
     <>
       <Pressable
@@ -43,7 +45,9 @@ export default function OptionModal({
         <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
           <View className='bg-background-secondary rounded-t-3xl p-4 h-1/2'>
             <View className='flex-row justify-between items-center mb-2'>
-              <Text className='text-white text-2xl font-bold'>Select Operation</Text>
+              <Text className='text-white text-2xl font-bold'>
+                {t('optionModal.selectOperation')}
+              </Text>
               <Pressable onPress={onClose}>
                 <CloseIcon size={34} color='#E0E0E0' />
               </Pressable>

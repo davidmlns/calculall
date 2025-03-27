@@ -3,6 +3,7 @@ import CountryFlag from 'react-native-country-flag';
 import { CloseIcon } from './Icons';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../context/LanguageContext';
 
 interface LanguageModalProps {
   isVisible: boolean;
@@ -24,6 +25,7 @@ export default function LanguageModal({
   }, [isVisible, onDismiss]);
 
   const { t, i18n } = useTranslation();
+  const { setLanguage } = useLanguage();
 
   const languages = [
     { code: 'ES', name: 'Español' },
@@ -35,8 +37,7 @@ export default function LanguageModal({
   ];
 
   const handleLanguageSelect = (code: string) => {
-    onLanguageSelected(code);
-    i18n.changeLanguage(code.toLowerCase());
+    setLanguage(code.toLowerCase());
     onClose();
   };
 

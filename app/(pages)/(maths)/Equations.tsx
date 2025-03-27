@@ -11,6 +11,7 @@ import {
   quadraticEquationMinusPlus,
   quadraticEquationPlusMinus,
 } from '../../../utils/EquationsFunctions';
+import { useTranslation } from 'react-i18next';
 
 type EquationType =
   | 'linear-eq-plus'
@@ -18,42 +19,42 @@ type EquationType =
   | 'quadratic-eq-plus-minus'
   | 'quadratic-eq-minus-plus';
 
-const operations: Operation[] = [
-  {
-    id: 'linear-eq-plus',
-    title: 'Linear equations (+)',
-    icon: <LinearEquationIcon size={36} color='#6C3483' />,
-    description: 'ax+b=c',
-  },
-  {
-    id: 'linear-eq-minus',
-    title: 'Linear equations (-)',
-    icon: <LinearEquationIcon size={36} color='#6C3483' />,
-    description: 'ax-b=c',
-  },
-  {
-    id: 'quadratic-eq-plus-minus',
-    title: 'Quadratic equations (+) (-)',
-    icon: <EquationIcon size={32} color='#6C3483' />,
-    description: 'ax²+bx-c=d',
-  },
-  {
-    id: 'quadratic-eq-minus-plus',
-    title: 'Quadratic equations (-) (+)',
-    icon: <EquationIcon size={32} color='#6C3483' />,
-    description: 'ax²-bx+c=d',
-  },
-];
-
 export default function Equations() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState<string>('');
   const [selectedOperation, setSelectedOperation] = useState<EquationType>('linear-eq-plus');
   const [valueATextInputValues, setValueATextInputValues] = useState('');
   const [valueBTextInputValues, setValueBTextInputValues] = useState('');
   const [valueCTextInputValues, setValueCTextInputValues] = useState('');
   const [valueDTextInputValues, setValueDTextInputValues] = useState('');
-
   const scaleValue = new Animated.Value(1);
+
+  const operations: Operation[] = [
+    {
+      id: 'linear-eq-plus',
+      title: t('equationsCard.titleOp1'),
+      icon: <LinearEquationIcon size={36} color='#6C3483' />,
+      description: 'ax+b=c',
+    },
+    {
+      id: 'linear-eq-minus',
+      title: t('equationsCard.titleOp2'),
+      icon: <LinearEquationIcon size={36} color='#6C3483' />,
+      description: 'ax-b=c',
+    },
+    {
+      id: 'quadratic-eq-plus-minus',
+      title: t('equationsCard.titleOp3'),
+      icon: <EquationIcon size={32} color='#6C3483' />,
+      description: 'ax²+bx-c=d',
+    },
+    {
+      id: 'quadratic-eq-minus-plus',
+      title: t('equationsCard.titleOp4'),
+      icon: <EquationIcon size={32} color='#6C3483' />,
+      description: 'ax²-bx+c=d',
+    },
+  ];
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -69,41 +70,42 @@ export default function Equations() {
     }).start();
   };
 
-  const handleCalculate = (selectedOperation: EquationType) => {
-    if (!valueATextInputValues) {
-      setResult('Please enter value A');
-      return;
-    }
-
+  const handleCalculate = (operation: EquationType) => {
     const a = parseFloat(valueATextInputValues);
-    const b = parseFloat(valueBTextInputValues);
-    const c = parseFloat(valueCTextInputValues);
-    const d = parseFloat(valueDTextInputValues);
+    const b = parseFloat(valueBTextInputValues) || 0;
+    const c = parseFloat(valueCTextInputValues) || 0;
+    const d = parseFloat(valueDTextInputValues) || 0;
 
     if (isNaN(a)) {
-      setResult('Invalid value for A');
+      setResult(t('equationsCard.invalidA'));
       return;
     }
 
     let resultText = '';
 
-    switch (selectedOperation) {
-      case 'linear-eq-plus':
-        resultText = `x = ${linearEquationPlus(a, b, c).toFixed(2)}`;
-        break;
-      case 'linear-eq-minus':
-        resultText = `x = ${linearEquationMinus(a, b, c).toFixed(2)}`;
-        break;
-      case 'quadratic-eq-plus-minus': {
-        const result = quadraticEquationPlusMinus(a, b, c, d);
-        resultText = formatQuadraticResult(result);
-        break;
+    try {
+      switch (operation) {
+        case 'linear-eq-plus':
+          resultText = `x = ${linearEquationPlus(a, b, c).toFixed(2)}`;
+          break;
+        case 'linear-eq-minus':
+          resultText = `x = ${linearEquationMinus(a, b, c).toFixed(2)}`;
+          break;
+        case 'quadratic-eq-plus-minus': {
+          const result = quadraticEquationPlusMinus(a, b, c, d);
+          resultText = formatQuadraticResult(result);
+          break;
+        }
+        case 'quadratic-eq-minus-plus': {
+          const result = quadraticEquationMinusPlus(a, b, c, d);
+          resultText = formatQuadraticResult(result);
+          break;
+        }
+        default:
+          resultText = t('equationsCard.invalidOperation');
       }
-      case 'quadratic-eq-minus-plus': {
-        const result = quadraticEquationMinusPlus(a, b, c, d);
-        resultText = formatQuadraticResult(result);
-        break;
-      }
+    } catch (error) {
+      resultText = t('equationsCard.calculationError');
     }
 
     setResult(resultText);
@@ -117,36 +119,44 @@ export default function Equations() {
   };
 
   const handleOperationChange = (operation: EquationType) => {
-    if (operation === 'quadratic-eq-plus-minus' || operation === 'quadratic-eq-minus-plus') {
-      clearInputValues();
-    }
+    clearInputValues();
     setSelectedOperation(operation);
   };
 
   const formatQuadraticResult = (result: number[] | string): string => {
-    if (result === 'No real solutions') return result;
+    if (typeof result === 'string')
+      return t(`equationsCard.${result.toLowerCase().replace(' ', '')}`);
     if (result.length === 1) return `x = ${result[0].toFixed(2)}`;
-    return `x1 = ${result[0].toFixed(2)}          x2 = ${result[1].toFixed(2)}`;
+    return `x₁ = ${result[0].toFixed(2)}          x₂ = ${result[1].toFixed(2)}`;
   };
 
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Equations' icon={<EquationIcon size={58} color='#6C3483' />} />
+      <HeaderDescriptionPage
+        title={t('equationsCard.title')}
+        icon={<EquationIcon size={58} color='#6C3483' />}
+      />
       <ResultComponent result={result} />
       <CalculateComponent
         operations={operations}
         onCalculate={handleCalculate}
         onSendOperation={handleOperationChange}
+        selectedOperation={selectedOperation}
       />
 
-      <Text className='text-gray-300 text-2xl font-semibold text-center mt-4'>Values</Text>
+      <Text className='text-gray-300 text-2xl font-semibold text-center mt-4'>
+        {t('equationsCard.values')}
+      </Text>
+
       <View className='flex-row flex-wrap mt-2 mr-4 justify-center'>
         <View className='flex-row justify-around w-full'>
           <View className='mt-2'>
             <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>A</Text>
+                <Text className='text-black font-semibold text-xl'>
+                  {t('equationsCard.valueA')}
+                </Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300 flex-1'
@@ -163,7 +173,9 @@ export default function Equations() {
           <View className='mt-2'>
             <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>B</Text>
+                <Text className='text-black font-semibold text-xl'>
+                  {t('equationsCard.valueB')}
+                </Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300'
@@ -182,7 +194,9 @@ export default function Equations() {
           <View className='mt-4'>
             <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>C</Text>
+                <Text className='text-black font-semibold text-xl'>
+                  {t('equationsCard.valueC')}
+                </Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300'
@@ -201,7 +215,9 @@ export default function Equations() {
             <View className='mt-4'>
               <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
                 <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                  <Text className='text-black font-semibold text-xl'>D</Text>
+                  <Text className='text-black font-semibold text-xl'>
+                    {t('equationsCard.valueD')}
+                  </Text>
                 </View>
                 <TextInput
                   className='text-right text-2xl text-slate-300'
@@ -225,7 +241,7 @@ export default function Equations() {
                 onPressOut={handlePressOut}
                 onPress={() => handleCalculate(selectedOperation)}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('equationsCard.calculateButton')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

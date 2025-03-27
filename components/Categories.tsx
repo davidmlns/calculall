@@ -21,11 +21,11 @@ export default function Categories() {
     <View className='p-6' style={{ backgroundColor: theme.background }}>
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          {t('maths')}
+          {t('categoryName.maths')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center'>
-          {t('maths')}
+          {t('categoryName.maths')}
         </Text>
       )}
       <Maths />
@@ -46,11 +46,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Physical
+          {t('categoryName.physical')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Physical
+          {t('categoryName.physical')}
         </Text>
       )}
       <Physical />
@@ -71,11 +71,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Health
+          {t('categoryName.Health')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Health
+          {t('categoryName.Health')}
         </Text>
       )}
       <Health />
@@ -96,11 +96,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Finance & Economy
+          {t('categoryName.Finances')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Finance & Economy
+          {t('categoryName.Finances')}
         </Text>
       )}
       <FinanceEconomy />
@@ -121,11 +121,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Transport
+          {t('categoryName.Transport')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Transport
+          {t('categoryName.Transport')}
         </Text>
       )}
       <Transport />
@@ -146,11 +146,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Technology & Electronics
+          {t('categoryName.Technology')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Technology & Electronics
+          {t('categoryName.Technology')}
         </Text>
       )}
       <Technology />
@@ -171,11 +171,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Geography
+          {t('categoryName.Geography')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Geography
+          {t('categoryName.Geography')}
         </Text>
       )}
       <Geography />
@@ -196,11 +196,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Kitchen
+          {t('categoryName.Kitchen')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Kitchen
+          {t('categoryName.Kitchen')}
         </Text>
       )}
       <Kitchen />
@@ -221,11 +221,11 @@ export default function Categories() {
 
       {isSearchVisible ? (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
-          Others
+          {t('categoryName.Others')}
         </Text>
       ) : (
         <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
-          Others
+          {t('categoryName.Others')}
         </Text>
       )}
       <Others />

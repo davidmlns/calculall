@@ -1,3 +1,333 @@
 {
-  "maths": "Matemática"
+  "categoryName": {
+    "maths": "Matemática",
+    "physical": "Física",
+    "Health": "Saúde",
+    "Finances": "Finanças",
+    "Transport": "Transporte",
+    "Technology": "Tecnologia ",
+    "Geography": "Geografia",
+    "Kitchen": "Cozinha",
+    "Others": "Outros"
+  },
+  "searchInput": {
+    "placeholder": "Pesquisar..."
+  },
+  "optionModal": {
+    "selectOperation": "Selecione uma operação"
+  },
+  "resultComponent": {
+    "placeholder": "O resultado aparecerá aqui"
+  },
+  "mathematicalCardTitle": {
+    "Angles": "Ângulos",
+    "Average": "Média",
+    "BaseNumeric": "Base numérica",
+    "Equations": "Equações",
+    "Fractions": "Frações",
+    "Length": "Comprimento",
+    "MCM/MCD": "MMC/MDC",
+    "Num Gen": "Geração Num",
+    "Prime Nro": "Núm Primo",
+    "Probability": "Probabilidade",
+    "Roman Nro": "Núm Romano",
+    "Shapes": "Formas",
+    "Statistics": "Estatísticas",
+    "Trigonometry": "Trigonometria"
+  },
+  "physicalCardTitle": {
+    "Energy": "Energia",
+    "Gravity": "Gravidade",
+    "Humidity": "Umidade",
+    "Illuminance": "Iluminância",
+    "Magnetism": "Magnetismo",
+    "Ohm": "Lei de Ohm",
+    "Pressure": "Pressão",
+    "Radiation": "Radiação",
+    "Solar Energy": "Energia Solar",
+    "Sound": "Som",
+    "Temperature": "Temperatura",
+    "Velocity": "Velocidade",
+    "Wavelength": "Compr. de onda",
+    "WindSpeed": "Veloc. do vento"
+  },
+  "healthCardTitle": {
+    "BMI": "IMC",
+    "Calories": "Calorias",
+    "Hydration": "Hidratação",
+    "Medication": "Medicação"
+  },
+  "financesCardTitle": {
+    "Budgeting": "Orçamento",
+    "Discounts": "Descontos",
+    "Inflation": "Inflação",
+    "Interests": "Juros",
+    "Loan": "Empréstimo",
+    "Percentage": "Percentagem",
+    "Taxes": "Impostos",
+    "Tips": "Gorjetas"
+  },
+  "transportCardTitle": {
+    "Autonomy": "Autonomia",
+    "CO2": "Emissões CO₂",
+    "Fuel": "Combustível",
+    "Mileage": "Quilometragem"
+  },
+  "technologyCardTitle": {
+    "Battery": "Bateria",
+    "DataTransfer": "Trans. de dados",
+    "DigitalData": "Dados digitais",
+    "ElectricCurrent": "Corrente elétr.",
+    "ElectricConsumption": "Consumo elétr.",
+    "ElectricResistance": "Resist. elétrica"
+  },
+  "geographyCardTitle": {
+    "LatitudeLongitude": "Lat. e Long.",
+    "Demography": "Demografia"
+  },
+  "kitchenCardTitle": {
+    "Cooking": "Culinária",
+    "CookingTime": "Tempo de coz.",
+    "TimerSettings": "Temporizador",
+    "Volume": "Volume"
+  },
+  "othersCardTitle": {
+    "Age": "Idade",
+    "Currency": "Moeda",
+    "Dates": "Datas",
+    "Density": "Densidade",
+    "Password": "Senha",
+    "QRGenerator": "Gerador QR",
+    "UUID": "UUID",
+    "Weight": "Peso"
+  },
+  "angleCard": {
+    "title": "Ângulos",
+    "values": "Valores",
+    "placeholder": "O resultado aparecerá aqui",
+    "titleOp1": "Ângulos para radianos",
+    "titleOp2": "Radianos para ângulos",
+    "titleOp3": "Ângulos complementares",
+    "titleOp4": "Ângulos suplementares",
+    "placeholderValue": "Insira um ângulo (°)",
+    "placeholderValueRad": "Insira um radiano (rad)",
+    "error": "Insira um número válido"
+  },
+  "averageCard": {
+    "title": "Média",
+    "values": "Valores",
+    "placeholderValue": "Quantos valores? Limite (30)",
+    "placeholderValueNumber": "#",
+    "number": "Nº"
+  },
+  "baseNumeric": {
+    "title": "Base numérica",
+    "values": "Valores",
+    "titleOp1": "Base 2",
+    "titleOp2": "Base 8",
+    "titleOp3": "Base 16",
+    "placeholderValue": "Insira um número"
+  },
+  "equationsCard": {
+    "title": "Equações",
+    "titleOp1": "Equações lineares (+)",
+    "titleOp2": "Equações lineares (-)",
+    "titleOp3": "Equações quadráticas (+) (-)",
+    "titleOp4": "Equações quadráticas (-) (+)",
+    "values": "Valores",
+    "valueA": "A",
+    "valueB": "B",
+    "valueC": "C",
+    "valueD": "D",
+    "placeholderValue": "Insira o valor",
+    "errorA": "Por favor, insira o valor A",
+    "invalidA": "Valor inválido para A",
+    "invalidOperation": "Operação inválida"
+  },
+  "fractionsCard": {
+    "title": "Frações",
+    "titleOp1": "Adição de frações",
+    "titleOp2": "Subtração de frações",
+    "titleOp3": "Multiplicação de frações",
+    "titleOp4": "Simplificação de frações",
+    "titleOp5": "Decimal para fração",
+    "values": "Valores",
+    "valueA": "A",
+    "valueB": "B",
+    "valueC": "C",
+    "valueD": "D",
+    "defaultResult": "O resultado aparecerá aqui",
+    "errorA": "Por favor, insira o valor A",
+    "invalidA": "Valor inválido para A",
+    "invalidOperation": "Operação inválida"
+  },
+  "lengthCard": {
+    "title": "Comprimento",
+    "meter": "Metro",
+    "kilometer": "Kilometro",
+    "centimeter": "Centimetro",
+    "millimeter": "Millimetro",
+    "decimeter": "Decimetro",
+    "hectometer": "Hectometro",
+    "inch": "Punto",
+    "foot": "Piede",
+    "yard": "Yard",
+    "mile": "Mile"
+  },
+  "mcmmcdCard": {
+    "title": "MMC/MDC",
+    "mcm": "Mínimo Múltiplo Comum",
+    "mcd": "Máximo Divisor Comum",
+    "mcmExample": "10 x 15 ➙ 30",
+    "mcdExample": "10 x 15 ➙ 5",
+    "defaultResult": "O resultado aparecerá aqui",
+    "enterBothValues": "Por favor insira ambos os valores",
+    "invalidInput": "Valores de entrada inválidos",
+    "positiveValues": "Os valores devem ser positivos",
+    "mcmResult": "MMC: {{result}}",
+    "mcdResult": "MDC: {{result}}",
+    "valueA": "A",
+    "valueB": "B",
+    "calculateButton": "Calcular"
+  },
+  "numberGeneratorCard": {
+    "title": "Gerador de Números",
+    "defaultResult": "O resultado aparecerá aqui",
+    "invalidInput": "Valores de entrada inválidos",
+    "minMaxError": "O mínimo deve ser ≤ máximo",
+    "result": "Número gerado: {{randomInt}}",
+    "generateButton": "Gerar número"
+  },
+  "primeNumberCard": {
+    "title": "Números Primos",
+    "isPrime": "É primo",
+    "notPrime": "Não é primo",
+    "invalidInput": "Entrada inválida",
+    "isPrimePlaceholder": "É primo?",
+    "nextPlaceholder": "Próximo",
+    "value": "Valor",
+    "enterValue": "Insira valor",
+    "verifyButton": "Verificar"
+  },
+  "probabilityCard": {
+    "title": "Probabilidade",
+    "defaultResult": "O resultado aparecerá aqui",
+    "enterBothValues": "Por favor insira ambos valores",
+    "invalidInput": "Valores de entrada inválidos",
+    "positiveValues": "Os valores devem ser positivos",
+    "favorableError": "Casos favoráveis devem ser ≤ total",
+    "result": "A probabilidade é {{probability}}%",
+    "favorableCases": "Casos favoráveis",
+    "totalCases": "Casos totais"
+  },
+  "romanNumberCard": {
+    "title": "Números Romanos",
+    "defaultResult": "O resultado aparecerá aqui",
+    "result": "{{roman}}",
+    "enterNumber": "Por favor insira um número",
+    "invalidInput": "Entrada inválida",
+    "enterNumberPlaceholder": "Insira um número",
+    "convertButton": "Converter"
+  },
+  "shapesCard": {
+    "title": "Formas Geométricas",
+    "defaultResult": "O resultado aparecerá aqui",
+    "result": {
+      "area": "Área: {{value}}",
+      "perimeter": "Perímetro: {{value}}",
+      "circumference": "Circunferência: {{value}}",
+      "length": "Comprimento: {{value}}"
+    },
+    "error": {
+      "invalidInput": "Por favor insira valores válidos",
+      "invalidOperation": "Operação inválida"
+    },
+    "operations": {
+      "triangle": { "title": "Triângulo", "description": "Área e Perímetro" },
+      "square": { "title": "Quadrado", "description": "Área e Perímetro" },
+      "rectangle": { "title": "Retângulo", "description": "Área e Perímetro" },
+      "trapezoid": { "title": "Trapézio", "description": "Área e Perímetro" },
+      "rhombus": { "title": "Losango", "description": "Área e Perímetro" },
+      "pentagon": { "title": "Pentágono", "description": "Área e Perímetro" },
+      "hexagon": { "title": "Hexágono", "description": "Área e Perímetro" },
+      "circle": { "title": "Círculo", "description": "Área, Diâmetro e Circunferência" },
+      "arc": { "title": "Arco Circular", "description": "Comprimento e Área" }
+    },
+    "inputs": {
+      "triangle": ["Lado A (cm)", "Lado B (cm)", "Lado C (cm)"],
+      "square": ["Lado (cm)"],
+      "rectangle": ["Comprimento (cm)", "Largura (cm)"],
+      "trapezoid": ["Base A (cm)", "Base B (cm)", "Altura (cm)"],
+      "rhombus": ["Lado (cm)", "Altura (cm)"],
+      "pentagon": ["Lado (cm)"],
+      "hexagon": ["Lado (cm)"],
+      "circle": ["Raio (cm)"],
+      "arc": ["Raio (cm)", "Ângulo (°)"]
+    },
+    "enter": "Introduzir"
+  },
+  "statisticsCard": {
+    "title": "Estatísticas",
+    "defaultResult": "O resultado aparecerá aqui",
+    "values": "Valores",
+    "howManyNumbers": "Quantos números? Limite(50)",
+    "numberPlaceholder": "Número {{number}}",
+    "calculateButton": "Botão Calcular",
+    "errors": {
+      "enterNumberOfValues": "Por favor insira o número de valores",
+      "invalidInput": "Valores de entrada inválidos",
+      "invalidOperation": "Operação inválida"
+    },
+    "result": {
+      "mean": "Média: {{value}}",
+      "median": "Mediana: {{value}}",
+      "mode": "Moda: {{value}}"
+    },
+    "operations": {
+      "mean": {
+        "title": "Média",
+        "description": "[10, 20, 30, 40, 50] ➙ 30"
+      },
+      "median": {
+        "title": "Mediana",
+        "description": "[5, 3, 1, 4, 2] ➙ 3ª posição"
+      },
+      "mode": {
+        "title": "Moda",
+        "description": "[2, 4, 4, 6, 8] ➙ 4"
+      }
+    }
+  },
+  "trigonometryCard": {
+    "title": "Trigonometria",
+    "defaultResult": "O resultado aparecerá aqui",
+    "values": "Valores",
+    "enterAngle": "Insira valor (°)",
+    "calculateButton": "Botão Calcular",
+    "errors": {
+      "enterAngle": "Por favor insira um ângulo",
+      "invalidInput": "Valor de entrada inválido",
+      "indefiniteTangent": "Tangente indefinida para este ângulo",
+      "invalidOperation": "Operação inválida"
+    },
+    "result": {
+      "sine": "sen({{angle}}°) = {{value}}",
+      "cosine": "cos({{angle}}°) = {{value}}",
+      "tangent": "tan({{angle}}°) = {{value}}"
+    },
+    "operations": {
+      "sine": {
+        "title": "Seno",
+        "description": "10° ➙ 0.17"
+      },
+      "cosine": {
+        "title": "Cosseno",
+        "description": "20° ➙ 0.94"
+      },
+      "tangent": {
+        "title": "Tangente",
+        "description": "180° ➙ 0"
+      }
+    }
+  }
 }

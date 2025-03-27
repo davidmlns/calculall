@@ -16,13 +16,15 @@ import {
   TrigonometryIcon,
 } from './Icons';
 import FilterableCard from './FilterableCard';
+import { useTranslation } from 'react-i18next';
 
 export default function Maths() {
+  const { t } = useTranslation();
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='Angles'
-        title='Angles'
+        title={t('mathematicalCardTitle.Angles')}
         category='Maths'
         icon={<AngleIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Angles'
@@ -30,102 +32,102 @@ export default function Maths() {
 
       <FilterableCard
         id='Average'
-        title='Average'
-        category='Maths'
+        title={t('mathematicalCardTitle.Average')}
+        category={t('categoryName.maths')}
         icon={<AverageIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Average'
       />
       <FilterableCard
         id='Base numeric'
-        title='Base numeric'
-        category='Maths'
+        title={t('mathematicalCardTitle.BaseNumeric')}
+        category={t('categoryName.maths')}
         icon={<BaseNumericIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/BaseNumeric'
       />
 
       <FilterableCard
         id='Equations'
-        title='Equations'
-        category='Maths'
+        title={t('mathematicalCardTitle.Equations')}
+        category={t('categoryName.maths')}
         icon={<EquationIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Equations'
       />
 
       <FilterableCard
         id='Fractions'
-        title='Fractions'
-        category='Maths'
+        title={t('mathematicalCardTitle.Fractions')}
+        category={t('categoryName.maths')}
         icon={<FractionIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Fractions'
       />
       <FilterableCard
         id='Length'
-        title='Length'
-        category='Maths'
+        title={t('mathematicalCardTitle.Length')}
+        category={t('categoryName.maths')}
         icon={<LengthIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Length'
       />
 
       <FilterableCard
         id='MCM/MCD'
-        title='MCM/MCD'
-        category='Maths'
+        title={t('mathematicalCardTitle.MCM/MCD')}
+        category={t('categoryName.maths')}
         icon={<MCMMCDIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/MCMMCD'
       />
 
       <FilterableCard
         id='Num Gen'
-        title='Num Gen'
-        category='Maths'
+        title={t('mathematicalCardTitle.Num Gen')}
+        category={t('categoryName.maths')}
         icon={<NumberGeneratorIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/NumberGenerator'
       />
 
       <FilterableCard
         id='Prime Nro'
-        title='Prime Nro'
-        category='Maths'
+        title={t('mathematicalCardTitle.Prime Nro')}
+        category={t('categoryName.maths')}
         icon={<PrimeNumberIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/PrimeNumber'
       />
 
       <FilterableCard
         id='Probability'
-        title='Probability'
-        category='Maths'
+        title={t('mathematicalCardTitle.Probability')}
+        category={t('categoryName.maths')}
         icon={<ProbabilityIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Probability'
       />
 
       <FilterableCard
         id='Roman Nro'
-        title='Roman Nro'
-        category='Maths'
+        title={t('mathematicalCardTitle.Roman Nro')}
+        category={t('categoryName.maths')}
         icon={<RomanNumberIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/RomanNumber'
       />
 
       <FilterableCard
         id='Shapes'
-        title='Shapes'
-        category='Maths'
+        title={t('mathematicalCardTitle.Shapes')}
+        category={t('categoryName.maths')}
         icon={<ShapeIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Shapes'
       />
 
       <FilterableCard
         id='Statistics'
-        title='Statistics'
-        category='Maths'
+        title={t('mathematicalCardTitle.Statistics')}
+        category={t('categoryName.maths')}
         icon={<StatisticsIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Statistics'
       />
 
       <FilterableCard
         id='Trigonometry'
-        title='Trigonometry'
-        category='Maths'
+        title={t('mathematicalCardTitle.Trigonometry')}
+        category={t('categoryName.maths')}
         icon={<TrigonometryIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Trigonometry'
       />

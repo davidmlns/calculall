@@ -4,6 +4,7 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { LengthIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '@/components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 type LengthUnit = 'm' | 'km' | 'cm' | 'mm' | 'dm' | 'hm' | 'in' | 'ft' | 'yd' | 'mi';
 
@@ -21,6 +22,7 @@ const CONVERSION_FACTORS: Record<LengthUnit, number> = {
 };
 
 export default function Length() {
+  const { t } = useTranslation();
   const [meterValue, setMeterValue] = useState('');
   const [kilometerValue, setKilometerValue] = useState('');
   const [centimeterValue, setCentimeterValue] = useState('');
@@ -103,12 +105,15 @@ export default function Length() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Length' icon={<LengthIcon size={52} color='#6C3483' />} />
+      <HeaderDescriptionPage
+        title={t('lengthCard.title')}
+        icon={<LengthIcon size={52} color='#6C3483' />}
+      />
 
       <View className='flex-col items-center mb-10'>
         <ConvertComponent
           abb='m'
-          title='Meter'
+          title={t('lengthCard.meter')}
           description='1 m'
           onChangeText={value => convertLength(value, 'm')}
           value={meterValue}
@@ -117,7 +122,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='km'
-          title='Kilometer'
+          title={t('lengthCard.kilometer')}
           description='1 km = 1000 m'
           onChangeText={value => convertLength(value, 'km')}
           value={kilometerValue}
@@ -127,7 +132,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='cm'
-          title='Centimeter'
+          title={t('lengthCard.centimeter')}
           description='1 cm = 0.01 m'
           onChangeText={value => convertLength(value, 'cm')}
           value={centimeterValue}
@@ -136,7 +141,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='mm'
-          title='Millimeter'
+          title={t('lengthCard.millimeter')}
           description='1 mm = 0.001 m'
           onChangeText={value => convertLength(value, 'mm')}
           value={millimeterValue}
@@ -145,7 +150,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='dm'
-          title='Decimeter'
+          title={t('lengthCard.decimeter')}
           description='1 dm = 0.1 m'
           onChangeText={value => convertLength(value, 'dm')}
           value={decimeterValue}
@@ -154,7 +159,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='hm'
-          title='Hectometer'
+          title={t('lengthCard.hectometer')}
           description='1 hm = 100 m'
           onChangeText={value => convertLength(value, 'hm')}
           value={hectometerValue}
@@ -164,7 +169,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='in'
-          title='Inch'
+          title={t('lengthCard.inch')}
           description='1 in = 0.0254 m'
           onChangeText={value => convertLength(value, 'in')}
           value={inchValue}
@@ -173,7 +178,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='ft'
-          title='Foot'
+          title={t('lengthCard.foot')}
           description='1 ft = 0.3048 m'
           onChangeText={value => convertLength(value, 'ft')}
           value={footValue}
@@ -182,7 +187,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='yd'
-          title='Yard'
+          title={t('lengthCard.yard')}
           description='1 yd = 0.9144 m'
           onChangeText={value => convertLength(value, 'yd')}
           value={yardValue}
@@ -191,7 +196,7 @@ export default function Length() {
         />
         <ConvertComponent
           abb='mi'
-          title='Mile'
+          title={t('lengthCard.mile')}
           description='1 mi = 1609.34 m'
           onChangeText={value => convertLength(value, 'mi')}
           value={mileValue}
@@ -209,7 +214,7 @@ export default function Length() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('lengthCard.clearButton')}>
               <DeleteIcon size={48} color='white' />
             </Pressable>
           </Animated.View>

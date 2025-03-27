@@ -14,10 +14,6 @@ export default function HeaderPages() {
       <Pressable onPress={handleBackPress}>
         <BackIcon />
       </Pressable>
-
-      <Pressable>
-        <StarIcon />
-      </Pressable>
     </View>
   );
 }

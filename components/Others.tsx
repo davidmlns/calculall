@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
-
+import { useTranslation } from 'react-i18next';
 import {
   AgeIcon,
   CurrencyIcon,
@@ -13,68 +13,69 @@ import {
 } from './Icons';
 
 export default function Others() {
+  const { t } = useTranslation();
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='Age'
-        title='Age  '
-        category='Others'
+        title={t('othersCardTitle.Age')}
+        category={t('categoryName.Others')}
         icon={<AgeIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Age'
       />
 
       <FilterableCard
         id='Currency'
-        title='Currency'
-        category='Others'
+        title={t('othersCardTitle.Currency')}
+        category={t('categoryName.Others')}
         icon={<CurrencyIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Currency'
       />
 
       <FilterableCard
         id='Date'
-        title='Dates '
-        category='Others'
+        title={t('othersCardTitle.Dates')}
+        category={t('categoryName.Others')}
         icon={<DateIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Date'
       />
 
       <FilterableCard
         id='Density'
-        title='Density '
-        category='Others'
+        title={t('othersCardTitle.Density')}
+        category={t('categoryName.Others')}
         icon={<DensityIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Density'
       />
 
       <FilterableCard
         id='Password'
-        title='Password'
-        category='Others'
+        title={t('othersCardTitle.Password')}
+        category={t('categoryName.Others')}
         icon={<PasswordIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Password'
       />
 
       <FilterableCard
         id='QR generator'
-        title='QR generator'
-        category='Others'
+        title={t('othersCardTitle.QRGenerator')}
+        category={t('categoryName.Others')}
         icon={<QrCodeIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/QrCode'
       />
 
       <FilterableCard
         id='UUID'
-        title='UUID'
-        category='Others'
+        title={t('othersCardTitle.UUID')}
+        category={t('categoryName.Others')}
         icon={<UUIDIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/UUID'
       />
 
       <FilterableCard
         id='Weight'
-        title='Weight '
-        category='Others'
+        title={t('othersCardTitle.Weight')}
+        category={t('categoryName.Others')}
         icon={<WeightIcon size={52} color='#1ABC9C' />}
         route='/(pages)/(others)/Weight'
       />

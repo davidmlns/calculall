@@ -9,6 +9,7 @@ import {
   VerifyIcon,
 } from '../../../components/Icons';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const isPrime = (n: number): boolean => {
   if (n < 2) return false;
@@ -27,18 +28,18 @@ const getNextPrime = (n: number): number => {
 };
 
 export default function PrimeNumber() {
+  const { t } = useTranslation();
   const [result, setResult] = useState('');
   const [nextPrime, setNextPrime] = useState('');
   const [valueTextInputValues, setValueTextInputValues] = useState('');
   const [resultIcon, setResultIcon] = useState<JSX.Element | null>(null);
-
   const scaleValue = new Animated.Value(1);
 
   const handleTextInputChange = (text: string) => {
     const number = parseFloat(text);
 
     if (isNaN(number)) {
-      setResult('Invalid input');
+      setResult(t('primeNumberCard.invalidInput'));
       setNextPrime('');
       setResultIcon(null);
       return;
@@ -46,10 +47,10 @@ export default function PrimeNumber() {
 
     if (isPrime(number)) {
       setResultIcon(<CorrectIcon size={32} color='#FED900' />);
-      setResult(`Is prime`);
+      setResult(t('primeNumberCard.isPrime'));
     } else {
       setResultIcon(<IncorrectIcon size={32} color='#FF0000' />);
-      setResult(`Is not prime`);
+      setResult(t('primeNumberCard.notPrime'));
     }
     setNextPrime(getNextPrime(number).toString());
   };
@@ -78,7 +79,7 @@ export default function PrimeNumber() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Prime numbers'
+        title={t('primeNumberCard.title')}
         icon={<PrimeNumberIcon size={54} color='#6C3483' />}
       />
 
@@ -87,7 +88,7 @@ export default function PrimeNumber() {
           <View className='rounded-lg p-1 px-2'>{resultIcon}</View>
           <TextInput
             className='text-right text-xl text-slate-300'
-            placeholder='Is prime number?'
+            placeholder={t('primeNumberCard.isPrimePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={result}
@@ -101,7 +102,7 @@ export default function PrimeNumber() {
           </View>
           <TextInput
             className='text-right text-xl text-slate-300'
-            placeholder='Next'
+            placeholder={t('primeNumberCard.nextPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={nextPrime}
@@ -111,12 +112,14 @@ export default function PrimeNumber() {
       </View>
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Value</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('primeNumberCard.value')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter value'
+            placeholder={t('primeNumberCard.enterValue')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTextInputValues}
@@ -134,7 +137,7 @@ export default function PrimeNumber() {
               onPressOut={handlePressOut}
               onPress={() => handleTextInputChange(valueTextInputValues)}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Verify Button'>
+              accessibilityLabel={t('primeNumberCard.verifyButton')}>
               <VerifyIcon size={44} color='white' />
             </Pressable>
           </Animated.View>

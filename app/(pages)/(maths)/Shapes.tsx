@@ -16,142 +16,142 @@ import HeaderDescriptionPage from '@/components/HeaderDescriptionPage';
 import CalculateComponent, { Operation } from '@/components/CalculateComponent';
 import ResultComponent from '@/components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const operations: Operation[] = [
-  {
-    id: 'triangle',
-    title: 'Triangle',
-    icon: <TriangleIcon size={32} color='#6C3483' />,
-    description: 'Area & Perimeter',
-  },
-  {
-    id: 'square',
-    title: 'Square',
-    icon: <SquareIcon size={32} color='#6C3483' />,
-    description: 'Area & Perimeter',
-  },
-  {
-    id: 'rectangle',
-    title: 'Rectangle',
-    icon: <RectangleIcon size={32} color='#6C3483' />,
-    description: 'Area & Perimeter',
-  },
-  {
-    id: 'trapezoid',
-    title: 'Trapezoid',
-    icon: <ShapeIcon size={32} color='#6C3483' />,
-    description: 'Area & Perimeter',
-  },
-  {
-    id: 'rhombus',
-    title: 'Rhombus',
-    icon: <RhombusIcon size={32} color='#6C3483' />,
-    description: 'Area & Perimeter',
-  },
-  {
-    id: 'pentagon',
-    title: 'Pentagon',
-    icon: <PentagonIcon size={32} color='#6C3483' />,
-    description: 'Area & Perimeter',
-  },
-  {
-    id: 'hexagon',
-    title: 'Hexagon',
-    icon: <HexagonIcon size={32} color='#6C3483' />,
-    description: 'Area & Perimeter',
-  },
-  {
-    id: 'circle',
-    title: 'Circle',
-    icon: <CircleIcon size={32} color='#6C3483' />,
-    description: 'Area, Diameter & Circumference',
-  },
-  {
-    id: 'arc',
-    title: 'Circular Arc',
-    icon: <ArcIcon size={32} color='#6C3483' />,
-    description: 'Length & Area',
-  },
-];
-
-const calculateShape = (
-  values: number[],
-  operation: string,
-): { area: number; perimeter: number } => {
-  switch (operation) {
-    case 'triangle':
-      // Heron's formula for area
-      const [a, b, c] = values;
-      const s = (a + b + c) / 2;
-      return {
-        area: Math.sqrt(s * (s - a) * (s - b) * (s - c)),
-        perimeter: a + b + c,
-      };
-    case 'square':
-      const side = values[0];
-      return {
-        area: side * side,
-        perimeter: 4 * side,
-      };
-    case 'rectangle':
-      const [length, width] = values;
-      return {
-        area: length * width,
-        perimeter: 2 * (length + width),
-      };
-    case 'trapezoid':
-      const [a1, b1, h] = values;
-      return {
-        area: ((a1 + b1) / 2) * h,
-        perimeter: a1 + b1 + 2 * Math.sqrt(Math.pow((b1 - a1) / 2, 2) + Math.pow(h, 2)),
-      };
-    case 'rhombus':
-      const [sideR, height] = values;
-      return {
-        area: sideR * height,
-        perimeter: 4 * sideR,
-      };
-    case 'pentagon':
-      const sideP = values[0];
-      return {
-        area: (5 / 4) * Math.pow(sideP, 2) * (1 / Math.tan(Math.PI / 5)),
-        perimeter: 5 * sideP,
-      };
-    case 'hexagon':
-      const sideH = values[0];
-      return {
-        area: ((3 * Math.sqrt(3)) / 2) * Math.pow(sideH, 2),
-        perimeter: 6 * sideH,
-      };
-    case 'circle':
-      const radius = values[0];
-      return {
-        area: Math.PI * Math.pow(radius, 2),
-        perimeter: 2 * Math.PI * radius,
-      };
-    case 'arc':
-      const [radiusA, angle] = values;
-      return {
-        area: (Math.PI * Math.pow(radiusA, 2) * angle) / 360,
-        perimeter: (2 * Math.PI * radiusA * angle) / 360,
-      };
-    default:
-      throw new Error('Invalid operation');
-  }
-};
-
-export default function Shapes(): JSX.Element {
+const Shapes = (): JSX.Element => {
+  const { t } = useTranslation();
   const [values, setValues] = useState<string[]>(['']);
   const [areaResult, setAreaResult] = useState('');
   const [perimeterResult, setPerimeterResult] = useState('');
-  const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
+  const [selectedOperation, setSelectedOperation] = useState<string>('triangle');
   const [error, setError] = useState<string | null>(null);
 
   const scaleValue = new Animated.Value(1);
 
+  const operations: Operation[] = [
+    {
+      id: 'triangle',
+      title: t('shapesCard.operations.triangle.title'),
+      icon: <TriangleIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.triangle.description'),
+    },
+    {
+      id: 'square',
+      title: t('shapesCard.operations.square.title'),
+      icon: <SquareIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.square.description'),
+    },
+    {
+      id: 'rectangle',
+      title: t('shapesCard.operations.rectangle.title'),
+      icon: <RectangleIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.rectangle.description'),
+    },
+    {
+      id: 'trapezoid',
+      title: t('shapesCard.operations.trapezoid.title'),
+      icon: <ShapeIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.trapezoid.description'),
+    },
+    {
+      id: 'rhombus',
+      title: t('shapesCard.operations.rhombus.title'),
+      icon: <RhombusIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.rhombus.description'),
+    },
+    {
+      id: 'pentagon',
+      title: t('shapesCard.operations.pentagon.title'),
+      icon: <PentagonIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.pentagon.description'),
+    },
+    {
+      id: 'hexagon',
+      title: t('shapesCard.operations.hexagon.title'),
+      icon: <HexagonIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.hexagon.description'),
+    },
+    {
+      id: 'circle',
+      title: t('shapesCard.operations.circle.title'),
+      icon: <CircleIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.circle.description'),
+    },
+    {
+      id: 'arc',
+      title: t('shapesCard.operations.arc.title'),
+      icon: <ArcIcon size={32} color='#6C3483' />,
+      description: t('shapesCard.operations.arc.description'),
+    },
+  ];
+
+  const calculateShape = (
+    values: number[],
+    operation: string,
+  ): { area: number; perimeter: number } => {
+    switch (operation) {
+      case 'triangle':
+        const [a, b, c] = values;
+        const s = (a + b + c) / 2;
+        return {
+          area: Math.sqrt(s * (s - a) * (s - b) * (s - c)),
+          perimeter: a + b + c,
+        };
+      case 'square':
+        const side = values[0];
+        return {
+          area: side * side,
+          perimeter: 4 * side,
+        };
+      case 'rectangle':
+        const [length, width] = values;
+        return {
+          area: length * width,
+          perimeter: 2 * (length + width),
+        };
+      case 'trapezoid':
+        const [a1, b1, h] = values;
+        return {
+          area: ((a1 + b1) / 2) * h,
+          perimeter: a1 + b1 + 2 * Math.sqrt(Math.pow((b1 - a1) / 2, 2) + Math.pow(h, 2)),
+        };
+      case 'rhombus':
+        const [sideR, height] = values;
+        return {
+          area: sideR * height,
+          perimeter: 4 * sideR,
+        };
+      case 'pentagon':
+        const sideP = values[0];
+        return {
+          area: (5 / 4) * Math.pow(sideP, 2) * (1 / Math.tan(Math.PI / 5)),
+          perimeter: 5 * sideP,
+        };
+      case 'hexagon':
+        const sideH = values[0];
+        return {
+          area: ((3 * Math.sqrt(3)) / 2) * Math.pow(sideH, 2),
+          perimeter: 6 * sideH,
+        };
+      case 'circle':
+        const radius = values[0];
+        return {
+          area: Math.PI * Math.pow(radius, 2),
+          perimeter: 2 * Math.PI * radius,
+        };
+      case 'arc':
+        const [radiusA, angle] = values;
+        return {
+          area: (Math.PI * Math.pow(radiusA, 2) * angle) / 360,
+          perimeter: (2 * Math.PI * radiusA * angle) / 360,
+        };
+      default:
+        throw new Error(t('shapesCard.error.invalidOperation'));
+    }
+  };
+
   const handleOperationFromChild = (text: string): void => {
     setSelectedOperation(text);
-    // Reset values when operation changes
     setValues(['']);
   };
 
@@ -159,11 +159,20 @@ export default function Shapes(): JSX.Element {
     try {
       const numericValues = values.map(v => parseFloat(v));
       if (numericValues.some(isNaN)) {
-        throw new Error('Please enter valid values');
+        throw new Error(t('shapesCard.error.invalidInput'));
       }
       const { area, perimeter } = calculateShape(numericValues, selectedOperation);
-      setAreaResult(`Area: ${area.toFixed(2)}`);
-      setPerimeterResult(`Perimeter: ${perimeter.toFixed(2)}`);
+
+      setAreaResult(t('shapesCard.result.area', { value: area.toFixed(2) }));
+
+      if (selectedOperation === 'circle') {
+        setPerimeterResult(t('shapesCard.result.circumference', { value: perimeter.toFixed(2) }));
+      } else if (selectedOperation === 'arc') {
+        setPerimeterResult(t('shapesCard.result.length', { value: perimeter.toFixed(2) }));
+      } else {
+        setPerimeterResult(t('shapesCard.result.perimeter', { value: perimeter.toFixed(2) }));
+      }
+
       setError(null);
     } catch (error) {
       setError(error.message);
@@ -187,37 +196,21 @@ export default function Shapes(): JSX.Element {
   };
 
   const getInputFields = () => {
-    switch (selectedOperation) {
-      case 'triangle':
-        return ['Side A (cm)', 'Side B (cm)', 'Side C (cm)'];
-      case 'rectangle':
-        return ['Length (cm)', 'Width (cm)'];
-      case 'trapezoid':
-        return ['Base A (cm)', 'Base B (cm)', 'Height (cm)'];
-      case 'rhombus':
-        return ['Side (cm)', 'Height (cm)'];
-      case 'circle':
-        return ['Radius (cm)'];
-      case 'arc':
-        return ['Radius (cm)', 'Angle (°)'];
-      case 'square':
-      case 'pentagon':
-      case 'hexagon':
-        return ['Side (cm)'];
-      default:
-        return ['Side (cm)'];
-    }
+    return t(`shapesCard.inputs.${selectedOperation}`, { returnObjects: true });
   };
 
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Shapes' icon={<TriangleIcon size={52} color='#6C3483' />} />
+      <HeaderDescriptionPage
+        title={t('shapesCard.title')}
+        icon={<TriangleIcon size={52} color='#6C3483' />}
+      />
 
       <View className='flex mb-4'>
         <TextInput
           placeholderTextColor='#c7c7c7'
-          placeholder='The result will appear here'
+          placeholder={t('shapesCard.defaultResult')}
           className='bg-gray-800 rounded-lg rounded-b-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
           editable={false}
           selectTextOnFocus={false}
@@ -238,12 +231,12 @@ export default function Shapes(): JSX.Element {
       />
 
       <View className='flex mt-6 mx-auto'>
-        {getInputFields().map((label, index) => (
+        {getInputFields().map((label: string, index: number) => (
           <View key={index} className='mt-2'>
             <Text className='text-gray-300 text-xl font-semibold mb-1'>{label}</Text>
             <TextInput
               className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-              placeholder={`Enter ${label}`}
+              placeholder={`${t('shapesCard.enter')} ${label}`}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'
               value={values[index] || ''}
@@ -266,7 +259,7 @@ export default function Shapes(): JSX.Element {
               onPressOut={handlePressOut}
               onPress={handleCalculate}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('shapesCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>
@@ -274,4 +267,6 @@ export default function Shapes(): JSX.Element {
       )}
     </ScrollView>
   );
-}
+};
+
+export default Shapes;

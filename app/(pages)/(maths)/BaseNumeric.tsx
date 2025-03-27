@@ -1,5 +1,5 @@
 import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import {
@@ -11,6 +11,7 @@ import {
 } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import CalculateComponent from '../../../components/CalculateComponent';
+import { useTranslation } from 'react-i18next';
 
 type Operation = {
   id: string;
@@ -19,43 +20,50 @@ type Operation = {
   description: string;
 };
 
-const operations: Operation[] = [
-  {
-    id: 'base2',
-    title: 'Base 2',
-    icon: <Base2Icon size={32} color='#6C3483' />,
-    description: '45 ➙ 101101',
-  },
-  {
-    id: 'base8',
-    title: 'Base 8',
-    icon: <Base8Icon size={32} color='#6C3483' />,
-    description: '29 ➙ 35',
-  },
-  {
-    id: 'base16',
-    title: 'Base 16',
-    icon: <Base16Icon size={32} color='#6C3483' />,
-    description: '87 ➙ 57',
-  },
-];
-
 const calculateResult = (value: string, base: number): string => {
   const number = parseInt(value.trim());
   if (isNaN(number)) return 'Invalid input';
-  const converted = number.toString(base);
+  const converted = number.toString(base).toUpperCase();
   return `${value} ➙ ${converted}`;
 };
 
 export default function BaseNumeric() {
+  const { t } = useTranslation();
   const [valueTextInputValues, setValueTextInputValues] = useState('');
-  const [result, setResult] = useState('The result will appear here');
-  const [selectedOperation, setSelectedOperation] = useState(operations[0].id);
+  const [result, setResult] = useState('');
+  const [selectedOperation, setSelectedOperation] = useState('');
   const scaleValue = new Animated.Value(1);
+
+  const operations: Operation[] = [
+    {
+      id: 'base2',
+      title: t('baseNumericCard.titleOp1'),
+      icon: <Base2Icon size={32} color='#6C3483' />,
+      description: '45 ➙ 101101',
+    },
+    {
+      id: 'base8',
+      title: t('baseNumericCard.titleOp2'),
+      icon: <Base8Icon size={32} color='#6C3483' />,
+      description: '29 ➙ 35',
+    },
+    {
+      id: 'base16',
+      title: t('baseNumericCard.titleOp3'),
+      icon: <Base16Icon size={32} color='#6C3483' />,
+      description: '87 ➙ 57',
+    },
+  ];
+
+  useEffect(() => {
+    if (operations.length > 0 && !selectedOperation) {
+      setSelectedOperation(operations[0].id);
+    }
+  }, [operations]);
 
   const handleCalculate = (operationId: string) => {
     if (!valueTextInputValues) {
-      setResult('Please enter a value');
+      setResult(t('baseNumericCard.error'));
       return;
     }
 
@@ -70,7 +78,7 @@ export default function BaseNumeric() {
         setResult(calculateResult(valueTextInputValues, 16));
         break;
       default:
-        setResult('Invalid operation');
+        setResult(t('baseNumericCard.invalid'));
     }
   };
 
@@ -92,7 +100,7 @@ export default function BaseNumeric() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Base Numeric'
+        title={t('baseNumericCard.title')}
         icon={<BaseNumericIcon size={58} color='#6C3483' />}
       />
       <ResultComponent result={result} />
@@ -104,11 +112,13 @@ export default function BaseNumeric() {
       />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('baseNumericCard.values')}
+        </Text>
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 mx-auto rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter value (#)'
+            placeholder={t('baseNumericCard.placeholderValue')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTextInputValues}

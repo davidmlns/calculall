@@ -1,3 +1,332 @@
 {
-  "maths": "Maths"
+  "categoryName": {
+    "maths": "Maths",
+    "physical": "Physical",
+    "Health": "Health",
+    "Finances": "Finances ",
+    "Transport": "Transport",
+    "Technology": "Technology ",
+    "Geography": "Geography",
+    "Kitchen": "Kitchen",
+    "Others": "Others"
+  },
+  "searchInput": {
+    "placeholder": "Search..."
+  },
+  "optionModal": {
+    "selectOperation": "Select an operation"
+  },
+  "resultComponent": {
+    "placeholder": "The result will appear here"
+  },
+  "mathematicalCardTitle": {
+    "Angles": "Angles",
+    "Average": "Average",
+    "BaseNumeric": "Numeric Base",
+    "Equations": "Equations",
+    "Fractions": "Fractions",
+    "Length": "Length",
+    "MCM/MCD": "LCM/GCD",
+    "Num Gen": "Num Gener.",
+    "Prime Nro": "Prime Number",
+    "Probability": "Probability",
+    "Roman Nro": "Roman Nro",
+    "Shapes": "Shapes",
+    "Statistics": "Statistics",
+    "Trigonometry": "Trigonometry"
+  },
+  "physicalCardTitle": {
+    "Energy": "Energy",
+    "Gravity": "Gravity",
+    "Humidity": "Humidity",
+    "Illuminance": "Illuminance",
+    "Magnetism": "Magnetism",
+    "Ohm": "Ohm's Law",
+    "Pressure": "Pressure",
+    "Radiation": "Radiation",
+    "Solar Energy": "Solar Energy",
+    "Sound": "Sound",
+    "Temperature": "Temperature",
+    "Velocity": "Velocity",
+    "Wavelength": "Wavelength",
+    "WindSpeed": "Wind Speed"
+  },
+  "healthCardTitle": {
+    "BMI": "BMI",
+    "Calories": "Calories",
+    "Hydration": "Hydration",
+    "Medication": "Medication"
+  },
+  "financesCardTitle": {
+    "Budgeting": "Budgeting",
+    "Discounts": "Discounts",
+    "Inflation": "Inflation",
+    "Interests": "Interest",
+    "Loan": "Loan",
+    "Percentage": "Percentage",
+    "Taxes": "Taxes",
+    "Tips": "Tips"
+  },
+  "transportCardTitle": {
+    "Autonomy": "Autonomy",
+    "CO2": "CO₂ Emissions",
+    "Fuel": "Fuel",
+    "Mileage": "Mileage"
+  },
+  "technologyCardTitle": {
+    "Battery": "Battery",
+    "DataTransfer": "Data Transfer",
+    "DigitalData": "Digital Data",
+    "ElectricCurrent": "Elec. Current",
+    "ElectricConsumption": "Elec. Usage",
+    "ElectricResistance": "Elec. Resistance"
+  },
+  "geographyCardTitle": {
+    "LatitudeLongitude": "Lat. & coor.",
+    "Demography": "Demography"
+  },
+  "kitchenCardTitle": {
+    "Cooking": "Cooking",
+    "CookingTime": "Cooking Time",
+    "TimerSettings": "Timer",
+    "Volume": "Volume"
+  },
+  "othersCardTitle": {
+    "Age": "Age",
+    "Currency": "Currency",
+    "Dates": "Dates",
+    "Density": "Density",
+    "Password": "Password",
+    "QRGenerator": "QR Generator",
+    "UUID": "UUID",
+    "Weight": "Weight"
+  },
+  "angleCard": {
+    "title": "Angles",
+    "values": "Values",
+    "titleOp1": "Angles to radians",
+    "titleOp2": "Radians to angles",
+    "titleOp3": "Complementary angles",
+    "titleOp4": "Supplementary angles",
+    "placeholderValue": "Enter an angle (°)",
+    "placeholderValueRad": "Enter a radian (rad)",
+    "error": "Enter a valid number"
+  },
+  "averageCard": {
+    "title": "Average",
+    "values": "Values",
+    "placeholderValue": "How many values? Limit(30)",
+    "placeholderValueNumber": "#",
+    "number": "No."
+  },
+  "baseNumeric": {
+    "title": "Numeric Base",
+    "values": "Values",
+    "titleOp1": "Base 2",
+    "titleOp2": "Base 8",
+    "titleOp3": "Base 16",
+    "placeholderValue": "Enter a number"
+  },
+  "equationsCard": {
+    "title": "Equations",
+    "titleOp1": "Linear equations (+)",
+    "titleOp2": "Linear equations (-)",
+    "titleOp3": "Quadratic equations (+) (-)",
+    "titleOp4": "Quadratic equations (-) (+)",
+    "values": "Values",
+    "valueA": "A",
+    "valueB": "B",
+    "valueC": "C",
+    "valueD": "D",
+    "placeholderValue": "Enter value",
+    "errorA": "Please enter value A",
+    "invalidA": "Invalid value for A",
+    "invalidOperation": "Invalid operation"
+  },
+  "fractionsCard": {
+    "title": "Fractions",
+    "titleOp1": "Fraction Addition",
+    "titleOp2": "Fraction Subtraction",
+    "titleOp3": "Fraction Multiplication",
+    "titleOp4": "Fraction Simplification",
+    "titleOp5": "Decimal to Fraction",
+    "values": "Values",
+    "valueA": "A",
+    "valueB": "B",
+    "valueC": "C",
+    "valueD": "D",
+    "defaultResult": "Result will appear here",
+    "errorA": "Please enter value A",
+    "invalidA": "Invalid value for A",
+    "invalidOperation": "Invalid operation",
+    "calculationError": "Calculation error",
+    "calculateButton": "Calculate",
+    "resultFormat": "Result: {{numerator}}/{{denominator}}"
+  },
+  "lengthCard": {
+    "title": "Length",
+    "meter": "Meter",
+    "kilometer": "Kilometer",
+    "centimeter": "Centimeter",
+    "millimeter": "Millimeter",
+    "decimeter": "Decimeter",
+    "hectometer": "Hectometer",
+    "inch": "Inch",
+    "foot": "Foot",
+    "yard": "Yard",
+    "mile": "Mile"
+  },
+  "mcmmcdCard": {
+    "title": "LCM/GCD",
+    "mcm": "Least Common Multiple",
+    "mcd": "Greatest Common Divisor",
+    "mcmExample": "10 x 15 ➙ 30",
+    "mcdExample": "10 x 15 ➙ 5",
+    "defaultResult": "The result will appear here",
+    "enterBothValues": "Please enter both values",
+    "invalidInput": "Invalid input values",
+    "positiveValues": "Values must be positive",
+    "mcmResult": "LCM: {{result}}",
+    "mcdResult": "GCD: {{result}}",
+    "valueA": "A",
+    "valueB": "B"
+  },
+  "numberGeneratorCard": {
+    "title": "Number Generator",
+    "defaultResult": "The result will appear here",
+    "invalidInput": "Invalid input values",
+    "minMaxError": "Min must be ≤ max",
+    "result": "Generated number: {{randomInt}}"
+  },
+  "primeNumberCard": {
+    "title": "Prime Numbers",
+    "isPrime": "Is prime",
+    "notPrime": "Is not prime",
+    "invalidInput": "Invalid input",
+    "isPrimePlaceholder": "Is prime?",
+    "nextPlaceholder": "Next",
+    "value": "Value",
+    "enterValue": "Enter value"
+  },
+  "probabilityCard": {
+    "title": "Probability",
+    "defaultResult": "The result will appear here",
+    "enterBothValues": "Please enter both values",
+    "invalidInput": "Invalid input values",
+    "positiveValues": "Values must be positive",
+    "favorableError": "Favorable cases must be ≤ total",
+    "result": "The probability is {{probability}}%",
+    "favorableCases": "Favorable cases",
+    "totalCases": "Total cases"
+  },
+  "romanNumberCard": {
+    "title": "Roman Numbers",
+    "defaultResult": "The result will appear here",
+    "result": "{{roman}}",
+    "enterNumber": "Please enter a number",
+    "invalidInput": "Invalid input",
+    "enterNumberPlaceholder": "Enter a number",
+    "convertButton": "Convert"
+  },
+  "shapesCard": {
+    "title": "Shapes",
+    "defaultResult": "The result will appear here",
+    "result": {
+      "area": "Area: {{value}}",
+      "perimeter": "Perimeter: {{value}}",
+      "circumference": "Circumference: {{value}}",
+      "length": "Length: {{value}}"
+    },
+    "error": {
+      "invalidInput": "Please enter valid values",
+      "invalidOperation": "Invalid operation"
+    },
+    "operations": {
+      "triangle": { "title": "Triangle", "description": "Area & Perimeter" },
+      "square": { "title": "Square", "description": "Area & Perimeter" },
+      "rectangle": { "title": "Rectangle", "description": "Area & Perimeter" },
+      "trapezoid": { "title": "Trapezoid", "description": "Area & Perimeter" },
+      "rhombus": { "title": "Rhombus", "description": "Area & Perimeter" },
+      "pentagon": { "title": "Pentagon", "description": "Area & Perimeter" },
+      "hexagon": { "title": "Hexagon", "description": "Area & Perimeter" },
+      "circle": { "title": "Circle", "description": "Area, Diameter & Circumference" },
+      "arc": { "title": "Circular Arc", "description": "Length & Area" }
+    },
+    "inputs": {
+      "triangle": ["Side A (cm)", "Side B (cm)", "Side C (cm)"],
+      "square": ["Side (cm)"],
+      "rectangle": ["Length (cm)", "Width (cm)"],
+      "trapezoid": ["Base A (cm)", "Base B (cm)", "Height (cm)"],
+      "rhombus": ["Side (cm)", "Height (cm)"],
+      "pentagon": ["Side (cm)"],
+      "hexagon": ["Side (cm)"],
+      "circle": ["Radius (cm)"],
+      "arc": ["Radius (cm)", "Angle (°)"]
+    },
+    "enter": "Enter"
+  },
+  "statisticsCard": {
+    "title": "Statistics",
+    "defaultResult": "The result will appear here",
+    "values": "Values",
+    "howManyNumbers": "How many numbers? Limit(50)",
+    "numberPlaceholder": "Number {{number}}",
+    "calculateButton": "Calculate Button",
+    "errors": {
+      "enterNumberOfValues": "Please enter the number of values",
+      "invalidInput": "Invalid input values",
+      "invalidOperation": "Invalid operation"
+    },
+    "result": {
+      "mean": "Mean: {{value}}",
+      "median": "Median: {{value}}",
+      "mode": "Mode: {{value}}"
+    },
+    "operations": {
+      "mean": {
+        "title": "Mean",
+        "description": "[10, 20, 30, 40, 50] ➙ 30"
+      },
+      "median": {
+        "title": "Median",
+        "description": "[5, 3, 1, 4, 2] ➙ 3rd position"
+      },
+      "mode": {
+        "title": "Mode",
+        "description": "[2, 4, 4, 6, 8] ➙ 4"
+      }
+    }
+  },
+  "trigonometryCard": {
+    "title": "Trigonometry",
+    "defaultResult": "The result will appear here",
+    "values": "Values",
+    "enterAngle": "Enter value (°)",
+    "calculateButton": "Calculate Button",
+    "errors": {
+      "enterAngle": "Please enter an angle",
+      "invalidInput": "Invalid input value",
+      "indefiniteTangent": "Indefinite tangent for this angle",
+      "invalidOperation": "Invalid operation"
+    },
+    "result": {
+      "sine": "sin({{angle}}°) = {{value}}",
+      "cosine": "cos({{angle}}°) = {{value}}",
+      "tangent": "tan({{angle}}°) = {{value}}"
+    },
+    "operations": {
+      "sine": {
+        "title": "Sine",
+        "description": "10° ➙ 0.17"
+      },
+      "cosine": {
+        "title": "Cosine",
+        "description": "20° ➙ 0.94"
+      },
+      "tangent": {
+        "title": "Tangent",
+        "description": "180° ➙ 0"
+      }
+    }
+  }
 }

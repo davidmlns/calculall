@@ -10,33 +10,34 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { useState } from 'react';
 import ResultComponent from '../../../components/ResultComponent';
 import CalculateComponent, { Operation } from '../../../components/CalculateComponent';
+import { useTranslation } from 'react-i18next';
 
 type OperationType = 'mcm' | 'mcd';
-
-const operations: Operation[] = [
-  {
-    id: 'mcm',
-    title: 'Minimum Common Multiple',
-    icon: <MinimumCommonMultipleIcon size={34} color='#6C3483' />,
-    description: '10 x 15 ➙ 30',
-  },
-  {
-    id: 'mcd',
-    title: 'Maximum Common Divisor',
-    icon: <MaximumCommonDivisorIcon size={34} color='#6C3483' />,
-    description: '10 x 15 ➙ 5',
-  },
-];
 
 const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
 
 export default function MCMMCD() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('mcmmcdCard.defaultResult'));
   const [selectedOperation, setSelectedOperation] = useState<OperationType>('mcm');
   const [valueATextInputValues, setValueATextInputValues] = useState('');
   const [valueBTextInputValues, setValueBTextInputValues] = useState('');
-
   const scaleValue = new Animated.Value(1);
+
+  const operations: Operation[] = [
+    {
+      id: 'mcm',
+      title: t('mcmmcdCard.mcm'),
+      icon: <MinimumCommonMultipleIcon size={34} color='#6C3483' />,
+      description: t('mcmmcdCard.mcmExample'),
+    },
+    {
+      id: 'mcd',
+      title: t('mcmmcdCard.mcd'),
+      icon: <MaximumCommonDivisorIcon size={34} color='#6C3483' />,
+      description: t('mcmmcdCard.mcdExample'),
+    },
+  ];
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -57,33 +58,36 @@ export default function MCMMCD() {
     const b = parseFloat(valueBTextInputValues);
 
     if (!valueATextInputValues || !valueBTextInputValues) {
-      setResult('Please enter both values');
+      setResult(t('mcmmcdCard.enterBothValues'));
       return;
     }
 
     if (isNaN(a) || isNaN(b)) {
-      setResult('Invalid input values');
+      setResult(t('mcmmcdCard.invalidInput'));
       return;
     }
 
     if (a <= 0 || b <= 0) {
-      setResult('Values must be positive');
+      setResult(t('mcmmcdCard.positiveValues'));
       return;
     }
 
     if (selectedOperation === 'mcm') {
       const result = (a * b) / gcd(a, b);
-      setResult(result.toString());
+      setResult(t('mcmmcdCard.mcmResult', { result }));
     } else {
       const result = gcd(a, b);
-      setResult(result.toString());
+      setResult(t('mcmmcdCard.mcdResult', { result }));
     }
   };
 
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='MCM/MCD' icon={<MCMMCDIcon size={54} color='#6C3483' />} />
+      <HeaderDescriptionPage
+        title={t('mcmmcdCard.title')}
+        icon={<MCMMCDIcon size={54} color='#6C3483' />}
+      />
 
       <ResultComponent result={result} />
 
@@ -98,7 +102,7 @@ export default function MCMMCD() {
           <View className='mt-2'>
             <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>A</Text>
+                <Text className='text-black font-semibold text-xl'>{t('mcmmcdCard.valueA')}</Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300 flex-1'
@@ -115,7 +119,7 @@ export default function MCMMCD() {
           <View className='mt-2'>
             <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>B</Text>
+                <Text className='text-black font-semibold text-xl'>{t('mcmmcdCard.valueB')}</Text>
               </View>
               <TextInput
                 className='text-right text-2xl text-slate-300'
@@ -139,7 +143,7 @@ export default function MCMMCD() {
               onPressOut={handlePressOut}
               onPress={() => handleCalculate(selectedOperation)}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('mcmmcdCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

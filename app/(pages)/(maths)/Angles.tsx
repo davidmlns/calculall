@@ -11,38 +11,12 @@ import HeaderDescriptionPage from '@/components/HeaderDescriptionPage';
 import CalculateComponent, { Operation } from '@/components/CalculateComponent';
 import ResultComponent from '@/components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const operations: Operation[] = [
-  {
-    id: 'deg-to-rad',
-    title: 'Degrees to Radians',
-    icon: <AngleIcon size={32} color='#6C3483' />,
-    description: '10° ➙ 0.174533rad',
-  },
-  {
-    id: 'rad-to-deg',
-    title: 'Radians to Degrees',
-    icon: <RadianIcon size={32} color='#6C3483' />,
-    description: '2rad ➙ 360°',
-  },
-  {
-    id: 'compl-deg',
-    title: 'Complementary angles',
-    icon: <ComplementaryIcon size={32} color='#6C3483' />,
-    description: '10° + ∠ = 90°',
-  },
-  {
-    id: 'suppl-deg',
-    title: 'Supplementary angles',
-    icon: <SupplementaryIcon size={32} color='#6C3483' />,
-    description: '140° + ∠ = 180°',
-  },
-];
-
-const calculateResult = (value: string, operation: string): number => {
+const calculateResult = (value: string, operation: string, t: any): number => {
   const numValue = parseFloat(value.trim());
   if (isNaN(numValue)) {
-    throw new Error('Invalid input');
+    throw new Error(t('angleCard.error'));
   }
 
   switch (operation) {
@@ -91,9 +65,37 @@ const getMaxLength = (operation: string): number => {
 export default function Angles(): JSX.Element {
   const [valueTextInputValues, setValueTextInputValues] = useState('');
   const [result, setResult] = useState('');
-  const [selectedOperation, setSelectedOperation] = useState<string>(operations[0]?.id || '');
+  const [selectedOperation, setSelectedOperation] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const scaleValue = new Animated.Value(1);
+  const { t } = useTranslation();
+
+  const operations: Operation[] = [
+    {
+      id: 'deg-to-rad',
+      title: t('angleCard.titleOp1'),
+      icon: <AngleIcon size={32} color='#6C3483' />,
+      description: '10° ➙ 0.174533rad',
+    },
+    {
+      id: 'rad-to-deg',
+      title: t('angleCard.titleOp2'),
+      icon: <RadianIcon size={32} color='#6C3483' />,
+      description: '2rad ➙ 360°',
+    },
+    {
+      id: 'compl-deg',
+      title: t('angleCard.titleOp3'),
+      icon: <ComplementaryIcon size={32} color='#6C3483' />,
+      description: '10° + ∠ = 90°',
+    },
+    {
+      id: 'suppl-deg',
+      title: t('angleCard.titleOp4'),
+      icon: <SupplementaryIcon size={32} color='#6C3483' />,
+      description: '140° + ∠ = 180°',
+    },
+  ];
 
   const handleOperationFromChild = (text: string): void => {
     setSelectedOperation(text);
@@ -137,9 +139,9 @@ export default function Angles(): JSX.Element {
   const handleCalculate = (): void => {
     try {
       if (!valueTextInputValues) {
-        throw new Error('Please enter a value');
+        throw new Error(t('angleCard.placeholderValue'));
       }
-      const resultValue = calculateResult(valueTextInputValues.toString(), selectedOperation);
+      const resultValue = calculateResult(valueTextInputValues.toString(), selectedOperation, t);
       const resultText = getResultText(
         valueTextInputValues.toString(),
         selectedOperation,
@@ -155,7 +157,10 @@ export default function Angles(): JSX.Element {
   return (
     <ScrollView className='bg-background-app w-full h-full' accessibilityLabel='Angles Screen'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Angles' icon={<AngleIcon size={58} color='#6C3483' />} />
+      <HeaderDescriptionPage
+        title={t('angleCard.title')}
+        icon={<AngleIcon size={58} color='#6C3483' />}
+      />
 
       <ResultComponent result={result} error={error} />
 
@@ -166,20 +171,37 @@ export default function Angles(): JSX.Element {
       />
 
       <View className='flex mt-6 mx-auto' accessibilityLabel='Values Input'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('angleCard.values')}
+        </Text>
 
-        <View className='mt-2'>
-          <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter value (°)'
-            placeholderTextColor='#cbd5e1'
-            keyboardType='number-pad'
-            value={valueTextInputValues === '' ? undefined : valueTextInputValues.toString()}
-            onChangeText={handleValueChange}
-            accessibilityLabel='Value Input'
-            maxLength={getMaxLength(selectedOperation)}
-          />
-        </View>
+        {selectedOperation === 'rad-to-deg' ? (
+          <View className='mt-2'>
+            <TextInput
+              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
+              placeholder={t('angleCard.placeholderValueRad')}
+              placeholderTextColor='#cbd5e1'
+              keyboardType='number-pad'
+              value={valueTextInputValues === '' ? undefined : valueTextInputValues.toString()}
+              onChangeText={handleValueChange}
+              accessibilityLabel='Value Input'
+              maxLength={getMaxLength(selectedOperation)}
+            />
+          </View>
+        ) : (
+          <View className='mt-2'>
+            <TextInput
+              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
+              placeholder={t('angleCard.placeholderValue')}
+              placeholderTextColor='#cbd5e1'
+              keyboardType='number-pad'
+              value={valueTextInputValues === '' ? undefined : valueTextInputValues.toString()}
+              onChangeText={handleValueChange}
+              accessibilityLabel='Value Input'
+              maxLength={getMaxLength(selectedOperation)}
+            />
+          </View>
+        )}
       </View>
 
       {valueTextInputValues && (

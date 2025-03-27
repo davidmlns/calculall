@@ -16,117 +16,120 @@ import {
   WavelengthIcon,
   WindSpeedIcon,
 } from './Icons';
+import { useTranslation } from 'react-i18next';
 
 export default function Physical() {
+  const { t } = useTranslation();
   return (
     <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
-        title='Energy'
-        category='Physical'
+        id='Energy'
+        title={t('physicalCardTitle.Energy')}
+        category={t('categoryName.physical')}
         icon={<EnergyIcon size={52} color='#2E86C1' />}
         route='/(pages)/Energy'
       />
 
       <FilterableCard
         id='Gravity'
-        title='Gravity'
-        category='Physical'
+        title={t('physicalCardTitle.Gravity')}
+        category={t('categoryName.physical')}
         icon={<ForceGravityIcon size={52} color='#2E86C1' />}
         route='/(pages)/Gravity'
       />
 
       <FilterableCard
         id='Humidity'
-        title='Humidity'
-        category='Physical'
+        title={t('physicalCardTitle.Humidity')}
+        category={t('categoryName.physical')}
         icon={<HumidityIcon size={52} color='#2E86C1' />}
         route='/(pages)/Humidity'
       />
 
       <FilterableCard
         id='Illuminance'
-        title='Illuminance'
-        category='Physical'
+        title={t('physicalCardTitle.Illuminance')}
+        category={t('categoryName.physical')}
         icon={<IlluminanceIcon size={52} color='#2E86C1' />}
         route='/(pages)/Illuminance'
       />
 
       <FilterableCard
         id='Magnetism'
-        title='Magnetism'
-        category='Physical'
+        title={t('physicalCardTitle.Magnetism')}
+        category={t('categoryName.physical')}
         icon={<MagnetismIcon size={52} color='#2E86C1' />}
         route='/(pages)/Magnetism'
       />
 
       <FilterableCard
         id='Ohm'
-        title="Ohm's Law"
-        category='Physical'
+        title={t('physicalCardTitle.Ohm')}
+        category={t('categoryName.physical')}
         icon={<OhmIcon size={52} color='#2E86C1' />}
         route='/(pages)/Ohm'
       />
 
       <FilterableCard
         id='Pressure'
-        title='Pressure'
-        category='Physical'
+        title={t('physicalCardTitle.Pressure')}
+        category={t('categoryName.physical')}
         icon={<PressureIcon size={52} color='#2E86C1' />}
         route='/(pages)/Pressure'
       />
 
       <FilterableCard
         id='Radiation'
-        title='Radiation'
-        category='Physical'
+        title={t('physicalCardTitle.Radiation')}
+        category={t('categoryName.physical')}
         icon={<RadiationIcon size={52} color='#2E86C1' />}
         route='/(pages)/Radiation'
       />
 
       <FilterableCard
         id='SolarEnergy'
-        title='Solar energy'
-        category='Physical'
+        title={t('physicalCardTitle.Solar Energy')}
+        category={t('categoryName.physical')}
         icon={<SunIcon size={52} color='#2E86C1' />}
         route='/(pages)/SolarEnergy'
       />
 
       <FilterableCard
         id='Sound'
-        title='Sound'
-        category='Physical'
+        title={t('physicalCardTitle.Sound')}
+        category={t('categoryName.physical')}
         icon={<SoundIcon size={52} color='#2E86C1' />}
         route='/(pages)/Sound'
       />
 
       <FilterableCard
         id='Temperature'
-        title='Temperature'
-        category='Physical'
+        title={t('physicalCardTitle.Temperature')}
+        category={t('categoryName.physical')}
         icon={<TemperatureIcon size={52} color='#2E86C1' />}
         route='/(pages)/Temperature'
       />
 
       <FilterableCard
         id='Velocity'
-        title='Velocity'
-        category='Physical'
+        title={t('physicalCardTitle.Velocity')}
+        category={t('categoryName.physical')}
         icon={<VelocityIcon size={52} color='#2E86C1' />}
         route='/(pages)/Velocity'
       />
 
       <FilterableCard
         id='Wavelength'
-        title='Wavelength'
-        category='Physical'
+        title={t('physicalCardTitle.Wavelength')}
+        category={t('categoryName.physical')}
         icon={<WavelengthIcon size={52} color='#2E86C1' />}
         route='/(pages)/Wavelength'
       />
 
       <FilterableCard
         id='WindSpeed'
-        title='Wind speed'
-        category='Physical'
+        title={t('physicalCardTitle.WindSpeed')}
+        category={t('categoryName.physical')}
         icon={<WindSpeedIcon size={52} color='#2E86C1' />}
         route='/(pages)/WindSpeed'
       />
