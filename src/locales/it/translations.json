@@ -329,5 +329,858 @@
         "description": "180° ➙ 0"
       }
     }
+  },
+  "energyCard": {
+    "title": "Energia",
+    "clearButton": "Pulsante Cancella",
+    "units": {
+      "joule": {
+        "title": "Joule",
+        "description": "1 J"
+      },
+      "kilojoule": {
+        "title": "Kilojoule",
+        "description": "1 KJ = 1000 J"
+      },
+      "calorie": {
+        "title": "Caloria",
+        "description": "1 Cal = 4.184 J"
+      },
+      "kilowattHour": {
+        "title": "Kilowattora",
+        "description": "1 kWh = 3.6 × 10 J"
+      },
+      "btu": {
+        "title": "Unità Termica Britannica",
+        "description": "1 BTU = 1055 J"
+      }
+    }
+  },
+  "gravityCard": {
+    "title": "Gravità",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "mass1Placeholder": "Inserisci massa 1 (kg)",
+    "mass2Placeholder": "Inserisci massa 2 (kg)",
+    "distancePlaceholder": "Inserisci distanza (m)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterAllValues": "Per favore inserisci tutti i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "Fg = {{value}} N"
+  },
+  "humidityCard": {
+    "title": "Umidità",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "temperaturePlaceholder": "Inserisci temperatura (°C)",
+    "dewPointPlaceholder": "Inserisci punto di rugiada (°C)",
+    "humidityPlaceholder": "Inserisci umidità relativa",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterTemperature": "Per favore inserisci la temperatura",
+      "invalidTemperature": "Valore di temperatura non valido",
+      "invalidDewPoint": "Valore del punto di rugiada non valido",
+      "invalidHumidity": "Valore di umidità non valido"
+    },
+    "result": {
+      "relative": "Umidità Relativa: {{value}}%",
+      "absolute": "Umidità Assoluta: {{value}} kg/m³"
+    },
+    "operations": {
+      "relative": {
+        "title": "Umidità Relativa",
+        "description": "100%"
+      },
+      "absolute": {
+        "title": "Umidità Assoluta",
+        "description": "100%"
+      }
+    }
+  },
+  "illuminanceCard": {
+    "title": "Illuminamento",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "intensityPlaceholder": "Inserisci intensità (cd)",
+    "distancePlaceholder": "Inserisci distanza (m)",
+    "anglePlaceholder": "Inserisci angolo (°)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterAllValues": "Per favore inserisci tutti i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "I = {{value}} lux"
+  },
+  "magnetismCard": {
+    "title": "Magnetismo",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "currentPlaceholder": "Inserisci corrente (A)",
+    "distancePlaceholder": "Inserisci distanza (m)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterBothValues": "Per favore inserisci entrambi i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "B = {{value}} T"
+  },
+  "ohmCard": {
+    "title": "Legge di Ohm",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "currentPlaceholder": "Inserisci corrente (A)",
+    "distancePlaceholder": "Inserisci distanza (m)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterBothValues": "Per favore inserisci entrambi i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "B = {{value}} T"
+  },
+  "pressureCard": {
+    "title": "Pressione",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "forcePlaceholder": "Inserisci forza (N)",
+    "areaPlaceholder": "Inserisci area (m²)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterBothValues": "Per favore inserisci entrambi i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "P = {{value}} Pa"
+  },
+  "radiationCard": {
+    "title": "Radiazione",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "powerPlaceholder": "Inserisci potenza (W)",
+    "areaPlaceholder": "Inserisci area (m²)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterBothValues": "Per favore inserisci entrambi i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "I = {{value}} W/m²"
+  },
+  "solarEnergyCard": {
+    "title": "Energia Solare",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "radiationPlaceholder": "Inserisci radiazione (W/m²)",
+    "areaPlaceholder": "Inserisci area (m²)",
+    "timePlaceholder": "Inserisci tempo (s)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterAllValues": "Per favore inserisci tutti i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "E = {{value}} J"
+  },
+  "soundCard": {
+    "title": "Suono",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "pressurePlaceholder": "Inserisci pressione sonora (Pa)",
+    "distancePlaceholder": "Inserisci distanza (m)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterBothValues": "Per favore inserisci entrambi i valori",
+      "invalidInput": "Valori di input non validi",
+      "positiveValues": "I valori devono essere positivi"
+    },
+    "result": "{{value}} dB"
+  },
+  "temperatureCard": {
+    "title": "Temperatura",
+    "clearButton": "Pulsante Cancella",
+    "units": {
+      "celsius": {
+        "title": "Celsius",
+        "description": "°C"
+      },
+      "fahrenheit": {
+        "title": "Fahrenheit",
+        "description": "°F"
+      },
+      "kelvin": {
+        "title": "Kelvin",
+        "description": "K"
+      }
+    }
+  },
+  "velocityCard": {
+    "title": "Velocità",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "distancePlaceholder": "Inserisci distanza (m)",
+    "timePlaceholder": "Inserisci tempo (s)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterAllValues": "Per favore inserisci tutti i valori",
+      "positiveDistance": "La distanza deve essere positiva",
+      "positiveTime": "Il tempo deve essere positivo"
+    },
+    "result": "{{value}} m/s"
+  },
+  "wavelengthCard": {
+    "title": "Lunghezza d'Onda",
+    "defaultResult": "Il risultato apparirà qui",
+    "values": "Valori",
+    "velocityPlaceholder": "Inserisci velocità (m/s)",
+    "frequencyPlaceholder": "Inserisci frequenza (Hz)",
+    "calculateButton": "Pulsante Calcola",
+    "errors": {
+      "enterAllValues": "Per favore inserisci tutti i valori",
+      "positiveVelocity": "La velocità deve essere positiva",
+      "positiveFrequency": "La frequenza deve essere positiva"
+    },
+    "result": "{{value}} m"
+  },
+  "windSpeedCard": {
+    "title": "Velocità del Vento",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "pressurePositive": "La pressione deve essere positiva",
+      "airDensityPositive": "La densità dell'aria deve essere positiva",
+      "provideAllValues": "Fornisci tutti i valori"
+    },
+    "unit": "m/s",
+    "pressurePlaceholder": "Inserisci pressione (Pa)",
+    "airDensityPlaceholder": "Inserisci densità dell'aria (kg/m³)",
+    "values": "Valori",
+    "calculateButton": "Calcolare"
+  },
+
+  "bmiCard": {
+    "title": "Calcolatore IMC",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "enterBothValues": "Per favore inserisci entrambi i valori",
+      "invalidInput": "Valori di input non validi"
+    },
+    "classification": {
+      "underweight": "Sottopeso",
+      "normal": "Peso normale",
+      "overweight": "Sovrappeso",
+      "obesity": "Obesità"
+    },
+    "placeholders": {
+      "weight": "Inserisci peso (kg)",
+      "height": "Inserisci altezza (cm)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "caloriesCard": {
+    "title": "Calcolatore di Calorie",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "unit": "calorie",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "enterBothValues": "Per favore inserisci entrambi i valori",
+      "invalidInput": "Valori di input non validi"
+    },
+    "activities": {
+      "walking": {
+        "title": "Camminata",
+        "description": "Attività a bassa intensità"
+      },
+      "running": {
+        "title": "Corsa",
+        "description": "Attività ad alta intensità"
+      },
+      "cycling": {
+        "title": "Ciclismo",
+        "description": "Attività di intensità moderata"
+      },
+      "swimming": {
+        "title": "Nuoto",
+        "description": "Allenamento completo"
+      }
+    },
+    "placeholders": {
+      "weight": "Inserisci peso (kg)",
+      "duration": "Inserisci durata (minuti)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "hydrationCard": {
+    "title": "Calcolatore di Idratazione",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "unit": "litri",
+    "errors": {
+      "positiveWeight": "Il peso deve essere positivo",
+      "enterWeight": "Per favore inserisci il tuo peso",
+      "invalidInput": "Valore di input non valido"
+    },
+    "activities": {
+      "sedentary": {
+        "title": "Sedentario",
+        "description": "Poco o nessun esercizio"
+      },
+      "moderate": {
+        "title": "Moderato",
+        "description": "Esercizio moderato 3-5 giorni/settimana"
+      },
+      "active": {
+        "title": "Attivo",
+        "description": "Esercizio intenso 6-7 giorni/settimana"
+      }
+    },
+    "placeholders": {
+      "weight": "Inserisci peso (kg)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "medicationCard": {
+    "title": "Calcolatore di Farmaci",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "unit": "mg",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "positiveMaxDosage": "La dose massima deve essere positiva",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "placeholders": {
+      "weight": "Inserisci peso (kg)",
+      "dosagePerKg": "Inserisci dose per kg (mg)",
+      "maxDosage": "Inserisci dose massima (mg)*"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "budgetingCard": {
+    "title": "Calcolatore di Budget",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "positiveSavingsGoal": "L'obiettivo di risparmio deve essere positivo",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "deficit": "Deficit",
+      "remaining": "Rimanente"
+    },
+    "placeholders": {
+      "income": "Inserisci reddito (€)",
+      "expenses": "Inserisci spese (€)",
+      "savingsGoal": "Inserisci obiettivo risparmio (€)*"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "common": {
+    "currencySymbol": "€"
+  },
+  "discountsCard": {
+    "title": "Calcolatore di Sconti",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "discountLimit": "Lo sconto deve essere inferiore al 100%",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "finalPrice": "Prezzo Finale"
+    },
+    "placeholders": {
+      "originalPrice": "Inserisci prezzo originale (€)",
+      "discountPercentage": "Inserisci sconto (%)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "inflationCard": {
+    "title": "Calcolatore dell'Inflazione",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "futureValue": "Valore Futuro"
+    },
+    "placeholders": {
+      "currentValue": "Inserisci valore attuale (€)",
+      "inflationRate": "Inserisci tasso di inflazione (%)",
+      "years": "Inserisci anni"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "interestCard": {
+    "title": "Calcolatore di Interessi",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "totalAmount": "Importo Totale"
+    },
+    "placeholders": {
+      "principal": "Inserisci capitale (€)",
+      "interestRate": "Inserisci tasso di interesse (%)",
+      "time": "Inserisci tempo (anni)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "loanCard": {
+    "title": "Calcolatore di Prestiti",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "monthlyPayment": "Pagamento Mensile"
+    },
+    "placeholders": {
+      "loanAmount": "Inserisci importo del prestito (€)",
+      "interestRate": "Inserisci tasso di interesse (%)",
+      "loanTerm": "Inserisci durata del prestito (anni)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "percentageCard": {
+    "title": "Calcolatore di Percentuali",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "calculatedValue": "Valore Calcolato"
+    },
+    "placeholders": {
+      "baseValue": "Inserisci valore base (€)",
+      "percentage": "Inserisci percentuale (%)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "taxesCard": {
+    "title": "Calcolatore di Tasse",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "taxAmount": "Importo Tasse"
+    },
+    "placeholders": {
+      "income": "Inserisci reddito (€)",
+      "taxRate": "Inserisci aliquota fiscale (%)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "tipsCard": {
+    "title": "Calcolatore di Mance",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "tipAmount": "Importo Mancia",
+      "totalAmount": "Importo Totale"
+    },
+    "placeholders": {
+      "billAmount": "Inserisci importo conto (€)",
+      "tipPercentage": "Inserisci percentuale mancia (%)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "autonomyCard": {
+    "title": "Calcolatore Autonomia",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "unit": "km",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "estimatedRange": "Autonomia Stimata"
+    },
+    "placeholders": {
+      "batteryCapacity": "Capacità Batteria (kWh)",
+      "energyConsumption": "Consumo Energia (kWh/100km)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "co2Card": {
+    "title": "Emissioni CO₂",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "unit": "kg CO₂",
+    "efficiencyUnit": "km/L",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "emissions": "Emissioni",
+      "efficiency": "Efficienza del Carburante"
+    },
+    "placeholders": {
+      "fuelConsumed": "Carburante Consumato (L)",
+      "distanceTraveled": "Distanza Percorsa (km)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "fuelCard": {
+    "title": "Calcolatore Carburante",
+    "resultPlaceholder": "Il risultato apparirà qui",
+    "unit": "L",
+    "errors": {
+      "positiveValues": "I valori devono essere positivi",
+      "requiredValues": "Per favore inserisci i valori richiesti",
+      "invalidInput": "Valori di input non validi"
+    },
+    "results": {
+      "fuelNeeded": "Carburante necessario"
+    },
+    "placeholders": {
+      "distance": "Distanza (km)",
+      "fuelEfficiency": "Efficienza carburante (km/L)"
+    },
+    "common": {
+      "values": "Valori",
+      "calculateButton": "Calcolare"
+    }
+  },
+  "mileageCard": {
+    "title": "Chilometraggio",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "estimatedResult": "Stimato: {{distance}} km",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "fuelAmountPlaceholder": "Quantità di carburante (L)",
+    "fuelEfficiencyPlaceholder": "Efficienza del carburante (km/L)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "batteryCard": {
+    "title": "Batteria",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "batteryLifeResult": "Durata batteria: {{hours}} ore",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "batteryCapacityPlaceholder": "Capacità batteria (mAh)",
+    "currentDrawPlaceholder": "Assorbimento corrente (mA)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "dataTransferCard": {
+    "title": "Trasferimento Dati",
+    "bitsPerSecond": "Bit al secondo",
+    "kilobitsPerSecond": "Kilobit al secondo",
+    "megabitsPerSecond": "Megabit al secondo",
+    "gigabitsPerSecond": "Gigabit al secondo",
+    "terabitsPerSecond": "Terabit al secondo",
+    "bitsDescription": "1 b/s",
+    "kilobitsDescription": "1 kb/s = 1000 b/s",
+    "megabitsDescription": "1 mb/s = 1000 kb/s",
+    "gigabitsDescription": "1 gb/s = 1000 mb/s",
+    "terabitsDescription": "1 tb/s = 1000 gb/s",
+    "clearButtonA11yLabel": "Pulsante di cancellazione"
+  },
+  "digitalDataCard": {
+    "title": "Dati Digitali",
+    "bytes": "Byte",
+    "kilobytes": "Kilobyte",
+    "megabytes": "Megabyte",
+    "gigabytes": "Gigabyte",
+    "terabytes": "Terabyte",
+    "bytesDescription": "1 B",
+    "kilobytesDescription": "1 KB = 1024 B",
+    "megabytesDescription": "1 MB = 1024 KB",
+    "gigabytesDescription": "1 GB = 1024 MB",
+    "terabytesDescription": "1 TB = 1024 GB",
+    "clearButtonA11yLabel": "Pulsante di cancellazione"
+  },
+  "electricCurrentCard": {
+    "title": "Corrente Elettrica",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "resistanceCannotBeZero": "La resistenza non può essere zero",
+    "currentResult": "Corrente: {{current}} A",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "voltagePlaceholder": "Tensione (V)",
+    "resistancePlaceholder": "Resistenza (Ω)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "electricConsumptionCard": {
+    "title": "Consumo Elettrico",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "consumptionResult": "Consumo: {{consumption}} Wh",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "voltagePlaceholder": "Tensione (V)",
+    "currentPlaceholder": "Corrente (A)",
+    "timePlaceholder": "Tempo (h)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "electricalResistanceCard": {
+    "title": "Resistenza Elettrica",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "currentCannotBeZero": "La corrente non può essere zero",
+    "resistanceResult": "Resistenza: {{resistance}} Ω",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "voltagePlaceholder": "Tensione (V)",
+    "currentPlaceholder": "Corrente (A)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "latitudeCard": {
+    "title": "Latitudine & Coordinate",
+    "defaultResult": "Il risultato apparirà qui",
+    "invalidValue": "Valore non valido",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "latitudeResult": "Latitudine: {dms}",
+    "longitudeResult": "Longitudine: {dms}",
+    "valuesTitle": "Valori",
+    "latitudePlaceholder": "Latitudine (decimale)",
+    "longitudePlaceholder": "Longitudine (decimale)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo",
+    "north": "N",
+    "south": "S",
+    "east": "E",
+    "west": "O"
+  },
+  "demographicCard": {
+    "title": "Densità Demografica",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "areaCannotBeZero": "L'area non può essere zero",
+    "densityResult": "Densità: {{density}} persone/km²",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "populationPlaceholder": "Popolazione",
+    "areaPlaceholder": "Area (km²)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "cookingCard": {
+    "title": "Misurazioni Culinarie",
+    "milliliters": "Millilitri",
+    "teaspoons": "Cucchiaini",
+    "tablespoons": "Cucchiai",
+    "cups": "Tazze",
+    "millilitersAbbr": "ml",
+    "teaspoonsAbbr": "cucchiaino",
+    "tablespoonsAbbr": "cucchiaio",
+    "cupsAbbr": "tazza",
+    "clearButtonA11yLabel": "Pulsante di cancellazione"
+  },
+  "cookingTimeCard": {
+    "title": "Tempo di Cottura",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "cookingTimeResult": "Tempo di cottura: {time} ore",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "weightPlaceholder": "Peso del cibo (grammi)",
+    "powerPlaceholder": "Potenza di cottura (watt)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "timerSettingsCard": {
+    "title": "Impostazioni Timer",
+    "hoursLabel": "Ore",
+    "minutesLabel": "Minuti",
+    "secondsLabel": "Secondi",
+    "fiveMin": "5 Min",
+    "tenMin": "10 Min",
+    "fifteenMin": "15 Min",
+    "permissionAlertTitle": "Permesso richiesto",
+    "permissionAlertMessage": "Attiva le notifiche per usare il timer",
+    "notificationTitle": "Timer completato!",
+    "notificationBody": "Il tuo timer è terminato."
+  },
+  "volumeCard": {
+    "title": "Volume",
+    "milliliter": "Millilitro",
+    "liter": "Litro",
+    "teaspoon": "Cucchiaino",
+    "tablespoon": "Cucchiaio",
+    "cup": "Tazza",
+    "milliliterDesc": "1 ml",
+    "literDesc": "1 l = 1000 ml",
+    "teaspoonDesc": "1 cucchiaino = 4.92892 ml",
+    "tablespoonDesc": "1 cucchiaio = 14.78 ml",
+    "cupDesc": "1 tazza = 240 ml",
+    "clearButtonA11yLabel": "Pulsante di cancellazione"
+  },
+  "ageCard": {
+    "title": "Calcolatore Età",
+    "yourAge": "La Tua Età",
+    "birthDate": "Data di Nascita",
+    "currentDate": "Data Corrente",
+    "ageResult": "{{years}} anni, {{months}} mesi, {{days}} giorni",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "currencyCard": {
+    "title": "Convertitore Valuta",
+    "amountPlaceholder": "Inserisci importo",
+    "fromLabel": "Da:",
+    "toLabel": "A:",
+    "loading": "Caricamento...",
+    "fetchError": "Errore nel recupero dei tassi di cambio",
+    "calculateButtonA11yLabel": "Pulsante di calcolo",
+    "currencies": {
+      "USD": "Dollaro USA",
+      "EUR": "Euro",
+      "GBP": "Sterlina Britannica",
+      "JPY": "Yen Giapponese",
+      "AUD": "Dollaro Australiano",
+      "CAD": "Dollaro Canadese",
+      "CHF": "Franco Svizzero",
+      "CNY": "Yuan Cinese",
+      "SEK": "Corona Svedese",
+      "NZD": "Dollaro Neozelandese"
+    }
+  },
+  "dateCalculatorCard": {
+    "title": "Calcolatore di Date",
+    "calculatorTitle": "Calcolatore di Date",
+    "startDateLabel": "Data di Inizio",
+    "endDateLabel": "Data Finale",
+    "calculateInLabel": "Calcola in:",
+    "ageOption": "Età",
+    "daysOption": "Giorni",
+    "weeksOption": "Settimane",
+    "monthsOption": "Mesi",
+    "yearsOption": "Anni",
+    "ageResult": "{years} anni, {months} mesi, {days} giorni",
+    "daysResult": "{days} giorni",
+    "weeksResult": "{weeks} settimane",
+    "monthsResult": "{months} mesi",
+    "yearsResult": "{years} anni"
+  },
+  "densityCard": {
+    "title": "Calcolatore di Densità",
+    "defaultResult": "Il risultato apparirà qui",
+    "positiveValuesRequired": "I valori devono essere positivi",
+    "volumeCannotBeZero": "Il volume non può essere zero",
+    "densityResult": "Densità: {density} kg/m³",
+    "enterRequiredValues": "Inserisci i valori richiesti",
+    "invalidInput": "Valori di input non validi",
+    "valuesTitle": "Valori",
+    "massPlaceholder": "Massa (kg)",
+    "volumePlaceholder": "Volume (m³)",
+    "calculateButtonA11yLabel": "Pulsante di calcolo"
+  },
+  "passwordGenerator": {
+    "title": "Generatore di Password",
+    "passwordLength": "Lunghezza password",
+    "uppercaseLetters": "Lettere maiuscole",
+    "lowercaseLetters": "Lettere minuscole",
+    "numbers": "Numeri",
+    "specialCharacters": "Caratteri speciali",
+    "generateButton": "Pulsante Genera",
+    "selectCharacterType": "Seleziona almeno un tipo di carattere"
+  },
+  "qrCodeGenerator": {
+    "title": "Generatore di Codice QR",
+    "placeholder": "Inserisci testo o URL",
+    "copyContent": "Copia contenuto QR",
+    "generateButton": "Pulsante Genera"
+  },
+  "uuidGenerator": {
+    "title": "Generatore di UUID",
+    "copyUuid": "Copia UUID",
+    "generateButton": "Pulsante Genera"
+  },
+  "weightConverter": {
+    "title": "Convertitore di Peso",
+    "kilogram": "Chilogrammo",
+    "gram": "Grammo",
+    "milligram": "Milligrammo",
+    "pound": "Libbra",
+    "ounce": "Oncia",
+    "kgDescription": "1 kg",
+    "gDescription": "1 g = 0.001 kg",
+    "mgDescription": "1 mg = 0.000001 kg",
+    "lbDescription": "1 lb = 0.453592 kg",
+    "ozDescription": "1 oz = 0.0283495 kg",
+    "clearButton": "Pulsante Cancella"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "changeTheme": "Cambia tema",
+    "changeLanguage": "Cambia lingua",
+    "about": "Informazioni",
+    "rateApp": "Valuta l'app",
+    "reportProblem": "Segnala un problema",
+    "selectTheme": "Scegli un tema",
+    "selectLanguage": "Scegli una lingua"
   }
 }

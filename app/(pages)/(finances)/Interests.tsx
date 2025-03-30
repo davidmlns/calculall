@@ -4,21 +4,25 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { InterestIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Interests() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('interestCard.resultPlaceholder'));
   const [principal, setPrincipal] = useState('');
   const [interestRate, setInterestRate] = useState('');
   const [time, setTime] = useState('');
 
   const calculateInterest = (principal: number, interestRate: number, time: number): string => {
-    if (principal <= 0 || interestRate <= 0 || time <= 0) return 'Values must be positive';
+    if (principal <= 0 || interestRate <= 0 || time <= 0) {
+      return t('interestCard.errors.positiveValues');
+    }
 
     const amount = principal * Math.pow(1 + interestRate / 100, time);
     const interestEarned = amount - principal;
-    return `Total Amount: $${Number(amount.toFixed(2))}`;
+    return `${t('interestCard.results.totalAmount')}: ${t('common.currencySymbol')}${Number(amount.toFixed(2))}`;
   };
 
   const handleCalculateInterest = () => {
@@ -27,12 +31,12 @@ export default function Interests() {
     const t = parseFloat(time);
 
     if (!principal || !interestRate || !time) {
-      setResult('Please enter required values');
+      setResult(t('interestCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(p) || isNaN(r) || isNaN(t)) {
-      setResult('Invalid input values');
+      setResult(t('interestCard.errors.invalidInput'));
       return;
     }
 
@@ -56,16 +60,21 @@ export default function Interests() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Interests' icon={<InterestIcon size={50} color='#27AE60' />} />
+      <HeaderDescriptionPage
+        title={t('interestCard.title')}
+        icon={<InterestIcon size={50} color='#27AE60' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('interestCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter principal ($)'
+            placeholder={t('interestCard.placeholders.principal')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={principal}
@@ -76,7 +85,7 @@ export default function Interests() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter interest rate (%)'
+            placeholder={t('interestCard.placeholders.interestRate')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={interestRate}
@@ -87,7 +96,7 @@ export default function Interests() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter time (years)'
+            placeholder={t('interestCard.placeholders.time')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={time}
@@ -105,7 +114,7 @@ export default function Interests() {
               onPressOut={handlePressOut}
               onPress={handleCalculateInterest}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('interestCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

@@ -1,9 +1,10 @@
-import { Pressable, ScrollView, Text, View, Animated } from 'react-native';
+import { Pressable, ScrollView, View, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import { DataTransferIcon, CalculateIcon, DeleteIcon } from '../../../components/Icons';
+import { DataTransferIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 type DataTransferUnit = 'b/s' | 'kb/s' | 'mb/s' | 'gb/s' | 'tb/s';
 
@@ -16,6 +17,7 @@ const conversionFactors = {
 };
 
 export default function DataTransfer() {
+  const { t } = useTranslation('');
   const [bitPerSecond, setBitPerSecond] = useState('');
   const [kilobitPerSecond, setKilobitPerSecond] = useState('');
   const [megabitPerSecond, setMegabitPerSecond] = useState('');
@@ -76,15 +78,15 @@ export default function DataTransfer() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Data Transfer'
+        title={t('dataTransferCard.title')}
         icon={<DataTransferIcon size={56} color='#3498DB' />}
       />
 
       <View className='flex-col items-center'>
         <ConvertComponent
           abb='b/s'
-          title='Bits per second'
-          description='1 b/s'
+          title={t('dataTransferCard.bitsPerSecond')}
+          description={t('dataTransferCard.bitsDescription')}
           onChangeText={value => convertDataTransfer(value, 'b/s')}
           value={bitPerSecond}
           isActive={activeUnit === 'b/s'}
@@ -93,8 +95,8 @@ export default function DataTransfer() {
         />
         <ConvertComponent
           abb='kb/s'
-          title='Kilobits per second'
-          description='1 kb/s = 1000 b/s'
+          title={t('dataTransferCard.kilobitsPerSecond')}
+          description={t('dataTransferCard.kilobitsDescription')}
           onChangeText={value => convertDataTransfer(value, 'kb/s')}
           value={kilobitPerSecond}
           isActive={activeUnit === 'kb/s'}
@@ -103,8 +105,8 @@ export default function DataTransfer() {
         />
         <ConvertComponent
           abb='mb/s'
-          title='Megabits per second'
-          description='1 mb/s = 1000 kb/s'
+          title={t('dataTransferCard.megabitsPerSecond')}
+          description={t('dataTransferCard.megabitsDescription')}
           onChangeText={value => convertDataTransfer(value, 'mb/s')}
           value={megabitPerSecond}
           isActive={activeUnit === 'mb/s'}
@@ -113,8 +115,8 @@ export default function DataTransfer() {
         />
         <ConvertComponent
           abb='gb/s'
-          title='Gigabits per second'
-          description='1 gb/s = 1000 mb/s'
+          title={t('dataTransferCard.gigabitsPerSecond')}
+          description={t('dataTransferCard.gigabitsDescription')}
           onChangeText={value => convertDataTransfer(value, 'gb/s')}
           value={gigabitPerSecond}
           isActive={activeUnit === 'gb/s'}
@@ -123,8 +125,8 @@ export default function DataTransfer() {
         />
         <ConvertComponent
           abb='tb/s'
-          title='Terabits per second'
-          description='1 tb/s = 1000 gb/s'
+          title={t('dataTransferCard.terabitsPerSecond')}
+          description={t('dataTransferCard.terabitsDescription')}
           onChangeText={value => convertDataTransfer(value, 'tb/s')}
           value={terabitPerSecond}
           isActive={activeUnit === 'tb/s'}
@@ -145,7 +147,7 @@ export default function DataTransfer() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('dataTransferCard.clearButtonA11yLabel')}>
               <DeleteIcon size={48} color='white' />
             </Pressable>
           </Animated.View>

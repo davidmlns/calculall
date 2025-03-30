@@ -4,17 +4,20 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { RadiationIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Radiation() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const [result, setResult] = useState(t('radiationCard.defaultResult'));
   const [powerValue, setPowerValue] = useState('');
   const [areaValue, setAreaValue] = useState('');
 
   const calculateRadiation = (power: number, area: number): string => {
-    if (power <= 0 || area <= 0) return 'Values must be positive';
-    return `I = ${(power / area).toFixed(2)} W/m²`;
+    if (power <= 0 || area <= 0) return t('radiationCard.errors.positiveValues');
+    return t('radiationCard.result', { value: (power / area).toFixed(2) });
   };
 
   const handleCalculateRadiation = () => {
@@ -22,12 +25,12 @@ export default function Radiation() {
     const area = parseFloat(areaValue);
 
     if (!powerValue || !areaValue) {
-      setResult('Please enter both values');
+      setResult(t('radiationCard.errors.enterBothValues'));
       return;
     }
 
     if (isNaN(power) || isNaN(area)) {
-      setResult('Invalid input values');
+      setResult(t('radiationCard.errors.invalidInput'));
       return;
     }
 
@@ -51,17 +54,22 @@ export default function Radiation() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Radiation' icon={<RadiationIcon size={56} color='#2E86C1' />} />
+      <HeaderDescriptionPage
+        title={t('radiationCard.title')}
+        icon={<RadiationIcon size={56} color='#2E86C1' />}
+      />
 
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('radiationCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter power (W)'
+            placeholder={t('radiationCard.powerPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={powerValue}
@@ -72,7 +80,7 @@ export default function Radiation() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter area (m²)'
+            placeholder={t('radiationCard.areaPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={areaValue}
@@ -90,7 +98,7 @@ export default function Radiation() {
               onPressOut={handlePressOut}
               onPress={handleCalculateRadiation}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('radiationCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

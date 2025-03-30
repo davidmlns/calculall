@@ -4,16 +4,19 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { PressureIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
-const calculatePressure = (force: number, area: number): string => {
-  if (force <= 0 || area <= 0) return 'Values must be positive';
-  return `P = ${(force / area).toFixed(2)} Pa`;
+const calculatePressure = (force: number, area: number, t: any): string => {
+  if (force <= 0 || area <= 0) return t('pressureCard.errors.positiveValues');
+  return t('pressureCard.result', { value: (force / area).toFixed(2) });
 };
 
 export default function Pressure() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const [result, setResult] = useState(t('pressureCard.defaultResult'));
   const [forceValue, setForceValue] = useState('');
   const [areaValue, setAreaValue] = useState('');
 
@@ -22,16 +25,16 @@ export default function Pressure() {
     const area = parseFloat(areaValue);
 
     if (!forceValue || !areaValue) {
-      setResult('Please enter both values');
+      setResult(t('pressureCard.errors.enterBothValues'));
       return;
     }
 
     if (isNaN(force) || isNaN(area)) {
-      setResult('Invalid input values');
+      setResult(t('pressureCard.errors.invalidInput'));
       return;
     }
 
-    setResult(calculatePressure(force, area));
+    setResult(calculatePressure(force, area, t));
   };
 
   const handlePressIn = () => {
@@ -51,17 +54,22 @@ export default function Pressure() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Pressure' icon={<PressureIcon size={54} color='#2E86C1' />} />
+      <HeaderDescriptionPage
+        title={t('pressureCard.title')}
+        icon={<PressureIcon size={54} color='#2E86C1' />}
+      />
 
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('pressureCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter force (N)'
+            placeholder={t('pressureCard.forcePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={forceValue}
@@ -72,7 +80,7 @@ export default function Pressure() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter area (m²)'
+            placeholder={t('pressureCard.areaPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={areaValue}
@@ -90,7 +98,7 @@ export default function Pressure() {
               onPressOut={handlePressOut}
               onPress={handleCalculatePressure}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('pressureCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

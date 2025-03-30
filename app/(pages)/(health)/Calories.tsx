@@ -12,6 +12,7 @@ import {
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 import OptionModalActivities from '../../../components/OptionModalActivities';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
@@ -22,35 +23,37 @@ type Activity = {
   description: string;
 };
 
-const activities: Activity[] = [
-  {
-    id: 'walking',
-    title: 'Walking',
-    icon: <WalkingIcon size={32} color='#E74C3C' />,
-    description: 'Low intensity activity',
-  },
-  {
-    id: 'running',
-    title: 'Running',
-    icon: <RunningIcon size={32} color='#E74C3C' />,
-    description: 'High intensity activity',
-  },
-  {
-    id: 'cycling',
-    title: 'Cycling',
-    icon: <CyclingIcon size={32} color='#E74C3C' />,
-    description: 'Moderate intensity activity',
-  },
-  {
-    id: 'swimming',
-    title: 'Swimming',
-    icon: <SwimmingIcon size={32} color='#E74C3C' />,
-    description: 'Full body workout',
-  },
-];
-
 export default function Calories() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const activities: Activity[] = [
+    {
+      id: 'walking',
+      title: t('caloriesCard.activities.walking.title'),
+      icon: <WalkingIcon size={32} color='#E74C3C' />,
+      description: t('caloriesCard.activities.walking.description'),
+    },
+    {
+      id: 'running',
+      title: t('caloriesCard.activities.running.title'),
+      icon: <RunningIcon size={32} color='#E74C3C' />,
+      description: t('caloriesCard.activities.running.description'),
+    },
+    {
+      id: 'cycling',
+      title: t('caloriesCard.activities.cycling.title'),
+      icon: <CyclingIcon size={32} color='#E74C3C' />,
+      description: t('caloriesCard.activities.cycling.description'),
+    },
+    {
+      id: 'swimming',
+      title: t('caloriesCard.activities.swimming.title'),
+      icon: <SwimmingIcon size={32} color='#E74C3C' />,
+      description: t('caloriesCard.activities.swimming.description'),
+    },
+  ];
+
+  const [result, setResult] = useState(t('caloriesCard.resultPlaceholder'));
   const [weight, setWeight] = useState('');
   const [duration, setDuration] = useState('');
   const [selectedActivity, setSelectedActivity] = useState(activities[0]);
@@ -65,7 +68,7 @@ export default function Calories() {
   };
 
   const calculateCalories = (weight: number, duration: number, activityId: string): string => {
-    if (weight <= 0 || duration <= 0) return 'Values must be positive';
+    if (weight <= 0 || duration <= 0) return t('caloriesCard.errors.positiveValues');
 
     const MET_VALUES = {
       walking: 3.5,
@@ -77,7 +80,7 @@ export default function Calories() {
     const met = MET_VALUES[activityId as keyof typeof MET_VALUES] || 3.5;
     const calories = (met * weight * duration) / 60;
 
-    return `${Math.round(calories * 100) / 100} calories`;
+    return `${Math.round(calories * 100) / 100} ${t('caloriesCard.unit')}`;
   };
 
   const handleCalculateCalories = () => {
@@ -85,12 +88,12 @@ export default function Calories() {
     const d = parseFloat(duration);
 
     if (!weight || !duration) {
-      setResult('Please enter both values');
+      setResult(t('caloriesCard.errors.enterBothValues'));
       return;
     }
 
     if (isNaN(w) || isNaN(d)) {
-      setResult('Invalid input values');
+      setResult(t('caloriesCard.errors.invalidInput'));
       return;
     }
 
@@ -114,16 +117,21 @@ export default function Calories() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Calories' icon={<CaloriesIcon size={56} color='#E74C3C' />} />
+      <HeaderDescriptionPage
+        title={t('caloriesCard.title')}
+        icon={<CaloriesIcon size={56} color='#E74C3C' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('caloriesCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter weight (kg)'
+            placeholder={t('caloriesCard.placeholders.weight')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={weight}
@@ -134,7 +142,7 @@ export default function Calories() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter duration (minutes)'
+            placeholder={t('caloriesCard.placeholders.duration')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={duration}
@@ -175,8 +183,8 @@ export default function Calories() {
               onPressIn={handlePressIn}
               onPressOut={handlePressOut}
               onPress={handleCalculateCalories}
-              className=' rounded-2xl mx-auto'
-              accessibilityLabel='Calculate Button'>
+              className='rounded-2xl mx-auto'
+              accessibilityLabel={t('caloriesCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

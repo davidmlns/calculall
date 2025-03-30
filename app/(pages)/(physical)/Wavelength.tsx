@@ -4,25 +4,28 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { WavelengthIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Wavelength() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const [result, setResult] = useState(t('wavelengthCard.defaultResult'));
   const [velocity, setVelocity] = useState('');
   const [frequency, setFrequency] = useState('');
 
   const calculateWavelength = (velocity: number, frequency: number): string => {
-    if (isNaN(velocity) || velocity <= 0) return 'Velocity must be positive';
-    if (isNaN(frequency) || frequency <= 0) return 'Frequency must be positive';
-    return `${(velocity / frequency).toFixed(2)} m`;
+    if (isNaN(velocity) || velocity <= 0) return t('wavelengthCard.errors.positiveVelocity');
+    if (isNaN(frequency) || frequency <= 0) return t('wavelengthCard.errors.positiveFrequency');
+    return t('wavelengthCard.result', { value: (velocity / frequency).toFixed(2) });
   };
 
   const handleCalculateWavelength = () => {
     const v = parseFloat(velocity);
     const f = parseFloat(frequency);
     if (isNaN(v) || isNaN(f)) {
-      setResult('Provide all values');
+      setResult(t('wavelengthCard.errors.enterAllValues'));
       return;
     }
     setResult(calculateWavelength(v, f));
@@ -46,19 +49,21 @@ export default function Wavelength() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Wavelength'
+        title={t('wavelengthCard.title')}
         icon={<WavelengthIcon size={52} color='#2E86C1' />}
       />
 
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('wavelengthCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter velocity (m/s)'
+            placeholder={t('wavelengthCard.velocityPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={velocity}
@@ -69,7 +74,7 @@ export default function Wavelength() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter frequency (Hz)'
+            placeholder={t('wavelengthCard.frequencyPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={frequency}
@@ -87,7 +92,7 @@ export default function Wavelength() {
               onPressOut={handlePressOut}
               onPress={handleCalculateWavelength}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('wavelengthCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

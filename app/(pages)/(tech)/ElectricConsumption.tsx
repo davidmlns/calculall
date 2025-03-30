@@ -4,21 +4,26 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { ElectricConsumptionIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function ElectricConsumption() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation('');
+  const [result, setResult] = useState(t('electricalResistanceCard.defaultResult'));
   const [voltage, setVoltage] = useState('');
   const [current, setCurrent] = useState('');
   const [time, setTime] = useState('');
 
   const calculateConsumption = (voltage: number, current: number, time: number): string => {
-    if (voltage <= 0 || current <= 0 || time <= 0) return 'Values must be positive';
+    if (voltage <= 0 || current <= 0 || time <= 0)
+      return t('electricConsumptionCard.positiveValuesRequired');
 
     const power = voltage * current;
     const consumption = power * time;
-    return `Consumption: ${Number(consumption.toFixed(4))} Wh`;
+    return t('electricConsumptionCard.consumptionResult', {
+      consumption: Number(consumption.toFixed(4)),
+    });
   };
 
   const handleCalculateConsumption = () => {
@@ -27,12 +32,12 @@ export default function ElectricConsumption() {
     const t = parseFloat(time);
 
     if (!voltage || !current || !time) {
-      setResult('Please enter required values');
+      setResult(t('electricalResistanceCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(v) || isNaN(i) || isNaN(t)) {
-      setResult('Invalid input values');
+      setResult(t('electricalResistanceCard.invalidInput'));
       return;
     }
 
@@ -57,18 +62,18 @@ export default function ElectricConsumption() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Electric Usage'
+        title={t('electricConsumptionCard.title')}
         icon={<ElectricConsumptionIcon size={51} color='#3498DB' />}
       />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>{t('valuesTitle')}</Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Voltage (V)'
+            placeholder={t('electricConsumptionCard.voltagePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={voltage}
@@ -79,7 +84,7 @@ export default function ElectricConsumption() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Current (A)'
+            placeholder={t('electricConsumptionCard.currentPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={current}
@@ -90,7 +95,7 @@ export default function ElectricConsumption() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Time (h)'
+            placeholder={t('electricConsumptionCard.timePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={time}
@@ -108,7 +113,7 @@ export default function ElectricConsumption() {
               onPressOut={handlePressOut}
               onPress={handleCalculateConsumption}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('electricConsumptionCard.calculateButtonA11yLabel')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

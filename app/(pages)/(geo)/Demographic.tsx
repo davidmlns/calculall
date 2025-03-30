@@ -4,20 +4,22 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { PopulationDensityIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Demographic() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation('');
+  const [result, setResult] = useState(t('demographicCard.defaultResult'));
   const [population, setPopulation] = useState('');
   const [area, setArea] = useState('');
 
   const scaleValue = new Animated.Value(1);
 
   const calculateDensity = (population: number, area: number): string => {
-    if (population <= 0 || area <= 0) return 'Values must be positive';
-    if (area === 0) return 'Area cannot be zero';
+    if (population <= 0 || area <= 0) return t('demographicCard.positiveValuesRequired');
+    if (area === 0) return t('demographicCard.areaCannotBeZero');
 
     const density = population / area;
-    return `Density: ${Number(density.toFixed(2))} people/km²`;
+    return t('demographicCard.densityResult', { density: Number(density.toFixed(2)) });
   };
 
   const handleCalculateDensity = () => {
@@ -25,12 +27,12 @@ export default function Demographic() {
     const a = parseFloat(area);
 
     if (!population || !area) {
-      setResult('Please enter required values');
+      setResult(t('demographicCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(pop) || isNaN(a)) {
-      setResult('Invalid input values');
+      setResult(t('demographicCard.invalidInput'));
       return;
     }
 
@@ -55,18 +57,20 @@ export default function Demographic() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Demographic'
+        title={t('demographicCard.title')}
         icon={<PopulationDensityIcon size={51} color='#D35400' />}
       />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('demographicCard.valuesTitle')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Population'
+            placeholder={t('demographicCard.populationPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={population}
@@ -77,7 +81,7 @@ export default function Demographic() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Area (km²)'
+            placeholder={t('demographicCard.areaPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={area}
@@ -95,7 +99,7 @@ export default function Demographic() {
               onPressOut={handlePressOut}
               onPress={handleCalculateDensity}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('demographicCard.calculateButtonA11yLabel')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

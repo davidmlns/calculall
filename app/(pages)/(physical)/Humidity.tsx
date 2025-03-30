@@ -5,30 +5,33 @@ import { HumidityIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
 import CalculateComponent, { Operation } from '../../../components/CalculateComponent';
+import { useTranslation } from 'react-i18next';
 
 type HumidityOperation = 'rel-hum' | 'abs-hum';
-
-const operations: Operation[] = [
-  {
-    id: 'rel-hum',
-    title: 'Relative Humidity',
-    icon: <HumidityIcon size={32} color='#2E86C1' />,
-    description: '100%',
-  },
-  {
-    id: 'abs-hum',
-    title: 'Absolute Humidity',
-    icon: <HumidityIcon size={32} color='#2E86C1' />,
-    description: '100%',
-  },
-];
 
 const calculateSaturationVaporPressure = (temperature: number) => {
   return 6.112 * Math.exp((17.67 * temperature) / (temperature + 243.5));
 };
 
 export default function Humidity() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const operations: Operation[] = [
+    {
+      id: 'rel-hum',
+      title: t('humidityCard.operations.relative.title'),
+      icon: <HumidityIcon size={32} color='#2E86C1' />,
+      description: '100%',
+    },
+    {
+      id: 'abs-hum',
+      title: t('humidityCard.operations.absolute.title'),
+      icon: <HumidityIcon size={32} color='#2E86C1' />,
+      description: '100%',
+    },
+  ];
+
+  const [result, setResult] = useState(t('humidityCard.defaultResult'));
   const [selectedOperation, setSelectedOperation] = useState<HumidityOperation>('rel-hum');
   const [valueDewPointTextInputValues, setValueDewPointTextInputValues] = useState('');
   const [valueTemperatureTextInputValues, setValueTemperatureTextInputValues] = useState('');
@@ -40,12 +43,12 @@ export default function Humidity() {
     const T = parseFloat(valueTemperatureTextInputValues);
 
     if (!valueTemperatureTextInputValues) {
-      setResult('Please enter temperature');
+      setResult(t('humidityCard.errors.enterTemperature'));
       return;
     }
 
     if (isNaN(T)) {
-      setResult('Invalid temperature value');
+      setResult(t('humidityCard.errors.invalidTemperature'));
       return;
     }
 
@@ -53,25 +56,25 @@ export default function Humidity() {
       case 'rel-hum': {
         const Td = parseFloat(valueDewPointTextInputValues);
         if (isNaN(Td)) {
-          setResult('Invalid dew point value');
+          setResult(t('humidityCard.errors.invalidDewPoint'));
           return;
         }
         const es = calculateSaturationVaporPressure(T);
         const e = calculateSaturationVaporPressure(Td);
         const RH = (e / es) * 100;
-        setResult(`Relative Humidity: ${RH.toFixed(2)}%`);
+        setResult(t('humidityCard.result.relative', { value: RH.toFixed(2) }));
         break;
       }
       case 'abs-hum': {
         const RH = parseFloat(valueRHTextInputValues);
         if (isNaN(RH)) {
-          setResult('Invalid humidity value');
+          setResult(t('humidityCard.errors.invalidHumidity'));
           return;
         }
         const es = calculateSaturationVaporPressure(T);
         const e = (RH / 100) * es;
         const absHum = (e * 0.000622) / (T + 273.15);
-        setResult(`Absolute Humidity: ${absHum.toFixed(2)} kg/m³`);
+        setResult(t('humidityCard.result.absolute', { value: absHum.toFixed(2) }));
         break;
       }
     }
@@ -94,7 +97,10 @@ export default function Humidity() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Humidity' icon={<HumidityIcon size={54} color='#2E86C1' />} />
+      <HeaderDescriptionPage
+        title={t('humidityCard.title')}
+        icon={<HumidityIcon size={54} color='#2E86C1' />}
+      />
       <ResultComponent result={result} />
       <CalculateComponent
         operations={operations}
@@ -103,12 +109,14 @@ export default function Humidity() {
       />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('humidityCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter temperature (°C)'
+            placeholder={t('humidityCard.temperaturePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueTemperatureTextInputValues}
@@ -120,7 +128,7 @@ export default function Humidity() {
           <View className='mt-4'>
             <TextInput
               className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-              placeholder='Enter dew point (°C)'
+              placeholder={t('humidityCard.dewPointPlaceholder')}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'
               value={valueDewPointTextInputValues}
@@ -133,7 +141,7 @@ export default function Humidity() {
           <View className='mt-4'>
             <TextInput
               className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-              placeholder='Enter relative humidity'
+              placeholder={t('humidityCard.humidityPlaceholder')}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'
               value={valueRHTextInputValues}
@@ -152,7 +160,7 @@ export default function Humidity() {
               onPressOut={handlePressOut}
               onPress={() => handleCalculate(selectedOperation)}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('humidityCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

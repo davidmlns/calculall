@@ -333,5 +333,858 @@
         "description": "180° ➙ 0"
       }
     }
+  },
+  "energyCard": {
+    "title": "能量",
+    "clearButton": "清除按钮",
+    "units": {
+      "joule": {
+        "title": "焦耳",
+        "description": "1 J"
+      },
+      "kilojoule": {
+        "title": "千焦",
+        "description": "1 KJ = 1000 J"
+      },
+      "calorie": {
+        "title": "卡路里",
+        "description": "1 Cal = 4.184 J"
+      },
+      "kilowattHour": {
+        "title": "千瓦时",
+        "description": "1 kWh = 3.6 × 10 J"
+      },
+      "btu": {
+        "title": "英热单位",
+        "description": "1 BTU = 1055 J"
+      }
+    }
+  },
+  "gravityCard": {
+    "title": "重力",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "mass1Placeholder": "输入质量1 (kg)",
+    "mass2Placeholder": "输入质量2 (kg)",
+    "distancePlaceholder": "输入距离 (m)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterAllValues": "请输入所有数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "Fg = {{value}} N"
+  },
+  "humidityCard": {
+    "title": "湿度",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "temperaturePlaceholder": "输入温度 (°C)",
+    "dewPointPlaceholder": "输入露点 (°C)",
+    "humidityPlaceholder": "输入相对湿度",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterTemperature": "请输入温度",
+      "invalidTemperature": "温度值无效",
+      "invalidDewPoint": "露点值无效",
+      "invalidHumidity": "湿度值无效"
+    },
+    "result": {
+      "relative": "相对湿度: {{value}}%",
+      "absolute": "绝对湿度: {{value}} kg/m³"
+    },
+    "operations": {
+      "relative": {
+        "title": "相对湿度",
+        "description": "100%"
+      },
+      "absolute": {
+        "title": "绝对湿度",
+        "description": "100%"
+      }
+    }
+  },
+  "illuminanceCard": {
+    "title": "照度",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "intensityPlaceholder": "输入强度 (cd)",
+    "distancePlaceholder": "输入距离 (m)",
+    "anglePlaceholder": "输入角度 (°)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterAllValues": "请输入所有数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "I = {{value}} lux"
+  },
+  "magnetismCard": {
+    "title": "磁学",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "currentPlaceholder": "输入电流 (A)",
+    "distancePlaceholder": "输入距离 (m)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterBothValues": "请输入两个数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "B = {{value}} T"
+  },
+  "ohmCard": {
+    "title": "欧姆定律",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "currentPlaceholder": "输入电流 (A)",
+    "distancePlaceholder": "输入距离 (m)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterBothValues": "请输入两个数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "B = {{value}} T"
+  },
+  "pressureCard": {
+    "title": "压力",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "forcePlaceholder": "输入力 (N)",
+    "areaPlaceholder": "输入面积 (m²)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterBothValues": "请输入两个数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "P = {{value}} Pa"
+  },
+  "radiationCard": {
+    "title": "辐射",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "powerPlaceholder": "输入功率 (W)",
+    "areaPlaceholder": "输入面积 (m²)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterBothValues": "请输入两个数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "I = {{value}} W/m²"
+  },
+  "solarEnergyCard": {
+    "title": "太阳能",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "radiationPlaceholder": "输入辐射量 (W/m²)",
+    "areaPlaceholder": "输入面积 (m²)",
+    "timePlaceholder": "输入时间 (s)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterAllValues": "请输入所有数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "E = {{value}} J"
+  },
+  "soundCard": {
+    "title": "声音",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "pressurePlaceholder": "输入声压 (Pa)",
+    "distancePlaceholder": "输入距离 (m)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterBothValues": "请输入两个数值",
+      "invalidInput": "输入值无效",
+      "positiveValues": "数值必须为正数"
+    },
+    "result": "{{value}} dB"
+  },
+  "temperatureCard": {
+    "title": "温度",
+    "clearButton": "清除按钮",
+    "units": {
+      "celsius": {
+        "title": "摄氏",
+        "description": "°C"
+      },
+      "fahrenheit": {
+        "title": "华氏",
+        "description": "°F"
+      },
+      "kelvin": {
+        "title": "开尔文",
+        "description": "K"
+      }
+    }
+  },
+  "velocityCard": {
+    "title": "速度",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "distancePlaceholder": "输入距离 (m)",
+    "timePlaceholder": "输入时间 (s)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterAllValues": "请输入所有数值",
+      "positiveDistance": "距离必须为正数",
+      "positiveTime": "时间必须为正数"
+    },
+    "result": "{{value}} m/s"
+  },
+  "wavelengthCard": {
+    "title": "波长",
+    "defaultResult": "结果将在此显示",
+    "values": "数值",
+    "velocityPlaceholder": "输入速度 (m/s)",
+    "frequencyPlaceholder": "输入频率 (Hz)",
+    "calculateButton": "计算按钮",
+    "errors": {
+      "enterAllValues": "请输入所有数值",
+      "positiveVelocity": "速度必须为正数",
+      "positiveFrequency": "频率必须为正数"
+    },
+    "result": "{{value}} m"
+  },
+  "windSpeedCard": {
+    "title": "风速",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "pressurePositive": "压力必须为正数",
+      "airDensityPositive": "空气密度必须为正数",
+      "provideAllValues": "提供所有值"
+    },
+    "unit": "米/秒",
+    "pressurePlaceholder": "输入压力 (Pa)",
+    "airDensityPlaceholder": "输入空气密度 (kg/m³)",
+    "values": "数值",
+    "calculateButton": "计算"
+  },
+  "bmiCard": {
+    "title": "BMI 计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "enterBothValues": "请输入两个数值",
+      "invalidInput": "无效的输入值"
+    },
+    "classification": {
+      "underweight": "体重不足",
+      "normal": "正常体重",
+      "overweight": "超重",
+      "obesity": "肥胖"
+    },
+    "placeholders": {
+      "weight": "输入体重 (kg)",
+      "height": "输入身高 (cm)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+
+  "caloriesCard": {
+    "title": "卡路里计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "unit": "卡路里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "enterBothValues": "请输入两个数值",
+      "invalidInput": "无效的输入值"
+    },
+    "activities": {
+      "walking": {
+        "title": "步行",
+        "description": "低强度活动"
+      },
+      "running": {
+        "title": "跑步",
+        "description": "高强度活动"
+      },
+      "cycling": {
+        "title": "骑自行车",
+        "description": "中等强度活动"
+      },
+      "swimming": {
+        "title": "游泳",
+        "description": "全身锻炼"
+      }
+    },
+    "placeholders": {
+      "weight": "输入体重 (kg)",
+      "duration": "输入持续时间 (分钟)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "hydrationCard": {
+    "title": "水分计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "unit": "升",
+    "errors": {
+      "positiveWeight": "体重必须为正数",
+      "enterWeight": "请输入您的体重",
+      "invalidInput": "输入值无效"
+    },
+    "activities": {
+      "sedentary": {
+        "title": "久坐不动",
+        "description": "很少或没有运动"
+      },
+      "moderate": {
+        "title": "适度运动",
+        "description": "每周3-5天适度运动"
+      },
+      "active": {
+        "title": "活跃",
+        "description": "每周6-7天高强度运动"
+      }
+    },
+    "placeholders": {
+      "weight": "输入体重 (kg)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "medicationCard": {
+    "title": "药物剂量计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "unit": "毫克",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "positiveMaxDosage": "最大剂量必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "placeholders": {
+      "weight": "输入体重 (kg)",
+      "dosagePerKg": "输入每公斤剂量 (mg)",
+      "maxDosage": "输入最大剂量 (mg)*"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "budgetingCard": {
+    "title": "预算计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "positiveSavingsGoal": "储蓄目标必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "deficit": "赤字",
+      "remaining": "剩余"
+    },
+    "placeholders": {
+      "income": "输入收入 (¥)",
+      "expenses": "输入支出 (¥)",
+      "savingsGoal": "输入储蓄目标 (¥)*"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "common": {
+    "currencySymbol": "¥"
+  },
+  "discountsCard": {
+    "title": "折扣计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "discountLimit": "折扣必须小于100%",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "finalPrice": "最终价格"
+    },
+    "placeholders": {
+      "originalPrice": "输入原价 (¥)",
+      "discountPercentage": "输入折扣 (%)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "inflationCard": {
+    "title": "通货膨胀计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "futureValue": "未来价值"
+    },
+    "placeholders": {
+      "currentValue": "输入当前价值 (¥)",
+      "inflationRate": "输入通货膨胀率 (%)",
+      "years": "输入年份"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "interestCard": {
+    "title": "利息计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "totalAmount": "总金额"
+    },
+    "placeholders": {
+      "principal": "输入本金 (¥)",
+      "interestRate": "输入利率 (%)",
+      "time": "输入时间 (年)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "loanCard": {
+    "title": "贷款计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "monthlyPayment": "每月还款"
+    },
+    "placeholders": {
+      "loanAmount": "输入贷款金额 (¥)",
+      "interestRate": "输入利率 (%)",
+      "loanTerm": "输入贷款期限 (年)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "percentageCard": {
+    "title": "百分比计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "calculatedValue": "计算值"
+    },
+    "placeholders": {
+      "baseValue": "输入基础值 (¥)",
+      "percentage": "输入百分比 (%)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "taxesCard": {
+    "title": "税收计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "taxAmount": "税额"
+    },
+    "placeholders": {
+      "income": "输入收入 (¥)",
+      "taxRate": "输入税率 (%)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "tipsCard": {
+    "title": "小费计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "tipAmount": "小费金额",
+      "totalAmount": "总金额"
+    },
+    "placeholders": {
+      "billAmount": "输入账单金额 (¥)",
+      "tipPercentage": "输入小费百分比 (%)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "autonomyCard": {
+    "title": "续航计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "unit": "公里",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "estimatedRange": "预计续航"
+    },
+    "placeholders": {
+      "batteryCapacity": "电池容量 (千瓦时)",
+      "energyConsumption": "能耗 (千瓦时/100公里)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "co2Card": {
+    "title": "二氧化碳排放",
+    "resultPlaceholder": "结果将显示在这里",
+    "unit": "公斤 CO₂",
+    "efficiencyUnit": "公里/升",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "emissions": "排放量",
+      "efficiency": "燃油效率"
+    },
+    "placeholders": {
+      "fuelConsumed": "燃油消耗 (升)",
+      "distanceTraveled": "行驶距离 (公里)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "fuelCard": {
+    "title": "燃油计算器",
+    "resultPlaceholder": "结果将显示在这里",
+    "unit": "升",
+    "errors": {
+      "positiveValues": "数值必须为正数",
+      "requiredValues": "请输入所需数值",
+      "invalidInput": "无效的输入值"
+    },
+    "results": {
+      "fuelNeeded": "所需燃油"
+    },
+    "placeholders": {
+      "distance": "距离 (公里)",
+      "fuelEfficiency": "燃油效率 (公里/升)"
+    },
+    "common": {
+      "values": "数值",
+      "calculateButton": "计算"
+    }
+  },
+  "mileageCard": {
+    "title": "里程计算",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "estimatedResult": "预计: {{distance}} 公里",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "fuelAmountPlaceholder": "燃油量 (升)",
+    "fuelEfficiencyPlaceholder": "燃油效率 (公里/升)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "batteryCard": {
+    "title": "电池计算",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "batteryLifeResult": "电池续航: {{hours}} 小时",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "batteryCapacityPlaceholder": "电池容量 (毫安时)",
+    "currentDrawPlaceholder": "电流消耗 (毫安)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "dataTransferCard": {
+    "title": "数据传输",
+    "bitsPerSecond": "比特每秒",
+    "kilobitsPerSecond": "千比特每秒",
+    "megabitsPerSecond": "兆比特每秒",
+    "gigabitsPerSecond": "千兆比特每秒",
+    "terabitsPerSecond": "太比特每秒",
+    "bitsDescription": "1 比特/秒",
+    "kilobitsDescription": "1 千比特/秒 = 1000 比特/秒",
+    "megabitsDescription": "1 兆比特/秒 = 1000 千比特/秒",
+    "gigabitsDescription": "1 千兆比特/秒 = 1000 兆比特/秒",
+    "terabitsDescription": "1 太比特/秒 = 1000 千兆比特/秒",
+    "clearButtonA11yLabel": "清除按钮"
+  },
+  "digitalDataCard": {
+    "title": "数字数据",
+    "bytes": "字节",
+    "kilobytes": "千字节",
+    "megabytes": "兆字节",
+    "gigabytes": "千兆字节",
+    "terabytes": "太字节",
+    "bytesDescription": "1 字节",
+    "kilobytesDescription": "1 千字节 = 1024 字节",
+    "megabytesDescription": "1 兆字节 = 1024 千字节",
+    "gigabytesDescription": "1 千兆字节 = 1024 兆字节",
+    "terabytesDescription": "1 太字节 = 1024 千兆字节",
+    "clearButtonA11yLabel": "清除按钮"
+  },
+  "electricCurrentCard": {
+    "title": "电流计算",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "resistanceCannotBeZero": "电阻不能为零",
+    "currentResult": "电流: {{current}} 安培",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "voltagePlaceholder": "电压 (V)",
+    "resistancePlaceholder": "电阻 (Ω)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "electricConsumptionCard": {
+    "title": "用电量计算",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "consumptionResult": "用电量: {{consumption}} 瓦时",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "voltagePlaceholder": "电压 (V)",
+    "currentPlaceholder": "电流 (A)",
+    "timePlaceholder": "时间 (小时)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "electricalResistanceCard": {
+    "title": "电阻计算",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "currentCannotBeZero": "电流不能为零",
+    "resistanceResult": "电阻: {{resistance}} Ω",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "voltagePlaceholder": "电压 (V)",
+    "currentPlaceholder": "电流 (A)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "latitudeCard": {
+    "title": "纬度坐标转换",
+    "defaultResult": "结果将显示在这里",
+    "invalidValue": "无效值",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "latitudeResult": "纬度: {dms}",
+    "longitudeResult": "经度: {dms}",
+    "valuesTitle": "数值",
+    "latitudePlaceholder": "纬度 (十进制)",
+    "longitudePlaceholder": "经度 (十进制)",
+    "calculateButtonA11yLabel": "计算按钮",
+    "north": "北",
+    "south": "南",
+    "east": "东",
+    "west": "西"
+  },
+  "demographicCard": {
+    "title": "人口密度",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "areaCannotBeZero": "面积不能为零",
+    "densityResult": "密度: {{density}} 人/平方公里",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "populationPlaceholder": "人口",
+    "areaPlaceholder": "面积 (平方公里)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "cookingCard": {
+    "title": "烹饪计量",
+    "milliliters": "毫升",
+    "teaspoons": "茶匙",
+    "tablespoons": "汤匙",
+    "cups": "杯",
+    "millilitersAbbr": "毫升",
+    "teaspoonsAbbr": "茶匙",
+    "tablespoonsAbbr": "汤匙",
+    "cupsAbbr": "杯",
+    "clearButtonA11yLabel": "清除按钮"
+  },
+  "cookingTimeCard": {
+    "title": "烹饪时间",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "cookingTimeResult": "烹饪时间: {time} 小时",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "weightPlaceholder": "食物重量 (克)",
+    "powerPlaceholder": "烹饪功率 (瓦特)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "timerSettingsCard": {
+    "title": "计时器设置",
+    "hoursLabel": "小时",
+    "minutesLabel": "分钟",
+    "secondsLabel": "秒",
+    "fiveMin": "5 分钟",
+    "tenMin": "10 分钟",
+    "fifteenMin": "15 分钟",
+    "permissionAlertTitle": "需要权限",
+    "permissionAlertMessage": "请启用通知以使用计时器",
+    "notificationTitle": "计时完成!",
+    "notificationBody": "您的计时器已结束。"
+  },
+  "volumeCard": {
+    "title": "体积",
+    "milliliter": "毫升",
+    "liter": "升",
+    "teaspoon": "茶匙",
+    "tablespoon": "汤匙",
+    "cup": "杯",
+    "milliliterDesc": "1 毫升",
+    "literDesc": "1 升 = 1000 毫升",
+    "teaspoonDesc": "1 茶匙 = 4.92892 毫升",
+    "tablespoonDesc": "1 汤匙 = 14.78 毫升",
+    "cupDesc": "1 杯 = 240 毫升",
+    "clearButtonA11yLabel": "清除按钮"
+  },
+  "ageCard": {
+    "title": "年龄计算器",
+    "yourAge": "您的年龄",
+    "birthDate": "出生日期",
+    "currentDate": "当前日期",
+    "ageResult": "{{years}} 年, {{months}} 月, {{days}} 天",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "currencyCard": {
+    "title": "货币转换器",
+    "amountPlaceholder": "输入金额",
+    "fromLabel": "从:",
+    "toLabel": "到:",
+    "loading": "加载中...",
+    "fetchError": "获取汇率失败",
+    "calculateButtonA11yLabel": "计算按钮",
+    "currencies": {
+      "USD": "美元",
+      "EUR": "欧元",
+      "GBP": "英镑",
+      "JPY": "日元",
+      "AUD": "澳元",
+      "CAD": "加元",
+      "CHF": "瑞士法郎",
+      "CNY": "人民币",
+      "SEK": "瑞典克朗",
+      "NZD": "新西兰元"
+    }
+  },
+  "dateCalculatorCard": {
+    "title": "日期计算器",
+    "calculatorTitle": "日期计算器",
+    "startDateLabel": "开始日期",
+    "endDateLabel": "结束日期",
+    "calculateInLabel": "计算单位:",
+    "ageOption": "年龄",
+    "daysOption": "天数",
+    "weeksOption": "周数",
+    "monthsOption": "月数",
+    "yearsOption": "年数",
+    "ageResult": "{years} 年, {months} 月, {days} 天",
+    "daysResult": "{days} 天",
+    "weeksResult": "{weeks} 周",
+    "monthsResult": "{months} 个月",
+    "yearsResult": "{years} 年"
+  },
+  "densityCard": {
+    "title": "密度计算器",
+    "defaultResult": "结果将显示在这里",
+    "positiveValuesRequired": "数值必须为正数",
+    "volumeCannotBeZero": "体积不能为零",
+    "densityResult": "密度: {density} 千克/立方米",
+    "enterRequiredValues": "请输入所需数值",
+    "invalidInput": "无效的输入值",
+    "valuesTitle": "数值",
+    "massPlaceholder": "质量 (千克)",
+    "volumePlaceholder": "体积 (立方米)",
+    "calculateButtonA11yLabel": "计算按钮"
+  },
+  "passwordGenerator": {
+    "title": "密码生成器",
+    "passwordLength": "密码长度",
+    "uppercaseLetters": "大写字母",
+    "lowercaseLetters": "小写字母",
+    "numbers": "数字",
+    "specialCharacters": "特殊字符",
+    "generateButton": "生成按钮",
+    "selectCharacterType": "请至少选择一种字符类型"
+  },
+  "qrCodeGenerator": {
+    "title": "二维码生成器",
+    "placeholder": "输入文本或网址",
+    "copyContent": "复制二维码内容",
+    "generateButton": "生成按钮"
+  },
+  "uuidGenerator": {
+    "title": "UUID 生成器",
+    "copyUuid": "复制 UUID",
+    "generateButton": "生成按钮"
+  },
+  "weightConverter": {
+    "title": "重量转换器",
+    "kilogram": "千克",
+    "gram": "克",
+    "milligram": "毫克",
+    "pound": "磅",
+    "ounce": "盎司",
+    "kgDescription": "1 千克",
+    "gDescription": "1 克 = 0.001 千克",
+    "mgDescription": "1 毫克 = 0.000001 千克",
+    "lbDescription": "1 磅 = 0.453592 千克",
+    "ozDescription": "1 盎司 = 0.0283495 千克",
+    "clearButton": "清除按钮"
+  },
+  "settings": {
+    "title": "设置",
+    "changeTheme": "更改主题",
+    "changeLanguage": "更改语言",
+    "about": "关于",
+    "rateApp": "评分应用",
+    "reportProblem": "报告问题",
+    "selectTheme": "选择主题",
+    "selectLanguage": "选择语言"
   }
 }

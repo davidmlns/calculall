@@ -4,8 +4,10 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { AgeIcon, CalculateIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useTranslation } from 'react-i18next';
 
 export default function Age() {
+  const { t, i18n } = useTranslation('');
   const [birthDate, setBirthDate] = useState(new Date());
   const [currentDate, setCurrentDate] = useState(new Date());
   const [showBirthPicker, setShowBirthPicker] = useState(false);
@@ -27,11 +29,11 @@ export default function Age() {
       months += 12;
     }
 
-    return `${years} years, ${months} months, ${days} days`;
+    return t('ageCard.ageResult', { years, months, days });
   };
 
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString(i18n.language, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -55,17 +57,22 @@ export default function Age() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Age Calculator' icon={<AgeIcon size={50} color='#1ABC9C' />} />
+      <HeaderDescriptionPage
+        title={t('ageCard.title')}
+        icon={<AgeIcon size={50} color='#1ABC9C' />}
+      />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Your Age</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('ageCard.yourAge')}
+        </Text>
 
         <View className='mt-8'>
           <Text className='text-gray-300 text-3xl text-center'>{calculateAge()}</Text>
         </View>
 
         <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-2 ml-8'>Birth Date</Text>
+          <Text className='text-gray-300 text-xl mb-2 ml-8'>{t('ageCard.birthDate')}</Text>
           <Pressable
             onPress={() => setShowBirthPicker(true)}
             className='bg-gray-800 rounded-2xl p-4 w-72 mx-auto'>
@@ -85,7 +92,7 @@ export default function Age() {
         </View>
 
         <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-2 ml-8'>Current Date</Text>
+          <Text className='text-gray-300 text-xl mb-2 ml-8'>{t('ageCard.currentDate')}</Text>
           <Pressable
             onPress={() => setShowCurrentPicker(true)}
             className='bg-gray-800 rounded-2xl p-4 w-72 mx-auto'>
@@ -111,7 +118,7 @@ export default function Age() {
               onPressOut={handlePressOut}
               onPress={() => {}}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('ageCard.calculateButtonA11yLabel')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

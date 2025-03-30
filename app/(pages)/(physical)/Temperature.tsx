@@ -4,10 +4,13 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { TemperatureIcon, CalculateIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '@/components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Temperature() {
+  const { t } = useTranslation();
+
   const [celsius, setCelsius] = useState('');
   const [fahrenheit, setFahrenheit] = useState('');
   const [kelvin, setKelvin] = useState('');
@@ -65,15 +68,15 @@ export default function Temperature() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Temperature'
+        title={t('temperatureCard.title')}
         icon={<TemperatureIcon size={54} color='#2E86C1' />}
       />
 
       <View className='flex-col items-center'>
         <ConvertComponent
           abb='C'
-          title='Celsius'
-          description='°C'
+          title={t('temperatureCard.units.celsius.title')}
+          description={t('temperatureCard.units.celsius.description')}
           onChangeText={value => convertTemperature(value, 'C')}
           value={celsius}
           isActive={activeUnit === 'C'}
@@ -82,8 +85,8 @@ export default function Temperature() {
         />
         <ConvertComponent
           abb='F'
-          title='Fahrenheit'
-          description='°F'
+          title={t('temperatureCard.units.fahrenheit.title')}
+          description={t('temperatureCard.units.fahrenheit.description')}
           onChangeText={value => convertTemperature(value, 'F')}
           value={fahrenheit}
           isActive={activeUnit === 'F'}
@@ -92,8 +95,8 @@ export default function Temperature() {
         />
         <ConvertComponent
           abb='K'
-          title='Kelvin'
-          description='K'
+          title={t('temperatureCard.units.kelvin.title')}
+          description={t('temperatureCard.units.kelvin.description')}
           onChangeText={value => convertTemperature(value, 'K')}
           value={kelvin}
           isActive={activeUnit === 'K'}
@@ -110,7 +113,7 @@ export default function Temperature() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('temperatureCard.clearButton')}>
               <DeleteIcon size={48} color='white' />
             </Pressable>
           </Animated.View>

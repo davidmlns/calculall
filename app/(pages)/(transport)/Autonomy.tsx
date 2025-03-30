@@ -4,17 +4,23 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { AutonomyIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+const scaleValue = new Animated.Value(1);
 
 export default function Autonomy() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('autonomyCard.resultPlaceholder'));
   const [batteryCapacity, setBatteryCapacity] = useState('');
   const [energyConsumption, setEnergyConsumption] = useState('');
 
   const calculateRange = (capacity: number, consumption: number): string => {
-    if (capacity <= 0 || consumption <= 0) return 'Values must be positive';
+    if (capacity <= 0 || consumption <= 0) {
+      return t('autonomyCard.errors.positiveValues');
+    }
 
     const range = (capacity / consumption) * 100;
-    return `Estimated: ${Number(range.toFixed(2))} km`;
+    return `${t('autonomyCard.results.estimatedRange')}: ${Number(range.toFixed(2))} ${t('autonomyCard.unit')}`;
   };
 
   const handleCalculateRange = () => {
@@ -22,19 +28,17 @@ export default function Autonomy() {
     const consumption = parseFloat(energyConsumption);
 
     if (!batteryCapacity || !energyConsumption) {
-      setResult('Please enter required values');
+      setResult(t('autonomyCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(capacity) || isNaN(consumption)) {
-      setResult('Invalid input values');
+      setResult(t('autonomyCard.errors.invalidInput'));
       return;
     }
 
     setResult(calculateRange(capacity, consumption));
   };
-
-  const scaleValue = new Animated.Value(1);
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -53,16 +57,21 @@ export default function Autonomy() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Autonomy' icon={<AutonomyIcon size={51} color='#7F8C8D' />} />
+      <HeaderDescriptionPage
+        title={t('autonomyCard.title')}
+        icon={<AutonomyIcon size={51} color='#7F8C8D' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('autonomyCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-full text-slate-300'
-            placeholder='Battery Capacity (kWh)'
+            placeholder={t('autonomyCard.placeholders.batteryCapacity')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={batteryCapacity}
@@ -73,7 +82,7 @@ export default function Autonomy() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-full text-slate-300'
-            placeholder='Energy Consumption (kWh/100km)'
+            placeholder={t('autonomyCard.placeholders.energyConsumption')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={energyConsumption}
@@ -92,7 +101,7 @@ export default function Autonomy() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateRange}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('autonomyCard.common.calculateButton')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

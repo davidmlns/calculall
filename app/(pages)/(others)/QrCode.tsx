@@ -5,8 +5,10 @@ import { CopyIcon, QrCodeIcon, GenerateIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import * as Clipboard from 'expo-clipboard';
 import QRCode from 'react-native-qrcode-svg';
+import { useTranslation } from 'react-i18next';
 
 export default function QrCode() {
+  const { t } = useTranslation();
   const [text, setText] = useState('');
   const [qrValue, setQrValue] = useState('');
 
@@ -42,7 +44,7 @@ export default function QrCode() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='QR Code Generator'
+        title={t('qrCodeGenerator.title')}
         icon={<QrCodeIcon size={52} color='#1ABC9C' />}
       />
 
@@ -50,7 +52,7 @@ export default function QrCode() {
         <View className='bg-gray-800 rounded-lg p-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter text or URL'
+            placeholder={t('qrCodeGenerator.placeholder')}
             placeholderTextColor='#cbd5e1'
             value={text}
             onChangeText={setText}
@@ -61,7 +63,9 @@ export default function QrCode() {
               <QRCode value={qrValue} size={200} color='#1ABC9C' backgroundColor='transparent' />
               <Pressable onPress={copyToClipboard} className='mt-4 flex-row items-center'>
                 <CopyIcon size={24} color='#ffffff' />
-                <Text className='text-slate-300 text-lg ml-2'>Copy QR Code Content</Text>
+                <Text className='text-slate-300 text-lg ml-2'>
+                  {t('qrCodeGenerator.copyContent')}
+                </Text>
               </Pressable>
             </View>
           )}
@@ -74,7 +78,7 @@ export default function QrCode() {
               onPressOut={handlePressOut}
               onPress={generateQrCode}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Generate Button'>
+              accessibilityLabel={t('qrCodeGenerator.generateButton')}>
               <GenerateIcon size={54} color='white' />
             </Pressable>
           </Animated.View>

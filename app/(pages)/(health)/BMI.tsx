@@ -4,28 +4,29 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { BMIIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function BMI() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('bmiCard.resultPlaceholder'));
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
 
   const calculateBMI = (weight: number, height: number): string => {
-    if (weight <= 0 || height <= 0) return 'Values must be positive';
+    if (weight <= 0 || height <= 0) return t('bmiCard.errors.positiveValues');
 
     const heightInMeters = height / 100;
     const bmi = weight / (heightInMeters * heightInMeters);
-
     return `${Math.round(bmi * 100) / 100}`;
   };
 
   const getBMIClassification = (bmi: number): string => {
-    if (bmi < 18.5) return 'Underweight';
-    if (bmi >= 18.5 && bmi <= 24.9) return 'Normal weight';
-    if (bmi >= 25 && bmi <= 29.9) return 'Overweight';
-    return 'Obesity';
+    if (bmi < 18.5) return t('bmiCard.classification.underweight');
+    if (bmi >= 18.5 && bmi <= 24.9) return t('bmiCard.classification.normal');
+    if (bmi >= 25 && bmi <= 29.9) return t('bmiCard.classification.overweight');
+    return t('bmiCard.classification.obesity');
   };
 
   const handleCalculateBMI = () => {
@@ -33,12 +34,12 @@ export default function BMI() {
     const h = parseFloat(height);
 
     if (!weight || !height) {
-      setResult('Please enter both values');
+      setResult(t('bmiCard.errors.enterBothValues'));
       return;
     }
 
     if (isNaN(w) || isNaN(h)) {
-      setResult('Invalid input values');
+      setResult(t('bmiCard.errors.invalidInput'));
       return;
     }
 
@@ -64,16 +65,21 @@ export default function BMI() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='BMI' icon={<BMIIcon size={50} color='#E74C3C' />} />
+      <HeaderDescriptionPage
+        title={t('bmiCard.title')}
+        icon={<BMIIcon size={50} color='#E74C3C' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('bmiCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter weight (kg)'
+            placeholder={t('bmiCard.placeholders.weight')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={weight}
@@ -84,7 +90,7 @@ export default function BMI() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter height (cm)'
+            placeholder={t('bmiCard.placeholders.height')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={height}
@@ -102,7 +108,7 @@ export default function BMI() {
               onPressOut={handlePressOut}
               onPress={handleCalculateBMI}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('bmiCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

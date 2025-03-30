@@ -4,11 +4,13 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { BudgetingIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Budgeting() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('budgetingCard.resultPlaceholder'));
   const [income, setIncome] = useState('');
   const [expenses, setExpenses] = useState('');
   const [savingsGoal, setSavingsGoal] = useState('');
@@ -18,8 +20,9 @@ export default function Budgeting() {
     expenses: number,
     savingsGoal: number | null,
   ): string => {
-    if (income <= 0 || expenses <= 0) return 'Values must be positive';
-    if (savingsGoal !== null && savingsGoal <= 0) return 'Savings goal must be positive';
+    if (income <= 0 || expenses <= 0) return t('budgetingCard.errors.positiveValues');
+    if (savingsGoal !== null && savingsGoal <= 0)
+      return t('budgetingCard.errors.positiveSavingsGoal');
 
     let remaining = income - expenses;
 
@@ -28,10 +31,10 @@ export default function Budgeting() {
     }
 
     if (remaining < 0) {
-      return `Deficit: $${Math.abs(Number(remaining.toFixed(2)))}`;
+      return `${t('budgetingCard.results.deficit')}: ${t('common.currencySymbol')}${Math.abs(Number(remaining.toFixed(2)))}`;
     }
 
-    return `Remaining: $${Number(remaining.toFixed(2))}`;
+    return `${t('budgetingCard.results.remaining')}: ${t('common.currencySymbol')}${Number(remaining.toFixed(2))}`;
   };
 
   const handleCalculateBudget = () => {
@@ -40,12 +43,12 @@ export default function Budgeting() {
     const s = savingsGoal ? parseFloat(savingsGoal) : null;
 
     if (!income || !expenses) {
-      setResult('Please enter required values');
+      setResult(t('budgetingCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(i) || isNaN(e) || (s !== null && isNaN(s))) {
-      setResult('Invalid input values');
+      setResult(t('budgetingCard.errors.invalidInput'));
       return;
     }
 
@@ -69,16 +72,21 @@ export default function Budgeting() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Budgeting' icon={<BudgetingIcon size={50} color='#27AE60' />} />
+      <HeaderDescriptionPage
+        title={t('budgetingCard.title')}
+        icon={<BudgetingIcon size={50} color='#27AE60' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('budgetingCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter income ($)'
+            placeholder={t('budgetingCard.placeholders.income')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={income}
@@ -89,7 +97,7 @@ export default function Budgeting() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter expenses ($)'
+            placeholder={t('budgetingCard.placeholders.expenses')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={expenses}
@@ -100,7 +108,7 @@ export default function Budgeting() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter savings goal ($)*'
+            placeholder={t('budgetingCard.placeholders.savingsGoal')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={savingsGoal}
@@ -117,8 +125,8 @@ export default function Budgeting() {
               onPressIn={handlePressIn}
               onPressOut={handlePressOut}
               onPress={handleCalculateBudget}
-              className=' rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              className='rounded-2xl mx-auto mb-10'
+              accessibilityLabel={t('budgetingCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

@@ -4,11 +4,14 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { SoundIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Sound() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const [result, setResult] = useState(t('soundCard.defaultResult'));
   const [soundPressure, setSoundPressure] = useState('');
   const [distance, setDistance] = useState('');
 
@@ -17,12 +20,12 @@ export default function Sound() {
     const SPEED_OF_SOUND = 343;
     const REFERENCE_INTENSITY = 1e-12;
 
-    if (pressure <= 0 || distance <= 0) return 'Values must be positive';
+    if (pressure <= 0 || distance <= 0) return t('soundCard.errors.positiveValues');
 
     const intensity = pressure ** 2 / (2 * AIR_DENSITY * SPEED_OF_SOUND);
     const dB = 10 * Math.log10(intensity / REFERENCE_INTENSITY);
 
-    return `${Math.round(dB * 100) / 100} dB`;
+    return t('soundCard.result', { value: Math.round(dB * 100) / 100 });
   };
 
   const handleCalculateSoundIntensity = () => {
@@ -30,12 +33,12 @@ export default function Sound() {
     const dist = parseFloat(distance);
 
     if (!soundPressure || !distance) {
-      setResult('Please enter both values');
+      setResult(t('soundCard.errors.enterBothValues'));
       return;
     }
 
     if (isNaN(pressure) || isNaN(dist)) {
-      setResult('Invalid input values');
+      setResult(t('soundCard.errors.invalidInput'));
       return;
     }
 
@@ -59,16 +62,21 @@ export default function Sound() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Sound' icon={<SoundIcon size={54} color='#2E86C1' />} />
+      <HeaderDescriptionPage
+        title={t('soundCard.title')}
+        icon={<SoundIcon size={54} color='#2E86C1' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('soundCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter sound pressure (Pa)'
+            placeholder={t('soundCard.pressurePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={soundPressure}
@@ -79,7 +87,7 @@ export default function Sound() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter distance (m)'
+            placeholder={t('soundCard.distancePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={distance}
@@ -97,7 +105,7 @@ export default function Sound() {
               onPressOut={handlePressOut}
               onPress={handleCalculateSoundIntensity}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('soundCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

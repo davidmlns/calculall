@@ -3,15 +3,17 @@ import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { LatitudeIcon, CalculateIcon } from '../../../components/Icons';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Latitude() {
-  const [result1, setResult1] = useState('The result will appear here');
-  const [result2, setResult2] = useState();
+  const { t } = useTranslation('');
+  const [result1, setResult1] = useState(t('latitudeCard.defaultResult'));
+  const [result2, setResult2] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
 
   const convertToDMS = (degrees: number, isLatitude: boolean): string => {
-    if (degrees < -180 || degrees > 180) return 'Invalid value';
+    if (degrees < -180 || degrees > 180) return t('latitudeCard.invalidValue');
 
     const absolute = Math.abs(degrees);
     const degreesOut = Math.floor(absolute);
@@ -19,7 +21,13 @@ export default function Latitude() {
     const minutes = Math.floor(minutesNotTruncated);
     const seconds = Math.floor((minutesNotTruncated - minutes) * 60);
 
-    const direction = isLatitude ? (degrees >= 0 ? 'N' : 'S') : degrees >= 0 ? 'E' : 'W';
+    const direction = isLatitude
+      ? degrees >= 0
+        ? t('latitudeCard.north')
+        : t('latitudeCard.south')
+      : degrees >= 0
+        ? t('latitudeCard.east')
+        : t('latitudeCard.west');
 
     return `${degreesOut}°${minutes}'${seconds}" ${direction}`;
   };
@@ -31,19 +39,19 @@ export default function Latitude() {
     const lon = parseFloat(longitude);
 
     if (!latitude || !longitude) {
-      setResult1('Please enter required values');
+      setResult1(t('latitudeCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(lat) || isNaN(lon)) {
-      setResult1('Invalid input values');
+      setResult1(t('latitudeCard.invalidInput'));
       return;
     }
 
     const latDMS = convertToDMS(lat, true);
     const lonDMS = convertToDMS(lon, false);
-    setResult1(`Latitude: ${latDMS}`);
-    setResult2(`Longitude: ${lonDMS}`);
+    setResult1(t('latitudeCard.latitudeResult', { dms: latDMS }));
+    setResult2(t('latitudeCard.longitudeResult', { dms: lonDMS }));
   };
 
   const handlePressIn = () => {
@@ -64,20 +72,20 @@ export default function Latitude() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Latitude & Coor.'
+        title={t('latitudeCard.title')}
         icon={<LatitudeIcon size={52} color='#D35400' />}
       />
       <View className='flex mb-4'>
         <TextInput
           placeholderTextColor='#c7c7c7'
-          placeholder='The result will appear here'
-          className='bg-gray-800 rounded-lg rounded-b-none p-4 text-2xl flex-wrap  w-96 h-16 mx-auto text-center text-slate-300'
+          placeholder={t('latitudeCard.defaultResult')}
+          className='bg-gray-800 rounded-lg rounded-b-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
           editable={false}
           selectTextOnFocus={false}
           value={result1}
         />
         <TextInput
-          className='bg-gray-800 rounded-lg rounded-t-none p-4 text-2xl flex-wrap  w-96 h-16 mx-auto text-center text-slate-300'
+          className='bg-gray-800 rounded-lg rounded-t-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
           editable={false}
           selectTextOnFocus={false}
           value={result2}
@@ -85,12 +93,14 @@ export default function Latitude() {
       </View>
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('latitudeCard.valuesTitle')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Latitude (decimal)'
+            placeholder={t('latitudeCard.latitudePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='numbers-and-punctuation'
             value={latitude}
@@ -101,7 +111,7 @@ export default function Latitude() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Longitude (decimal)'
+            placeholder={t('latitudeCard.longitudePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='numbers-and-punctuation'
             value={longitude}
@@ -120,7 +130,7 @@ export default function Latitude() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateCoordinates}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('latitudeCard.calculateButtonA11yLabel')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

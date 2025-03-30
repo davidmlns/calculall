@@ -5,8 +5,10 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { CopyIcon, PasswordIcon, GenerateIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import * as Clipboard from 'expo-clipboard';
+import { useTranslation } from 'react-i18next';
 
 export default function Password() {
+  const { t, i18n } = useTranslation();
   const [password, setPassword] = useState('');
   const [length, setLength] = useState(16);
   const [includeUppercase, setIncludeUppercase] = useState(true);
@@ -43,7 +45,7 @@ export default function Password() {
     if (includeSymbols) characters += symbols;
 
     if (!characters.length) {
-      setPassword('Select at least one character type');
+      setPassword(t('passwordGenerator.selectCharacterType'));
       return;
     }
 
@@ -63,7 +65,7 @@ export default function Password() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Password Generator'
+        title={t('passwordGenerator.title')}
         icon={<PasswordIcon size={51} color='#1ABC9C' />}
       />
 
@@ -78,7 +80,9 @@ export default function Password() {
         </View>
 
         <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-4 text-center'>Password Length: {length}</Text>
+          <Text className='text-gray-300 text-xl mb-4 text-center'>
+            {t('passwordGenerator.passwordLength')}: {length}
+          </Text>
           <View className='flex-row items-center px-4'>
             <Text className='text-gray-300 text-lg mr-2'>8</Text>
             <View className='flex-1'>
@@ -99,7 +103,7 @@ export default function Password() {
 
         <View className='mt-6 bg-gray-800 rounded-2xl p-4'>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>Uppercase Letters</Text>
+            <Text className='text-gray-300 text-xl'>{t('passwordGenerator.uppercaseLetters')}</Text>
             <Switch
               value={includeUppercase}
               onValueChange={setIncludeUppercase}
@@ -108,7 +112,7 @@ export default function Password() {
             />
           </View>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>Lowercase Letters</Text>
+            <Text className='text-gray-300 text-xl'>{t('passwordGenerator.lowercaseLetters')}</Text>
             <Switch
               value={includeLowercase}
               onValueChange={setIncludeLowercase}
@@ -117,7 +121,7 @@ export default function Password() {
             />
           </View>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>Numbers</Text>
+            <Text className='text-gray-300 text-xl'>{t('passwordGenerator.numbers')}</Text>
             <Switch
               value={includeNumbers}
               onValueChange={setIncludeNumbers}
@@ -126,7 +130,9 @@ export default function Password() {
             />
           </View>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>Special Characters</Text>
+            <Text className='text-gray-300 text-xl'>
+              {t('passwordGenerator.specialCharacters')}
+            </Text>
             <Switch
               value={includeSymbols}
               onValueChange={setIncludeSymbols}
@@ -143,7 +149,7 @@ export default function Password() {
               onPressOut={handlePressOut}
               onPress={generatePassword}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Generate Button'>
+              accessibilityLabel={t('passwordGenerator.generateButton')}>
               <GenerateIcon size={54} color='white' />
             </Pressable>
           </Animated.View>

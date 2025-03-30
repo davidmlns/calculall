@@ -4,8 +4,10 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { CookingIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '@/components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 export default function Cooking() {
+  const { t } = useTranslation('');
   const [milliliters, setMilliliters] = useState('');
   const [teaspoons, setTeaspoons] = useState('');
   const [tablespoons, setTablespoons] = useState('');
@@ -32,32 +34,32 @@ export default function Cooking() {
       tbsp = 0,
       cup = 0;
 
-    if (unit === 'ml') {
+    if (unit === t('cookingCard.millilitersAbbr')) {
       ml = numericValue;
       tsp = ml / 4.92892;
       tbsp = ml / 14.7868;
       cup = ml / 236.588;
-    } else if (unit === 'tsp') {
+    } else if (unit === t('cookingCard.teaspoonsAbbr')) {
       tsp = numericValue;
       ml = tsp * 4.92892;
       tbsp = tsp / 3;
       cup = tbsp / 16;
-    } else if (unit === 'tbsp') {
+    } else if (unit === t('cookingCard.tablespoonsAbbr')) {
       tbsp = numericValue;
       tsp = tbsp * 3;
       ml = tbsp * 14.7868;
       cup = tbsp / 16;
-    } else if (unit === 'cup') {
+    } else if (unit === t('cookingCard.cupsAbbr')) {
       cup = numericValue;
       tbsp = cup * 16;
       tsp = tbsp * 3;
       ml = cup * 236.588;
     }
 
-    setMilliliters(unit === 'ml' ? cleanedValue : ml.toFixed(2));
-    setTeaspoons(unit === 'tsp' ? cleanedValue : tsp.toFixed(2));
-    setTablespoons(unit === 'tbsp' ? cleanedValue : tbsp.toFixed(2));
-    setCups(unit === 'cup' ? cleanedValue : cup.toFixed(2));
+    setMilliliters(unit === t('cookingCard.millilitersAbbr') ? cleanedValue : ml.toFixed(2));
+    setTeaspoons(unit === t('cookingCard.teaspoonsAbbr') ? cleanedValue : tsp.toFixed(2));
+    setTablespoons(unit === t('cookingCard.tablespoonsAbbr') ? cleanedValue : tbsp.toFixed(2));
+    setCups(unit === t('cookingCard.cupsAbbr') ? cleanedValue : cup.toFixed(2));
   };
 
   const handlePressIn = () => {
@@ -77,13 +79,16 @@ export default function Cooking() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Cooking' icon={<CookingIcon size={52} color='#F39C12' />} />
+      <HeaderDescriptionPage
+        title={t('cookingCard.title')}
+        icon={<CookingIcon size={52} color='#F39C12' />}
+      />
 
       <View className='flex-col items-center'>
         <ConvertComponent
-          abb='ml'
-          title='Milliliters'
-          description='ml'
+          abb={t('cookingCard.millilitersAbbr')}
+          title={t('cookingCard.milliliters')}
+          description={t('cookingCard.millilitersAbbr')}
           onChangeText={value => convertMeasurement(value, 'ml')}
           value={milliliters}
           isActive={activeUnit === 'ml'}
@@ -91,9 +96,9 @@ export default function Cooking() {
           maxLength={9}
         />
         <ConvertComponent
-          abb='tsp'
-          title='Teaspoons'
-          description='tsp'
+          abb={t('cookingCard.teaspoonsAbbr')}
+          title={t('cookingCard.teaspoons')}
+          description={t('cookingCard.teaspoonsAbbr')}
           onChangeText={value => convertMeasurement(value, 'tsp')}
           value={teaspoons}
           isActive={activeUnit === 'tsp'}
@@ -101,9 +106,9 @@ export default function Cooking() {
           maxLength={9}
         />
         <ConvertComponent
-          abb='tbsp'
-          title='Tablespoons'
-          description='tbsp'
+          abb={t('cookingCard.tablespoonsAbbr')}
+          title={t('cookingCard.tablespoons')}
+          description={t('cookingCard.tablespoonsAbbr')}
           onChangeText={value => convertMeasurement(value, 'tbsp')}
           value={tablespoons}
           isActive={activeUnit === 'tbsp'}
@@ -111,9 +116,9 @@ export default function Cooking() {
           maxLength={9}
         />
         <ConvertComponent
-          abb='cup'
-          title='Cups'
-          description='cup'
+          abb={t('cookingCard.cupsAbbr')}
+          title={t('cookingCard.cups')}
+          description={t('cookingCard.cupsAbbr')}
           onChangeText={value => convertMeasurement(value, 'cup')}
           value={cups}
           isActive={activeUnit === 'cup'}
@@ -122,7 +127,7 @@ export default function Cooking() {
         />
       </View>
 
-      {milliliters && teaspoons && tablespoons && cups && (
+      {(milliliters || teaspoons || tablespoons || cups) && (
         <View className='mt-5'>
           <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
             <Pressable
@@ -130,7 +135,7 @@ export default function Cooking() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('cookingCard.clearButtonA11yLabel')}>
               <DeleteIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

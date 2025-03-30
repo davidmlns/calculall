@@ -4,17 +4,23 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { PercentageIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+const scaleValue = new Animated.Value(1);
 
 export default function Percentage() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('percentageCard.resultPlaceholder'));
   const [baseValue, setBaseValue] = useState('');
   const [percentage, setPercentage] = useState('');
 
   const calculatePercentage = (baseValue: number, percentage: number): string => {
-    if (baseValue <= 0 || percentage <= 0) return 'Values must be positive';
+    if (baseValue <= 0 || percentage <= 0) {
+      return t('percentageCard.errors.positiveValues');
+    }
 
     const calculatedValue = baseValue * (percentage / 100);
-    return `Calculated Value: $${Number(calculatedValue.toFixed(2))}`;
+    return `${t('percentageCard.results.calculatedValue')}: ${t('common.currencySymbol')}${Number(calculatedValue.toFixed(2))}`;
   };
 
   const handleCalculatePercentage = () => {
@@ -22,19 +28,17 @@ export default function Percentage() {
     const p = parseFloat(percentage);
 
     if (!baseValue || !percentage) {
-      setResult('Please enter required values');
+      setResult(t('percentageCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(b) || isNaN(p)) {
-      setResult('Invalid input values');
+      setResult(t('percentageCard.errors.invalidInput'));
       return;
     }
 
     setResult(calculatePercentage(b, p));
   };
-
-  const scaleValue = new Animated.Value(1);
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -54,18 +58,20 @@ export default function Percentage() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Percentage'
+        title={t('percentageCard.title')}
         icon={<PercentageIcon size={50} color='#27AE60' />}
       />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('percentageCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter base value ($)'
+            placeholder={t('percentageCard.placeholders.baseValue')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={baseValue}
@@ -76,7 +82,7 @@ export default function Percentage() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter percentage (%)'
+            placeholder={t('percentageCard.placeholders.percentage')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={percentage}
@@ -94,7 +100,7 @@ export default function Percentage() {
               onPressOut={handlePressOut}
               onPress={handleCalculatePercentage}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('percentageCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

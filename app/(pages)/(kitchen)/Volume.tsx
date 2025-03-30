@@ -4,6 +4,7 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { VolumeIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 type VolumeUnit = 'ml' | 'l' | 'tsp' | 'tbsp' | 'cup';
 
@@ -16,12 +17,13 @@ const conversionFactors = {
 };
 
 export default function Volume() {
+  const { t } = useTranslation('');
   const [milliliter, setMilliliter] = useState('');
   const [liter, setLiter] = useState('');
   const [teaspoon, setTeaspoon] = useState('');
   const [tablespoon, setTablespoon] = useState('');
   const [cup, setCup] = useState('');
-  const [activeUnit, setActiveUnit] = useState<VolumeUnit>('ml');
+  const [activeUnit, setActiveUnit] = useState<VolumeUnit>('volumeCard.ml');
 
   const scaleValue = new Animated.Value(1);
 
@@ -41,13 +43,21 @@ export default function Volume() {
 
     const milliliters = numericValue * conversionFactors[unit];
 
-    setMilliliter(unit === 'ml' ? cleanedValue : (milliliters / conversionFactors.ml).toFixed(2));
-    setLiter(unit === 'l' ? cleanedValue : (milliliters / conversionFactors.l).toFixed(2));
-    setTeaspoon(unit === 'tsp' ? cleanedValue : (milliliters / conversionFactors.tsp).toFixed(2));
-    setTablespoon(
-      unit === 'tbsp' ? cleanedValue : (milliliters / conversionFactors.tbsp).toFixed(2),
+    setMilliliter(
+      unit === 'volumeCard.ml' ? cleanedValue : (milliliters / conversionFactors.ml).toFixed(2),
     );
-    setCup(unit === 'cup' ? cleanedValue : (milliliters / conversionFactors.cup).toFixed(2));
+    setLiter(
+      unit === 'volumeCard.l' ? cleanedValue : (milliliters / conversionFactors.l).toFixed(2),
+    );
+    setTeaspoon(
+      unit === 'volumeCard.tsp' ? cleanedValue : (milliliters / conversionFactors.tsp).toFixed(2),
+    );
+    setTablespoon(
+      unit === 'volumeCard.tbsp' ? cleanedValue : (milliliters / conversionFactors.tbsp).toFixed(2),
+    );
+    setCup(
+      unit === 'volumeCard.cup' ? cleanedValue : (milliliters / conversionFactors.cup).toFixed(2),
+    );
   };
 
   const handlePressIn = () => {
@@ -67,13 +77,16 @@ export default function Volume() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Volume' icon={<VolumeIcon size={54} color='#F39C12' />} />
+      <HeaderDescriptionPage
+        title={t('volumeCard.title')}
+        icon={<VolumeIcon size={54} color='#F39C12' />}
+      />
 
       <View className='flex-col items-center'>
         <ConvertComponent
-          abb='ml'
-          title='Milliliter'
-          description='1 ml'
+          abb={t('volumeCard.milliliter')}
+          title={t('volumeCard.milliliter')}
+          description={t('volumeCard.milliliterDesc')}
           onChangeText={value => convertVolume(value, 'ml')}
           value={milliliter}
           isActive={activeUnit === 'ml'}
@@ -81,9 +94,9 @@ export default function Volume() {
           maxLength={9}
         />
         <ConvertComponent
-          abb='L'
-          title='Liter'
-          description='1 l = 1000 ml'
+          abb={t('volumeCard.liter')}
+          title={t('volumeCard.liter')}
+          description={t('volumeCard.literDesc')}
           onChangeText={value => convertVolume(value, 'l')}
           value={liter}
           isActive={activeUnit === 'l'}
@@ -91,9 +104,9 @@ export default function Volume() {
           maxLength={7}
         />
         <ConvertComponent
-          abb='tsp'
-          title='Teaspoon'
-          description='1 tsp = 4.92892 ml'
+          abb={t('volumeCard.teaspoon')}
+          title={t('volumeCard.teaspoon')}
+          description={t('volumeCard.teaspoonDesc')}
           onChangeText={value => convertVolume(value, 'tsp')}
           value={teaspoon}
           isActive={activeUnit === 'tsp'}
@@ -101,9 +114,9 @@ export default function Volume() {
           maxLength={9}
         />
         <ConvertComponent
-          abb='tbsp'
-          title='Tablespoon'
-          description='1 tbsp = 14.78 ml'
+          abb={t('volumeCard.tablespoon')}
+          title={t('volumeCard.tablespoon')}
+          description={t('volumeCard.tablespoonDesc')}
           onChangeText={value => convertVolume(value, 'tbsp')}
           value={tablespoon}
           isActive={activeUnit === 'tbsp'}
@@ -111,9 +124,9 @@ export default function Volume() {
           maxLength={8}
         />
         <ConvertComponent
-          abb='cup'
-          title='Cup'
-          description='1 cup = 240 ml'
+          abb={t('volumeCard.cup')}
+          title={t('volumeCard.cup')}
+          description={t('volumeCard.cupDesc')}
           onChangeText={value => convertVolume(value, 'cup')}
           value={cup}
           isActive={activeUnit === 'cup'}
@@ -130,7 +143,7 @@ export default function Volume() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('volumeCard.clearButtonA11yLabel')}>
               <DeleteIcon size={48} color='white' />
             </Pressable>
           </Animated.View>

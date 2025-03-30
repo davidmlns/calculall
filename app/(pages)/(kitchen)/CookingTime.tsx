@@ -4,20 +4,22 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { CookingTimeIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function CookingTime() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation('');
+  const [result, setResult] = useState(t('cookingTimeCard.defaultResult'));
   const [foodWeight, setFoodWeight] = useState('');
   const [cookingPower, setCookingPower] = useState('');
 
   const scaleValue = new Animated.Value(1);
 
   const calculateCookingTime = (weight: number, power: number): string => {
-    if (weight <= 0 || power <= 0) return 'Values must be positive';
+    if (weight <= 0 || power <= 0) return t('cookingTimeCard.positiveValuesRequired');
 
     // Basic cooking time formula: (weight in grams * 0.05) / power in watts
     const cookingTime = (weight * 0.05) / power;
-    return `Cooking Time: ${Number(cookingTime.toFixed(2))} hours`;
+    return t('cookingTimeCard.cookingTimeResult', { time: Number(cookingTime.toFixed(2)) });
   };
 
   const handleCalculateCookingTime = () => {
@@ -25,12 +27,12 @@ export default function CookingTime() {
     const power = parseFloat(cookingPower);
 
     if (!foodWeight || !cookingPower) {
-      setResult('Please enter required values');
+      setResult(t('cookingTimeCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(weight) || isNaN(power)) {
-      setResult('Invalid input values');
+      setResult(t('cookingTimeCard.invalidInput'));
       return;
     }
 
@@ -55,18 +57,20 @@ export default function CookingTime() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Cooking Time'
+        title={t('cookingTimeCard.title')}
         icon={<CookingTimeIcon size={52} color='#F39C12' />}
       />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('cookingTimeCard.valuesTitle')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Food Weight (grams)'
+            placeholder={t('cookingTimeCard.weightPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={foodWeight}
@@ -77,7 +81,7 @@ export default function CookingTime() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Cooking Power (watts)'
+            placeholder={t('cookingTimeCard.powerPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={cookingPower}
@@ -96,7 +100,7 @@ export default function CookingTime() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateCookingTime}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('cookingTimeCard.calculateButtonA11yLabel')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

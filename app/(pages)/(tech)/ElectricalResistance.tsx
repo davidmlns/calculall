@@ -1,27 +1,27 @@
 import { ScrollView, Text, TextInput, View, Pressable, Animated } from 'react-native';
 import HeaderPages from '../../../components/HeaderPages';
 import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
-import {
-  ElectricalResistanceIcon,
-  ElectricConsumptionIcon,
-  CalculateIcon,
-} from '../../../components/Icons';
+import { ElectricalResistanceIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function ElectricalResistance() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('electricalResistanceCard.defaultResult'));
   const [voltage, setVoltage] = useState('');
   const [current, setCurrent] = useState('');
 
   const scaleValue = new Animated.Value(1);
 
   const calculateResistance = (voltage: number, current: number): string => {
-    if (voltage <= 0 || current <= 0) return 'Values must be positive';
-    if (current === 0) return 'Current cannot be zero';
+    if (voltage <= 0 || current <= 0) return t('electricalResistanceCard.positiveValuesRequired');
+    if (current === 0) return t('electricalResistanceCard.currentCannotBeZero');
 
     const resistance = voltage / current;
-    return `Resistance: ${Number(resistance.toFixed(4))} Ω`;
+    return t('electricalResistanceCard.resistanceResult', {
+      resistance: Number(resistance.toFixed(4)),
+    });
   };
 
   const handleCalculateResistance = () => {
@@ -29,12 +29,12 @@ export default function ElectricalResistance() {
     const i = parseFloat(current);
 
     if (!voltage || !current) {
-      setResult('Please enter required values');
+      setResult(t('electricalResistanceCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(v) || isNaN(i)) {
-      setResult('Invalid input values');
+      setResult(t('electricalResistanceCard.invalidInput'));
       return;
     }
 
@@ -59,18 +59,20 @@ export default function ElectricalResistance() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Electrical Resistance'
+        title={t('electricalResistanceCard.title')}
         icon={<ElectricalResistanceIcon size={52} color='#3498DB' />}
       />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('electricalResistanceCard.valuesTitle')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Voltage (V)'
+            placeholder={t('electricalResistanceCard.voltagePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={voltage}
@@ -81,7 +83,7 @@ export default function ElectricalResistance() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Current (A)'
+            placeholder={t('electricalResistanceCard.currentPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={current}
@@ -100,7 +102,7 @@ export default function ElectricalResistance() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateResistance}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('electricalResistanceCard.calculateButtonA11yLabel')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

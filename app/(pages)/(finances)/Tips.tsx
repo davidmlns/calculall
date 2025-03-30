@@ -4,17 +4,25 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { TipIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+const scaleValue = new Animated.Value(1);
 
 export default function Tips() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('tipsCard.resultPlaceholder'));
   const [billAmount, setBillAmount] = useState('');
   const [tipPercentage, setTipPercentage] = useState('');
 
   const calculateTip = (billAmount: number, tipPercentage: number): string => {
-    if (billAmount <= 0 || tipPercentage <= 0) return 'Values must be positive';
+    if (billAmount <= 0 || tipPercentage <= 0) {
+      return t('tipsCard.errors.positiveValues');
+    }
 
     const tipAmount = billAmount * (tipPercentage / 100);
-    return `Tip Amount: $${Number(tipAmount.toFixed(2))}`;
+    const totalAmount = billAmount + tipAmount;
+
+    return `${t('tipsCard.results.tipAmount')}: ${t('common.currencySymbol')}${Number(tipAmount.toFixed(2))}\n${t('tipsCard.results.totalAmount')}: ${t('common.currencySymbol')}${Number(totalAmount.toFixed(2))}`;
   };
 
   const handleCalculateTip = () => {
@@ -22,19 +30,17 @@ export default function Tips() {
     const p = parseFloat(tipPercentage);
 
     if (!billAmount || !tipPercentage) {
-      setResult('Please enter required values');
+      setResult(t('tipsCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(b) || isNaN(p)) {
-      setResult('Invalid input values');
+      setResult(t('tipsCard.errors.invalidInput'));
       return;
     }
 
     setResult(calculateTip(b, p));
   };
-
-  const scaleValue = new Animated.Value(1);
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -53,16 +59,21 @@ export default function Tips() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Tips' icon={<TipIcon size={50} color='#27AE60' />} />
+      <HeaderDescriptionPage
+        title={t('tipsCard.title')}
+        icon={<TipIcon size={50} color='#27AE60' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('tipsCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter bill amount ($)'
+            placeholder={t('tipsCard.placeholders.billAmount')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={billAmount}
@@ -73,7 +84,7 @@ export default function Tips() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter tip percentage (%)'
+            placeholder={t('tipsCard.placeholders.tipPercentage')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={tipPercentage}
@@ -91,7 +102,7 @@ export default function Tips() {
               onPressOut={handlePressOut}
               onPress={handleCalculateTip}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('tipsCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

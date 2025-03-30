@@ -4,22 +4,29 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { LoanIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+const scaleValue = new Animated.Value(1);
 
 export default function Loan() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('loanCard.resultPlaceholder'));
   const [loanAmount, setLoanAmount] = useState('');
   const [interestRate, setInterestRate] = useState('');
   const [loanTerm, setLoanTerm] = useState('');
 
   const calculateLoan = (loanAmount: number, interestRate: number, loanTerm: number): string => {
-    if (loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) return 'Values must be positive';
+    if (loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+      return t('loanCard.errors.positiveValues');
+    }
 
     const monthlyInterestRate = interestRate / 100 / 12;
     const numberOfPayments = loanTerm * 12;
     const monthlyPayment =
       (loanAmount * monthlyInterestRate) /
       (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
-    return `Monthly Payment: $${Number(monthlyPayment.toFixed(2))}`;
+
+    return `${t('loanCard.results.monthlyPayment')}: ${t('common.currencySymbol')}${Number(monthlyPayment.toFixed(2))}`;
   };
 
   const handleCalculateLoan = () => {
@@ -28,19 +35,17 @@ export default function Loan() {
     const t = parseFloat(loanTerm);
 
     if (!loanAmount || !interestRate || !loanTerm) {
-      setResult('Please enter required values');
+      setResult(t('loanCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(l) || isNaN(r) || isNaN(t)) {
-      setResult('Invalid input values');
+      setResult(t('loanCard.errors.invalidInput'));
       return;
     }
 
     setResult(calculateLoan(l, r, t));
   };
-
-  const scaleValue = new Animated.Value(1);
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -59,16 +64,21 @@ export default function Loan() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Loan' icon={<LoanIcon size={52} color='#27AE60' />} />
+      <HeaderDescriptionPage
+        title={t('loanCard.title')}
+        icon={<LoanIcon size={52} color='#27AE60' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('loanCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter loan amount ($)'
+            placeholder={t('loanCard.placeholders.loanAmount')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={loanAmount}
@@ -79,7 +89,7 @@ export default function Loan() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter interest rate (%)'
+            placeholder={t('loanCard.placeholders.interestRate')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={interestRate}
@@ -90,7 +100,7 @@ export default function Loan() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter loan term (years)'
+            placeholder={t('loanCard.placeholders.loanTerm')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={loanTerm}
@@ -108,7 +118,7 @@ export default function Loan() {
               onPressOut={handlePressOut}
               onPress={handleCalculateLoan}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('loanCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

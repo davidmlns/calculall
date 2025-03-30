@@ -4,17 +4,19 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { BatteryIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Battery() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation('');
+  const [result, setResult] = useState(t('batteryCard.defaultResult'));
   const [batteryCapacity, setBatteryCapacity] = useState('');
   const [currentDraw, setCurrentDraw] = useState('');
 
   const calculateBatteryLife = (capacity: number, current: number): string => {
-    if (capacity <= 0 || current <= 0) return 'Values must be positive';
+    if (capacity <= 0 || current <= 0) return t('batteryCard.positiveValuesRequired');
 
     const batteryLife = capacity / current;
-    return `Battery Life: ${Number(batteryLife.toFixed(2))} hours`;
+    return t('batteryCard.batteryLifeResult', { hours: Number(batteryLife.toFixed(2)) });
   };
 
   const handleCalculateBatteryLife = () => {
@@ -22,12 +24,12 @@ export default function Battery() {
     const current = parseFloat(currentDraw);
 
     if (!batteryCapacity || !currentDraw) {
-      setResult('Please enter required values');
+      setResult(t('batteryCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(capacity) || isNaN(current)) {
-      setResult('Invalid input values');
+      setResult(t('batteryCard.invalidInput'));
       return;
     }
 
@@ -53,16 +55,21 @@ export default function Battery() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Battery' icon={<BatteryIcon size={52} color='#3498DB' />} />
+      <HeaderDescriptionPage
+        title={t('batteryCard.title')}
+        icon={<BatteryIcon size={52} color='#3498DB' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('batteryCard.valuesTitle')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Battery Capacity (mAh)'
+            placeholder={t('batteryCard.batteryCapacityPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={batteryCapacity}
@@ -73,7 +80,7 @@ export default function Battery() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Current Draw (mA)'
+            placeholder={t('batteryCard.currentDrawPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={currentDraw}
@@ -91,7 +98,7 @@ export default function Battery() {
               onPressOut={handlePressOut}
               onPress={handleCalculateBatteryLife}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('batteryCard.calculateButtonA11yLabel')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

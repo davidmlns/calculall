@@ -4,19 +4,24 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { CO2Icon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const CO2_EMISSION_FACTOR = 2.31; // kg CO₂ per liter of gasoline
 
 export default function CO2() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('co2Card.resultPlaceholder'));
   const [fuelConsumed, setFuelConsumed] = useState('');
   const [distanceTraveled, setDistanceTraveled] = useState('');
 
   const calculateEmissions = (fuel: number, distance: number): string => {
-    if (fuel <= 0 || distance <= 0) return 'Values must be positive';
+    if (fuel <= 0 || distance <= 0) {
+      return t('co2Card.errors.positiveValues');
+    }
 
     const emissions = fuel * CO2_EMISSION_FACTOR;
-    return `Emissions: ${Number(emissions.toFixed(2))} kg CO₂`;
+    const efficiency = distance / fuel;
+    return `${t('co2Card.results.emissions')}: ${Number(emissions.toFixed(2))} ${t('co2Card.unit')}\n${t('co2Card.results.efficiency')}: ${Number(efficiency.toFixed(2))} ${t('co2Card.efficiencyUnit')}`;
   };
 
   const handleCalculateEmissions = () => {
@@ -24,12 +29,12 @@ export default function CO2() {
     const distance = parseFloat(distanceTraveled);
 
     if (!fuelConsumed || !distanceTraveled) {
-      setResult('Please enter required values');
+      setResult(t('co2Card.errors.requiredValues'));
       return;
     }
 
     if (isNaN(fuel) || isNaN(distance)) {
-      setResult('Invalid input values');
+      setResult(t('co2Card.errors.invalidInput'));
       return;
     }
 
@@ -55,16 +60,21 @@ export default function CO2() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='CO₂ Emissions' icon={<CO2Icon size={54} color='#7F8C8D' />} />
+      <HeaderDescriptionPage
+        title={t('co2Card.title')}
+        icon={<CO2Icon size={54} color='#7F8C8D' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('co2Card.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Fuel Consumed (L)'
+            placeholder={t('co2Card.placeholders.fuelConsumed')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={fuelConsumed}
@@ -75,7 +85,7 @@ export default function CO2() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Distance Traveled (km)'
+            placeholder={t('co2Card.placeholders.distanceTraveled')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={distanceTraveled}
@@ -94,7 +104,7 @@ export default function CO2() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateEmissions}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('co2Card.common.calculateButton')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

@@ -4,6 +4,7 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { IlluminanceIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const calculateIlluminance = (
   intensity: number,
@@ -17,7 +18,9 @@ const calculateIlluminance = (
 };
 
 export default function Illuminance() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const [result, setResult] = useState(t('illuminanceCard.defaultResult'));
   const [valueIntensityTextInputValues, setValueIntensityTextInputValues] = useState('');
   const [valueDistanceTextInputValues, setValueDistanceTextInputValues] = useState('');
   const [valueAngleTextInputValues, setValueAngleTextInputValues] = useState('');
@@ -34,22 +37,22 @@ export default function Illuminance() {
       !valueDistanceTextInputValues ||
       !valueAngleTextInputValues
     ) {
-      setResult('Please enter all values');
+      setResult(t('illuminanceCard.errors.enterAllValues'));
       return;
     }
 
     if (isNaN(intensity) || isNaN(distance) || isNaN(angle)) {
-      setResult('Invalid input values');
+      setResult(t('illuminanceCard.errors.invalidInput'));
       return;
     }
 
     if (intensity < 0 || distance <= 0 || angle < 0) {
-      setResult('Values must be positive');
+      setResult(t('illuminanceCard.errors.positiveValues'));
       return;
     }
 
     const illuminance = calculateIlluminance(intensity, distance, angle);
-    setResult(`I = ${illuminance} lux`);
+    setResult(t('illuminanceCard.result', { value: illuminance }));
   };
 
   const handlePressIn = () => {
@@ -70,19 +73,21 @@ export default function Illuminance() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Illuminance'
+        title={t('illuminanceCard.title')}
         icon={<IlluminanceIcon size={54} color='#2E86C1' />}
       />
 
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('illuminanceCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter intensity (cd)'
+            placeholder={t('illuminanceCard.intensityPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueIntensityTextInputValues}
@@ -93,7 +98,7 @@ export default function Illuminance() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter distance (m)'
+            placeholder={t('illuminanceCard.distancePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueDistanceTextInputValues}
@@ -104,7 +109,7 @@ export default function Illuminance() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter angle (°)'
+            placeholder={t('illuminanceCard.anglePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueAngleTextInputValues}
@@ -124,7 +129,7 @@ export default function Illuminance() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateIlluminance}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('illuminanceCard.calculateButton')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

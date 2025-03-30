@@ -4,25 +4,27 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { WindSpeedIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function WindSpeed() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('windSpeedCard.resultPlaceholder'));
   const [pressure, setPressure] = useState('');
   const [airDensity, setAirDensity] = useState('1.225');
 
   const calculateWindSpeed = (pressure: number, airDensity: number): string => {
-    if (isNaN(pressure) || pressure <= 0) return 'Pressure must be positive';
-    if (isNaN(airDensity) || airDensity <= 0) return 'Air density must be positive';
-    return `${Math.sqrt((2 * pressure) / airDensity).toFixed(2)} m/s`;
+    if (isNaN(pressure) || pressure <= 0) return t('windSpeedCard.errors.pressurePositive');
+    if (isNaN(airDensity) || airDensity <= 0) return t('windSpeedCard.errors.airDensityPositive');
+    return `${Math.sqrt((2 * pressure) / airDensity).toFixed(2)} ${t('windSpeed.unit')}`;
   };
 
   const handleCalculateWindSpeed = () => {
     const p = parseFloat(pressure);
     const density = parseFloat(airDensity);
     if (isNaN(p) || isNaN(density)) {
-      setResult('Provide all values');
+      setResult(t('windSpeedCard.errors.provideAllValues'));
       return;
     }
     setResult(calculateWindSpeed(p, density));
@@ -46,19 +48,21 @@ export default function WindSpeed() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Wind Speed'
+        title={t('windSpeedCard.title')}
         icon={<WindSpeedIcon size={56} color='#2E86C1' />}
       />
 
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('windSpeedCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter pressure (Pa)'
+            placeholder={t('windSpeedCard.pressurePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={pressure}
@@ -69,7 +73,7 @@ export default function WindSpeed() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter air density (kg/m³)'
+            placeholder={t('windSpeedCard.airDensityPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={airDensity}
@@ -87,7 +91,7 @@ export default function WindSpeed() {
               onPressOut={handlePressOut}
               onPress={handleCalculateWindSpeed}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('windSpeedCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

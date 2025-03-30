@@ -4,6 +4,7 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { DigitalDataIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 type DigitalDataUnit = 'B' | 'KB' | 'MB' | 'GB' | 'TB';
 
@@ -16,6 +17,7 @@ const conversionFactors = {
 };
 
 export default function DigitalData() {
+  const { t } = useTranslation();
   const [bytes, setBytes] = useState('');
   const [kilobytes, setKilobytes] = useState('');
   const [megabytes, setMegabytes] = useState('');
@@ -66,15 +68,15 @@ export default function DigitalData() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Digital Data'
+        title={t('digitalDataCard.title')}
         icon={<DigitalDataIcon size={54} color='#3498DB' />}
       />
 
       <View className='flex-col items-center'>
         <ConvertComponent
           abb='B'
-          title='Bytes'
-          description='1 B'
+          title={t('digitalDataCard.bytes')}
+          description={t('digitalDataCard.bytesDescription')}
           onChangeText={value => convertDigitalData(value, 'B')}
           value={bytes}
           isActive={activeUnit === 'B'}
@@ -83,8 +85,8 @@ export default function DigitalData() {
         />
         <ConvertComponent
           abb='KB'
-          title='Kilobytes'
-          description='1 KB = 1024 B'
+          title={t('digitalDataCard.kilobytes')}
+          description={t('digitalDataCard.kilobytesDescription')}
           onChangeText={value => convertDigitalData(value, 'KB')}
           value={kilobytes}
           isActive={activeUnit === 'KB'}
@@ -93,8 +95,8 @@ export default function DigitalData() {
         />
         <ConvertComponent
           abb='MB'
-          title='Megabytes'
-          description='1 MB = 1024 KB'
+          title={t('digitalDataCard.megabytes')}
+          description={t('digitalDataCard.megabytesDescription')}
           onChangeText={value => convertDigitalData(value, 'MB')}
           value={megabytes}
           isActive={activeUnit === 'MB'}
@@ -103,8 +105,8 @@ export default function DigitalData() {
         />
         <ConvertComponent
           abb='GB'
-          title='Gigabytes'
-          description='1 GB = 1024 MB'
+          title={t('digitalDataCard.gigabytes')}
+          description={t('digitalDataCard.gigabytesDescription')}
           onChangeText={value => convertDigitalData(value, 'GB')}
           value={gigabytes}
           isActive={activeUnit === 'GB'}
@@ -113,8 +115,8 @@ export default function DigitalData() {
         />
         <ConvertComponent
           abb='TB'
-          title='Terabytes'
-          description='1 TB = 1024 GB'
+          title={t('digitalDataCard.terabytes')}
+          description={t('digitalDataCard.terabytesDescription')}
           onChangeText={value => convertDigitalData(value, 'TB')}
           value={terabytes}
           isActive={activeUnit === 'TB'}
@@ -131,7 +133,7 @@ export default function DigitalData() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('digitalDataCard.clearButtonA11yLabel')}>
               <DeleteIcon size={48} color='white' />
             </Pressable>
           </Animated.View>

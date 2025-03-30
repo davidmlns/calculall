@@ -4,13 +4,16 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { ForceGravityIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const GRAVITATIONAL_CONSTANT = 6.6743e-11;
 
 const scaleValue = new Animated.Value(1);
 
 export default function Gravity() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const [result, setResult] = useState(t('gravityCard.defaultResult'));
   const [valueM1TextInputValues, setValueM1TextInputValues] = useState('');
   const [valueM2TextInputValues, setValueM2TextInputValues] = useState('');
   const [valueDistanceTextInputValues, setValueDistanceTextInputValues] = useState('');
@@ -21,22 +24,22 @@ export default function Gravity() {
     const distance = parseFloat(valueDistanceTextInputValues);
 
     if (!valueM1TextInputValues || !valueM2TextInputValues || !valueDistanceTextInputValues) {
-      setResult('Please enter all values');
+      setResult(t('gravityCard.errors.enterAllValues'));
       return;
     }
 
     if (isNaN(m1) || isNaN(m2) || isNaN(distance)) {
-      setResult('Invalid input values');
+      setResult(t('gravityCard.errors.invalidInput'));
       return;
     }
 
     if (m1 < 0 || m2 < 0 || distance <= 0) {
-      setResult('Values must be positive');
+      setResult(t('gravityCard.errors.positiveValues'));
       return;
     }
 
     const force = (m1 * m2 * GRAVITATIONAL_CONSTANT) / (distance * distance);
-    setResult(`Fg = ${force.toExponential(2)} N`);
+    setResult(t('gravityCard.result', { value: force.toExponential(2) }));
   };
 
   const handlePressIn = () => {
@@ -57,19 +60,21 @@ export default function Gravity() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Gravity'
+        title={t('gravityCard.title')}
         icon={<ForceGravityIcon size={54} color='#2E86C1' />}
       />
 
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('gravityCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter mass 1 (kg)'
+            placeholder={t('gravityCard.mass1Placeholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueM1TextInputValues}
@@ -80,7 +85,7 @@ export default function Gravity() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter mass 2 (kg)'
+            placeholder={t('gravityCard.mass2Placeholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueM2TextInputValues}
@@ -91,7 +96,7 @@ export default function Gravity() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter distance (m)'
+            placeholder={t('gravityCard.distancePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={valueDistanceTextInputValues}
@@ -109,7 +114,7 @@ export default function Gravity() {
               onPressOut={handlePressOut}
               onPress={handleCalculateGravity}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('gravityCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

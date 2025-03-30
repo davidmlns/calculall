@@ -20,11 +20,15 @@ export default function Categories() {
   return (
     <View className='p-6' style={{ backgroundColor: theme.background }}>
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.maths')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center'>
           {t('categoryName.maths')}
         </Text>
       )}
@@ -45,11 +49,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.physical')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.physical')}
         </Text>
       )}
@@ -70,11 +78,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.Health')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.Health')}
         </Text>
       )}
@@ -95,11 +107,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.Finances')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.Finances')}
         </Text>
       )}
@@ -120,11 +136,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.Transport')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.Transport')}
         </Text>
       )}
@@ -145,11 +165,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.Technology')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.Technology')}
         </Text>
       )}
@@ -170,11 +194,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.Geography')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.Geography')}
         </Text>
       )}
@@ -195,11 +223,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.Kitchen')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.Kitchen')}
         </Text>
       )}
@@ -220,11 +252,15 @@ export default function Categories() {
       )}
 
       {isSearchVisible ? (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center hidden'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center hidden'>
           {t('categoryName.Others')}
         </Text>
       ) : (
-        <Text style={{ color: theme.text }} className='text-3xl font-semibold text-center mt-3'>
+        <Text
+          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
+          className='text-3xl font-semibold text-center mt-3'>
           {t('categoryName.Others')}
         </Text>
       )}

@@ -4,8 +4,10 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { CurrencyIcon, CalculateIcon } from '../../../components/Icons';
 import { useState, useEffect } from 'react';
 import { Picker } from '@react-native-picker/picker';
+import { useTranslation } from 'react-i18next';
 
 export default function Currency() {
+  const { t } = useTranslation('');
   const [amount, setAmount] = useState('1');
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('EUR');
@@ -26,7 +28,7 @@ export default function Currency() {
       const data = await response.json();
       setExchangeRate(data.rates[toCurrency]);
     } catch (err) {
-      setError('Failed to fetch exchange rates');
+      setError(t('fetchError'));
     } finally {
       setIsLoading(false);
     }
@@ -61,7 +63,7 @@ export default function Currency() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Currency Converter'
+        title={t('currencyCard.title')}
         icon={<CurrencyIcon size={52} color='#1ABC9C' />}
       />
 
@@ -69,7 +71,7 @@ export default function Currency() {
         <View className='bg-gray-800 rounded-lg p-4'>
           <TextInput
             className='bg-gray-700 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter amount'
+            placeholder={t('currencyCard.amountPlaceholder')}
             placeholderTextColor='#cbd5e1'
             value={amount}
             onChangeText={setAmount}
@@ -79,7 +81,7 @@ export default function Currency() {
 
           <View className='flex-row justify-between mb-4'>
             <View className='flex-1 mr-2'>
-              <Text className='text-gray-300 text-lg mb-2'>From:</Text>
+              <Text className='text-gray-300 text-lg mb-2'>{t('currencyCard.fromLabel')}</Text>
               <View className='bg-gray-700 rounded-lg'>
                 <Picker
                   selectedValue={fromCurrency}
@@ -87,14 +89,18 @@ export default function Currency() {
                   style={{ color: '#cbd5e1' }}
                   dropdownIconColor='#cbd5e1'>
                   {currencies.map(currency => (
-                    <Picker.Item key={currency} label={currency} value={currency} />
+                    <Picker.Item
+                      key={currency}
+                      label={t(`currencyCard.currencies.${currency}`)}
+                      value={currency}
+                    />
                   ))}
                 </Picker>
               </View>
             </View>
 
             <View className='flex-1 ml-2'>
-              <Text className='text-gray-300 text-lg mb-2'>To:</Text>
+              <Text className='text-gray-300 text-lg mb-2'>{t('currencyCard.toLabel')}</Text>
               <View className='bg-gray-700 rounded-lg'>
                 <Picker
                   selectedValue={toCurrency}
@@ -102,7 +108,11 @@ export default function Currency() {
                   style={{ color: '#cbd5e1' }}
                   dropdownIconColor='#cbd5e1'>
                   {currencies.map(currency => (
-                    <Picker.Item key={currency} label={currency} value={currency} />
+                    <Picker.Item
+                      key={currency}
+                      label={t(`currencyCard.currencies.${currency}`)}
+                      value={currency}
+                    />
                   ))}
                 </Picker>
               </View>
@@ -110,7 +120,7 @@ export default function Currency() {
           </View>
 
           {isLoading ? (
-            <Text className='text-slate-300 text-xl text-center'>Loading...</Text>
+            <Text className='text-slate-300 text-xl text-center'>{t('currencyCard.loading')}</Text>
           ) : error ? (
             <Text className='text-red-500 text-xl text-center'>{error}</Text>
           ) : (
@@ -126,7 +136,7 @@ export default function Currency() {
               onPressOut={handlePressOut}
               onPress={fetchExchangeRate}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('currencyCard.calculateButtonA11yLabel')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

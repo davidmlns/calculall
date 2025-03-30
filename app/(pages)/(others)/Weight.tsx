@@ -4,6 +4,7 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { WeightIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 type WeightUnit = 'kg' | 'g' | 'mg' | 'lb' | 'oz';
 
@@ -16,6 +17,7 @@ const CONVERSION_FACTORS: Record<WeightUnit, number> = {
 };
 
 export default function Weight() {
+  const { t } = useTranslation();
   const [kilogramValue, setKilogramValue] = useState('');
   const [gramValue, setGramValue] = useState('');
   const [milligramValue, setMilligramValue] = useState('');
@@ -79,24 +81,24 @@ export default function Weight() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Weight Converter'
+        title={t('weightConverter.title')}
         icon={<WeightIcon size={54} color='#1ABC9C' />}
       />
 
       <View className='flex-col items-center'>
         <ConvertComponent
-          abb='kg'
-          title='Kilogram'
-          description='1 kg'
+          abb={t('weightConverter.kilogram')}
+          title={t('weightConverter.kilogram')}
+          description={t('weightConverter.kgDescription')}
           onChangeText={value => convertWeight(value, 'kg')}
           value={kilogramValue}
           isActive={activeUnit === 'kg'}
           onPress={clearInputs}
         />
         <ConvertComponent
-          abb='g'
-          title='Gram'
-          description='1 g = 0.001 kg'
+          abb={t('weightConverter.gram')}
+          title={t('weightConverter.gram')}
+          description={t('weightConverter.gDescription')}
           onChangeText={value => convertWeight(value, 'g')}
           value={gramValue}
           isActive={activeUnit === 'g'}
@@ -104,18 +106,18 @@ export default function Weight() {
           maxLength={6}
         />
         <ConvertComponent
-          abb='mg'
-          title='Milligram'
-          description='1 mg = 0.000001 kg'
+          abb={t('weightConverter.milligram')}
+          title={t('weightConverter.milligram')}
+          description={t('weightConverter.mgDescription')}
           onChangeText={value => convertWeight(value, 'mg')}
           value={milligramValue}
           isActive={activeUnit === 'mg'}
           onPress={clearInputs}
         />
         <ConvertComponent
-          abb='lb'
-          title='Pound'
-          description='1 lb = 0.453592 kg'
+          abb={t('weightConverter.pound')}
+          title={t('weightConverter.pound')}
+          description={t('weightConverter.lbDescription')}
           onChangeText={value => convertWeight(value, 'lb')}
           value={poundValue}
           isActive={activeUnit === 'lb'}
@@ -123,9 +125,9 @@ export default function Weight() {
           maxLength={3}
         />
         <ConvertComponent
-          abb='oz'
-          title='Ounce'
-          description='1 oz = 0.0283495 kg'
+          abb={t('weightConverter.ounce')}
+          title={t('weightConverter.ounce')}
+          description={t('weightConverter.ozDescription')}
           onChangeText={value => convertWeight(value, 'oz')}
           value={ounceValue}
           isActive={activeUnit === 'oz'}
@@ -142,7 +144,7 @@ export default function Weight() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('weightConverter.clearButton')}>
               <DeleteIcon size={48} color='white' />
             </Pressable>
           </Animated.View>

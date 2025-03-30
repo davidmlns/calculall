@@ -2,6 +2,7 @@ import { Modal, Pressable, Text, View } from 'react-native';
 import { CloseIcon } from './Icons';
 import { useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 interface ThemeModalProps {
   isVisible: boolean;
@@ -11,6 +12,7 @@ interface ThemeModalProps {
 
 export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModalProps) {
   const { setTheme } = useTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!isVisible) {
@@ -118,7 +120,7 @@ export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModal
       <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
         <View className='bg-background-secondary rounded-t-3xl p-6 h-1/2'>
           <View className='flex-row justify-between items-center mb-4'>
-            <Text className='text-white text-2xl font-bold'>Select Theme</Text>
+            <Text className='text-white text-2xl font-bold'>{t('settings.selectTheme')}</Text>
             <Pressable onPress={onClose} className='p-2'>
               <CloseIcon size={26} color='#E0E0E0' />
             </Pressable>

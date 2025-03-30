@@ -4,20 +4,22 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { DensityIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Density() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation('');
+  const [result, setResult] = useState(t('densityCard.defaultResult'));
   const [mass, setMass] = useState('');
   const [volume, setVolume] = useState('');
 
   const scaleValue = new Animated.Value(1);
 
   const calculateDensity = (mass: number, volume: number): string => {
-    if (mass <= 0 || volume <= 0) return 'Values must be positive';
-    if (volume === 0) return 'Volume cannot be zero';
+    if (mass <= 0 || volume <= 0) return t('densityCard.positiveValuesRequired');
+    if (volume === 0) return t('densityCard.volumeCannotBeZero');
 
     const density = mass / volume;
-    return `Density: ${Number(density.toFixed(3))} kg/m³`;
+    return t('densityCard.densityResult', { density: Number(density.toFixed(3)) });
   };
 
   const handleCalculateDensity = () => {
@@ -25,12 +27,12 @@ export default function Density() {
     const volumeValue = parseFloat(volume);
 
     if (!mass || !volume) {
-      setResult('Please enter required values');
+      setResult(t('densityCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(massValue) || isNaN(volumeValue)) {
-      setResult('Invalid input values');
+      setResult(t('densityCard.invalidInput'));
       return;
     }
 
@@ -54,16 +56,21 @@ export default function Density() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Density' icon={<DensityIcon size={50} color='#1ABC9C' />} />
+      <HeaderDescriptionPage
+        title={t('densityCard.title')}
+        icon={<DensityIcon size={50} color='#1ABC9C' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('densityCard.valuesTitle')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Mass (kg)'
+            placeholder={t('densityCard.massPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={mass}
@@ -74,7 +81,7 @@ export default function Density() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Volume (m³)'
+            placeholder={t('densityCard.volumePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={volume}
@@ -93,7 +100,7 @@ export default function Density() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateDensity}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('densityCard.calculateButtonA11yLabel')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

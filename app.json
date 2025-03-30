@@ -37,6 +37,12 @@
           "resizeMode": "contain",
           "backgroundColor": "#1A1A1A"
         }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/WorkSans-VariableFont_wght.ttf"]
+        }
       ]
     ],
     "experiments": {

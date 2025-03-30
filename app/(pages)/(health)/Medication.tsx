@@ -4,11 +4,13 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { MedicationIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function Medication() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('medicationCard.resultPlaceholder'));
   const [weight, setWeight] = useState('');
   const [dosagePerKg, setDosagePerKg] = useState('');
   const [maxDosage, setMaxDosage] = useState('');
@@ -18,8 +20,8 @@ export default function Medication() {
     dosagePerKg: number,
     maxDosage: number | null,
   ): string => {
-    if (weight <= 0 || dosagePerKg <= 0) return 'Values must be positive';
-    if (maxDosage !== null && maxDosage <= 0) return 'Max dosage must be positive';
+    if (weight <= 0 || dosagePerKg <= 0) return t('medicationCard.errors.positiveValues');
+    if (maxDosage !== null && maxDosage <= 0) return t('medicationCard.errors.positiveMaxDosage');
 
     let totalDosage = weight * dosagePerKg;
 
@@ -27,7 +29,7 @@ export default function Medication() {
       totalDosage = maxDosage;
     }
 
-    return `${Number(totalDosage.toFixed(2))} mg`;
+    return `${Number(totalDosage.toFixed(2))} ${t('medicationCard.unit')}`;
   };
 
   const handleCalculateDosage = () => {
@@ -36,12 +38,12 @@ export default function Medication() {
     const m = maxDosage ? parseFloat(maxDosage) : null;
 
     if (!weight || !dosagePerKg) {
-      setResult('Please enter required values');
+      setResult(t('medicationCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(w) || isNaN(d) || (m !== null && isNaN(m))) {
-      setResult('Invalid input values');
+      setResult(t('medicationCard.errors.invalidInput'));
       return;
     }
 
@@ -66,18 +68,20 @@ export default function Medication() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Medication'
+        title={t('medicationCard.title')}
         icon={<MedicationIcon size={54} color='#E74C3C' />}
       />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('medicationCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter weight (kg)'
+            placeholder={t('medicationCard.placeholders.weight')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={weight}
@@ -88,7 +92,7 @@ export default function Medication() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter dosage per kg (mg)'
+            placeholder={t('medicationCard.placeholders.dosagePerKg')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={dosagePerKg}
@@ -99,7 +103,7 @@ export default function Medication() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
-            placeholder='Enter max dosage (mg)*'
+            placeholder={t('medicationCard.placeholders.maxDosage')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={maxDosage}
@@ -117,7 +121,7 @@ export default function Medication() {
               onPressOut={handlePressOut}
               onPress={handleCalculateDosage}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('medicationCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

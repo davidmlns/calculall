@@ -11,6 +11,7 @@ import {
 import ResultComponent from '../../../components/ResultComponent';
 import React, { useState } from 'react';
 import OptionModalActivities from '../../../components/OptionModalActivities';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
@@ -27,29 +28,31 @@ const ACTIVITY_FACTORS = {
   active: 40,
 };
 
-const activities: Activity[] = [
-  {
-    id: 'sedentary',
-    title: 'Sedentary',
-    icon: <WalkingIcon size={32} color='#E74C3C' />,
-    description: 'Little or no exercise',
-  },
-  {
-    id: 'moderate',
-    title: 'Moderate',
-    icon: <CyclingIcon size={32} color='#E74C3C' />,
-    description: 'Moderate exercise 3-5 days/week',
-  },
-  {
-    id: 'active',
-    title: 'Active',
-    icon: <RunningIcon size={32} color='#E74C3C' />,
-    description: 'Intense exercise 6-7 days/week',
-  },
-];
-
 export default function Hydration() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const activities: Activity[] = [
+    {
+      id: 'sedentary',
+      title: t('hydrationCard.activities.sedentary.title'),
+      icon: <WalkingIcon size={32} color='#E74C3C' />,
+      description: t('hydrationCard.activities.sedentary.description'),
+    },
+    {
+      id: 'moderate',
+      title: t('hydrationCard.activities.moderate.title'),
+      icon: <CyclingIcon size={32} color='#E74C3C' />,
+      description: t('hydrationCard.activities.moderate.description'),
+    },
+    {
+      id: 'active',
+      title: t('hydrationCard.activities.active.title'),
+      icon: <RunningIcon size={32} color='#E74C3C' />,
+      description: t('hydrationCard.activities.active.description'),
+    },
+  ];
+
+  const [result, setResult] = useState(t('hydrationCard.resultPlaceholder'));
   const [weight, setWeight] = useState('');
   const [selectedActivity, setSelectedActivity] = useState(activities[1]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -63,24 +66,24 @@ export default function Hydration() {
   };
 
   const calculateWaterIntake = (weight: number, activityId: string): string => {
-    if (weight <= 0) return 'Weight must be positive';
+    if (weight <= 0) return t('hydrationCard.errors.positiveWeight');
 
     const factor = ACTIVITY_FACTORS[activityId as keyof typeof ACTIVITY_FACTORS] || 35;
     const waterIntake = (weight * factor) / 1000;
 
-    return `${Math.round(waterIntake * 100) / 100} liters`;
+    return `${Math.round(waterIntake * 100) / 100} ${t('hydrationCard.unit')}`;
   };
 
   const handleCalculateHydration = () => {
     const w = parseFloat(weight);
 
     if (!weight) {
-      setResult('Please enter your weight');
+      setResult(t('hydrationCard.errors.enterWeight'));
       return;
     }
 
     if (isNaN(w)) {
-      setResult('Invalid input value');
+      setResult(t('hydrationCard.errors.invalidInput'));
       return;
     }
 
@@ -104,16 +107,21 @@ export default function Hydration() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Hydration' icon={<HydrationIcon size={52} color='#E74C3C' />} />
+      <HeaderDescriptionPage
+        title={t('hydrationCard.title')}
+        icon={<HydrationIcon size={52} color='#E74C3C' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('hydrationCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300 mx-auto'
-            placeholder='Enter weight (kg)'
+            placeholder={t('hydrationCard.placeholders.weight')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={weight}
@@ -155,7 +163,7 @@ export default function Hydration() {
               onPressOut={handlePressOut}
               onPress={handleCalculateHydration}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('hydrationCard.common.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

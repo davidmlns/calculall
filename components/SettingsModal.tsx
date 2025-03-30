@@ -3,6 +3,7 @@ import { BugIcon, CloseIcon, InfoIcon, LanguageIcon, StarIcon, ThemeIcon } from 
 import { useState } from 'react';
 import LanguageModal from './LanguageModal';
 import ThemeModal from './ThemeModal';
+import { useTranslation } from 'react-i18next';
 
 interface SettingsModalProps {
   isVisible: boolean;
@@ -10,6 +11,7 @@ interface SettingsModalProps {
 }
 
 export default function SettingsModal({ isVisible, onClose }: SettingsModalProps) {
+  const { t } = useTranslation();
   const [isLanguageModalVisible, setIsLanguageModalVisible] = useState<boolean>(false);
   const [isThemeModalVisible, setIsThemeModalVisible] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState(true);
@@ -27,10 +29,10 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
   };
 
   const handleLanguageChange = (languageCode: string) => {
-    // Aquí tu lógica de cambio de idioma
-    console.log('Cambiar a idioma:', languageCode);
-    // Ejemplo con i18n-js:
-    // i18n.locale = languageCode;
+    // Your language change logic here
+    console.log('Changing to language:', languageCode);
+    // Example with i18n:
+    // i18n.changeLanguage(languageCode);
   };
 
   const handleModalClose = () => {
@@ -39,18 +41,27 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
 
   const settingsOptions = [
     {
-      title: 'Change app theme',
+      title: t('settings.changeTheme'),
       icon: <ThemeIcon size={30} color='#000000' />,
       onPress: handleThemeSelect,
     },
     {
-      title: 'Change language',
+      title: t('settings.changeLanguage'),
       icon: <LanguageIcon size={30} color='#000000' />,
       onPress: handleLanguageSelect,
     },
-    { title: 'About', icon: <InfoIcon size={30} color='#000000' /> },
-    { title: 'Rate app', icon: <StarIcon size={30} color='#FCD53F' /> },
-    { title: 'Report a problem', icon: <BugIcon size={30} color='#000000' /> },
+    {
+      title: t('settings.about'),
+      icon: <InfoIcon size={30} color='#000000' />,
+    },
+    {
+      title: t('settings.rateApp'),
+      icon: <StarIcon size={30} color='#FCD53F' />,
+    },
+    {
+      title: t('settings.reportProblem'),
+      icon: <BugIcon size={30} color='#000000' />,
+    },
   ];
 
   return (
@@ -62,7 +73,7 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
         <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
           <View className='bg-background-secondary rounded-t-3xl p-4 h-1/2'>
             <View className='flex-row justify-between items-center mb-2'>
-              <Text className='text-white text-2xl font-bold'>Configuración</Text>
+              <Text className='text-white text-2xl font-bold'>{t('settings.title')}</Text>
               <Pressable onPress={onClose}>
                 <CloseIcon size={34} color='#E0E0E0' />
               </Pressable>

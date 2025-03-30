@@ -4,18 +4,21 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { SunIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
 export default function SolarEnergy() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+
+  const [result, setResult] = useState(t('solarEnergyCard.defaultResult'));
   const [radiationValue, setRadiationValue] = useState('');
   const [areaValue, setAreaValue] = useState('');
   const [timeValue, setTimeValue] = useState('');
 
   const calculateSolarEnergy = (radiation: number, area: number, time: number): string => {
-    if (radiation <= 0 || area <= 0 || time <= 0) return 'Values must be positive';
-    return `E = ${(radiation * area * time).toFixed(2)} J`;
+    if (radiation <= 0 || area <= 0 || time <= 0) return t('solarEnergyCard.errors.positiveValues');
+    return t('solarEnergyCard.result', { value: (radiation * area * time).toFixed(2) });
   };
 
   const handleCalculateSolarEnergy = () => {
@@ -24,12 +27,12 @@ export default function SolarEnergy() {
     const time = parseFloat(timeValue);
 
     if (!radiationValue || !areaValue || !timeValue) {
-      setResult('Please enter all values');
+      setResult(t('solarEnergyCard.errors.enterAllValues'));
       return;
     }
 
     if (isNaN(radiation) || isNaN(area) || isNaN(time)) {
-      setResult('Invalid input values');
+      setResult(t('solarEnergyCard.errors.invalidInput'));
       return;
     }
 
@@ -53,17 +56,22 @@ export default function SolarEnergy() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Solar Energy' icon={<SunIcon size={52} color='#2E86C1' />} />
+      <HeaderDescriptionPage
+        title={t('solarEnergyCard.title')}
+        icon={<SunIcon size={52} color='#2E86C1' />}
+      />
 
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('solarEnergyCard.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter radiation (W/m²)'
+            placeholder={t('solarEnergyCard.radiationPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={radiationValue}
@@ -74,7 +82,7 @@ export default function SolarEnergy() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter area (m²)'
+            placeholder={t('solarEnergyCard.areaPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={areaValue}
@@ -85,7 +93,7 @@ export default function SolarEnergy() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter time (s)'
+            placeholder={t('solarEnergyCard.timePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={timeValue}
@@ -103,7 +111,7 @@ export default function SolarEnergy() {
               onPressOut={handlePressOut}
               onPress={handleCalculateSolarEnergy}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Calculate Button'>
+              accessibilityLabel={t('solarEnergyCard.calculateButton')}>
               <CalculateIcon size={58} color='white' />
             </Pressable>
           </Animated.View>

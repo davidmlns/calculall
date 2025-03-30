@@ -25,7 +25,7 @@ export default function Maths() {
       <FilterableCard
         id='Angles'
         title={t('mathematicalCardTitle.Angles')}
-        category='Maths'
+        category={t('categoryName.maths')}
         icon={<AngleIcon size={52} color='#6C3483' />}
         route='/(pages)/(maths)/Angles'
       />

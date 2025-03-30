@@ -4,20 +4,22 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { ElectricCurrentIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function ElectricCurrent() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation('');
+  const [result, setResult] = useState(t('electricCurrentCard.defaultResult'));
   const [voltage, setVoltage] = useState('');
   const [resistance, setResistance] = useState('');
 
   const scaleValue = new Animated.Value(1);
 
   const calculateCurrent = (voltage: number, resistance: number): string => {
-    if (voltage <= 0 || resistance <= 0) return 'Values must be positive';
-    if (resistance === 0) return 'Resistance cannot be zero';
+    if (voltage <= 0 || resistance <= 0) return t('electricCurrentCard.positiveValuesRequired');
+    if (resistance === 0) return t('electricCurrentCard.resistanceCannotBeZero');
 
     const current = voltage / resistance;
-    return `Current: ${Number(current.toFixed(4))} A`;
+    return t('electricCurrentCard.currentResult', { current: Number(current.toFixed(4)) });
   };
 
   const handleCalculateCurrent = () => {
@@ -25,12 +27,12 @@ export default function ElectricCurrent() {
     const r = parseFloat(resistance);
 
     if (!voltage || !resistance) {
-      setResult('Please enter required values');
+      setResult(t('electricCurrentCard.enterRequiredValues'));
       return;
     }
 
     if (isNaN(v) || isNaN(r)) {
-      setResult('Invalid input values');
+      setResult(t('electricCurrentCard.invalidInput'));
       return;
     }
 
@@ -55,18 +57,20 @@ export default function ElectricCurrent() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Electric Current'
+        title={t('electricCurrentCard.title')}
         icon={<ElectricCurrentIcon size={51} color='#3498DB' />}
       />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('electricCurrentCard.valuesTitle')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Voltage (V)'
+            placeholder={t('electricCurrentCard.voltagePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={voltage}
@@ -77,7 +81,7 @@ export default function ElectricCurrent() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
-            placeholder='Resistance (Ω)'
+            placeholder={t('electricCurrentCard.resistancePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={resistance}
@@ -96,7 +100,7 @@ export default function ElectricCurrent() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateCurrent}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('electricCurrentCard.calculateButtonA11yLabel')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

@@ -4,6 +4,7 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { EnergyIcon, DeleteIcon } from '../../../components/Icons';
 import { useState } from 'react';
 import ConvertComponent from '../../../components/ConvertComponent';
+import { useTranslation } from 'react-i18next';
 
 type EnergyUnit = 'J' | 'KJ' | 'Cal' | 'kWh' | 'BTU';
 
@@ -16,6 +17,8 @@ const conversionFactors = {
 };
 
 export default function Energy() {
+  const { t } = useTranslation();
+
   const [joule, setJoule] = useState('');
   const [kilojoule, setKilojoule] = useState('');
   const [calorie, setCalorie] = useState('');
@@ -67,13 +70,16 @@ export default function Energy() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Energy' icon={<EnergyIcon size={54} color='#2E86C1' />} />
+      <HeaderDescriptionPage
+        title={t('energyCard.title')}
+        icon={<EnergyIcon size={54} color='#2E86C1' />}
+      />
 
       <View className='flex-col items-center'>
         <ConvertComponent
           abb='J'
-          title='Joule'
-          description='1 J'
+          title={t('energyCard.units.joule.title')}
+          description={t('energyCard.units.joule.description')}
           onChangeText={value => convertEnergy(value, 'J')}
           value={joule}
           isActive={activeUnit === 'J'}
@@ -82,8 +88,8 @@ export default function Energy() {
         />
         <ConvertComponent
           abb='KJ'
-          title='Kilojoule'
-          description='1 KJ = 1000 J'
+          title={t('energyCard.units.kilojoule.title')}
+          description={t('energyCard.units.kilojoule.description')}
           onChangeText={value => convertEnergy(value, 'KJ')}
           value={kilojoule}
           isActive={activeUnit === 'KJ'}
@@ -92,8 +98,8 @@ export default function Energy() {
         />
         <ConvertComponent
           abb='Cal'
-          title='Calorie'
-          description='1 Cal = 4.184 J'
+          title={t('energyCard.units.calorie.title')}
+          description={t('energyCard.units.calorie.description')}
           onChangeText={value => convertEnergy(value, 'Cal')}
           value={calorie}
           isActive={activeUnit === 'Cal'}
@@ -102,8 +108,8 @@ export default function Energy() {
         />
         <ConvertComponent
           abb='kWh'
-          title='Kilowatt-hour'
-          description='1 kWh = 3.6 × 10 J'
+          title={t('energyCard.units.kilowattHour.title')}
+          description={t('energyCard.units.kilowattHour.description')}
           onChangeText={value => convertEnergy(value, 'kWh')}
           value={kilowattHour}
           isActive={activeUnit === 'kWh'}
@@ -112,8 +118,8 @@ export default function Energy() {
         />
         <ConvertComponent
           abb='BTU'
-          title='British Thermal Unit'
-          description='1 BTU = 1055 J'
+          title={t('energyCard.units.btu.title')}
+          description={t('energyCard.units.btu.description')}
           onChangeText={value => convertEnergy(value, 'BTU')}
           value={britishThermalUnit}
           isActive={activeUnit === 'BTU'}
@@ -130,7 +136,7 @@ export default function Energy() {
               onPressOut={handlePressOut}
               onPress={clearInputs}
               className='rounded-2xl mx-auto mb-10'
-              accessibilityLabel='Clear Button'>
+              accessibilityLabel={t('energyCard.clearButton')}>
               <DeleteIcon size={48} color='white' />
             </Pressable>
           </Animated.View>

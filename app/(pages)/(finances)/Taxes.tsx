@@ -4,17 +4,23 @@ import HeaderDescriptionPage from '../../../components/HeaderDescriptionPage';
 import { TaxesIcon, CalculateIcon } from '../../../components/Icons';
 import ResultComponent from '../../../components/ResultComponent';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+const scaleValue = new Animated.Value(1);
 
 export default function Taxes() {
-  const [result, setResult] = useState('The result will appear here');
+  const { t } = useTranslation();
+  const [result, setResult] = useState(t('taxesCard.resultPlaceholder'));
   const [income, setIncome] = useState('');
   const [taxRate, setTaxRate] = useState('');
 
   const calculateTax = (income: number, taxRate: number): string => {
-    if (income <= 0 || taxRate <= 0) return 'Values must be positive';
+    if (income <= 0 || taxRate <= 0) {
+      return t('taxesCard.errors.positiveValues');
+    }
 
     const taxAmount = income * (taxRate / 100);
-    return `Tax Amount: $${Number(taxAmount.toFixed(2))}`;
+    return `${t('taxesCard.results.taxAmount')}: ${t('common.currencySymbol')}${Number(taxAmount.toFixed(2))}`;
   };
 
   const handleCalculateTax = () => {
@@ -22,19 +28,17 @@ export default function Taxes() {
     const t = parseFloat(taxRate);
 
     if (!income || !taxRate) {
-      setResult('Please enter required values');
+      setResult(t('taxesCard.errors.requiredValues'));
       return;
     }
 
     if (isNaN(i) || isNaN(t)) {
-      setResult('Invalid input values');
+      setResult(t('taxesCard.errors.invalidInput'));
       return;
     }
 
     setResult(calculateTax(i, t));
   };
-
-  const scaleValue = new Animated.Value(1);
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
@@ -53,16 +57,21 @@ export default function Taxes() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage title='Taxes' icon={<TaxesIcon size={50} color='#27AE60' />} />
+      <HeaderDescriptionPage
+        title={t('taxesCard.title')}
+        icon={<TaxesIcon size={50} color='#27AE60' />}
+      />
       <ResultComponent result={result} />
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+          {t('taxesCard.common.values')}
+        </Text>
 
         <View className='mt-2'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter income ($)'
+            placeholder={t('taxesCard.placeholders.income')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={income}
@@ -73,7 +82,7 @@ export default function Taxes() {
         <View className='mt-4'>
           <TextInput
             className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
-            placeholder='Enter tax rate (%)'
+            placeholder={t('taxesCard.placeholders.taxRate')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
             value={taxRate}
@@ -92,7 +101,7 @@ export default function Taxes() {
                 onPressOut={handlePressOut}
                 onPress={handleCalculateTax}
                 className='rounded-2xl mx-auto mb-10'
-                accessibilityLabel='Calculate Button'>
+                accessibilityLabel={t('taxesCard.common.calculateButton')}>
                 <CalculateIcon size={58} color='white' />
               </Pressable>
             </Animated.View>

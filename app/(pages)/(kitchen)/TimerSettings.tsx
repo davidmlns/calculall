@@ -11,6 +11,7 @@ import {
   MinusIcon,
 } from '../../../components/Icons';
 import * as Notifications from 'expo-notifications';
+import { useTranslation } from 'react-i18next';
 
 const scaleValue = new Animated.Value(1);
 
@@ -36,6 +37,7 @@ const TimeControl = ({ label, value, onIncrement, onDecrement }) => (
 );
 
 export default function TimerSettings() {
+  const { t } = useTranslation('');
   const [time, setTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -46,12 +48,15 @@ export default function TimerSettings() {
   useEffect(() => {
     const requestPermissions = async () => {
       const { status } = await Notifications.requestPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert('Permission required', 'Please enable notifications to use the timer');
+      if (status !== 'timerSettingsCard.granted') {
+        Alert.alert(
+          t('timerSettingsCard.permissionAlertTitle'),
+          t('timerSettingsCard.permissionAlertMessage'),
+        );
       }
     };
     requestPermissions();
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     setTime(hours * 3600 + minutes * 60 + seconds);
@@ -66,8 +71,8 @@ export default function TimerSettings() {
       clearInterval(intervalRef.current);
       setIsActive(false);
       Notifications.presentNotificationAsync({
-        title: 'Timer Complete!',
-        body: 'Your timer has finished.',
+        title: t('timerSettingsCard.notificationTitle'),
+        body: t('timerSettingsCard.notificationBody'),
         sound: true,
       });
     }
@@ -75,7 +80,7 @@ export default function TimerSettings() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isActive, time]);
+  }, [isActive, time, t]);
 
   const formatTime = (seconds: number) => {
     const h = Math.floor(seconds / 3600);
@@ -126,7 +131,7 @@ export default function TimerSettings() {
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
       <HeaderDescriptionPage
-        title='Timer Settings'
+        title={t('timerSettingsCard.title')}
         icon={<TimerSettingsIcon size={51} color='#F39C12' />}
       />
 
@@ -161,19 +166,19 @@ export default function TimerSettings() {
 
         <View className='w-full px-8'>
           <TimeControl
-            label='Hours'
+            label={t('timerSettingsCard.hoursLabel')}
             value={hours}
             onIncrement={() => setHours(h => Math.min(99, h + 1))}
             onDecrement={() => setHours(h => Math.max(0, h - 1))}
           />
           <TimeControl
-            label='Minutes'
+            label={t('timerSettingsCard.minutesLabel')}
             value={minutes}
             onIncrement={() => setMinutes(m => (m < 59 ? m + 1 : 0))}
             onDecrement={() => setMinutes(m => (m > 0 ? m - 1 : 59))}
           />
           <TimeControl
-            label='Seconds'
+            label={t('timerSettingsCard.secondsLabel')}
             value={seconds}
             onIncrement={() => setSeconds(s => (s < 59 ? s + 1 : 0))}
             onDecrement={() => setSeconds(s => (s > 0 ? s - 1 : 59))}
@@ -183,17 +188,23 @@ export default function TimerSettings() {
             <Pressable
               onPress={() => handlePreset(300)}
               className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
-              <Text className='text-slate-300 text-lg font-semibold'>5 Min</Text>
+              <Text className='text-slate-300 text-lg font-semibold'>
+                {t('timerSettingsCard.fiveMin')}
+              </Text>
             </Pressable>
             <Pressable
               onPress={() => handlePreset(600)}
               className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
-              <Text className='text-slate-300 text-lg font-semibold'>10 Min</Text>
+              <Text className='text-slate-300 text-lg font-semibold'>
+                {t('timerSettingsCard.tenMin')}
+              </Text>
             </Pressable>
             <Pressable
               onPress={() => handlePreset(900)}
               className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
-              <Text className='text-slate-300 text-lg font-semibold'>15 Min</Text>
+              <Text className='text-slate-300 text-lg font-semibold'>
+                {t('timerSettingsCard.fifteenMin')}
+              </Text>
             </Pressable>
           </View>
         </View>
