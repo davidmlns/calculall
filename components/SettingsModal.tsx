@@ -42,17 +42,17 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
   const settingsOptions = [
     {
       title: t('settings.changeTheme'),
-      icon: <ThemeIcon size={30} color='#000000' />,
+      icon: <ThemeIcon size={30} color='#E0E0E0' />,
       onPress: handleThemeSelect,
     },
     {
       title: t('settings.changeLanguage'),
-      icon: <LanguageIcon size={30} color='#000000' />,
+      icon: <LanguageIcon size={30} color='#E0E0E0' />,
       onPress: handleLanguageSelect,
     },
     {
       title: t('settings.about'),
-      icon: <InfoIcon size={30} color='#000000' />,
+      icon: <InfoIcon size={30} color='#E0E0E0' />,
     },
     {
       title: t('settings.rateApp'),
@@ -60,7 +60,7 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
     },
     {
       title: t('settings.reportProblem'),
-      icon: <BugIcon size={30} color='#000000' />,
+      icon: <BugIcon size={30} color='#E0E0E0' />,
     },
   ];
 
@@ -83,10 +83,10 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
                 key={index}
                 onPress={option.onPress}
                 className='flex-row items-center py-3 border-b border-slate-600'>
-                <View className='mr-3 bg-icon-background w-10 h-10 rounded-lg justify-center items-center'>
+                <View className='mr-3  w-10 h-10 rounded-lg justify-center items-center'>
                   {option.icon}
                 </View>
-                <Text className='text-white text-lg'>{option.title}</Text>
+                <Text className='text-white text-xl'>{option.title}</Text>
               </Pressable>
             ))}
           </View>

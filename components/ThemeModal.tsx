@@ -39,60 +39,6 @@ export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModal
       background: '#121212',
       icon: '#E0E0E0',
     },
-    {
-      name: 'Vibrant Coral',
-      primary: '#FF6F61',
-      text: '#FFFFFF',
-      textSec: '#CCCCCC',
-      lineColor: '#3A3A3A',
-      background: '#121212',
-      icon: '#FFFFFF',
-    },
-    {
-      name: 'Electric Blue',
-      primary: '#B0B0FF',
-      text: '#2E2E3A',
-      textSec: '#6E6E8A',
-      lineColor: '#D0D0FF',
-      background: '#F8F9FF',
-      icon: '#7A7AFF',
-    },
-    {
-      name: 'Sunset Gradient',
-      primary: '#FF9A9E',
-      text: '#333333',
-      textSec: '#777777',
-      lineColor: '#FFCCD1',
-      background: '#FFF5F5',
-      icon: '#FF6B7F',
-    },
-    {
-      name: 'Urban Chic',
-      primary: '#343a40',
-      text: '#F8F9FA',
-      textSec: '#ADB5BD',
-      lineColor: '#495057',
-      background: '#212529',
-      icon: '#4DABF7',
-    },
-    {
-      name: 'Muted Earth',
-      primary: '#9C6644',
-      text: '#3E3E3E',
-      textSec: '#6D4C41',
-      lineColor: '#D7CCC8',
-      background: '#F5E6E0',
-      icon: '#9C6644',
-    },
-    {
-      name: 'Minty Fresh',
-      primary: '#20C997',
-      text: '#212529',
-      textSec: '#495057',
-      lineColor: '#D1F2E8',
-      background: '#F8F9FA',
-      icon: '#20C997',
-    },
   ];
 
   const handleColorSelect = (color: {
@@ -121,7 +67,7 @@ export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModal
         <View className='bg-background-secondary rounded-t-3xl p-6 h-1/2'>
           <View className='flex-row justify-between items-center mb-4'>
             <Text className='text-white text-2xl font-bold'>{t('settings.selectTheme')}</Text>
-            <Pressable onPress={onClose} className='p-2'>
+            <Pressable onPress={onClose}>
               <CloseIcon size={26} color='#E0E0E0' />
             </Pressable>
           </View>
