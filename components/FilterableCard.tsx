@@ -1,12 +1,16 @@
 import { ReactNode } from 'react';
 import { useSearch } from '../context/SearchContext';
 import Card from './Card';
+import { IconType } from './Icons';
 
 interface FilterableCardProps {
+  id: string;
   title: string;
   category: string;
-  icon: ReactNode;
+  icon: IconType;
   route: string;
+  iconSize?: number;
+  iconColor?: string;
   modalContent?: ReactNode;
 }
 

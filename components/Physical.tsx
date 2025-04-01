@@ -1,21 +1,6 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
-import {
-  EnergyIcon,
-  ForceGravityIcon,
-  HumidityIcon,
-  IlluminanceIcon,
-  MagnetismIcon,
-  OhmIcon,
-  PressureIcon,
-  RadiationIcon,
-  SoundIcon,
-  SunIcon,
-  TemperatureIcon,
-  VelocityIcon,
-  WavelengthIcon,
-  WindSpeedIcon,
-} from './Icons';
+import { icons } from './Icons';
 import { useTranslation } from 'react-i18next';
 
 export default function Physical() {
@@ -26,7 +11,9 @@ export default function Physical() {
         id='Energy'
         title={t('physicalCardTitle.Energy')}
         category={t('categoryName.physical')}
-        icon={<EnergyIcon size={52} color='#2E86C1' />}
+        icon={icons.EnergyIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Energy'
       />
 
@@ -34,7 +21,9 @@ export default function Physical() {
         id='Gravity'
         title={t('physicalCardTitle.Gravity')}
         category={t('categoryName.physical')}
-        icon={<ForceGravityIcon size={52} color='#2E86C1' />}
+        icon={icons.ForceGravityIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Gravity'
       />
 
@@ -42,7 +31,9 @@ export default function Physical() {
         id='Humidity'
         title={t('physicalCardTitle.Humidity')}
         category={t('categoryName.physical')}
-        icon={<HumidityIcon size={52} color='#2E86C1' />}
+        icon={icons.HumidityIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Humidity'
       />
 
@@ -50,7 +41,9 @@ export default function Physical() {
         id='Illuminance'
         title={t('physicalCardTitle.Illuminance')}
         category={t('categoryName.physical')}
-        icon={<IlluminanceIcon size={52} color='#2E86C1' />}
+        icon={icons.IlluminanceIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Illuminance'
       />
 
@@ -58,7 +51,9 @@ export default function Physical() {
         id='Magnetism'
         title={t('physicalCardTitle.Magnetism')}
         category={t('categoryName.physical')}
-        icon={<MagnetismIcon size={52} color='#2E86C1' />}
+        icon={icons.MagnetismIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Magnetism'
       />
 
@@ -66,7 +61,9 @@ export default function Physical() {
         id='Ohm'
         title={t('physicalCardTitle.Ohm')}
         category={t('categoryName.physical')}
-        icon={<OhmIcon size={52} color='#2E86C1' />}
+        icon={icons.OhmIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Ohm'
       />
 
@@ -74,7 +71,9 @@ export default function Physical() {
         id='Pressure'
         title={t('physicalCardTitle.Pressure')}
         category={t('categoryName.physical')}
-        icon={<PressureIcon size={52} color='#2E86C1' />}
+        icon={icons.PressureIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Pressure'
       />
 
@@ -82,7 +81,9 @@ export default function Physical() {
         id='Radiation'
         title={t('physicalCardTitle.Radiation')}
         category={t('categoryName.physical')}
-        icon={<RadiationIcon size={52} color='#2E86C1' />}
+        icon={icons.RadiationIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Radiation'
       />
 
@@ -90,7 +91,9 @@ export default function Physical() {
         id='SolarEnergy'
         title={t('physicalCardTitle.Solar Energy')}
         category={t('categoryName.physical')}
-        icon={<SunIcon size={52} color='#2E86C1' />}
+        icon={icons.SunIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/SolarEnergy'
       />
 
@@ -98,7 +101,9 @@ export default function Physical() {
         id='Sound'
         title={t('physicalCardTitle.Sound')}
         category={t('categoryName.physical')}
-        icon={<SoundIcon size={52} color='#2E86C1' />}
+        icon={icons.SoundIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Sound'
       />
 
@@ -106,7 +111,9 @@ export default function Physical() {
         id='Temperature'
         title={t('physicalCardTitle.Temperature')}
         category={t('categoryName.physical')}
-        icon={<TemperatureIcon size={52} color='#2E86C1' />}
+        icon={icons.TemperatureIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Temperature'
       />
 
@@ -114,7 +121,9 @@ export default function Physical() {
         id='Velocity'
         title={t('physicalCardTitle.Velocity')}
         category={t('categoryName.physical')}
-        icon={<VelocityIcon size={52} color='#2E86C1' />}
+        icon={icons.VelocityIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Velocity'
       />
 
@@ -122,7 +131,9 @@ export default function Physical() {
         id='Wavelength'
         title={t('physicalCardTitle.Wavelength')}
         category={t('categoryName.physical')}
-        icon={<WavelengthIcon size={52} color='#2E86C1' />}
+        icon={icons.WavelengthIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/Wavelength'
       />
 
@@ -130,7 +141,9 @@ export default function Physical() {
         id='WindSpeed'
         title={t('physicalCardTitle.WindSpeed')}
         category={t('categoryName.physical')}
-        icon={<WindSpeedIcon size={52} color='#2E86C1' />}
+        icon={icons.WindSpeedIcon}
+        iconSize={52}
+        iconColor='#2E86C1'
         route='/(pages)/WindSpeed'
       />
     </View>

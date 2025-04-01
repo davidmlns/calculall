@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
-import { LatitudeIcon, PopulationDensityIcon } from './Icons';
+import { icons } from './Icons';
 import { useTranslation } from 'react-i18next';
 
 export default function Geography() {
@@ -11,7 +11,9 @@ export default function Geography() {
         id='Latitude'
         title={t('geographyCardTitle.LatitudeLongitude')}
         category={t('categoryName.Geography')}
-        icon={<LatitudeIcon size={52} color='#D35400' />}
+        icon={icons.LatitudeIcon}
+        iconSize={52}
+        iconColor='#D35400'
         route='/(pages)/(geo)/Latitude'
       />
 
@@ -19,7 +21,9 @@ export default function Geography() {
         id='Demographic'
         title={t('geographyCardTitle.Demography')}
         category={t('categoryName.Geography')}
-        icon={<PopulationDensityIcon size={52} color='#D35400' />}
+        icon={icons.PopulationDensityIcon}
+        iconSize={52}
+        iconColor='#D35400'
         route='/(pages)/(geo)/Demographic'
       />
     </View>

@@ -1,20 +1,5 @@
 import { View } from 'react-native';
-import {
-  AngleIcon,
-  AverageIcon,
-  BaseNumericIcon,
-  EquationIcon,
-  FractionIcon,
-  MCMMCDIcon,
-  LengthIcon,
-  NumberGeneratorIcon,
-  PrimeNumberIcon,
-  ProbabilityIcon,
-  RomanNumberIcon,
-  ShapeIcon,
-  StatisticsIcon,
-  TrigonometryIcon,
-} from './Icons';
+import { icons } from './Icons';
 import FilterableCard from './FilterableCard';
 import { useTranslation } from 'react-i18next';
 
@@ -26,7 +11,9 @@ export default function Maths() {
         id='Angles'
         title={t('mathematicalCardTitle.Angles')}
         category={t('categoryName.maths')}
-        icon={<AngleIcon size={52} color='#6C3483' />}
+        icon={icons.AngleIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Angles'
       />
 
@@ -34,14 +21,18 @@ export default function Maths() {
         id='Average'
         title={t('mathematicalCardTitle.Average')}
         category={t('categoryName.maths')}
-        icon={<AverageIcon size={52} color='#6C3483' />}
+        icon={icons.AverageIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Average'
       />
       <FilterableCard
         id='Base numeric'
         title={t('mathematicalCardTitle.BaseNumeric')}
         category={t('categoryName.maths')}
-        icon={<BaseNumericIcon size={52} color='#6C3483' />}
+        icon={icons.BaseNumericIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/BaseNumeric'
       />
 
@@ -49,7 +40,9 @@ export default function Maths() {
         id='Equations'
         title={t('mathematicalCardTitle.Equations')}
         category={t('categoryName.maths')}
-        icon={<EquationIcon size={52} color='#6C3483' />}
+        icon={icons.EquationIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Equations'
       />
 
@@ -57,14 +50,18 @@ export default function Maths() {
         id='Fractions'
         title={t('mathematicalCardTitle.Fractions')}
         category={t('categoryName.maths')}
-        icon={<FractionIcon size={52} color='#6C3483' />}
+        icon={icons.FractionIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Fractions'
       />
       <FilterableCard
         id='Length'
         title={t('mathematicalCardTitle.Length')}
         category={t('categoryName.maths')}
-        icon={<LengthIcon size={52} color='#6C3483' />}
+        icon={icons.LengthIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Length'
       />
 
@@ -72,7 +69,9 @@ export default function Maths() {
         id='MCM/MCD'
         title={t('mathematicalCardTitle.MCM/MCD')}
         category={t('categoryName.maths')}
-        icon={<MCMMCDIcon size={52} color='#6C3483' />}
+        icon={icons.MCMMCDIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/MCMMCD'
       />
 
@@ -80,7 +79,9 @@ export default function Maths() {
         id='Num Gen'
         title={t('mathematicalCardTitle.Num Gen')}
         category={t('categoryName.maths')}
-        icon={<NumberGeneratorIcon size={52} color='#6C3483' />}
+        icon={icons.NumberGeneratorIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/NumberGenerator'
       />
 
@@ -88,7 +89,9 @@ export default function Maths() {
         id='Prime Nro'
         title={t('mathematicalCardTitle.Prime Nro')}
         category={t('categoryName.maths')}
-        icon={<PrimeNumberIcon size={52} color='#6C3483' />}
+        icon={icons.PrimeNumberIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/PrimeNumber'
       />
 
@@ -96,7 +99,9 @@ export default function Maths() {
         id='Probability'
         title={t('mathematicalCardTitle.Probability')}
         category={t('categoryName.maths')}
-        icon={<ProbabilityIcon size={52} color='#6C3483' />}
+        icon={icons.ProbabilityIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Probability'
       />
 
@@ -104,7 +109,9 @@ export default function Maths() {
         id='Roman Nro'
         title={t('mathematicalCardTitle.Roman Nro')}
         category={t('categoryName.maths')}
-        icon={<RomanNumberIcon size={52} color='#6C3483' />}
+        icon={icons.RomanNumberIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/RomanNumber'
       />
 
@@ -112,7 +119,9 @@ export default function Maths() {
         id='Shapes'
         title={t('mathematicalCardTitle.Shapes')}
         category={t('categoryName.maths')}
-        icon={<ShapeIcon size={52} color='#6C3483' />}
+        icon={icons.ShapeIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Shapes'
       />
 
@@ -120,7 +129,9 @@ export default function Maths() {
         id='Statistics'
         title={t('mathematicalCardTitle.Statistics')}
         category={t('categoryName.maths')}
-        icon={<StatisticsIcon size={52} color='#6C3483' />}
+        icon={icons.StatisticsIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Statistics'
       />
 
@@ -128,7 +139,9 @@ export default function Maths() {
         id='Trigonometry'
         title={t('mathematicalCardTitle.Trigonometry')}
         category={t('categoryName.maths')}
-        icon={<TrigonometryIcon size={52} color='#6C3483' />}
+        icon={icons.TrigonometryIcon}
+        iconSize={52}
+        iconColor='#6C3483'
         route='/(pages)/(maths)/Trigonometry'
       />
     </View>

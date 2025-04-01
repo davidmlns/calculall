@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
-import { CookingIcon, CookingTimeIcon, TimerSettingsIcon, VolumeIcon } from './Icons';
+import { icons } from './Icons';
 import { useTranslation } from 'react-i18next';
 
 export default function Kitchen() {
@@ -11,7 +11,9 @@ export default function Kitchen() {
         id='Cooking'
         title={t('kitchenCardTitle.Cooking')}
         category={t('categoryName.Kitchen')}
-        icon={<CookingIcon size={52} color='#F39C12' />}
+        icon={icons.CookingIcon}
+        iconSize={52}
+        iconColor='#F39C12'
         route='/(pages)/(kitchen)/Cooking'
       />
 
@@ -19,7 +21,9 @@ export default function Kitchen() {
         id='Cooking time'
         title={t('kitchenCardTitle.CookingTime')}
         category={t('categoryName.Kitchen')}
-        icon={<CookingTimeIcon size={52} color='#F39C12' />}
+        icon={icons.CookingTimeIcon}
+        iconSize={52}
+        iconColor='#F39C12'
         route='/(pages)/(kitchen)/CookingTime'
       />
 
@@ -27,7 +31,9 @@ export default function Kitchen() {
         id='Timer setting'
         title={t('kitchenCardTitle.TimerSettings')}
         category={t('categoryName.Kitchen')}
-        icon={<TimerSettingsIcon size={52} color='#F39C12' />}
+        icon={icons.TimerSettingsIcon}
+        iconSize={52}
+        iconColor='#F39C12'
         route='/(pages)/(kitchen)/TimerSettings'
       />
 
@@ -35,7 +41,9 @@ export default function Kitchen() {
         id='Volume'
         title={t('kitchenCardTitle.Volume')}
         category={t('categoryName.Kitchen')}
-        icon={<VolumeIcon size={52} color='#F39C12' />}
+        icon={icons.VolumeIcon}
+        iconSize={52}
+        iconColor='#F39C12'
         route='/(pages)/(kitchen)/Volume'
       />
     </View>

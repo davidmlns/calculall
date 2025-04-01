@@ -24,8 +24,9 @@ const Favorites = () => {
             title={fav.title}
             category={fav.category}
             icon={fav.icon}
+            iconSize={fav.iconSize}
+            iconColor={fav.iconColor}
             route={fav.route}
-            modalContent={fav.modalContent}
           />
         ))}
       </View>

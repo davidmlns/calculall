@@ -1,13 +1,6 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
-import {
-  BatteryIcon,
-  DataTransferIcon,
-  DigitalDataIcon,
-  ElectricalResistanceIcon,
-  ElectricConsumptionIcon,
-  ElectricCurrentIcon,
-} from './Icons';
+import { icons } from './Icons';
 import { useTranslation } from 'react-i18next';
 
 export default function Technology() {
@@ -18,7 +11,9 @@ export default function Technology() {
         id='Battery'
         title={t('technologyCardTitle.Battery')}
         category={t('categoryName.Technology')}
-        icon={<BatteryIcon size={52} color='#3498DB' />}
+        icon={icons.BatteryIcon}
+        iconSize={52}
+        iconColor='#3498DB'
         route='/(pages)/(tech)/Battery'
       />
 
@@ -26,7 +21,9 @@ export default function Technology() {
         id='Data transfer'
         title={t('technologyCardTitle.DataTransfer')}
         category={t('categoryName.Technology')}
-        icon={<DataTransferIcon size={52} color='#3498DB' />}
+        icon={icons.DataTransferIcon}
+        iconSize={52}
+        iconColor='#3498DB'
         route='/(pages)/(tech)/DataTransfer'
       />
 
@@ -34,7 +31,9 @@ export default function Technology() {
         id='Digital data'
         title={t('technologyCardTitle.DigitalData')}
         category={t('categoryName.Technology')}
-        icon={<DigitalDataIcon size={52} color='#3498DB' />}
+        icon={icons.DigitalDataIcon}
+        iconSize={52}
+        iconColor='#3498DB'
         route='/(pages)/(tech)/DigitalData'
       />
 
@@ -42,7 +41,9 @@ export default function Technology() {
         id='Electric current'
         title={t('technologyCardTitle.ElectricCurrent')}
         category={t('categoryName.Technology')}
-        icon={<ElectricCurrentIcon size={52} color='#3498DB' />}
+        icon={icons.ElectricCurrentIcon}
+        iconSize={52}
+        iconColor='#3498DB'
         route='/(pages)/(tech)/ElectricCurrent'
       />
 
@@ -50,7 +51,9 @@ export default function Technology() {
         id='Electric usage'
         title={t('technologyCardTitle.ElectricConsumption')}
         category={t('categoryName.Technology')}
-        icon={<ElectricConsumptionIcon size={52} color='#3498DB' />}
+        icon={icons.ElectricConsumptionIcon}
+        iconSize={52}
+        iconColor='#3498DB'
         route='/(pages)/(tech)/ElectricConsumption'
       />
 
@@ -58,7 +61,9 @@ export default function Technology() {
         id='Electric resistance'
         title={t('technologyCardTitle.ElectricResistance')}
         category={t('categoryName.Technology')}
-        icon={<ElectricalResistanceIcon size={52} color='#3498DB' />}
+        icon={icons.ElectricalResistanceIcon}
+        iconSize={52}
+        iconColor='#3498DB'
         route='/(pages)/(tech)/ElectricalResistance'
       />
     </View>

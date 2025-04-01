@@ -1,16 +1,7 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
 import { useTranslation } from 'react-i18next';
-import {
-  AgeIcon,
-  CurrencyIcon,
-  DateIcon,
-  DensityIcon,
-  PasswordIcon,
-  QrCodeIcon,
-  UUIDIcon,
-  WeightIcon,
-} from './Icons';
+import { icons } from './Icons';
 
 export default function Others() {
   const { t } = useTranslation();
@@ -20,7 +11,9 @@ export default function Others() {
         id='Age'
         title={t('othersCardTitle.Age')}
         category={t('categoryName.Others')}
-        icon={<AgeIcon size={52} color='#1ABC9C' />}
+        icon={icons.AgeIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/Age'
       />
 
@@ -28,7 +21,9 @@ export default function Others() {
         id='Currency'
         title={t('othersCardTitle.Currency')}
         category={t('categoryName.Others')}
-        icon={<CurrencyIcon size={52} color='#1ABC9C' />}
+        icon={icons.CurrencyIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/Currency'
       />
 
@@ -36,7 +31,9 @@ export default function Others() {
         id='Date'
         title={t('othersCardTitle.Dates')}
         category={t('categoryName.Others')}
-        icon={<DateIcon size={52} color='#1ABC9C' />}
+        icon={icons.DateIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/Date'
       />
 
@@ -44,7 +41,9 @@ export default function Others() {
         id='Density'
         title={t('othersCardTitle.Density')}
         category={t('categoryName.Others')}
-        icon={<DensityIcon size={52} color='#1ABC9C' />}
+        icon={icons.DensityIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/Density'
       />
 
@@ -52,7 +51,9 @@ export default function Others() {
         id='Password'
         title={t('othersCardTitle.Password')}
         category={t('categoryName.Others')}
-        icon={<PasswordIcon size={52} color='#1ABC9C' />}
+        icon={icons.PasswordIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/Password'
       />
 
@@ -60,7 +61,9 @@ export default function Others() {
         id='QR generator'
         title={t('othersCardTitle.QRGenerator')}
         category={t('categoryName.Others')}
-        icon={<QrCodeIcon size={52} color='#1ABC9C' />}
+        icon={icons.QrCodeIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/QrCode'
       />
 
@@ -68,7 +71,9 @@ export default function Others() {
         id='UUID'
         title={t('othersCardTitle.UUID')}
         category={t('categoryName.Others')}
-        icon={<UUIDIcon size={52} color='#1ABC9C' />}
+        icon={icons.UUIDIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/UUID'
       />
 
@@ -76,7 +81,9 @@ export default function Others() {
         id='Weight'
         title={t('othersCardTitle.Weight')}
         category={t('categoryName.Others')}
-        icon={<WeightIcon size={52} color='#1ABC9C' />}
+        icon={icons.WeightIcon}
+        iconSize={52}
+        iconColor='#1ABC9C'
         route='/(pages)/(others)/Weight'
       />
     </View>

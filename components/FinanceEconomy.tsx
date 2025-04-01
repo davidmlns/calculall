@@ -1,15 +1,6 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
-import {
-  BudgetingIcon,
-  DiscountsIcon,
-  InflationIcon,
-  InterestIcon,
-  LoanIcon,
-  PercentageIcon,
-  TaxesIcon,
-  TipIcon,
-} from './Icons';
+import { icons } from './Icons';
 import { useTranslation } from 'react-i18next';
 
 export default function FinanceEconomy() {
@@ -20,7 +11,9 @@ export default function FinanceEconomy() {
         id='Budgeting'
         title={t('financesCardTitle.Budgeting')}
         category={t('categoryName.Finances')}
-        icon={<BudgetingIcon size={52} color='#27AE60' />}
+        icon={icons.BudgetingIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Budgeting'
       />
 
@@ -28,7 +21,9 @@ export default function FinanceEconomy() {
         id='Discounts'
         title={t('financesCardTitle.Discounts')}
         category={t('categoryName.Finances')}
-        icon={<DiscountsIcon size={52} color='#27AE60' />}
+        icon={icons.DiscountsIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Discounts'
       />
 
@@ -36,7 +31,9 @@ export default function FinanceEconomy() {
         id='Inflation'
         title={t('financesCardTitle.Inflation')}
         category={t('categoryName.Finances')}
-        icon={<InflationIcon size={52} color='#27AE60' />}
+        icon={icons.InflationIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Inflation'
       />
 
@@ -44,7 +41,9 @@ export default function FinanceEconomy() {
         id='Interests'
         title={t('financesCardTitle.Interests')}
         category={t('categoryName.Finances')}
-        icon={<InterestIcon size={52} color='#27AE60' />}
+        icon={icons.InterestIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Interests'
       />
 
@@ -52,7 +51,9 @@ export default function FinanceEconomy() {
         id='Loan'
         title={t('financesCardTitle.Loan')}
         category={t('categoryName.Finances')}
-        icon={<LoanIcon size={52} color='#27AE60' />}
+        icon={icons.LoanIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Loan'
       />
 
@@ -60,7 +61,9 @@ export default function FinanceEconomy() {
         id='Percentage'
         title={t('financesCardTitle.Percentage')}
         category={t('categoryName.Finances')}
-        icon={<PercentageIcon size={52} color='#27AE60' />}
+        icon={icons.PercentageIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Percentage'
       />
 
@@ -68,7 +71,9 @@ export default function FinanceEconomy() {
         id='Taxes'
         title={t('financesCardTitle.Taxes')}
         category={t('categoryName.Finances')}
-        icon={<TaxesIcon size={52} color='#27AE60' />}
+        icon={icons.TaxesIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Taxes'
       />
 
@@ -76,7 +81,9 @@ export default function FinanceEconomy() {
         id='Tips'
         title={t('financesCardTitle.Tips')}
         category={t('categoryName.Finances')}
-        icon={<TipIcon size={52} color='#27AE60' />}
+        icon={icons.TipIcon}
+        iconSize={52}
+        iconColor='#27AE60'
         route='/(pages)/(finances)/Tips'
       />
     </View>

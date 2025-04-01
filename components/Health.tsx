@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import FilterableCard from './FilterableCard';
-import { BMIIcon, CaloriesIcon, HydrationIcon, MedicationIcon } from './Icons';
+import { icons } from './Icons';
 import { useTranslation } from 'react-i18next';
 
 export default function Health() {
@@ -11,7 +11,9 @@ export default function Health() {
         id='BMI'
         title={t('healthCardTitle.BMI')}
         category={t('categoryName.Health')}
-        icon={<BMIIcon size={52} color='#E74C3C' />}
+        icon={icons.BMIIcon}
+        iconSize={52}
+        iconColor='#E74C3C'
         route='/(pages)/(health)/BMI'
       />
 
@@ -19,7 +21,9 @@ export default function Health() {
         id='Calories'
         title={t('healthCardTitle.Calories')}
         category={t('categoryName.Health')}
-        icon={<CaloriesIcon size={52} color='#E74C3C' />}
+        icon={icons.CaloriesIcon}
+        iconSize={52}
+        iconColor='#E74C3C'
         route='/(pages)/(health)/Calories'
       />
 
@@ -27,7 +31,9 @@ export default function Health() {
         id='Hydration'
         title={t('healthCardTitle.Hydration')}
         category={t('categoryName.Health')}
-        icon={<HydrationIcon size={52} color='#E74C3C' />}
+        icon={icons.HydrationIcon}
+        iconSize={52}
+        iconColor='#E74C3C'
         route='/(pages)/(health)/Hydration'
       />
 
@@ -35,7 +41,9 @@ export default function Health() {
         id='Medication'
         title={t('healthCardTitle.Medication')}
         category={t('categoryName.Health')}
-        icon={<MedicationIcon size={52} color='#E74C3C' />}
+        icon={icons.MedicationIcon}
+        iconSize={52}
+        iconColor='#E74C3C'
         route='/(pages)/(health)/Medication'
       />
     </View>
