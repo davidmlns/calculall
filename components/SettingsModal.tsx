@@ -4,6 +4,7 @@ import { useState } from 'react';
 import LanguageModal from './LanguageModal';
 import ThemeModal from './ThemeModal';
 import { useTranslation } from 'react-i18next';
+import AboutModal from './AboutModal';
 
 interface SettingsModalProps {
   isVisible: boolean;
@@ -12,9 +13,10 @@ interface SettingsModalProps {
 
 export default function SettingsModal({ isVisible, onClose }: SettingsModalProps) {
   const { t } = useTranslation();
+  const [showSettings, setShowSettings] = useState(true);
   const [isLanguageModalVisible, setIsLanguageModalVisible] = useState<boolean>(false);
   const [isThemeModalVisible, setIsThemeModalVisible] = useState<boolean>(false);
-  const [showSettings, setShowSettings] = useState(true);
+  const [isAboutModalVisible, setIsAboutModalVisible] = useState<boolean>(false);
 
   const handleLanguageSelect = () => {
     setShowSettings(false);
@@ -28,11 +30,13 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
     setIsThemeModalVisible(true);
   };
 
+  const handleAboutModal = () => {
+    setShowSettings(false);
+    setIsAboutModalVisible(true);
+  };
+
   const handleLanguageChange = (languageCode: string) => {
-    // Your language change logic here
-    console.log('Changing to language:', languageCode);
-    // Example with i18n:
-    // i18n.changeLanguage(languageCode);
+    setIsLanguageModalVisible(false);
   };
 
   const handleModalClose = () => {
@@ -53,6 +57,7 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
     {
       title: t('settings.about'),
       icon: <InfoIcon size={30} color='#E0E0E0' />,
+      onPress: handleAboutModal,
     },
     {
       title: t('settings.rateApp'),
@@ -101,6 +106,11 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
       <ThemeModal
         isVisible={isThemeModalVisible}
         onClose={() => setIsThemeModalVisible(false)}
+        onDismiss={handleModalClose}
+      />
+      <AboutModal
+        isVisible={isAboutModalVisible}
+        onClose={() => setIsAboutModalVisible(false)}
         onDismiss={handleModalClose}
       />
     </>
