@@ -1,6 +1,7 @@
 import { Modal, Pressable, Text, View, Image, StyleSheet } from 'react-native';
 import { CloseIcon } from './Icons';
 import profileImg from '../assets/images/profile.jpg';
+import { t } from 'i18next';
 
 interface AboutModalProps {
   isVisible: boolean;
@@ -22,16 +23,18 @@ export default function AboutModal({
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <Image source={profileImg} style={styles.image} />
-            <Text style={styles.tag}>2nd August 1989</Text>
-            <Text style={[styles.tag, styles.tagRight]}>Vietnam</Text>
+            <Text style={styles.tag}>{t('aboutModal.job')}</Text>
+            <Text style={[styles.tag, styles.tagRight]}>{t('aboutModal.country')}</Text>
           </View>
           <View style={styles.contactContainer}>
-            <Text style={styles.contactTitle}>Contact</Text>
-            <Text style={styles.contactText}>📍 Nantes, France</Text>
-            <Text style={styles.contactText}>✉️ mailto@gmail.com</Text>
-            <Text style={styles.contactText}>📞 07 82 84 59 00</Text>
+            <Text style={styles.contactTitle}>{t('aboutModal.contact')}</Text>
+            <Text style={styles.contactText}>{t('aboutModal.location')}</Text>
+            <Text style={styles.contactText}>{t('aboutModal.email')}</Text>
+            <Text style={styles.contactText}>{t('aboutModal.phone')}</Text>
           </View>
         </View>
+
+        <Text style={styles.versionText}>{t('aboutModal.version')}</Text>
       </View>
     </Modal>
   );
@@ -89,5 +92,11 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 10, // Increased margin for larger spacing
     fontSize: 18, // Increased font size
+  },
+  versionText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 18,
+    marginBottom: 10,
   },
 });

@@ -1186,5 +1186,14 @@
     "reportProblem": "报告问题",
     "selectTheme": "选择主题",
     "selectLanguage": "选择语言"
+  },
+  "aboutModal": {
+    "job": "应用开发者",
+    "country": " Cuba",
+    "contact": "联系",
+    "email": "✉️ davidmlnsgross@gmail.com",
+    "location": "📍 Bayamo, Cuba",
+    "phone": "📞 +53 55 57 41 25",
+    "version": "版本 1.0.0"
   }
 }

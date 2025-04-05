@@ -44,10 +44,8 @@ export default function MiComponente() {
           <Categories />
         </ScrollView>
 
-        <TouchableOpacity style={styles.calcButton} onPress={() => setIsCalcModalVisible(true)}>
-          <Text style={styles.calcButtonText}>
-            <CalculateIcon size={42} color='#FFFFFF' />
-          </Text>
+        <TouchableOpacity className='absolute bottom-6 right-6 bg-orange-500 p-2 rounded-full shadow-lg'>
+          <CalculateIcon color='white' size={42} />
         </TouchableOpacity>
 
         <CalculatorModal

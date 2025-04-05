@@ -1180,5 +1180,14 @@
     "reportProblem": "Report a problem",
     "selectTheme": "Select Theme",
     "selectLanguage": "Select Language"
+  },
+  "aboutModal": {
+    "job": "App developer",
+    "country": "Cuba",
+    "contact": "Contact",
+    "email": "✉️ davidmlnsgross@gmail.com",
+    "location": "📍 Bayamo, Cuba",
+    "phone": "📞 +53 55 57 41 25",
+    "version": "Version 1.0.0"
   }
 }
