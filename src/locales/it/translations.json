@@ -120,7 +120,7 @@
     "placeholderValueNumber": "#",
     "number": "N°"
   },
-  "baseNumeric": {
+  "baseNumericCard": {
     "title": "Base numerica",
     "values": "Valori",
     "titleOp1": "Base 2",

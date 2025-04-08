@@ -120,7 +120,7 @@
     "placeholderValueNumber": "#",
     "number": "编号"
   },
-  "baseNumeric": {
+  "baseNumericCard": {
     "title": "数字进制",
     "values": "数值",
     "titleOp1": "二进制",

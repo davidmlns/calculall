@@ -1,7 +1,8 @@
-import { Modal, Pressable, Text, View, Image, StyleSheet } from 'react-native';
+import { Modal, Pressable, Text, View, Image, StyleSheet, BackHandler } from 'react-native';
 import { CloseIcon } from './Icons';
 import profileImg from '../assets/images/profile.jpg';
 import { t } from 'i18next';
+import { useEffect } from 'react';
 
 interface AboutModalProps {
   isVisible: boolean;
@@ -14,8 +15,27 @@ export default function AboutModal({
   onClose,
   onDismiss,
 }: AboutModalProps): JSX.Element {
+  useEffect(() => {
+    const handleBackPress = () => {
+      if (isVisible) {
+        onClose();
+        return true;
+      }
+      return false;
+    };
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return () => backHandler.remove();
+  }, [isVisible, onClose]);
+
+  useEffect(() => {
+    if (!isVisible) {
+      onDismiss();
+    }
+  }, [isVisible, onDismiss]);
   return (
-    <Modal animationType='slide' transparent={false} visible={isVisible}>
+    <Modal animationType='slide' onRequestClose={onClose} transparent={false} visible={isVisible}>
       <View className='flex-1 bg-background-app'>
         <Pressable onPress={onClose} className='absolute top-4 right-4'>
           <CloseIcon size={26} color='#E0E0E0' />

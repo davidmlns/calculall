@@ -10,7 +10,7 @@ export default function HeaderRight() {
   const { searchText, setSearchText, isSearchVisible, setIsSearchVisible } = useSearch();
   const animation = useRef(new Animated.Value(0)).current;
   const inputRef = useRef(null);
-  const [isSettingsVisible, setIsSettingsVisible] = useState(false);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [borderColor, setBorderColor] = useState('#000000');
   const { theme } = useTheme();
 
@@ -105,15 +105,15 @@ export default function HeaderRight() {
       </Pressable>
 
       {isSearchVisible ? (
-        <Pressable className='hidden' onPress={() => setIsSettingsVisible(true)}>
+        <Pressable className='hidden' onPress={() => setShowSettingsModal(true)}>
           <SettingIcon size={34} color={theme.icon} />
         </Pressable>
       ) : (
-        <Pressable onPress={() => setIsSettingsVisible(true)}>
+        <Pressable onPress={() => setShowSettingsModal(true)}>
           <SettingIcon size={34} color={theme.icon} />
         </Pressable>
       )}
-      <SettingsModal isVisible={isSettingsVisible} onClose={() => setIsSettingsVisible(false)} />
+      <SettingsModal isVisible={showSettingsModal} onClose={() => setShowSettingsModal(false)} />
     </View>
   );
 }

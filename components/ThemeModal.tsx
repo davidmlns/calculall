@@ -1,4 +1,4 @@
-import { Modal, Pressable, Text, View } from 'react-native';
+import { Modal, Pressable, Text, View, BackHandler } from 'react-native';
 import { CloseIcon } from './Icons';
 import { useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
@@ -13,6 +13,20 @@ interface ThemeModalProps {
 export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModalProps) {
   const { setTheme } = useTheme();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const handleBackPress = () => {
+      if (isVisible) {
+        onClose();
+        return true;
+      }
+      return false;
+    };
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return () => backHandler.remove();
+  }, [isVisible, onClose]);
 
   useEffect(() => {
     if (!isVisible) {
@@ -61,10 +75,14 @@ export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModal
     });
     onClose();
   };
+
   return (
-    <Modal animationType='slide' transparent={true} visible={isVisible}>
+    <Modal animationType='slide' transparent={true} visible={isVisible} onRequestClose={onClose}>
       <Pressable className='flex-1 bg-black/40 justify-end' onPress={onClose}>
-        <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
+        <Pressable
+          className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'
+          onPress={() => {}} // Prevent press events from propagating
+        >
           <View className='bg-background-secondary rounded-t-3xl p-6 h-1/2'>
             <View className='flex-row justify-between items-center mb-4'>
               <Text className='text-white text-2xl font-bold'>{t('settings.selectTheme')}</Text>

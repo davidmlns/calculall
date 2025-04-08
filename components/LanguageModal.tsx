@@ -1,4 +1,4 @@
-import { Modal, Pressable, Text, View } from 'react-native';
+import { Modal, Pressable, Text, View, BackHandler } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
 import { CloseIcon } from './Icons';
 import { useEffect } from 'react';
@@ -18,6 +18,20 @@ export default function LanguageModal({
   onDismiss,
   onLanguageSelected,
 }: LanguageModalProps) {
+  useEffect(() => {
+    const handleBackPress = () => {
+      if (isVisible) {
+        onClose();
+        return true;
+      }
+      return false;
+    };
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return () => backHandler.remove();
+  }, [isVisible, onClose]);
+
   useEffect(() => {
     if (!isVisible) {
       onDismiss();
@@ -42,9 +56,12 @@ export default function LanguageModal({
   };
 
   return (
-    <Modal animationType='slide' transparent={true} visible={isVisible}>
+    <Modal animationType='slide' transparent={true} visible={isVisible} onRequestClose={onClose}>
       <Pressable className='flex-1 bg-black/40 justify-end' onPress={onClose}>
-        <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
+        <Pressable
+          className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'
+          onPress={() => {}} // Prevent press events from propagating
+        >
           <View className='bg-background-secondary rounded-t-3xl p-6 h-1/2'>
             <View className='flex-row justify-between items-center mb-4'>
               <Text className='text-white text-2xl font-bold'>{t('settings.selectLanguage')}</Text>
@@ -56,7 +73,7 @@ export default function LanguageModal({
               {languages.map(lang => (
                 <Pressable
                   key={lang.code}
-                  onPress={() => handleLanguageSelect(lang.code)} // Modificado
+                  onPress={() => handleLanguageSelect(lang.code)}
                   className='flex-col items-center rounded-lg'>
                   <CountryFlag isoCode={lang.code.toLowerCase()} size={62} />
                   <Text className='text-white text-2xl font-bold ml-2'>{lang.name}</Text>

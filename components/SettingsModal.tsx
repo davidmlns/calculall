@@ -1,6 +1,6 @@
-import { Modal, Pressable, Text, View, Linking } from 'react-native';
+import { Modal, Pressable, Text, View, Linking, BackHandler } from 'react-native';
 import { BugIcon, CloseIcon, InfoIcon, LanguageIcon, StarIcon, ThemeIcon } from './Icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LanguageModal from './LanguageModal';
 import ThemeModal from './ThemeModal';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,32 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
   const [isLanguageModalVisible, setIsLanguageModalVisible] = useState<boolean>(false);
   const [isThemeModalVisible, setIsThemeModalVisible] = useState<boolean>(false);
   const [isAboutModalVisible, setIsAboutModalVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleBackPress = () => {
+      if (isLanguageModalVisible) {
+        setIsLanguageModalVisible(false);
+        return true;
+      }
+      if (isThemeModalVisible) {
+        setIsThemeModalVisible(false);
+        return true;
+      }
+      if (isAboutModalVisible) {
+        setIsAboutModalVisible(false);
+        return true;
+      }
+      if (isVisible) {
+        onClose();
+        return true;
+      }
+      return false;
+    };
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return () => backHandler.remove();
+  }, [isVisible, isLanguageModalVisible, isThemeModalVisible, isAboutModalVisible, onClose]);
 
   const handleLanguageSelect = () => {
     setShowSettings(false);
@@ -97,7 +123,8 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
         transparent={true}
         visible={
           isVisible && !isLanguageModalVisible && !isThemeModalVisible && !isAboutModalVisible
-        }>
+        }
+        onRequestClose={onClose}>
         <Pressable className='flex-1 bg-black/40 justify-end' onPress={onClose}>
           <Pressable
             onPress={() => {}}
