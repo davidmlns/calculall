@@ -1193,5 +1193,11 @@
     "location": "📍 Bayamo, Cuba",
     "phone": "📞 +53 55 57 41 25",
     "version": "Versão 1.0.0"
+  },
+  "email": {
+    "subject": "Relatório de problema com Calculall",
+    "body": "Por favor, descreva o problema que você está experimentando com Calculall.",
+    "emailClientError": "Não foi possível abrir o cliente de email",
+    "emailOpenError": "Não foi possível abrir o cliente de email"
   }
 }

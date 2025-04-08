@@ -63,25 +63,27 @@ export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModal
   };
   return (
     <Modal animationType='slide' transparent={true} visible={isVisible}>
-      <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
-        <View className='bg-background-secondary rounded-t-3xl p-6 h-1/2'>
-          <View className='flex-row justify-between items-center mb-4'>
-            <Text className='text-white text-2xl font-bold'>{t('settings.selectTheme')}</Text>
-            <Pressable onPress={onClose}>
-              <CloseIcon size={26} color='#E0E0E0' />
-            </Pressable>
+      <Pressable className='flex-1 bg-black/40 justify-end' onPress={onClose}>
+        <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
+          <View className='bg-background-secondary rounded-t-3xl p-6 h-1/2'>
+            <View className='flex-row justify-between items-center mb-4'>
+              <Text className='text-white text-2xl font-bold'>{t('settings.selectTheme')}</Text>
+              <Pressable onPress={onClose}>
+                <CloseIcon size={26} color='#E0E0E0' />
+              </Pressable>
+            </View>
+            <View className='space-y-3 flex-row flex-wrap justify-around gap-6'>
+              {colors.map(color => (
+                <Pressable
+                  key={color.name}
+                  onPress={() => handleColorSelect(color)}
+                  className='w-20 h-20 rounded-full border-4 border-slate-200'
+                  style={{ backgroundColor: color.primary }}
+                />
+              ))}
+            </View>
           </View>
-          <View className='space-y-3 flex-row flex-wrap justify-around gap-6'>
-            {colors.map(color => (
-              <Pressable
-                key={color.name}
-                onPress={() => handleColorSelect(color)}
-                className='w-20 h-20 rounded-full border-4 border-slate-200'
-                style={{ backgroundColor: color.primary }}
-              />
-            ))}
-          </View>
-        </View>
+        </Pressable>
       </Pressable>
     </Modal>
   );

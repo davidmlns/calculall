@@ -1189,5 +1189,11 @@
     "location": "📍 Bayamo, Cuba",
     "phone": "📞 +53 55 57 41 25",
     "version": "Versión 1.0.0"
+  },
+  "email": {
+    "subject": "Reporte de Problema en CalculAll",
+    "body": "Describe aquí el problema que estás experimentando:",
+    "emailClientError": "No se puede abrir el cliente de correo",
+    "emailOpenError": "No se puede abrir el cliente de correo"
   }
 }
