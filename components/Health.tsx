@@ -6,13 +6,12 @@ import { useTranslation } from 'react-i18next';
 export default function Health() {
   const { t } = useTranslation();
   return (
-    <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
+    <View className='mx-auto mt-4 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='BMI'
         title={t('healthCardTitle.BMI')}
-        category={t('categoryName.Health')}
         icon={icons.BMIIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#E74C3C'
         route='/(pages)/(health)/BMI'
       />
@@ -20,9 +19,8 @@ export default function Health() {
       <FilterableCard
         id='Calories'
         title={t('healthCardTitle.Calories')}
-        category={t('categoryName.Health')}
         icon={icons.CaloriesIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#E74C3C'
         route='/(pages)/(health)/Calories'
       />
@@ -30,9 +28,8 @@ export default function Health() {
       <FilterableCard
         id='Hydration'
         title={t('healthCardTitle.Hydration')}
-        category={t('categoryName.Health')}
         icon={icons.HydrationIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#E74C3C'
         route='/(pages)/(health)/Hydration'
       />
@@ -40,9 +37,8 @@ export default function Health() {
       <FilterableCard
         id='Medication'
         title={t('healthCardTitle.Medication')}
-        category={t('categoryName.Health')}
         icon={icons.MedicationIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#E74C3C'
         route='/(pages)/(health)/Medication'
       />

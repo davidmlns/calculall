@@ -98,7 +98,7 @@
     "Density": "密度",
     "Password": "密码",
     "QRGenerator": "二维码生成器",
-    "UUID": "UUID",
+    "UUID": "唯一标识符",
     "Weight": "重量"
   },
   "angleCard": {
@@ -126,7 +126,8 @@
     "titleOp1": "二进制",
     "titleOp2": "八进制",
     "titleOp3": "十六进制",
-    "placeholderValue": "输入数字"
+    "placeholderValue": "输入数字",
+    "error": "输入有效数字"
   },
   "equationsCard": {
     "title": "方程",

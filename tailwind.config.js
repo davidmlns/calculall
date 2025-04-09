@@ -22,15 +22,18 @@ module.exports = {
         //"accent-app": "#FF6B6B",
       },
       width: {
-        45: '45%',
+        47: '47%',
         98: '98%',
         95: '95%',
         90: '90%',
         99: '99%',
       },
       fontSize: {
-        22: '22px',
+        24: '24px',
         20: '20px',
+      },
+      fontFamily: {
+        Satoshi: 'Satoshi',
       },
     },
   },

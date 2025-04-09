@@ -22,12 +22,12 @@
   "mathematicalCardTitle": {
     "Angles": "Angles",
     "Average": "Moyenne",
-    "BaseNumeric": "Base numérique",
+    "BaseNumeric": "Base numériq.",
     "Equations": "Équations",
     "Fractions": "Fractions",
     "Length": "Longueur",
     "MCM/MCD": "PPCM/PGCD",
-    "Num Gen": "Génération Num",
+    "Num Gen": "Générat. Num",
     "Prime Nro": "Nbr Premier",
     "Probability": "Probabilité",
     "Roman Nro": "Nbr Romain",
@@ -44,12 +44,12 @@
     "Ohm": "Loi d'Ohm",
     "Pressure": "Pression",
     "Radiation": "Rayonnement",
-    "Solar Energy": "Énergie Solaire",
+    "Solar Energy": "Énerg. Sol.",
     "Sound": "Son",
     "Temperature": "Température",
     "Velocity": "Vitesse",
-    "Wavelength": "Longueur d'onde",
-    "WindSpeed": "Vitesse du vent"
+    "Wavelength": "Long. d'onde",
+    "WindSpeed": "Vitesse vent"
   },
   "healthCardTitle": {
     "BMI": "IMC",
@@ -76,9 +76,9 @@
   "technologyCardTitle": {
     "Battery": "Batterie",
     "DataTransfer": "Transf. données",
-    "DigitalData": "Données numér.",
+    "DigitalData": "Donn. numér.",
     "ElectricCurrent": "Courant élect.",
-    "ElectricConsumption": "Consom. élect.",
+    "ElectricConsumption": "Cons. élect.",
     "ElectricResistance": "Résist. élect."
   },
   "geographyCardTitle": {
@@ -97,7 +97,7 @@
     "Dates": "Dates",
     "Density": "Densité",
     "Password": "Mot de passe",
-    "QRGenerator": "Générateur QR",
+    "QRGenerator": "Générat. QR",
     "UUID": "UUID",
     "Weight": "Poids"
   },
@@ -126,7 +126,8 @@
     "titleOp1": "Base 2",
     "titleOp2": "Base 8",
     "titleOp3": "Base 16",
-    "placeholderValue": "Entrez un nombre"
+    "placeholderValue": "Entrez un nombre",
+    "error": "Entrez un nombre valide"
   },
   "equationsCard": {
     "title": "Équations",

@@ -48,8 +48,8 @@
     "Sound": "Som",
     "Temperature": "Temperatura",
     "Velocity": "Velocidade",
-    "Wavelength": "Compr. de onda",
-    "WindSpeed": "Veloc. do vento"
+    "Wavelength": "Compr. onda",
+    "WindSpeed": "Velc. do vento"
   },
   "healthCardTitle": {
     "BMI": "IMC",
@@ -71,14 +71,14 @@
     "Autonomy": "Autonomia",
     "CO2": "Emissões CO₂",
     "Fuel": "Combustível",
-    "Mileage": "Quilometragem"
+    "Mileage": "Quilometrag."
   },
   "technologyCardTitle": {
     "Battery": "Bateria",
-    "DataTransfer": "Trans. de dados",
+    "DataTransfer": "Trans. dados",
     "DigitalData": "Dados digitais",
     "ElectricCurrent": "Corrente elétr.",
-    "ElectricConsumption": "Consumo elétr.",
+    "ElectricConsumption": "Cons. elétr.",
     "ElectricResistance": "Resist. elétrica"
   },
   "geographyCardTitle": {
@@ -126,7 +126,8 @@
     "titleOp1": "Base 2",
     "titleOp2": "Base 8",
     "titleOp3": "Base 16",
-    "placeholderValue": "Insira um número"
+    "placeholderValue": "Insira um número",
+    "error": "Insira um número válido"
   },
   "equationsCard": {
     "title": "Equações",

@@ -6,13 +6,12 @@ import { icons } from './Icons';
 export default function Others() {
   const { t } = useTranslation();
   return (
-    <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
+    <View className='mx-auto mt-4 mb-8 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='Age'
         title={t('othersCardTitle.Age')}
-        category={t('categoryName.Others')}
         icon={icons.AgeIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/Age'
       />
@@ -20,9 +19,8 @@ export default function Others() {
       <FilterableCard
         id='Currency'
         title={t('othersCardTitle.Currency')}
-        category={t('categoryName.Others')}
         icon={icons.CurrencyIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/Currency'
       />
@@ -30,9 +28,8 @@ export default function Others() {
       <FilterableCard
         id='Date'
         title={t('othersCardTitle.Dates')}
-        category={t('categoryName.Others')}
         icon={icons.DateIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/Date'
       />
@@ -40,9 +37,8 @@ export default function Others() {
       <FilterableCard
         id='Density'
         title={t('othersCardTitle.Density')}
-        category={t('categoryName.Others')}
         icon={icons.DensityIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/Density'
       />
@@ -50,9 +46,8 @@ export default function Others() {
       <FilterableCard
         id='Password'
         title={t('othersCardTitle.Password')}
-        category={t('categoryName.Others')}
         icon={icons.PasswordIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/Password'
       />
@@ -60,9 +55,8 @@ export default function Others() {
       <FilterableCard
         id='QR generator'
         title={t('othersCardTitle.QRGenerator')}
-        category={t('categoryName.Others')}
         icon={icons.QrCodeIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/QrCode'
       />
@@ -70,9 +64,8 @@ export default function Others() {
       <FilterableCard
         id='UUID'
         title={t('othersCardTitle.UUID')}
-        category={t('categoryName.Others')}
         icon={icons.UUIDIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/UUID'
       />
@@ -80,9 +73,8 @@ export default function Others() {
       <FilterableCard
         id='Weight'
         title={t('othersCardTitle.Weight')}
-        category={t('categoryName.Others')}
         icon={icons.WeightIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#1ABC9C'
         route='/(pages)/(others)/Weight'
       />

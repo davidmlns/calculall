@@ -6,13 +6,12 @@ import { useTranslation } from 'react-i18next';
 export default function Transport() {
   const { t } = useTranslation();
   return (
-    <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
+    <View className='mx-auto mt-4 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='Autonomy'
         title={t('transportCardTitle.Autonomy')}
-        category={t('categoryName.Transport')}
         icon={icons.AutonomyIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#7F8C8D'
         route='/(pages)/(transport)/Autonomy'
       />
@@ -20,18 +19,16 @@ export default function Transport() {
       <FilterableCard
         id='CO2'
         title={t('transportCardTitle.CO2')}
-        category={t('categoryName.Transport')}
         icon={icons.CO2Icon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#7F8C8D'
         route='/(pages)/(transport)/CO2'
       />
       <FilterableCard
         id='Fuel'
         title={t('transportCardTitle.Fuel')}
-        category={t('categoryName.Transport')}
         icon={icons.FuelIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#7F8C8D'
         route='/(pages)/(transport)/Fuel'
       />
@@ -39,9 +36,8 @@ export default function Transport() {
       <FilterableCard
         id='Mileage'
         title={t('transportCardTitle.Mileage')}
-        category={t('categoryName.Transport')}
         icon={icons.MileageIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#7F8C8D'
         route='/(pages)/(transport)/Mileage'
       />

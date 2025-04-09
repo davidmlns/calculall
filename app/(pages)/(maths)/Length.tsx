@@ -119,6 +119,7 @@ export default function Length() {
           value={meterValue}
           isActive={activeUnit === 'm'}
           onPress={clearInputs}
+          maxLength={7}
         />
         <ConvertComponent
           abb='km'
@@ -128,7 +129,7 @@ export default function Length() {
           value={kilometerValue}
           isActive={activeUnit === 'km'}
           onPress={clearInputs}
-          maxLength={7}
+          maxLength={5}
         />
         <ConvertComponent
           abb='cm'
@@ -156,6 +157,7 @@ export default function Length() {
           value={decimeterValue}
           isActive={activeUnit === 'dm'}
           onPress={clearInputs}
+          maxLength={7}
         />
         <ConvertComponent
           abb='hm'
@@ -165,7 +167,7 @@ export default function Length() {
           value={hectometerValue}
           isActive={activeUnit === 'hm'}
           onPress={clearInputs}
-          maxLength={8}
+          maxLength={6}
         />
         <ConvertComponent
           abb='in'
@@ -184,6 +186,7 @@ export default function Length() {
           value={footValue}
           isActive={activeUnit === 'ft'}
           onPress={clearInputs}
+          maxLength={8}
         />
         <ConvertComponent
           abb='yd'
@@ -193,6 +196,7 @@ export default function Length() {
           value={yardValue}
           isActive={activeUnit === 'yd'}
           onPress={clearInputs}
+          maxLength={7}
         />
         <ConvertComponent
           abb='mi'
@@ -202,7 +206,7 @@ export default function Length() {
           value={mileValue}
           isActive={activeUnit === 'mi'}
           onPress={clearInputs}
-          maxLength={6}
+          maxLength={4}
         />
       </View>
 

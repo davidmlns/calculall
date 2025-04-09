@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScrollView, View, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { SearchProvider } from '../context/SearchContext';
@@ -15,12 +15,27 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from '../src/i18n';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LanguageProvider } from '../context/LanguageContext';
-
 const Tab = createBottomTabNavigator();
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function MiComponente() {
   const [isCalcModalVisible, setIsCalcModalVisible] = useState(false);
-  const { theme } = useTheme();
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        Satoshi: require('../assets/fonts/Satoshi-Variable.ttf'),
+      });
+      setFontsLoaded(true);
+      await SplashScreen.hideAsync();
+    }
+
+    loadFonts();
+  }, []);
 
   useEffect(() => {
     const loadSavedLanguage = async () => {
@@ -36,7 +51,10 @@ export default function MiComponente() {
     loadSavedLanguage();
   }, []);
 
+  if (!fontsLoaded) return null;
+
   const HomeScreen = () => {
+    const { theme } = useTheme();
     return (
       <View style={styles.container}>
         <ScrollView style={{ backgroundColor: theme.background }}>
@@ -44,7 +62,9 @@ export default function MiComponente() {
           <Categories />
         </ScrollView>
 
-        <TouchableOpacity className='absolute bottom-6 right-6 bg-orange-500 p-2 rounded-full shadow-lg'>
+        <TouchableOpacity
+          className='absolute bottom-6 right-6 bg-orange-500 p-2 rounded-full shadow-lg'
+          onPress={() => setIsCalcModalVisible(true)}>
           <CalculateIcon color='white' size={42} />
         </TouchableOpacity>
 
@@ -81,7 +101,12 @@ export default function MiComponente() {
                 }}>
                 <Tab.Screen
                   name='Home'
-                  component={HomeScreen}
+                  children={() => (
+                    <HomeScreen
+                      isCalcModalVisible={isCalcModalVisible}
+                      setIsCalcModalVisible={setIsCalcModalVisible}
+                    />
+                  )}
                   options={{
                     tabBarIcon: ({ color }) => <HomeIcon size={32} color={color} />,
                   }}

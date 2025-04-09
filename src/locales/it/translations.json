@@ -79,7 +79,7 @@
     "DigitalData": "Dati digitali",
     "ElectricCurrent": "Corrente elet.",
     "ElectricConsumption": "Consumo elet.",
-    "ElectricResistance": "Resistenza elet."
+    "ElectricResistance": "Resist. elet."
   },
   "geographyCardTitle": {
     "LatitudeLongitude": "Lat. e Long.",
@@ -97,7 +97,7 @@
     "Dates": "Date",
     "Density": "Densità",
     "Password": "Password",
-    "QRGenerator": "Generatore QR",
+    "QRGenerator": "Generat. QR",
     "UUID": "UUID",
     "Weight": "Peso"
   },
@@ -126,7 +126,8 @@
     "titleOp1": "Base 2",
     "titleOp2": "Base 8",
     "titleOp3": "Base 16",
-    "placeholderValue": "Inserisci un numero"
+    "placeholderValue": "Inserisci un numero",
+    "error": "Inserisci un numero valido"
   },
   "equationsCard": {
     "title": "Equazioni",

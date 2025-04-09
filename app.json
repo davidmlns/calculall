@@ -4,12 +4,12 @@
     "slug": "Calculall",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/Logo.png",
+    "icon": "./assets/images/LogoNew.png",
     "scheme": "calculall",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/Logo.png",
+      "image": "./assets/images/LogoNew.png",
       "resizeMode": "contain",
       "backgroundColor": "#1A1A1A"
     },
@@ -18,30 +18,28 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/Logo.png",
+        "foregroundImage": "./assets/images/LogoNew.png",
+        "imageWidth": 30,
+        "imageHeight": 30,
         "backgroundColor": "#1A1A1A"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/Logo.png"
+      "favicon": "./assets/images/LogoNew.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/Logo.png",
-          "imageWidth": 50,
+          "image": "./assets/images/LogoNew.png",
+          "imageWidth": 30,
+          "imageHeight": 30,
+
           "resizeMode": "contain",
           "backgroundColor": "#1A1A1A"
-        }
-      ],
-      [
-        "expo-font",
-        {
-          "fonts": ["./assets/fonts/WorkSans-VariableFont_wght.ttf"]
         }
       ]
     ],

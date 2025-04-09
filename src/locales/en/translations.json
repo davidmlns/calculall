@@ -79,7 +79,7 @@
     "DigitalData": "Digital Data",
     "ElectricCurrent": "Elec. Current",
     "ElectricConsumption": "Elec. Usage",
-    "ElectricResistance": "Elec. Resistance"
+    "ElectricResistance": "Elec. Resist."
   },
   "geographyCardTitle": {
     "LatitudeLongitude": "Lat. & coor.",
@@ -125,7 +125,8 @@
     "titleOp1": "Base 2",
     "titleOp2": "Base 8",
     "titleOp3": "Base 16",
-    "placeholderValue": "Enter a number"
+    "placeholderValue": "Enter a number",
+    "error": "Enter a valid number"
   },
   "equationsCard": {
     "title": "Equations",

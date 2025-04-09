@@ -6,13 +6,12 @@ import { useTranslation } from 'react-i18next';
 export default function FinanceEconomy() {
   const { t } = useTranslation();
   return (
-    <View className='mx-auto mt-6 flex-row justify-center flex-wrap items-center gap-6'>
+    <View className='mx-auto mt-4 flex-row justify-center flex-wrap items-center gap-6'>
       <FilterableCard
         id='Budgeting'
         title={t('financesCardTitle.Budgeting')}
-        category={t('categoryName.Finances')}
         icon={icons.BudgetingIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Budgeting'
       />
@@ -20,9 +19,8 @@ export default function FinanceEconomy() {
       <FilterableCard
         id='Discounts'
         title={t('financesCardTitle.Discounts')}
-        category={t('categoryName.Finances')}
         icon={icons.DiscountsIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Discounts'
       />
@@ -30,9 +28,8 @@ export default function FinanceEconomy() {
       <FilterableCard
         id='Inflation'
         title={t('financesCardTitle.Inflation')}
-        category={t('categoryName.Finances')}
         icon={icons.InflationIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Inflation'
       />
@@ -40,9 +37,8 @@ export default function FinanceEconomy() {
       <FilterableCard
         id='Interests'
         title={t('financesCardTitle.Interests')}
-        category={t('categoryName.Finances')}
         icon={icons.InterestIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Interests'
       />
@@ -50,9 +46,8 @@ export default function FinanceEconomy() {
       <FilterableCard
         id='Loan'
         title={t('financesCardTitle.Loan')}
-        category={t('categoryName.Finances')}
         icon={icons.LoanIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Loan'
       />
@@ -60,9 +55,8 @@ export default function FinanceEconomy() {
       <FilterableCard
         id='Percentage'
         title={t('financesCardTitle.Percentage')}
-        category={t('categoryName.Finances')}
         icon={icons.PercentageIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Percentage'
       />
@@ -70,9 +64,8 @@ export default function FinanceEconomy() {
       <FilterableCard
         id='Taxes'
         title={t('financesCardTitle.Taxes')}
-        category={t('categoryName.Finances')}
         icon={icons.TaxesIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Taxes'
       />
@@ -80,9 +73,8 @@ export default function FinanceEconomy() {
       <FilterableCard
         id='Tips'
         title={t('financesCardTitle.Tips')}
-        category={t('categoryName.Finances')}
         icon={icons.TipIcon}
-        iconSize={52}
+        iconSize={56}
         iconColor='#27AE60'
         route='/(pages)/(finances)/Tips'
       />

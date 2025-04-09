@@ -18,249 +18,119 @@ export default function Categories() {
   const { theme } = useTheme();
 
   return (
-    <View className='p-6' style={{ backgroundColor: theme.background }}>
+    <View className='p-2'>
       {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.maths')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.maths')}
         </Text>
       )}
       <Maths />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.physical')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.physical')}
         </Text>
       )}
       <Physical />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.Health')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.Health')}
         </Text>
       )}
       <Health />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.Finances')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.Finances')}
         </Text>
       )}
       <FinanceEconomy />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.Transport')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.Transport')}
         </Text>
       )}
       <Transport />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.Technology')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.Technology')}
         </Text>
       )}
       <Technology />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.Geography')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.Geography')}
         </Text>
       )}
       <Geography />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.Kitchen')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.Kitchen')}
         </Text>
       )}
       <Kitchen />
 
       {isSearchVisible ? (
-        <View
-          style={{
-            borderBottomWidth: 0,
-            borderBottomColor: theme.lineColor,
-            marginVertical: 8,
-          }}
-        />
-      ) : (
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: theme.lineColor, marginVertical: 8 }}
-        />
-      )}
-
-      {isSearchVisible ? (
-        <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center hidden'>
+        <Text style={{ color: theme.text }} className='text-3xl font-semibold ml-4 hidden'>
           {t('categoryName.Others')}
         </Text>
       ) : (
         <Text
-          style={{ color: theme.text, fontFamily: 'WorkSans-Regular' }}
-          className='text-3xl font-semibold text-center mt-3'>
+          style={{ color: theme.text }}
+          className='text-4xl font-semibold ml-4 mt-12 font-Satoshi'>
           {t('categoryName.Others')}
         </Text>
       )}

@@ -49,7 +49,7 @@
     "Temperature": "Temperatura",
     "Velocity": "Velocidad",
     "Wavelength": "Long. de onda",
-    "WindSpeed": "Veloc. del viento"
+    "WindSpeed": "Vel. del viento"
   },
   "healthCardTitle": {
     "BMI": "IMC",
@@ -75,10 +75,10 @@
   },
   "technologyCardTitle": {
     "Battery": "Batería",
-    "DataTransfer": "Transf. de datos",
-    "DigitalData": "Datos digitales",
+    "DataTransfer": "Transf. datos",
+    "DigitalData": "Datos dig.",
     "ElectricCurrent": "Corr. eléctrica",
-    "ElectricConsumption": "Consumo eléct.",
+    "ElectricConsumption": "Cons. eléct.",
     "ElectricResistance": "Res. eléctrica "
   },
   "geographyCardTitle": {
@@ -87,7 +87,7 @@
   },
   "kitchenCardTitle": {
     "Cooking": "Cocina",
-    "CookingTime": "Tiempo cocción",
+    "CookingTime": "Tiempo coc.",
     "TimerSettings": "Temporizador",
     "Volume": "Volumen"
   },
@@ -125,7 +125,8 @@
     "titleOp1": "Base 2",
     "titleOp2": "Base 8",
     "titleOp3": "Base 16",
-    "placeholderValue": "Introduce un número"
+    "placeholderValue": "Introduce un número",
+    "error": "Introduce un número válido"
   },
   "equationsCard": {
     "title": "Ecuaciones",
@@ -273,7 +274,7 @@
     "numberPlaceholder": "Número {{number}}",
     "calculateButton": "Botón de Calcular",
     "errors": {
-      "enterNumberOfValues": "Por favor ingrese el número de valores",
+      "enterNumberOfValues": "Ingrese el número de valores",
       "invalidInput": "Valores de entrada inválidos",
       "invalidOperation": "Operación inválida"
     },

@@ -6,7 +6,6 @@ import { IconType } from './Icons';
 interface FilterableCardProps {
   id: string;
   title: string;
-  category: string;
   icon: IconType;
   route: string;
   iconSize?: number;
