@@ -38,12 +38,12 @@ export default function AboutModal({
     <Modal animationType='slide' onRequestClose={onClose} transparent={false} visible={isVisible}>
       <View className='flex-1 bg-background-app'>
         <Pressable onPress={onClose} className='absolute top-4 right-4'>
-          <CloseIcon size={26} color='#E0E0E0' />
+          <CloseIcon size={32} color='#E0E0E0' />
         </Pressable>
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <Image source={profileImg} style={styles.image} />
-            <Text style={styles.tag}>{t('aboutModal.job')}</Text>
+            <Text style={[styles.tag, styles.tagLeft]}>{t('aboutModal.job')}</Text>
             <Text style={[styles.tag, styles.tagRight]}>{t('aboutModal.country')}</Text>
           </View>
           <View style={styles.contactContainer}>
@@ -88,13 +88,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     color: 'white',
     position: 'absolute',
-    top: 10,
-    left: 10,
     fontSize: 16, // Increased font size
   },
+  tagLeft: {
+    top: 20,
+    left: -50,
+  },
   tagRight: {
-    left: 'auto',
-    right: 10,
+    bottom: 100,
+    right: -30,
   },
   contactContainer: {
     backgroundColor: 'black',

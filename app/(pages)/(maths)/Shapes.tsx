@@ -202,40 +202,44 @@ const Shapes = (): JSX.Element => {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('shapesCard.title')}
-        icon={<TriangleIcon size={52} color='#6C3483' />}
-      />
-
-      <View className='flex mb-4'>
-        <TextInput
-          placeholderTextColor='#c7c7c7'
-          placeholder={t('shapesCard.defaultResult')}
-          className='bg-gray-800 rounded-lg rounded-b-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
-          editable={false}
-          selectTextOnFocus={false}
-          value={areaResult}
-        />
-        <TextInput
-          className='bg-gray-800 rounded-lg rounded-t-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
-          editable={false}
-          selectTextOnFocus={false}
-          value={perimeterResult}
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('shapesCard.title')}
+          icon={<TriangleIcon size={52} color='#6C3483' />}
         />
       </View>
 
-      <CalculateComponent
-        operations={operations}
-        onCalculate={handleCalculate}
-        onSendOperation={handleOperationFromChild}
-      />
+      <View className='mb-6'>
+        <View className='flex'>
+          <TextInput
+            placeholderTextColor='#c7c7c7'
+            placeholder={t('shapesCard.defaultResult')}
+            className='bg-gray-800 rounded-lg font-Satoshi rounded-b-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
+            editable={false}
+            selectTextOnFocus={false}
+            value={areaResult}
+          />
+          <TextInput
+            className='bg-gray-800 rounded-lg font-Satoshi rounded-t-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
+            editable={false}
+            selectTextOnFocus={false}
+            value={perimeterResult}
+          />
+        </View>
 
-      <View className='flex mt-6 mx-auto'>
+        <CalculateComponent
+          operations={operations}
+          onCalculate={handleCalculate}
+          onSendOperation={handleOperationFromChild}
+        />
+      </View>
+
+      <View className='flex  mx-auto'>
         {getInputFields().map((label: string, index: number) => (
-          <View key={index} className='mt-2'>
-            <Text className='text-gray-300 text-xl font-semibold mb-1'>{label}</Text>
+          <View key={index} className='mt-4'>
+            <Text className='text-gray-300 text-xl font-semibold font-Satoshi mb-1'>{label}</Text>
             <TextInput
-              className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+              className='bg-gray-800 rounded-2xl p-4 mx-auto font-Satoshi text-center text-2xl w-80 text-slate-300'
               placeholder={`${t('shapesCard.enter')} ${label}`}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'

@@ -47,21 +47,25 @@ export default function WindSpeed() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('windSpeedCard.title')}
-        icon={<WindSpeedIcon size={56} color='#2E86C1' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('windSpeedCard.title')}
+          icon={<WindSpeedIcon size={56} color='#2E86C1' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('windSpeedCard.values')}
         </Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('windSpeedCard.pressurePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -72,7 +76,7 @@ export default function WindSpeed() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('windSpeedCard.airDensityPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

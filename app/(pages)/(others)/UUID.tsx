@@ -45,21 +45,28 @@ export default function UUIDGenerator() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('uuidGenerator.title')}
-        icon={<UUIDIcon size={52} color='#1ABC9C' />}
-      />
 
-      <View className='flex mt-6 mx-auto px-4 w-98'>
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('uuidGenerator.title')}
+          icon={<UUIDIcon size={52} color='#1ABC9C' />}
+        />
+      </View>
+
+      <View className='flex mx-auto px-2 w-full'>
         <View className='bg-gray-800 rounded-2xl p-6'>
           {uuid && (
             <View className='items-center'>
-              <Text className='text-slate-300 text-xl break-all text-center'>{uuid}</Text>
+              <Text className='text-slate-300 text-xl mb-2 break-all text-center font-Satoshi'>
+                {uuid}
+              </Text>
               <Pressable
                 onPress={() => copyToClipboard(uuid)}
                 className='mt-4 flex-row items-center'>
                 <CopyIcon size={24} color='#ffffff' />
-                <Text className='text-slate-300 text-lg ml-2'>{t('uuidGenerator.copyUuid')}</Text>
+                <Text className='text-slate-300 text-lg ml-2 font-Satoshi'>
+                  {t('uuidGenerator.copyUuid')}
+                </Text>
               </Pressable>
             </View>
           )}

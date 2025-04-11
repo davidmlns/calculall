@@ -77,10 +77,13 @@ export default function DataTransfer() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('dataTransferCard.title')}
-        icon={<DataTransferIcon size={56} color='#3498DB' />}
-      />
+
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('dataTransferCard.title')}
+          icon={<DataTransferIcon size={56} color='#3498DB' />}
+        />
+      </View>
 
       <View className='flex-col items-center'>
         <ConvertComponent
@@ -91,7 +94,7 @@ export default function DataTransfer() {
           value={bitPerSecond}
           isActive={activeUnit === 'b/s'}
           onPress={clearInputs}
-          maxLength={9}
+          maxLength={6}
         />
         <ConvertComponent
           abb='kb/s'

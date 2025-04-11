@@ -60,7 +60,7 @@ export default function Statistics() {
       inputs.push(
         <TextInput
           key={i}
-          className='bg-gray-800 rounded-lg p-4 text-center text-2xl w-48 text-slate-300'
+          className='bg-gray-800 rounded-lg p-4 font-Satoshi text-center text-2xl w-48 text-slate-300'
           placeholder={t('statisticsCard.numberPlaceholder', { number: i + 1 })}
           placeholderTextColor='#cbd5e1'
           keyboardType='number-pad'
@@ -135,27 +135,30 @@ export default function Statistics() {
   return (
     <ScrollView className='bg-background-app'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('statisticsCard.title')}
-        icon={<StatisticsIcon size={48} color='#6C3483' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('statisticsCard.title')}
+          icon={<StatisticsIcon size={48} color='#6C3483' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+        <CalculateComponent
+          operations={operations}
+          onCalculate={handleCalculate}
+          onSendOperation={handleOperationFromChild}
+        />
+      </View>
 
-      <CalculateComponent
-        operations={operations}
-        onCalculate={handleCalculate}
-        onSendOperation={handleOperationFromChild}
-      />
-
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex w-95 mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center mb-2'>
           {t('statisticsCard.values')}
         </Text>
 
-        <View className='mt-2'>
+        <View className=' w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
             placeholder={t('statisticsCard.howManyNumbers')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

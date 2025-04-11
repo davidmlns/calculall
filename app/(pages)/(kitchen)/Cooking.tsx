@@ -79,10 +79,12 @@ export default function Cooking() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('cookingCard.title')}
-        icon={<CookingIcon size={52} color='#F39C12' />}
-      />
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('cookingCard.title')}
+          icon={<CookingIcon size={52} color='#F39C12' />}
+        />
+      </View>
 
       <View className='flex-col items-center'>
         <ConvertComponent

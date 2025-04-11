@@ -58,24 +58,28 @@ export default function Probability() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('probabilityCard.title')}
-        icon={<ProbabilityIcon size={54} color='#6C3483' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('probabilityCard.title')}
+          icon={<ProbabilityIcon size={54} color='#6C3483' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
-      <View className='flex-row flex-wrap mt-2 justify-center'>
+      <View className='flex-row flex-wrap  justify-center'>
         <View className='flex-col justify-center items-center w-full'>
           <View className='mt-2'>
-            <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-96 h-16'>
+            <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-90 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2 w-48'>
-                <Text className='text-black font-semibold text-xl text-center'>
+                <Text className='text-black font-semibold font-Satoshi text-xl text-center'>
                   {t('probabilityCard.favorableCases')}
                 </Text>
               </View>
               <TextInput
-                className='text-right text-2xl text-slate-300 flex-1'
+                className='text-right text-2xl font-Satoshi text-slate-300 flex-1'
                 placeholder='0'
                 placeholderTextColor='#cbd5e1'
                 keyboardType='number-pad'
@@ -86,15 +90,15 @@ export default function Probability() {
             </View>
           </View>
 
-          <View className='mt-2'>
-            <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-96 h-16'>
+          <View className='mt-4'>
+            <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-90 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2 w-48 '>
-                <Text className='text-black font-semibold text-xl text-center'>
+                <Text className='text-black font-semibold font-Satoshi text-xl text-center'>
                   {t('probabilityCard.totalCases')}
                 </Text>
               </View>
               <TextInput
-                className='text-right text-2xl text-slate-300'
+                className='text-right text-2xl font-Satoshi text-slate-300'
                 placeholder='0'
                 placeholderTextColor='#cbd5e1'
                 keyboardType='number-pad'

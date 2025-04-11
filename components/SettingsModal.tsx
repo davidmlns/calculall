@@ -1,5 +1,5 @@
 import { Modal, Pressable, Text, View, Linking, BackHandler } from 'react-native';
-import { BugIcon, CloseIcon, InfoIcon, LanguageIcon, StarIcon, ThemeIcon } from './Icons';
+import { BugIcon, CloseIcon, InfoIcon, LanguageIcon, ProIcon, StarIcon, ThemeIcon } from './Icons';
 import { useEffect, useState } from 'react';
 import LanguageModal from './LanguageModal';
 import ThemeModal from './ThemeModal';
@@ -92,27 +92,31 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
   const settingsOptions = [
     {
       title: t('settings.changeTheme'),
-      icon: <ThemeIcon size={30} color='#E0E0E0' />,
+      icon: <ThemeIcon size={42} color='#334155' />,
       onPress: handleThemeSelect,
     },
     {
       title: t('settings.changeLanguage'),
-      icon: <LanguageIcon size={30} color='#E0E0E0' />,
+      icon: <LanguageIcon size={42} color='#334155' />,
       onPress: handleLanguageSelect,
     },
     {
       title: t('settings.about'),
-      icon: <InfoIcon size={30} color='#E0E0E0' />,
+      icon: <InfoIcon size={42} color='#334155' />,
       onPress: handleAboutModal,
     },
     {
       title: t('settings.rateApp'),
-      icon: <StarIcon size={30} color='#FCD53F' />,
+      icon: <StarIcon size={42} color='#FCD53F' />,
     },
     {
       title: t('settings.reportProblem'),
-      icon: <BugIcon size={30} color='#E0E0E0' />,
+      icon: <BugIcon size={42} color='#334155' />,
       onPress: handleReportProblem,
+    },
+    {
+      title: t('settings.updatePro'),
+      icon: <ProIcon size={42} color='#334155' />,
     },
   ];
 
@@ -128,26 +132,26 @@ export default function SettingsModal({ isVisible, onClose }: SettingsModalProps
         <Pressable className='flex-1 bg-black/40 justify-end' onPress={onClose}>
           <Pressable
             onPress={() => {}}
-            className='bg-slate-700 rounded-t-3xl p-4'
+            className='bg-slate-700 rounded-t-3xl p-2'
             pointerEvents='box-none'>
-            <View className='flex-row justify-between items-center mb-2'>
+            <View className='flex-row justify-between items-center mb-4 p-4'>
               <Text className='text-white text-2xl font-bold'>{t('settings.title')}</Text>
               <Pressable onPress={onClose}>
                 <CloseIcon size={34} color='#E0E0E0' />
               </Pressable>
             </View>
 
-            {settingsOptions.map((option, index) => (
-              <Pressable
-                key={index}
-                onPress={option.onPress}
-                className='flex-row items-center py-3 border-b border-slate-600'>
-                <View className='mr-3 w-10 h-10 rounded-lg justify-center items-center'>
-                  {option.icon}
-                </View>
-                <Text className='text-white text-xl'>{option.title}</Text>
-              </Pressable>
-            ))}
+            <View className='mx-auto flex-row justify-center flex-wrap items-center gap-4 mb-2'>
+              {settingsOptions.map((option, index) => (
+                <Pressable
+                  key={index}
+                  onPress={option.onPress}
+                  className='w-47 rounded-3xl h-40 overflow-hidden items-center justify-center bg-slate-400'>
+                  <View className='rounded-lg justify-center items-center'>{option.icon}</View>
+                  <Text className='text-white text-2xl font-Satoshi'>{option.title}</Text>
+                </Pressable>
+              ))}
+            </View>
           </Pressable>
         </Pressable>
       </Modal>

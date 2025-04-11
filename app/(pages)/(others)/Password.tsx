@@ -64,14 +64,16 @@ export default function Password() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('passwordGenerator.title')}
-        icon={<PasswordIcon size={51} color='#1ABC9C' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('passwordGenerator.title')}
+          icon={<PasswordIcon size={51} color='#1ABC9C' />}
+        />
+      </View>
 
-      <View className='flex mt-6 mx-auto px-4 w-98'>
+      <View className='flex mx-auto px-4 w-98'>
         <View className='bg-gray-800 rounded-2xl p-6 w-98'>
-          <Text selectable className='text-slate-300 text-2xl text-center mb-4'>
+          <Text selectable className='text-slate-300 text-2xl text-center mb-4 font-Satoshi'>
             {password}
           </Text>
           <Pressable onPress={copyToClipboard} className='flex-row justify-end'>
@@ -79,12 +81,12 @@ export default function Password() {
           </Pressable>
         </View>
 
-        <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-4 text-center'>
+        <View className='mt-12'>
+          <Text className='text-gray-300 text-xl mb-4 text-center font-Satoshi'>
             {t('passwordGenerator.passwordLength')}: {length}
           </Text>
           <View className='flex-row items-center px-4'>
-            <Text className='text-gray-300 text-lg mr-2'>8</Text>
+            <Text className='text-gray-300 text-lg mr-2 font-Satoshi'>8</Text>
             <View className='flex-1'>
               <Slider
                 minimumValue={8}
@@ -97,13 +99,15 @@ export default function Password() {
                 thumbTintColor='#1ABC9C'
               />
             </View>
-            <Text className='text-gray-300 text-lg ml-2'>32</Text>
+            <Text className='text-gray-300 text-lg ml-2 font-Satoshi'>32</Text>
           </View>
         </View>
 
-        <View className='mt-6 bg-gray-800 rounded-2xl p-4'>
+        <View className='mt-4 bg-gray-800 rounded-2xl p-4'>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>{t('passwordGenerator.uppercaseLetters')}</Text>
+            <Text className='text-gray-300 text-xl font-Satoshi'>
+              {t('passwordGenerator.uppercaseLetters')}
+            </Text>
             <Switch
               value={includeUppercase}
               onValueChange={setIncludeUppercase}
@@ -112,7 +116,9 @@ export default function Password() {
             />
           </View>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>{t('passwordGenerator.lowercaseLetters')}</Text>
+            <Text className='text-gray-300 text-xl font-Satoshi'>
+              {t('passwordGenerator.lowercaseLetters')}
+            </Text>
             <Switch
               value={includeLowercase}
               onValueChange={setIncludeLowercase}
@@ -121,7 +127,9 @@ export default function Password() {
             />
           </View>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>{t('passwordGenerator.numbers')}</Text>
+            <Text className='text-gray-300 text-xl font-Satoshi'>
+              {t('passwordGenerator.numbers')}
+            </Text>
             <Switch
               value={includeNumbers}
               onValueChange={setIncludeNumbers}
@@ -130,7 +138,7 @@ export default function Password() {
             />
           </View>
           <View className='flex-row justify-between items-center py-2'>
-            <Text className='text-gray-300 text-xl'>
+            <Text className='text-gray-300 text-xl font-Satoshi'>
               {t('passwordGenerator.specialCharacters')}
             </Text>
             <Switch

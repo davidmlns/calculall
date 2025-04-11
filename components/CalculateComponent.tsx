@@ -44,13 +44,13 @@ export default function CalculateComponent({
           <Pressable
             key={operation.id}
             onPress={() => handleSelectOperation(operation.id)}
-            className={`p-3 rounded-lg ${selectedOperation === operation.id ? 'bg-primary' : 'bg-background-secondary'} flex-row items-center`}>
+            className={`p-3 rounded-lg ${selectedOperation === operation.id ? 'bg-primary' : 'bg-background-secondary'} flex-row items-center font-Satoshi`}>
             <View className='mr-3 bg-icon-background w-10 h-10 rounded-lg flex items-center justify-center'>
               {operation.icon}
             </View>
             <View>
-              <Text className='text-white text-base'>{operation.title}</Text>
-              <Text className='text-slate-400 text-sm'>{operation.description}</Text>
+              <Text className='text-white text-base font-Satoshi'>{operation.title}</Text>
+              <Text className='text-slate-400 text-sm font-Satoshi'>{operation.description}</Text>
             </View>
           </Pressable>
         ))}

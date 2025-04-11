@@ -556,7 +556,7 @@
       "provideAllValues": "Fornisci tutti i valori"
     },
     "unit": "m/s",
-    "pressurePlaceholder": "Inserisci pressione (Pa)",
+    "pressurePlaceholder": "Inserisci press. (Pa)",
     "airDensityPlaceholder": "Inserisci densità dell'aria (kg/m³)",
     "values": "Valori",
     "calculateButton": "Calcolare"
@@ -775,7 +775,7 @@
     "placeholders": {
       "loanAmount": "Inserisci importo del prestito (€)",
       "interestRate": "Inserisci tasso di interesse (%)",
-      "loanTerm": "Inserisci durata del prestito (anni)"
+      "loanTerm": "Inserisci durata del prest. (anni)"
     },
     "common": {
       "values": "Valori",
@@ -935,10 +935,10 @@
   "dataTransferCard": {
     "title": "Trasferimento Dati",
     "bitsPerSecond": "Bit al secondo",
-    "kilobitsPerSecond": "Kilobit al secondo",
-    "megabitsPerSecond": "Megabit al secondo",
-    "gigabitsPerSecond": "Gigabit al secondo",
-    "terabitsPerSecond": "Terabit al secondo",
+    "kilobitsPerSecond": "Kilobit al sec",
+    "megabitsPerSecond": "Megabit al sec",
+    "gigabitsPerSecond": "Gigabit al sec",
+    "terabitsPerSecond": "Terabit al sec",
     "bitsDescription": "1 b/s",
     "kilobitsDescription": "1 kb/s = 1000 b/s",
     "megabitsDescription": "1 mb/s = 1000 kb/s",
@@ -1009,7 +1009,7 @@
     "longitudeResult": "Longitudine: {dms}",
     "valuesTitle": "Valori",
     "latitudePlaceholder": "Latitudine (decimale)",
-    "longitudePlaceholder": "Longitudine (decimale)",
+    "longitudePlaceholder": "Longitud. (decimale)",
     "calculateButtonA11yLabel": "Pulsante di calcolo",
     "north": "N",
     "south": "S",
@@ -1036,8 +1036,8 @@
     "tablespoons": "Cucchiai",
     "cups": "Tazze",
     "millilitersAbbr": "ml",
-    "teaspoonsAbbr": "cucchiaino",
-    "tablespoonsAbbr": "cucchiaio",
+    "teaspoonsAbbr": "cucch",
+    "tablespoonsAbbr": "cucc",
     "cupsAbbr": "tazza",
     "clearButtonA11yLabel": "Pulsante di cancellazione"
   },
@@ -1068,10 +1068,10 @@
   },
   "volumeCard": {
     "title": "Volume",
-    "milliliter": "Millilitro",
+    "milliliter": "Millilit",
     "liter": "Litro",
-    "teaspoon": "Cucchiaino",
-    "tablespoon": "Cucchiaio",
+    "teaspoon": "Cucc",
+    "tablespoon": "Cucc",
     "cup": "Tazza",
     "milliliterDesc": "1 ml",
     "literDesc": "1 l = 1000 ml",
@@ -1120,11 +1120,11 @@
     "weeksOption": "Settimane",
     "monthsOption": "Mesi",
     "yearsOption": "Anni",
-    "ageResult": "{years} anni, {months} mesi, {days} giorni",
-    "daysResult": "{days} giorni",
-    "weeksResult": "{weeks} settimane",
-    "monthsResult": "{months} mesi",
-    "yearsResult": "{years} anni"
+    "ageResult": "{{years}} anni, {{months}} mesi, {{days}} giorni",
+    "daysResult": "{{days}} giorni",
+    "weeksResult": "{{weeks}} settimane",
+    "monthsResult": "{{months}} mesi",
+    "yearsResult": "{{years}} anni"
   },
   "densityCard": {
     "title": "Calcolatore di Densità",
@@ -1162,11 +1162,11 @@
   },
   "weightConverter": {
     "title": "Convertitore di Peso",
-    "kilogram": "Chilogrammo",
-    "gram": "Grammo",
-    "milligram": "Milligrammo",
-    "pound": "Libbra",
-    "ounce": "Oncia",
+    "kilogram": "Kg",
+    "gram": "G",
+    "milligram": "Mg",
+    "pound": "Lb",
+    "ounce": "Oz",
     "kgDescription": "1 kg",
     "gDescription": "1 g = 0.001 kg",
     "mgDescription": "1 mg = 0.000001 kg",
@@ -1180,9 +1180,10 @@
     "changeLanguage": "Cambia lingua",
     "about": "Informazioni",
     "rateApp": "Valuta l'app",
-    "reportProblem": "Segnala un problema",
+    "reportProblem": "Segnala errore",
     "selectTheme": "Scegli un tema",
-    "selectLanguage": "Scegli una lingua"
+    "selectLanguage": "Scegli una lingua",
+    "updatePro": "Aggiorna Pro"
   },
   "aboutModal": {
     "job": "Sviluppatore di app",

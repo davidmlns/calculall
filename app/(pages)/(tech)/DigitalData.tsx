@@ -67,10 +67,12 @@ export default function DigitalData() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('digitalDataCard.title')}
-        icon={<DigitalDataIcon size={54} color='#3498DB' />}
-      />
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('digitalDataCard.title')}
+          icon={<DigitalDataIcon size={54} color='#3498DB' />}
+        />
+      </View>
 
       <View className='flex-col items-center'>
         <ConvertComponent

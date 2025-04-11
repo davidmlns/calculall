@@ -78,47 +78,51 @@ export default function PrimeNumber() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('primeNumberCard.title')}
-        icon={<PrimeNumberIcon size={54} color='#6C3483' />}
-      />
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('primeNumberCard.title')}
+          icon={<PrimeNumberIcon size={54} color='#6C3483' />}
+        />
+      </View>
 
-      <View className='flex-row justify-around'>
-        <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-52 h-14'>
-          <View className='rounded-lg p-1 px-2'>{resultIcon}</View>
-          <TextInput
-            className='text-right text-xl text-slate-300'
-            placeholder={t('primeNumberCard.isPrimePlaceholder')}
-            placeholderTextColor='#cbd5e1'
-            keyboardType='number-pad'
-            value={result}
-            editable={false}
-          />
-        </View>
-
-        <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-52 h-14'>
-          <View className='rounded-lg p-1 px-2'>
-            <NextIcon size={32} color='#6C3483' />
+      <View className='mb-10'>
+        <View className='flex-row justify-around'>
+          <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-52 h-14'>
+            <View className='rounded-lg p-1 px-2'>{resultIcon}</View>
+            <TextInput
+              className='text-right text-xl font-Satoshi text-slate-300'
+              placeholder={t('primeNumberCard.isPrimePlaceholder')}
+              placeholderTextColor='#cbd5e1'
+              keyboardType='number-pad'
+              value={result}
+              editable={false}
+            />
           </View>
-          <TextInput
-            className='text-right text-xl text-slate-300'
-            placeholder={t('primeNumberCard.nextPlaceholder')}
-            placeholderTextColor='#cbd5e1'
-            keyboardType='number-pad'
-            value={nextPrime}
-            editable={false}
-          />
+
+          <View className='flex-row justify-between items-center bg-gray-800 rounded-lg px-2 w-52 h-14'>
+            <View className='rounded-lg p-1 px-2'>
+              <NextIcon size={32} color='#6C3483' />
+            </View>
+            <TextInput
+              className='text-right text-xl font-Satoshi text-slate-300'
+              placeholder={t('primeNumberCard.nextPlaceholder')}
+              placeholderTextColor='#cbd5e1'
+              keyboardType='number-pad'
+              value={nextPrime}
+              editable={false}
+            />
+          </View>
         </View>
       </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('primeNumberCard.value')}
         </Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('primeNumberCard.enterValue')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

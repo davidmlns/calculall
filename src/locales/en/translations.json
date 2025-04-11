@@ -351,7 +351,7 @@
         "description": "1 kWh = 3.6 × 10 J"
       },
       "btu": {
-        "title": "British Thermal Unit",
+        "title": "Brit. Thermal Unit",
         "description": "1 BTU = 1055 J"
       }
     }
@@ -855,7 +855,7 @@
     },
     "placeholders": {
       "batteryCapacity": "Battery Capacity (kWh)",
-      "energyConsumption": "Energy Consumption (kWh/100km)"
+      "energyConsumption": "Energy Consum. (kWh/100km)"
     },
     "common": {
       "values": "Values",
@@ -932,11 +932,11 @@
   },
   "dataTransferCard": {
     "title": "Data Transfer",
-    "bitsPerSecond": "Bits per second",
-    "kilobitsPerSecond": "Kilobits per second",
-    "megabitsPerSecond": "Megabits per second",
-    "gigabitsPerSecond": "Gigabits per second",
-    "terabitsPerSecond": "Terabits per second",
+    "bitsPerSecond": "Bits per sec",
+    "kilobitsPerSecond": "Kilobits per sec",
+    "megabitsPerSecond": "Megabits per sec",
+    "gigabitsPerSecond": "Gigabits per sec",
+    "terabitsPerSecond": "Terabits per sec",
     "bitsDescription": "1 b/s",
     "kilobitsDescription": "1 kb/s = 1000 b/s",
     "megabitsDescription": "1 mb/s = 1000 kb/s",
@@ -1066,10 +1066,10 @@
   },
   "volumeCard": {
     "title": "Volume",
-    "milliliter": "Milliliter",
-    "liter": "Liter",
-    "teaspoon": "Teaspoon",
-    "tablespoon": "Tablespoon",
+    "milliliter": "Ml",
+    "liter": "L",
+    "teaspoon": "Tsp",
+    "tablespoon": "Tbsp",
     "cup": "Cup",
     "milliliterDesc": "1 ml",
     "literDesc": "1 l = 1000 ml",
@@ -1118,11 +1118,11 @@
     "weeksOption": "Weeks",
     "monthsOption": "Months",
     "yearsOption": "Years",
-    "ageResult": "{years} years, {months} months, {days} days",
-    "daysResult": "{days} days",
-    "weeksResult": "{weeks} weeks",
-    "monthsResult": "{months} months",
-    "yearsResult": "{years} years"
+    "ageResult": "{{years}} years, {{months}} months, {{days}} days",
+    "daysResult": "{{days}} days",
+    "weeksResult": "{{weeks}} weeks",
+    "monthsResult": "{{months}} months",
+    "yearsResult": "{{years}} years"
   },
   "densityCard": {
     "title": "Density Calculator",
@@ -1160,11 +1160,11 @@
   },
   "weightConverter": {
     "title": "Weight Converter",
-    "kilogram": "Kilogram",
-    "gram": "Gram",
-    "milligram": "Milligram",
-    "pound": "Pound",
-    "ounce": "Ounce",
+    "kilogram": "Kg",
+    "gram": "G",
+    "milligram": "Mg",
+    "pound": "Lb",
+    "ounce": "Oz",
     "kgDescription": "1 kg",
     "gDescription": "1 g = 0.001 kg",
     "mgDescription": "1 mg = 0.000001 kg",
@@ -1174,13 +1174,14 @@
   },
   "settings": {
     "title": "Settings",
-    "changeTheme": "Change app theme",
-    "changeLanguage": "Change language",
+    "changeTheme": "Change theme",
+    "changeLanguage": "Change lang.",
     "about": "About",
     "rateApp": "Rate app",
-    "reportProblem": "Report a problem",
+    "reportProblem": "Report a error",
     "selectTheme": "Select Theme",
-    "selectLanguage": "Select Language"
+    "selectLanguage": "Select Language",
+    "updatePro": "Update Pro"
   },
   "aboutModal": {
     "job": "App developer",

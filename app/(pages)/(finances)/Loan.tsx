@@ -64,20 +64,24 @@ export default function Loan() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('loanCard.title')}
-        icon={<LoanIcon size={52} color='#27AE60' />}
-      />
-      <ResultComponent result={result} />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('loanCard.title')}
+          icon={<LoanIcon size={52} color='#27AE60' />}
+        />
+      </View>
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex w-95 mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('loanCard.common.values')}
         </Text>
 
-        <View className='mt-2'>
+        <View className='mt-2 w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl font-Satoshi  p-4 text-center text-2xl w-96 text-slate-300'
             placeholder={t('loanCard.placeholders.loanAmount')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -86,9 +90,9 @@ export default function Loan() {
             maxLength={7}
           />
         </View>
-        <View className='mt-4'>
+        <View className='mt-4 w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
             placeholder={t('loanCard.placeholders.interestRate')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -97,9 +101,9 @@ export default function Loan() {
             maxLength={3}
           />
         </View>
-        <View className='mt-4'>
+        <View className='mt-4 w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
             placeholder={t('loanCard.placeholders.loanTerm')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

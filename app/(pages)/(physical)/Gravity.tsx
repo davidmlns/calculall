@@ -59,21 +59,26 @@ export default function Gravity() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('gravityCard.title')}
-        icon={<ForceGravityIcon size={54} color='#2E86C1' />}
-      />
 
-      <ResultComponent result={result} />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('gravityCard.title')}
+          icon={<ForceGravityIcon size={54} color='#2E86C1' />}
+        />
+      </View>
+
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('gravityCard.values')}
         </Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('gravityCard.mass1Placeholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -84,7 +89,7 @@ export default function Gravity() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('gravityCard.mass2Placeholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -95,7 +100,7 @@ export default function Gravity() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('gravityCard.distancePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

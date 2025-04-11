@@ -271,7 +271,7 @@
     "title": "Statistiques",
     "defaultResult": "Le résultat apparaîtra ici",
     "values": "Valeurs",
-    "howManyNumbers": "Combien de nombres? Limite(50)",
+    "howManyNumbers": "Combien de nombres? (50)",
     "numberPlaceholder": "Numéro {{number}}",
     "calculateButton": "Bouton Calculer",
     "errors": {
@@ -352,7 +352,7 @@
         "description": "1 kWh = 3.6 × 10 J"
       },
       "btu": {
-        "title": "Unité Thermique Britannique",
+        "title": "Unité Therm. Britan.",
         "description": "1 BTU = 1055 J"
       }
     }
@@ -556,7 +556,7 @@
       "provideAllValues": "Fournir toutes les valeurs"
     },
     "unit": "m/s",
-    "pressurePlaceholder": "Entrez la pression (Pa)",
+    "pressurePlaceholder": "Entrez la press. (Pa)",
     "airDensityPlaceholder": "Entrez la densité de l'air (kg/m³)",
     "values": "Valeurs",
     "calculateButton": "Calculer"
@@ -834,8 +834,8 @@
       "totalAmount": "Montant Total"
     },
     "placeholders": {
-      "billAmount": "Entrez le montant de la facture (€)",
-      "tipPercentage": "Entrez le pourcentage de pourboire (%)"
+      "billAmount": "Entrez le montant de la fact. (€)",
+      "tipPercentage": "Entrez le pourc. de pourboire (%)"
     },
     "common": {
       "values": "Valeurs",
@@ -856,7 +856,7 @@
     },
     "placeholders": {
       "batteryCapacity": "Capacité de Batterie (kWh)",
-      "energyConsumption": "Consommation d'Énergie (kWh/100km)"
+      "energyConsumption": "Consom. d'Énergie (kWh/100km)"
     },
     "common": {
       "values": "Valeurs",
@@ -933,11 +933,11 @@
   },
   "dataTransferCard": {
     "title": "Transfert de Données",
-    "bitsPerSecond": "Bits par seconde",
-    "kilobitsPerSecond": "Kilobits par seconde",
-    "megabitsPerSecond": "Mégabits par seconde",
-    "gigabitsPerSecond": "Gigabits par seconde",
-    "terabitsPerSecond": "Térabits par seconde",
+    "bitsPerSecond": "Bits par sec",
+    "kilobitsPerSecond": "Kilobits par sec",
+    "megabitsPerSecond": "Mégabits par sec",
+    "gigabitsPerSecond": "Gigabits par sec",
+    "terabitsPerSecond": "Térabits par sec",
     "bitsDescription": "1 b/s",
     "kilobitsDescription": "1 kb/s = 1000 b/s",
     "megabitsDescription": "1 mb/s = 1000 kb/s",
@@ -1067,10 +1067,10 @@
   },
   "volumeCard": {
     "title": "Volume",
-    "milliliter": "Millilitre",
+    "milliliter": "Millilit",
     "liter": "Litre",
-    "teaspoon": "Cuillère à café",
-    "tablespoon": "Cuillère à soupe",
+    "teaspoon": "C.caf",
+    "tablespoon": "C.sou",
     "cup": "Tasse",
     "milliliterDesc": "1 ml",
     "literDesc": "1 l = 1000 ml",
@@ -1119,11 +1119,11 @@
     "weeksOption": "Semaines",
     "monthsOption": "Mois",
     "yearsOption": "Années",
-    "ageResult": "{years} ans, {months} mois, {days} jours",
-    "daysResult": "{days} jours",
-    "weeksResult": "{weeks} semaines",
-    "monthsResult": "{months} mois",
-    "yearsResult": "{years} ans"
+    "ageResult": "{{years}} ans, {{months}} mois, {{days}} jours",
+    "daysResult": "{{days}} jours",
+    "weeksResult": "{{weeks}} semaines",
+    "monthsResult": "{{months}} mois",
+    "yearsResult": "{{years}} ans"
   },
   "densityCard": {
     "title": "Calculateur de Densité",
@@ -1161,11 +1161,11 @@
   },
   "weightConverter": {
     "title": "Convertisseur de Poids",
-    "kilogram": "Kilogramme",
-    "gram": "Gramme",
-    "milligram": "Milligramme",
-    "pound": "Livre",
-    "ounce": "Once",
+    "kilogram": "Kg",
+    "gram": "G",
+    "milligram": "Mg",
+    "pound": "Lb",
+    "ounce": "Oz",
     "kgDescription": "1 kg",
     "gDescription": "1 g = 0.001 kg",
     "mgDescription": "1 mg = 0.000001 kg",
@@ -1175,13 +1175,14 @@
   },
   "settings": {
     "title": "Paramètres",
-    "changeTheme": "Changer le thème",
-    "changeLanguage": "Changer la langue",
+    "changeTheme": "Changer thème",
+    "changeLanguage": "Changer langue",
     "about": "À propos",
-    "rateApp": "Noter l'application",
-    "reportProblem": "Signaler un problème",
+    "rateApp": "Notez-nous",
+    "reportProblem": "Signaler un bug",
     "selectTheme": "Sélectionner un thème",
-    "selectLanguage": "Sélectionner une langue"
+    "selectLanguage": "Sélectionner une langue",
+    "updatePro": "Passer à Pro"
   },
   "aboutModal": {
     "job": "Développeur d'applications",

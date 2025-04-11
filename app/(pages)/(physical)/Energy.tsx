@@ -70,10 +70,12 @@ export default function Energy() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('energyCard.title')}
-        icon={<EnergyIcon size={54} color='#2E86C1' />}
-      />
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('energyCard.title')}
+          icon={<EnergyIcon size={54} color='#2E86C1' />}
+        />
+      </View>
 
       <View className='flex-col items-center'>
         <ConvertComponent
@@ -94,7 +96,7 @@ export default function Energy() {
           value={kilojoule}
           isActive={activeUnit === 'KJ'}
           onPress={clearInputs}
-          maxLength={9}
+          maxLength={6}
         />
         <ConvertComponent
           abb='Cal'
@@ -104,7 +106,7 @@ export default function Energy() {
           value={calorie}
           isActive={activeUnit === 'Cal'}
           onPress={clearInputs}
-          maxLength={9}
+          maxLength={8}
         />
         <ConvertComponent
           abb='kWh'
@@ -114,7 +116,7 @@ export default function Energy() {
           value={kilowattHour}
           isActive={activeUnit === 'kWh'}
           onPress={clearInputs}
-          maxLength={5}
+          maxLength={2}
         />
         <ConvertComponent
           abb='BTU'

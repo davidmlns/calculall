@@ -12,7 +12,7 @@ export default function HeaderDescriptionPage({ title, icon }: HeaderDescription
         {icon}
       </View>
 
-      <Text className='text-3xl font-semibold color-slate-400 mx-auto'>{title}</Text>
+      <Text className='text-3xl font-semibold color-slate-400 mx-auto font-Satoshi'>{title}</Text>
     </View>
   );
 }

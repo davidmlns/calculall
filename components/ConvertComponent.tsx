@@ -29,17 +29,17 @@ export default function ConvertComponent({
             isActive ? 'bg-blue-500' : 'bg-icon-background'
           }`}>
           <Text
-            className={`font-semibold text-2xl text-center ${isActive ? 'text-white' : 'text-black'}`}>
+            className={`font-Satoshi font-semibold text-2xl text-center ${isActive ? 'text-white' : 'text-black'}`}>
             {abb}
           </Text>
         </View>
         <View className=''>
-          <Text className='text-slate-300 font-semibold text-sm'>{title}</Text>
-          <Text className='text-slate-300 font-semibold text-xs'>{description}</Text>
+          <Text className='text-slate-300 font-Satoshi font-semibold text-sm'>{title}</Text>
+          <Text className='text-slate-300 font-Satoshi font-semibold text-xs'>{description}</Text>
         </View>
       </View>
       <TextInput
-        className='text-right text-xl text-slate-300'
+        className='text-right text-xl font-Satoshi text-slate-300'
         placeholder='0'
         placeholderTextColor='#cbd5e1'
         keyboardType='number-pad'

@@ -84,28 +84,37 @@ export default function MCMMCD() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('mcmmcdCard.title')}
-        icon={<MCMMCDIcon size={54} color='#6C3483' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('mcmmcdCard.title')}
+          icon={<MCMMCDIcon size={54} color='#6C3483' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+        <CalculateComponent
+          operations={operations}
+          onCalculate={handleCalculate}
+          onSendOperation={setSelectedOperation}
+        />
+      </View>
 
-      <CalculateComponent
-        operations={operations}
-        onCalculate={handleCalculate}
-        onSendOperation={setSelectedOperation}
-      />
+      <Text className='text-gray-300 text-2xl font-semibold font-Satoshi text-center mb-2'>
+        {t('fractionsCard.values')}
+      </Text>
 
-      <View className='flex-row flex-wrap mt-2 mr-4 justify-center'>
+      <View className='flex-row flex-wrap  mr-4 justify-center'>
         <View className='flex-row justify-around w-full'>
-          <View className='mt-2'>
+          <View>
             <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>{t('mcmmcdCard.valueA')}</Text>
+                <Text className='text-black font-semibold font-Satoshi text-xl'>
+                  {t('mcmmcdCard.valueA')}
+                </Text>
               </View>
               <TextInput
-                className='text-right text-2xl text-slate-300 flex-1'
+                className='text-right text-2xl font-Satoshi text-slate-300 flex-1'
                 placeholder='0'
                 placeholderTextColor='#cbd5e1'
                 keyboardType='number-pad'
@@ -116,13 +125,15 @@ export default function MCMMCD() {
             </View>
           </View>
 
-          <View className='mt-2'>
+          <View>
             <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>{t('mcmmcdCard.valueB')}</Text>
+                <Text className='text-black font-semibold font-Satoshi text-xl'>
+                  {t('mcmmcdCard.valueB')}
+                </Text>
               </View>
               <TextInput
-                className='text-right text-2xl text-slate-300'
+                className='text-right text-2xl font-Satoshi text-slate-300'
                 placeholder='0'
                 placeholderTextColor='#cbd5e1'
                 keyboardType='number-pad'

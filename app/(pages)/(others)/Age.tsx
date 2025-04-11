@@ -57,26 +57,32 @@ export default function Age() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('ageCard.title')}
-        icon={<AgeIcon size={50} color='#1ABC9C' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('ageCard.title')}
+          icon={<AgeIcon size={50} color='#1ABC9C' />}
+        />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('ageCard.yourAge')}
         </Text>
 
-        <View className='mt-8'>
-          <Text className='text-gray-300 text-3xl text-center'>{calculateAge()}</Text>
+        <View className='mt-4'>
+          <Text className='text-gray-300 text-3xl font-Satoshi text-center'>{calculateAge()}</Text>
         </View>
 
-        <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-2 ml-8'>{t('ageCard.birthDate')}</Text>
+        <View className='mt-8'>
+          <Text className='text-gray-300 text-xl font-Satoshi mb-2 ml-8'>
+            {t('ageCard.birthDate')}
+          </Text>
           <Pressable
             onPress={() => setShowBirthPicker(true)}
             className='bg-gray-800 rounded-2xl p-4 w-72 mx-auto'>
-            <Text className='text-slate-300 text-xl text-center'>{formatDate(birthDate)}</Text>
+            <Text className='text-slate-300 font-Satoshi text-xl text-center'>
+              {formatDate(birthDate)}
+            </Text>
           </Pressable>
           {showBirthPicker && (
             <DateTimePicker
@@ -91,12 +97,16 @@ export default function Age() {
           )}
         </View>
 
-        <View className='mt-6'>
-          <Text className='text-gray-300 text-xl mb-2 ml-8'>{t('ageCard.currentDate')}</Text>
+        <View className='mt-4'>
+          <Text className='text-gray-300 text-xl font-Satoshi mb-2 ml-8'>
+            {t('ageCard.currentDate')}
+          </Text>
           <Pressable
             onPress={() => setShowCurrentPicker(true)}
             className='bg-gray-800 rounded-2xl p-4 w-72 mx-auto'>
-            <Text className='text-slate-300 text-xl text-center'>{formatDate(currentDate)}</Text>
+            <Text className='text-slate-300 text-xl text-center font-Satoshi'>
+              {formatDate(currentDate)}
+            </Text>
           </Pressable>
           {showCurrentPicker && (
             <DateTimePicker

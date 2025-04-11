@@ -95,7 +95,7 @@ export default function ThemeModal({ isVisible, onClose, onDismiss }: ThemeModal
                 <Pressable
                   key={color.name}
                   onPress={() => handleColorSelect(color)}
-                  className='w-20 h-20 rounded-full border-4 border-slate-200'
+                  className='w-24 h-24 rounded-full border-4 border-slate-200'
                   style={{ backgroundColor: color.primary }}
                 />
               ))}

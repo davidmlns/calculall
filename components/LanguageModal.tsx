@@ -69,14 +69,14 @@ export default function LanguageModal({
                 <CloseIcon size={26} color='#E0E0E0' />
               </Pressable>
             </View>
-            <View className='space-y-3 flex-row flex-wrap justify-around gap-6'>
+            <View className='mx-auto flex-row justify-center flex-wrap items-center gap-4 mb-2'>
               {languages.map(lang => (
                 <Pressable
                   key={lang.code}
                   onPress={() => handleLanguageSelect(lang.code)}
-                  className='flex-col items-center rounded-lg'>
+                  className='w-47 rounded-3xl h-40 overflow-hidden items-center justify-center bg-slate-400'>
                   <CountryFlag isoCode={lang.code.toLowerCase()} size={62} />
-                  <Text className='text-white text-2xl font-bold ml-2'>{lang.name}</Text>
+                  <Text className='text-white text-2xl font-bold mt-2'>{lang.name}</Text>
                 </Pressable>
               ))}
             </View>

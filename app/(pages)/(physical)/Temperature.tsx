@@ -67,10 +67,12 @@ export default function Temperature() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('temperatureCard.title')}
-        icon={<TemperatureIcon size={54} color='#2E86C1' />}
-      />
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('temperatureCard.title')}
+          icon={<TemperatureIcon size={54} color='#2E86C1' />}
+        />
+      </View>
 
       <View className='flex-col items-center'>
         <ConvertComponent

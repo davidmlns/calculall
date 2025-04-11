@@ -92,19 +92,26 @@ export default function Average() {
   return (
     <ScrollView className='bg-background-app w-full h-full' accessibilityLabel='Average Calculator'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('averageCard.title')}
-        icon={<AverageIcon size={58} color='#6C3483' />}
-      />
 
-      <ResultComponent result={result} error={error} />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('averageCard.title')}
+          icon={<AverageIcon size={58} color='#6C3483' />}
+        />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>Values</Text>
+      <View className='mb-6'>
+        <ResultComponent result={result} error={error} />
+      </View>
 
-        <View className='mt-2 mx-auto'>
+      <View className='flex w-95 mx-auto'>
+        <Text className='text-gray-300 text-2xl font-semibold text-center font-Satoshi mb-2'>
+          Values
+        </Text>
+
+        <View className='w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 mx-auto rounded-2xl p-4 text-center text-2xl w-96 text-slate-300'
+            className='bg-gray-800 mx-auto rounded-2xl p-4 mb-4 text-center text-2xl w-full text-slate-300 font-Satoshi'
             placeholder={t('averageCard.placeholderValue')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -117,14 +124,14 @@ export default function Average() {
         </View>
 
         {valuesVisibles && (
-          <View className='flex mt-6 flex-row flex-wrap justify-around'>
+          <View className='flex mt-4 flex-row flex-wrap justify-around font-Satoshi'>
             {Array.from({ length: parseInt(valueTextInputValues, 10) }, (_, index) => (
               <View key={index} className='flex-row items-center mb-4'>
-                <Text className='text-slate-300 mr-2 text-xl font-semibold'>
+                <Text className='text-slate-300 w-20 mr-4 text-xl font-semibold font-Satoshi'>
                   {t('averageCard.number')} {index + 1}:
                 </Text>
                 <TextInput
-                  className='bg-gray-800 rounded-lg p-2 text-center text-xl w-32 text-slate-300'
+                  className='bg-gray-800 rounded-lg p-2 text-center text-xl w-28 text-slate-300 font-Satoshi'
                   placeholder={t('averageCard.placeholderValueNumber')}
                   placeholderTextColor='#cbd5e1'
                   keyboardType='numeric'
@@ -140,7 +147,7 @@ export default function Average() {
       </View>
 
       {valuesVisibles && (
-        <View className=''>
+        <View className='mt-5'>
           <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
             <Pressable
               onPressIn={handlePressIn}

@@ -56,20 +56,24 @@ export default function Demographic() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('demographicCard.title')}
-        icon={<PopulationDensityIcon size={51} color='#D35400' />}
-      />
-      <ResultComponent result={result} />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('demographicCard.title')}
+          icon={<PopulationDensityIcon size={51} color='#D35400' />}
+        />
+      </View>
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('demographicCard.valuesTitle')}
         </Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder={t('demographicCard.populationPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -80,7 +84,7 @@ export default function Demographic() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder={t('demographicCard.areaPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

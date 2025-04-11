@@ -26,10 +26,12 @@ export default function OptionModalActivities({
         onPress={onOpen} // Usar prop onOpen en lugar de estado interno
         className='bg-background-secondary rounded-xl p-6 flex-row justify-between'>
         <View className='flex-row items-center'>
-          <Text className='mr-3 bg-icon-background w-10 h-10 rounded-lg'>{icon}</Text>
+          <Text className='mr-3 bg-icon-background w-10 h-10 rounded-lg flex items-center justify-center'>
+            {icon}
+          </Text>
           <View>
-            <Text className='text-white text-base'>{title}</Text>
-            <Text className='text-slate-400 text-sm'>{description}</Text>
+            <Text className='text-white text-base font-Satoshi'>{title}</Text>
+            <Text className='text-slate-400 text-sm font-Satoshi'>{description}</Text>
           </View>
         </View>
         <ArrowDownIcon size={34} color='#E0E0E0' />
@@ -43,7 +45,7 @@ export default function OptionModalActivities({
         <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
           <View className='bg-background-secondary rounded-t-3xl p-4 h-1/2'>
             <View className='flex-row justify-between items-center mb-2'>
-              <Text className='text-white text-2xl font-bold'>{title}</Text>
+              <Text className='text-white text-2xl font-Satoshi font-bold'>{title}</Text>
               <Pressable onPress={onClose}>
                 <CloseIcon size={34} color='#E0E0E0' />
               </Pressable>

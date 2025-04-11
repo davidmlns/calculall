@@ -112,27 +112,30 @@ export default function Trigonometry() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('trigonometryCard.title')}
-        icon={<TrigonometryIcon size={54} color='#6C3483' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('trigonometryCard.title')}
+          icon={<TrigonometryIcon size={54} color='#6C3483' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+        <CalculateComponent
+          operations={operations}
+          onCalculate={handleCalculate}
+          onSendOperation={handleOperationFromChild}
+        />
+      </View>
 
-      <CalculateComponent
-        operations={operations}
-        onCalculate={handleCalculate}
-        onSendOperation={handleOperationFromChild}
-      />
-
-      <View className='flex mt-6 mx-auto mb-5'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex mx-auto mb-5'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('trigonometryCard.values')}
         </Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('trigonometryCard.enterAngle')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

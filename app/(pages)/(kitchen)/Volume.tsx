@@ -77,10 +77,12 @@ export default function Volume() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('volumeCard.title')}
-        icon={<VolumeIcon size={54} color='#F39C12' />}
-      />
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('volumeCard.title')}
+          icon={<VolumeIcon size={54} color='#F39C12' />}
+        />
+      </View>
 
       <View className='flex-col items-center'>
         <ConvertComponent

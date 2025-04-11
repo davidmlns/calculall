@@ -12,11 +12,15 @@ const Favorites = () => {
   return (
     <View style={{ ...styles.container, backgroundColor: theme.background }}>
       {favorites.length > 0 ? (
-        <Text style={{ ...styles.title, color: theme.text }}>Favorites</Text>
+        <Text style={{ ...styles.title, color: theme.text }} className='mb-4 font-Satoshi'>
+          Favorites
+        </Text>
       ) : (
-        <Text style={{ ...styles.title, color: theme.text }}>No Favorites</Text>
+        <Text style={{ ...styles.title, color: theme.text }} className='mb-4 font-Satoshi'>
+          No Favorites
+        </Text>
       )}
-      <View className='flex-row flex-wrap items-center justify-center gap-6 mx-auto'>
+      <View className='flex-row flex-wrap items-center justify-center gap-6 p-2 mx-auto'>
         {favorites.map((fav, index) => (
           <Card
             key={fav.id || index}

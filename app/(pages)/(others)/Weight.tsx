@@ -80,10 +80,12 @@ export default function Weight() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('weightConverter.title')}
-        icon={<WeightIcon size={54} color='#1ABC9C' />}
-      />
+      <View className='mb-6'>
+        <HeaderDescriptionPage
+          title={t('weightConverter.title')}
+          icon={<WeightIcon size={54} color='#1ABC9C' />}
+        />
+      </View>
 
       <View className='flex-col items-center'>
         <ConvertComponent

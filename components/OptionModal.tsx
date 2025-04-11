@@ -32,8 +32,8 @@ export default function OptionModal({
             {icon || 'Icon'}
           </Text>
           <View>
-            <Text className='text-white text-base'>{title || 'Select an option'}</Text>
-            <Text className='text-slate-400 text-sm'>
+            <Text className='text-white text-base font-Satoshi'>{title || 'Select an option'}</Text>
+            <Text className='text-slate-400 text-sm font-Satoshi'>
               {description || 'Tap to choose an operation'}
             </Text>
           </View>
@@ -45,7 +45,7 @@ export default function OptionModal({
         <Pressable className='flex absolute bottom-0 w-full rounded-t-3xl bg-slate-700'>
           <View className='bg-background-secondary rounded-t-3xl p-4 h-1/2'>
             <View className='flex-row justify-between items-center mb-2'>
-              <Text className='text-white text-2xl font-bold'>
+              <Text className='text-white text-2xl font-bold font-Satoshi'>
                 {t('optionModal.selectOperation')}
               </Text>
               <Pressable onPress={onClose}>

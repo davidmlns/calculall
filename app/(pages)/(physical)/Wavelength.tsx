@@ -48,21 +48,25 @@ export default function Wavelength() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('wavelengthCard.title')}
-        icon={<WavelengthIcon size={52} color='#2E86C1' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('wavelengthCard.title')}
+          icon={<WavelengthIcon size={52} color='#2E86C1' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex w-95 mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('wavelengthCard.values')}
         </Text>
 
-        <View className='mt-2'>
+        <View className='mt-2 w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
             placeholder={t('wavelengthCard.velocityPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -71,9 +75,9 @@ export default function Wavelength() {
             maxLength={9}
           />
         </View>
-        <View className='mt-4'>
+        <View className='mt-4 w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
             placeholder={t('wavelengthCard.frequencyPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

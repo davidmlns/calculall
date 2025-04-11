@@ -62,15 +62,17 @@ export default function Currency() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('currencyCard.title')}
-        icon={<CurrencyIcon size={52} color='#1ABC9C' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('currencyCard.title')}
+          icon={<CurrencyIcon size={52} color='#1ABC9C' />}
+        />
+      </View>
 
       <View className='flex mt-6 mx-auto px-4 w-96'>
         <View className='bg-gray-800 rounded-lg p-4'>
           <TextInput
-            className='bg-gray-700 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-700 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300 font-Satoshi'
             placeholder={t('currencyCard.amountPlaceholder')}
             placeholderTextColor='#cbd5e1'
             value={amount}
@@ -81,8 +83,10 @@ export default function Currency() {
 
           <View className='flex-row justify-between mb-4'>
             <View className='flex-1 mr-2'>
-              <Text className='text-gray-300 text-lg mb-2'>{t('currencyCard.fromLabel')}</Text>
-              <View className='bg-gray-700 rounded-lg'>
+              <Text className='text-gray-300 text-lg font-Satoshi mb-2'>
+                {t('currencyCard.fromLabel')}
+              </Text>
+              <View className='bg-gray-700 border border-gray-600 font-Satoshi rounded-lg'>
                 <Picker
                   selectedValue={fromCurrency}
                   onValueChange={setFromCurrency}
@@ -100,8 +104,10 @@ export default function Currency() {
             </View>
 
             <View className='flex-1 ml-2'>
-              <Text className='text-gray-300 text-lg mb-2'>{t('currencyCard.toLabel')}</Text>
-              <View className='bg-gray-700 rounded-lg'>
+              <Text className='text-gray-300 text-lg font-Satoshi mb-2'>
+                {t('currencyCard.toLabel')}
+              </Text>
+              <View className='bg-gray-700 border border-gray-600 font-Satoshi rounded-lg'>
                 <Picker
                   selectedValue={toCurrency}
                   onValueChange={setToCurrency}
@@ -124,7 +130,7 @@ export default function Currency() {
           ) : error ? (
             <Text className='text-red-500 text-xl text-center'>{error}</Text>
           ) : (
-            <Text className='text-slate-300 text-3xl text-center'>
+            <Text className='text-slate-300 text-3xl text-center font-Satoshi'>
               {convertedAmount.toFixed(2)} {toCurrency}
             </Text>
           )}

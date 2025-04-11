@@ -352,7 +352,7 @@
         "description": "1 kWh = 3.6 × 10 J"
       },
       "btu": {
-        "title": "Unidade Térmica Britânica",
+        "title": "Unidade Térm. Brit.",
         "description": "1 BTU = 1055 J"
       }
     }
@@ -777,7 +777,7 @@
     "placeholders": {
       "loanAmount": "Insira valor do empréstimo (R$)",
       "interestRate": "Insira taxa de juros (%)",
-      "loanTerm": "Insira prazo do empréstimo (anos)"
+      "loanTerm": "Insira prazo do emprést. (anos)"
     },
     "common": {
       "values": "Valores",
@@ -838,7 +838,7 @@
     },
     "placeholders": {
       "billAmount": "Insira valor da conta (R$)",
-      "tipPercentage": "Insira porcentagem de gorjeta (%)"
+      "tipPercentage": "Insira porcent. de gorjeta (%)"
     },
     "common": {
       "values": "Valores",
@@ -859,7 +859,7 @@
     },
     "placeholders": {
       "batteryCapacity": "Capacidade da Bateria (kWh)",
-      "energyConsumption": "Consumo de Energia (kWh/100km)"
+      "energyConsumption": "Cons. de Energia (kWh/100km)"
     },
     "common": {
       "values": "Valores",
@@ -936,11 +936,11 @@
   },
   "dataTransferCard": {
     "title": "Transferência de Dados",
-    "bitsPerSecond": "Bits por segundo",
-    "kilobitsPerSecond": "Kilobits por segundo",
-    "megabitsPerSecond": "Megabits por segundo",
-    "gigabitsPerSecond": "Gigabits por segundo",
-    "terabitsPerSecond": "Terabits por segundo",
+    "bitsPerSecond": "Bits por seg",
+    "kilobitsPerSecond": "Kilobits por seg",
+    "megabitsPerSecond": "Megabits por seg",
+    "gigabitsPerSecond": "Gigabits por seg",
+    "terabitsPerSecond": "Terabits por seg",
     "bitsDescription": "1 b/s",
     "kilobitsDescription": "1 kb/s = 1000 b/s",
     "megabitsDescription": "1 mb/s = 1000 kb/s",
@@ -1038,8 +1038,8 @@
     "tablespoons": "Colheres de sopa",
     "cups": "Xícaras",
     "millilitersAbbr": "ml",
-    "teaspoonsAbbr": "col. chá",
-    "tablespoonsAbbr": "col. sopa",
+    "teaspoonsAbbr": "c.chá",
+    "tablespoonsAbbr": "c.sop",
     "cupsAbbr": "xíc.",
     "clearButtonA11yLabel": "Botão de limpar"
   },
@@ -1070,15 +1070,15 @@
   },
   "volumeCard": {
     "title": "Volume",
-    "milliliter": "Mililitro",
-    "liter": "Litro",
-    "teaspoon": "Colher de chá",
-    "tablespoon": "Colher de sopa",
-    "cup": "Xícara",
+    "milliliter": "Ml",
+    "liter": "L",
+    "teaspoon": "C.chá",
+    "tablespoon": "C.sop",
+    "cup": "Xíc.",
     "milliliterDesc": "1 ml",
     "literDesc": "1 l = 1000 ml",
-    "teaspoonDesc": "1 col. chá = 4.92892 ml",
-    "tablespoonDesc": "1 col. sopa = 14.78 ml",
+    "teaspoonDesc": "1 c. chá = 4.92892 ml",
+    "tablespoonDesc": "1 c. sopa = 14.78 ml",
     "cupDesc": "1 xíc. = 240 ml",
     "clearButtonA11yLabel": "Botão de limpar"
   },
@@ -1122,11 +1122,11 @@
     "weeksOption": "Semanas",
     "monthsOption": "Meses",
     "yearsOption": "Anos",
-    "ageResult": "{years} anos, {months} meses, {days} dias",
-    "daysResult": "{days} dias",
-    "weeksResult": "{weeks} semanas",
-    "monthsResult": "{months} meses",
-    "yearsResult": "{years} anos"
+    "ageResult": "{{years}} anos, {{months}} meses, {{days}} dias",
+    "daysResult": "{{days}} dias",
+    "weeksResult": "{{weeks}} semanas",
+    "monthsResult": "{{months}} meses",
+    "yearsResult": "{{years}} anos"
   },
   "densityCard": {
     "title": "Calculadora de Densidade",
@@ -1164,11 +1164,11 @@
   },
   "weightConverter": {
     "title": "Conversor de Peso",
-    "kilogram": "Quilograma",
-    "gram": "Grama",
-    "milligram": "Miligrama",
-    "pound": "Libra",
-    "ounce": "Onça",
+    "kilogram": "Kg",
+    "gram": "G",
+    "milligram": "Mg",
+    "pound": "Lb",
+    "ounce": "Oz",
     "kgDescription": "1 kg",
     "gDescription": "1 g = 0.001 kg",
     "mgDescription": "1 mg = 0.000001 kg",
@@ -1182,9 +1182,10 @@
     "changeLanguage": "Mudar idioma",
     "about": "Sobre",
     "rateApp": "Avaliar app",
-    "reportProblem": "Reportar problema",
+    "reportProblem": "Reportar erro",
     "selectTheme": "Selecionar Tema",
-    "selectLanguage": "Selecionar Idioma"
+    "selectLanguage": "Selecionar Idioma",
+    "updatePro": "Atualizar Pro"
   },
   "aboutModal": {
     "job": "Desenvolvedor de apps",

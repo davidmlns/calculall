@@ -70,17 +70,21 @@ export default function RomanNumber() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('romanNumberCard.title')}
-        icon={<RomanNumberIcon size={62} color='#6C3483' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('romanNumberCard.title')}
+          icon={<RomanNumberIcon size={62} color='#6C3483' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-2'>
+        <ResultComponent result={result} />
+      </View>
 
       <View className='mt-2 mx-auto'>
         <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-80 h-16'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300'
             placeholder={t('romanNumberCard.enterNumberPlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

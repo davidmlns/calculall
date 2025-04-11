@@ -144,10 +144,15 @@ export const icons = {
   LanguageIcon: { library: 'MaterialIcons', name: 'language' },
   InfoIcon: { library: 'MaterialIcons', name: 'info-outline' },
   BugIcon: { library: 'MaterialIcons', name: 'bug-report' },
+  ProIcon: { library: 'MaterialCommunityIcons', name: 'progress-star' },
 };
 
 export const SettingIcon = ({ size, color }: IconProps) => (
   <MaterialIcons name='settings' size={size} color={color} />
+);
+
+export const ProIcon = ({ size, color }: IconProps) => (
+  <MaterialCommunityIcons name='progress-star' size={size} color={color} />
 );
 
 export const SearchIcon = ({ size, color }: IconProps) => (

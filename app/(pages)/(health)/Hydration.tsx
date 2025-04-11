@@ -107,28 +107,21 @@ export default function Hydration() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('hydrationCard.title')}
-        icon={<HydrationIcon size={52} color='#E74C3C' />}
-      />
-      <ResultComponent result={result} />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('hydrationCard.title')}
+          icon={<HydrationIcon size={52} color='#E74C3C' />}
+        />
+      </View>
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('hydrationCard.common.values')}
         </Text>
 
-        <View className='mt-2'>
-          <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300 mx-auto'
-            placeholder={t('hydrationCard.placeholders.weight')}
-            placeholderTextColor='#cbd5e1'
-            keyboardType='number-pad'
-            value={weight}
-            onChangeText={setWeight}
-            maxLength={9}
-          />
-        </View>
         <OptionModalActivities
           title={selectedActivity.title}
           description={selectedActivity.description}
@@ -136,7 +129,7 @@ export default function Hydration() {
           isVisible={modalVisible}
           onClose={() => setModalVisible(false)}
           onOpen={() => setModalVisible(true)}>
-          <View className='space-y-2 flex'>
+          <View className='space-y-2 mt-2 flex'>
             {activities.map(activity => (
               <Pressable
                 key={activity.id}
@@ -146,13 +139,27 @@ export default function Hydration() {
                   {activity.icon}
                 </View>
                 <View>
-                  <Text className='text-white text-base'>{activity.title}</Text>
-                  <Text className='text-slate-400 text-sm'>{activity.description}</Text>
+                  <Text className='text-white text-base font-Satoshi'>{activity.title}</Text>
+                  <Text className='text-slate-400 text-sm font-Satoshi'>
+                    {activity.description}
+                  </Text>
                 </View>
               </Pressable>
             ))}
           </View>
         </OptionModalActivities>
+
+        <View className='mt-4'>
+          <TextInput
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-72 text-slate-300 mx-auto'
+            placeholder={t('hydrationCard.placeholders.weight')}
+            placeholderTextColor='#cbd5e1'
+            keyboardType='number-pad'
+            value={weight}
+            onChangeText={setWeight}
+            maxLength={9}
+          />
+        </View>
       </View>
 
       {weight && (

@@ -148,31 +148,36 @@ export default function Fractions() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('fractionsCard.title')}
-        icon={<FractionIcon size={46} color='#6C3483' />}
-      />
-      <ResultComponent result={result} />
-      <CalculateComponent
-        operations={operations}
-        onCalculate={handleCalculate}
-        onSendOperation={setSelectedOperation}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('fractionsCard.title')}
+          icon={<FractionIcon size={46} color='#6C3483' />}
+        />
+      </View>
 
-      <Text className='text-gray-300 text-2xl font-semibold text-center mt-4'>
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+        <CalculateComponent
+          operations={operations}
+          onCalculate={handleCalculate}
+          onSendOperation={setSelectedOperation}
+        />
+      </View>
+
+      <Text className='text-gray-300 text-2xl font-semibold font-Satoshi text-center mb-2'>
         {t('fractionsCard.values')}
       </Text>
-      <View className='flex-row flex-wrap mt-2 mr-4 justify-center'>
+      <View className='flex-row flex-wrap mr-4 justify-center'>
         <View className='flex-row justify-around w-full'>
-          <View className='mt-2'>
+          <View>
             <View className='flex-row items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
               <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                <Text className='text-black font-semibold text-xl'>
+                <Text className='text-black font-semibold font-Satoshi text-xl'>
                   {t('fractionsCard.valueA')}
                 </Text>
               </View>
               <TextInput
-                className='text-right text-2xl text-slate-300 flex-1'
+                className='text-right text-2xl font-Satoshi text-slate-300 flex-1'
                 placeholder='0'
                 placeholderTextColor='#cbd5e1'
                 keyboardType='number-pad'
@@ -184,15 +189,15 @@ export default function Fractions() {
           </View>
 
           {selectedOperation !== 'dec-to-fractions' && (
-            <View className='mt-2'>
+            <View>
               <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
                 <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                  <Text className='text-black font-semibold text-xl'>
+                  <Text className='text-black font-semibold font-Satoshi text-xl'>
                     {t('fractionsCard.valueB')}
                   </Text>
                 </View>
                 <TextInput
-                  className='text-right text-2xl text-slate-300'
+                  className='text-right text-2xl font-Satoshi text-slate-300'
                   placeholder='0'
                   placeholderTextColor='#cbd5e1'
                   keyboardType='number-pad'
@@ -210,12 +215,12 @@ export default function Fractions() {
             <View className='mt-4'>
               <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
                 <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                  <Text className='text-black font-semibold text-xl'>
+                  <Text className='text-black font-semibold font-Satoshi text-xl'>
                     {t('fractionsCard.valueC')}
                   </Text>
                 </View>
                 <TextInput
-                  className='text-right text-2xl text-slate-300'
+                  className='text-right text-2xl font-Satoshi text-slate-300'
                   placeholder='0'
                   placeholderTextColor='#cbd5e1'
                   keyboardType='number-pad'
@@ -231,12 +236,12 @@ export default function Fractions() {
             <View className='mt-4'>
               <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-48 h-16'>
                 <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
-                  <Text className='text-black font-semibold text-xl'>
+                  <Text className='text-black font-semibold font-Satoshi text-xl'>
                     {t('fractionsCard.valueD')}
                   </Text>
                 </View>
                 <TextInput
-                  className='text-right text-2xl text-slate-300'
+                  className='text-right text-2xl font-Satoshi text-slate-300'
                   placeholder='0'
                   placeholderTextColor='#cbd5e1'
                   keyboardType='number-pad'

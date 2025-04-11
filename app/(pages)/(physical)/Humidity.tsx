@@ -97,25 +97,30 @@ export default function Humidity() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('humidityCard.title')}
-        icon={<HumidityIcon size={54} color='#2E86C1' />}
-      />
-      <ResultComponent result={result} />
-      <CalculateComponent
-        operations={operations}
-        onCalculate={handleCalculate}
-        onSendOperation={setSelectedOperation}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('humidityCard.title')}
+          icon={<HumidityIcon size={54} color='#2E86C1' />}
+        />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+        <CalculateComponent
+          operations={operations}
+          onCalculate={handleCalculate}
+          onSendOperation={setSelectedOperation}
+        />
+      </View>
+
+      <View className='flex w-95 mx-auto'>
+        <Text className='text-gray-300 font-Satoshi text-2xl font-semibold text-center'>
           {t('humidityCard.values')}
         </Text>
 
-        <View className='mt-2'>
+        <View className='mt-2 w-95 mx-auto'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
             placeholder={t('humidityCard.temperaturePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -125,9 +130,9 @@ export default function Humidity() {
           />
         </View>
         {selectedOperation === 'rel-hum' && (
-          <View className='mt-4'>
+          <View className='mt-4 w-95 mx-auto'>
             <TextInput
-              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+              className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
               placeholder={t('humidityCard.dewPointPlaceholder')}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'
@@ -138,9 +143,9 @@ export default function Humidity() {
           </View>
         )}
         {selectedOperation === 'abs-hum' && (
-          <View className='mt-4'>
+          <View className='mt-4 w-95 mx-auto'>
             <TextInput
-              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-72 text-slate-300'
+              className='bg-gray-800 rounded-2xl p-4 font-Satoshi text-center text-2xl w-full text-slate-300'
               placeholder={t('humidityCard.humidityPlaceholder')}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'

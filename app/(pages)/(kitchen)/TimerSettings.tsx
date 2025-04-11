@@ -17,14 +17,14 @@ const scaleValue = new Animated.Value(1);
 
 const TimeControl = ({ label, value, onIncrement, onDecrement }) => (
   <View className='flex items-center mx-2 mb-4'>
-    <Text className='text-gray-300 text-xl mb-2'>{label}</Text>
+    <Text className='text-gray-300 text-xl mb-2 font-Satoshi'>{label}</Text>
     <View className='flex-row items-center'>
       <Pressable
         onPress={onDecrement}
         className='bg-gray-900 border border-gray-700 rounded-full w-10 h-10 flex justify-center items-center shadow-lg mr-3'>
         <MinusIcon size={20} color='#ffffff' />
       </Pressable>
-      <Text className='text-gray-300 text-3xl w-16 text-center'>
+      <Text className='text-gray-300 text-3xl w-16 font-Satoshi text-center'>
         {String(value).padStart(2, '0')}
       </Text>
       <Pressable
@@ -130,13 +130,17 @@ export default function TimerSettings() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('timerSettingsCard.title')}
-        icon={<TimerSettingsIcon size={51} color='#F39C12' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('timerSettingsCard.title')}
+          icon={<TimerSettingsIcon size={51} color='#F39C12' />}
+        />
+      </View>
 
       <View className='flex items-center mt-6'>
-        <Text className='text-gray-300 text-6xl font-bold mb-6'>{formatTime(time)}</Text>
+        <Text className='text-gray-300 text-6xl font-bold mb-6 font-Satoshi'>
+          {formatTime(time)}
+        </Text>
 
         <View className='flex-row mb-6'>
           <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
@@ -188,21 +192,21 @@ export default function TimerSettings() {
             <Pressable
               onPress={() => handlePreset(300)}
               className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
-              <Text className='text-slate-300 text-lg font-semibold'>
+              <Text className='text-slate-300 text-lg font-Satoshi font-semibold'>
                 {t('timerSettingsCard.fiveMin')}
               </Text>
             </Pressable>
             <Pressable
               onPress={() => handlePreset(600)}
               className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
-              <Text className='text-slate-300 text-lg font-semibold'>
+              <Text className='text-slate-300 text-lg font-Satoshi font-semibold'>
                 {t('timerSettingsCard.tenMin')}
               </Text>
             </Pressable>
             <Pressable
               onPress={() => handlePreset(900)}
               className='bg-gray-800 rounded-2xl px-6 py-3 mx-2'>
-              <Text className='text-slate-300 text-lg font-semibold'>
+              <Text className='text-slate-300 text-lg font-Satoshi font-semibold'>
                 {t('timerSettingsCard.fifteenMin')}
               </Text>
             </Pressable>

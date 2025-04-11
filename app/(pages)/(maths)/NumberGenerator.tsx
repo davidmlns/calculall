@@ -56,12 +56,16 @@ export default function NumberGenerator() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('numberGeneratorCard.title')}
-        icon={<NumberGeneratorIcon size={58} color='#6C3483' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('numberGeneratorCard.title')}
+          icon={<NumberGeneratorIcon size={58} color='#6C3483' />}
+        />
+      </View>
 
-      <ResultComponent result={result} />
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
       <View className='flex-col w-full'>
         <View className='mt-2 mx-auto mb-2'>
@@ -70,7 +74,7 @@ export default function NumberGenerator() {
               <FromIcon size={22} color='#6C3483' />
             </View>
             <TextInput
-              className='text-right text-2xl text-slate-300 flex-1'
+              className='text-right text-2xl font-Satoshi text-slate-300 flex-1'
               placeholder='0'
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'
@@ -81,13 +85,13 @@ export default function NumberGenerator() {
           </View>
         </View>
 
-        <View className='mt-2 mx-auto'>
+        <View className='mt-4 mx-auto'>
           <View className='flex-row justify-between items-center bg-gray-800 rounded-lg pr-3 pl-3 w-80 h-16'>
             <View className='bg-icon-background rounded-lg p-1.5 px-3 ml-2'>
               <UptoIcon size={22} color='#6C3483' />
             </View>
             <TextInput
-              className='text-right text-2xl text-slate-300'
+              className='text-right text-2xl font-Satoshi text-slate-300'
               placeholder='0'
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'

@@ -57,20 +57,24 @@ export default function Fuel() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('fuelCard.title')}
-        icon={<FuelIcon size={52} color='#7F8C8D' />}
-      />
-      <ResultComponent result={result} />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('fuelCard.title')}
+          icon={<FuelIcon size={52} color='#7F8C8D' />}
+        />
+      </View>
+      <View className='mb-6'>
+        <ResultComponent result={result} />
+      </View>
 
-      <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+      <View className='flex w-90 mx-auto'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('fuelCard.common.values')}
         </Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi mx-auto text-center text-2xl w-full text-slate-300'
             placeholder={t('fuelCard.placeholders.distance')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'
@@ -81,7 +85,7 @@ export default function Fuel() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi mx-auto text-center text-2xl w-full text-slate-300'
             placeholder={t('fuelCard.placeholders.fuelEfficiency')}
             placeholderTextColor='#cbd5e1'
             keyboardType='number-pad'

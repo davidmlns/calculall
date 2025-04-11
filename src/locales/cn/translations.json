@@ -1124,11 +1124,11 @@
     "weeksOption": "周数",
     "monthsOption": "月数",
     "yearsOption": "年数",
-    "ageResult": "{years} 年, {months} 月, {days} 天",
-    "daysResult": "{days} 天",
-    "weeksResult": "{weeks} 周",
-    "monthsResult": "{months} 个月",
-    "yearsResult": "{years} 年"
+    "ageResult": "{{years}} 年, {{months}} 月, {{days}} 天",
+    "daysResult": "{{days}} 天",
+    "weeksResult": "{{weeks}} 周",
+    "monthsResult": "{{months}} 个月",
+    "yearsResult": "{{years}} 年"
   },
   "densityCard": {
     "title": "密度计算器",
@@ -1186,7 +1186,8 @@
     "rateApp": "评分应用",
     "reportProblem": "报告问题",
     "selectTheme": "选择主题",
-    "selectLanguage": "选择语言"
+    "selectLanguage": "选择语言",
+    "updatePro": "更新专业"
   },
   "aboutModal": {
     "job": "应用开发者",

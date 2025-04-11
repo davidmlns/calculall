@@ -157,28 +157,33 @@ export default function Angles(): JSX.Element {
   return (
     <ScrollView className='bg-background-app w-full h-full' accessibilityLabel='Angles Screen'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('angleCard.title')}
-        icon={<AngleIcon size={58} color='#6C3483' />}
-      />
 
-      <ResultComponent result={result} error={error} />
+      <View className='mb-2'>
+        <HeaderDescriptionPage
+          title={t('angleCard.title')}
+          icon={<AngleIcon size={58} color='#6C3483' />}
+        />
+      </View>
 
-      <CalculateComponent
-        operations={operations}
-        onSendOperation={handleOperationFromChild}
-        onCalculate={handleCalculate}
-      />
+      <View className='mb-6'>
+        <ResultComponent result={result} error={error} />
 
-      <View className='flex mt-6 mx-auto' accessibilityLabel='Values Input'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+        <CalculateComponent
+          operations={operations}
+          onSendOperation={handleOperationFromChild}
+          onCalculate={handleCalculate}
+        />
+      </View>
+
+      <View className='flex mx-auto' accessibilityLabel='Values Input'>
+        <Text className='text-gray-300 text-2xl font-semibold text-center font-Satoshi'>
           {t('angleCard.values')}
         </Text>
 
         {selectedOperation === 'rad-to-deg' ? (
           <View className='mt-2'>
             <TextInput
-              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
+              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-320 text-slate-300 font-Satoshi'
               placeholder={t('angleCard.placeholderValueRad')}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'
@@ -191,7 +196,7 @@ export default function Angles(): JSX.Element {
         ) : (
           <View className='mt-2'>
             <TextInput
-              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-80 text-slate-300'
+              className='bg-gray-800 rounded-2xl p-4 text-center text-2xl w-320 text-slate-300 font-Satoshi'
               placeholder={t('angleCard.placeholderValue')}
               placeholderTextColor='#cbd5e1'
               keyboardType='number-pad'

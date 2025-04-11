@@ -71,21 +71,24 @@ export default function Latitude() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('latitudeCard.title')}
-        icon={<LatitudeIcon size={52} color='#D35400' />}
-      />
-      <View className='flex mb-4'>
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('latitudeCard.title')}
+          icon={<LatitudeIcon size={52} color='#D35400' />}
+        />
+      </View>
+
+      <View className='flex mb-6'>
         <TextInput
           placeholderTextColor='#c7c7c7'
           placeholder={t('latitudeCard.defaultResult')}
-          className='bg-gray-800 rounded-lg rounded-b-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
+          className='bg-gray-800 rounded-lg rounded-b-none p-4 font-Satoshi text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
           editable={false}
           selectTextOnFocus={false}
           value={result1}
         />
         <TextInput
-          className='bg-gray-800 rounded-lg rounded-t-none p-4 text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
+          className='bg-gray-800 rounded-lg rounded-t-none p-4 font-Satoshi text-2xl flex-wrap w-96 h-16 mx-auto text-center text-slate-300'
           editable={false}
           selectTextOnFocus={false}
           value={result2}
@@ -93,13 +96,13 @@ export default function Latitude() {
       </View>
 
       <View className='flex mt-6 mx-auto'>
-        <Text className='text-gray-300 text-2xl font-semibold text-center'>
+        <Text className='text-gray-300 text-2xl font-Satoshi font-semibold text-center'>
           {t('latitudeCard.valuesTitle')}
         </Text>
 
         <View className='mt-2'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder={t('latitudeCard.latitudePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='numbers-and-punctuation'
@@ -110,7 +113,7 @@ export default function Latitude() {
         </View>
         <View className='mt-4'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder={t('latitudeCard.longitudePlaceholder')}
             placeholderTextColor='#cbd5e1'
             keyboardType='numbers-and-punctuation'

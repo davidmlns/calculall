@@ -351,7 +351,7 @@
         "description": "1 kWh = 3.6 × 10 J"
       },
       "btu": {
-        "title": "Unidad Térmica Británica",
+        "title": "Uni. Térm. Británica",
         "description": "1 BTU = 1055 J"
       }
     }
@@ -771,9 +771,9 @@
       "monthlyPayment": "Pago Mensual"
     },
     "placeholders": {
-      "loanAmount": "Ingrese monto del préstamo ($)",
+      "loanAmount": "Ingrese monto del prést. ($)",
       "interestRate": "Ingrese tasa de interés (%)",
-      "loanTerm": "Ingrese plazo del préstamo (años)"
+      "loanTerm": "Ingrese plazo del prést. (años)"
     },
     "common": {
       "values": "Valores",
@@ -833,8 +833,8 @@
       "totalAmount": "Monto Total"
     },
     "placeholders": {
-      "billAmount": "Ingrese monto de la cuenta ($)",
-      "tipPercentage": "Ingrese porcentaje de propina (%)"
+      "billAmount": "Ingrese monto ($)",
+      "tipPercentage": "Ingrese porc. de propina (%)"
     },
     "common": {
       "values": "Valores",
@@ -855,7 +855,7 @@
     },
     "placeholders": {
       "batteryCapacity": "Capacidad de Batería (kWh)",
-      "energyConsumption": "Consumo de Energía (kWh/100km)"
+      "energyConsumption": "Cons. de Energía (kWh/100km)"
     },
     "common": {
       "values": "Valores",
@@ -933,10 +933,10 @@
   "dataTransferCard": {
     "title": "Transferencia de Datos",
     "bitsPerSecond": "Bits por segundo",
-    "kilobitsPerSecond": "Kilobits por segundo",
-    "megabitsPerSecond": "Megabits por segundo",
-    "gigabitsPerSecond": "Gigabits por segundo",
-    "terabitsPerSecond": "Terabits por segundo",
+    "kilobitsPerSecond": "Kilobits por seg",
+    "megabitsPerSecond": "Megabits por seg",
+    "gigabitsPerSecond": "Gigabits por seg",
+    "terabitsPerSecond": "Terabits por seg",
     "bitsDescription": "1 b/s",
     "kilobitsDescription": "1 kb/s = 1000 b/s",
     "megabitsDescription": "1 mb/s = 1000 kb/s",
@@ -1033,10 +1033,10 @@
     "teaspoons": "Cucharaditas",
     "tablespoons": "Cucharadas",
     "cups": "Tazas",
-    "millilitersAbbr": "ml",
-    "teaspoonsAbbr": "cdta",
-    "tablespoonsAbbr": "cda",
-    "cupsAbbr": "taza",
+    "millilitersAbbr": "Ml",
+    "teaspoonsAbbr": "Cdta",
+    "tablespoonsAbbr": "Cda",
+    "cupsAbbr": "Taza",
     "clearButtonA11yLabel": "Botón de limpiar"
   },
   "cookingTimeCard": {
@@ -1066,10 +1066,10 @@
   },
   "volumeCard": {
     "title": "Volumen",
-    "milliliter": "Mililitro",
-    "liter": "Litro",
-    "teaspoon": "Cucharadita",
-    "tablespoon": "Cucharada",
+    "milliliter": "Ml",
+    "liter": "L",
+    "teaspoon": "Cdta",
+    "tablespoon": "Cda",
     "cup": "Taza",
     "milliliterDesc": "1 ml",
     "literDesc": "1 l = 1000 ml",
@@ -1118,11 +1118,11 @@
     "weeksOption": "Semanas",
     "monthsOption": "Meses",
     "yearsOption": "Años",
-    "ageResult": "{years} años, {months} meses, {days} días",
-    "daysResult": "{days} días",
-    "weeksResult": "{weeks} semanas",
-    "monthsResult": "{months} meses",
-    "yearsResult": "{years} años"
+    "ageResult": "{{years}} años, {{months}} meses, {{days}} días",
+    "daysResult": "{{days}} días",
+    "weeksResult": "{{weeks}} semanas",
+    "monthsResult": "{{months}} meses",
+    "yearsResult": "{{years}} años"
   },
   "densityCard": {
     "title": "Calculadora de Densidad",
@@ -1160,11 +1160,11 @@
   },
   "weightConverter": {
     "title": "Conversor de Peso",
-    "kilogram": "Kilogramo",
-    "gram": "Gramo",
-    "milligram": "Miligramo",
-    "pound": "Libra",
-    "ounce": "Onza",
+    "kilogram": "Kg",
+    "gram": "G",
+    "milligram": "Mg",
+    "pound": "Lb",
+    "ounce": "Oz",
     "kgDescription": "1 kg",
     "gDescription": "1 g = 0.001 kg",
     "mgDescription": "1 mg = 0.000001 kg",
@@ -1178,9 +1178,10 @@
     "changeLanguage": "Cambiar idioma",
     "about": "Acerca de",
     "rateApp": "Calificar app",
-    "reportProblem": "Reportar problema",
+    "reportProblem": "Reportar error",
     "selectTheme": "Seleccionar Tema",
-    "selectLanguage": "Seleccionar Idioma"
+    "selectLanguage": "Seleccionar Idioma",
+    "updatePro": "Actualizar Pro"
   },
   "aboutModal": {
     "job": "Desarrollador de apps",

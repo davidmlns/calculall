@@ -43,15 +43,17 @@ export default function QrCode() {
   return (
     <ScrollView className='bg-background-app w-full h-full'>
       <HeaderPages />
-      <HeaderDescriptionPage
-        title={t('qrCodeGenerator.title')}
-        icon={<QrCodeIcon size={52} color='#1ABC9C' />}
-      />
+      <View className='mb-4'>
+        <HeaderDescriptionPage
+          title={t('qrCodeGenerator.title')}
+          icon={<QrCodeIcon size={52} color='#1ABC9C' />}
+        />
+      </View>
 
-      <View className='flex mt-6 mx-auto px-4 w-95'>
+      <View className='flex mx-auto px-4 w-95'>
         <View className='bg-gray-800 rounded-lg p-4'>
           <TextInput
-            className='bg-gray-800 rounded-2xl p-4 mx-auto text-center text-2xl w-72 text-slate-300'
+            className='bg-gray-800 rounded-2xl p-4 font-Satoshi mx-auto text-center text-2xl w-72 text-slate-300'
             placeholder={t('qrCodeGenerator.placeholder')}
             placeholderTextColor='#cbd5e1'
             value={text}
@@ -63,7 +65,7 @@ export default function QrCode() {
               <QRCode value={qrValue} size={200} color='#1ABC9C' backgroundColor='transparent' />
               <Pressable onPress={copyToClipboard} className='mt-4 flex-row items-center'>
                 <CopyIcon size={24} color='#ffffff' />
-                <Text className='text-slate-300 text-lg ml-2'>
+                <Text className='text-slate-300 font-Satoshi text-lg ml-2'>
                   {t('qrCodeGenerator.copyContent')}
                 </Text>
               </Pressable>
